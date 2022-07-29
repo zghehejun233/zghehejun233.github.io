@@ -9,8 +9,6 @@ jobs:
   pages:
     runs-on: ubuntu-latest
     steps:
-      - name: Install Pandoc
-        run: curl -s -L https://github.com/jgm/pandoc/releases/download/2.9.2/pandoc-2.9.2-linux-amd64.tar.gz | tar xvzf - -C $RUNNER_TOOL_CACHE/
       - uses: actions/checkout@v2
       - name: Use Node.js 16.x
         uses: actions/setup-node@v2
@@ -25,13 +23,10 @@ jobs:
             ${{ runner.OS }}-npm-cache
       - name: Install Dependencies
         run: npm install
-      - name: Hexo Generate
-        run: |
-          export PATH="$PATH:$RUNNER_TOOL_CACHE/pandoc-2.9.2/bin"
-          rm -f .yarnclean
-          rm -rf ./public
-          hexo clean
-          hexo generate
+      - name: Pandoc
+        uses: docker://pandoc/core:2.9
+        with:
+          args: "--help"
       - name: Build
         run: npm run build
       - name: Deploy
