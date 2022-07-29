@@ -1,0 +1,859 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="记录备战2022年美赛">
+<meta property="og:type" content="article">
+<meta property="og:title" content="美赛2022">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/29384/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="记录备战2022年美赛">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-94526e24dd338cef3dec8ce424ed9d92_r.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-a51c47ba3f67df9d40f94816dbf6585f_b.jpg">
+<meta property="og:image" content="https://pica.zhimg.com/80/v2-b1d29028a05e718b5832f7f9774ec9ae_1440w.jpg">
+<meta property="article:published_time" content="2022-01-09T07:49:00.000Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.539Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="数学建模">
+<meta property="article:tag" content="小习题儿">
+<meta property="article:tag" content="Matlab">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic3.zhimg.com/v2-94526e24dd338cef3dec8ce424ed9d92_r.jpg">
+  
+  
+  <title>美赛2022 - 苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/banner.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="美赛2022">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-09 07:49" pubdate>
+        2022年1月9日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      35 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">美赛2022</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="qa">Q&amp;A</h2>
+<ol type="1">
+<li>美赛评奖规则，允许不对所有问题进行解答，如果最后实在做不出来，但往往<strong>最多允许一小问</strong>，提交的话也不会影响评奖的</li>
+<li>对于所有参考的数据或者是文献都<strong>需要指明来源</strong></li>
+<li>从2021年起，美赛官方明确说了<strong>不能超过25页（包括附录之类的）</strong>，超过的话不会直接没奖，但往往会降低评奖档次</li>
+<li><strong>附录一般并不作为评奖的内容，但会占用页数</strong>，因此对于不重要的代码或结果尽量别放</li>
+<li><strong>摘要页每年都会有新的发布</strong>，可以在美赛官网下载。必须要用今年的，用去年的可能会影响评奖</li>
+<li>如果是<strong>命名出现错误是可以重新提交</strong>的，但如果命名正确已经提交出现问题，再重新提交的话可能导致不会接收等问题，建议只交一遍</li>
+<li>在<strong>页眉添加#号或者页码</strong></li>
+<li>比赛结束前是必须要选题的，<strong>选题由队长登录参赛官网后直接在上面选择</strong>即可，六选一，论文只能提交自己选择的那道题的求解结果</li>
+<li>原则上说，邮箱主题只需要<strong>体现自己的控制号</strong>即可</li>
+<li><strong>控制号是团队的唯一标识码</strong>，控制号写错了在截止前重新提交可以</li>
+<li>美赛论文<strong>要求用12号及以上的字体</strong>写作，如果字体太小会让评委阅卷不方便</li>
+<li>值得注意的是<strong>附件大小不能超越17M</strong>即可，不要采用云服务</li>
+<li>美赛要求<strong>论文中绝不允许出现姓名、学校等信息</strong></li>
+</ol>
+<h2 id="时间轴">时间轴</h2>
+<ul>
+<li>1.9:组队成功</li>
+</ul>
+<h2 id="to-do-list">TO-DO LIst</h2>
+<h3 id="如何解决时间空差">如何解决时间空差？</h3>
+<ol type="1">
+<li>尽量避免过于单一的个人能力</li>
+</ol>
+<h3 id="资料搜集">资料搜集</h3>
+<ol type="1">
+<li>墙外！</li>
+<li>记得登记原始来源</li>
+<li>要不要上爬虫呢</li>
+</ol>
+<h3 id="论文写作latex-or-word">论文写作(LaTex or Word？)</h3>
+<ol type="1">
+<li>LaTex写作效果更好，但有学习成本，据说美赛用LaTex不好（待定</li>
+</ol>
+<h3 id="数据备份和同步">数据备份和同步</h3>
+<ol type="1">
+<li>首选坚果云，编程手随手github备份</li>
+<li>队长保证至少一份原始备份，每天检查资料</li>
+</ol>
+<h2 id="概况">概况</h2>
+<h3 id="评分重点">评分重点</h3>
+<ol type="1">
+<li>主要陈述应提出重大思路和结果</li>
+<li>酌情澄清或重述问题</li>
+<li>对所有变量，<strong>假设和假设进行清晰的阐述</strong></li>
+<li>对问题进行分析，<strong>包括所使用模型的动机或理由</strong></li>
+<li>模型的设计</li>
+<li>讨论<strong>如何测试模型</strong>，包括误差分析和稳定性（调理，敏感性等）</li>
+<li>讨论您的模型或方法中的<strong>任何明显的优点或缺点</strong></li>
+</ol>
+<h3 id="比赛要求">比赛要求</h3>
+<ul>
+<li><p>人数：<strong>三人（本科生）为一组</strong>，人数要是3，所以配置要合理，大家尽可能有默契，目标专一，作息一致，分工合理。搭档选得好，O奖没得跑</p></li>
+<li><p>时间：在<strong>四天</strong>时间内，四天，一般都是早晨到早晨，要安排好比赛的时间</p></li>
+<li><p>任务：就指定的问题完成从建立模型、求解、验证到论文撰写的全部工作，选择好问题——开始建模——验证——撰写论文</p></li>
+<li><p><img src="https://pic3.zhimg.com/v2-94526e24dd338cef3dec8ce424ed9d92_r.jpg" srcset="/blog/img/loading.gif" lazyload alt="preview" />ABC一般会对于建模的要求更高一些些，DEF也需要建模，但是在专业学科知识上的运用可能更加灵活</p></li>
+<li><p>奖项设置</p>
+<figure>
+<img src="https://pic4.zhimg.com/v2-a51c47ba3f67df9d40f94816dbf6585f_b.jpg" srcset="/blog/img/loading.gif" lazyload alt="img" /><figcaption aria-hidden="true">img</figcaption>
+</figure></li>
+<li><p>官网：https://www.comap.com/undergraduate/contests/index.html</p></li>
+</ul>
+<h2 id="经验">经验</h2>
+<h3 id="经验a西电准大二f奖">经验A（西电准大二F奖）</h3>
+<h4 id="赛前">赛前</h4>
+<ul>
+<li><p>看之前的O奖<strong>论文</strong></p></li>
+<li><p>快速积累数学模型</p>
+<blockquote>
+<p>现在Stream大佬吸取了我提的意见，在SPSSPRO（完全免费）把算法做成了三段式解释（算法简短说明+输入+输出+案例），以及还搭配了配套演示视频（平均每个时长2，3分钟），大家学习建模时可以照着这个来学习，一两天就可以掌握上百个模型，无论是未来工作、科研，还是接着打数模，都是非常有用的。</p>
+</blockquote></li>
+</ul>
+<h4 id="赛中">赛中</h4>
+<ul>
+<li>给了数据的D题，一道音乐分析的题目</li>
+</ul>
+<h3 id="经验b知乎浩然适合论文手参考">经验B（知乎浩然，适合论文手参考）</h3>
+<h4 id="赛前-1">赛前</h4>
+<ul>
+<li>好的论文是从模仿开始的</li>
+<li>自主学习了一些模型算法</li>
+</ul>
+<h4 id="赛中-1">赛中</h4>
+<ul>
+<li>首先进行选题的讨论，其实这部分的时间很短</li>
+<li>找数据的过程其实是美赛的重点之一，能不能找到合适的足够的数据，是模型建立是否成果的重要部分</li>
+<li>将找到数据的网站list列出来，这样说明你的数据是真实有效的</li>
+<li>非常推荐查找硕博论文，因为硕博论文由浅入深介绍这个问题的来历，会从一般模型说起，这样便于你对模型进行改进</li>
+<li>B题要解决的问题一定需要可视化来展示，那么就少不了如何可视化，这时我就建议A去学习一下可视化的方法，最初是matlab，后来发现效果并不理想，最后换了他最熟悉的Python，有包可以调用</li>
+<li>第二天基本上8：40开始，没必要熬夜，第一天基本上12：00睡觉就可以</li>
+<li>多阅读O奖论文就发现，题目都有闪光点，我们要取长补短，例如算法流程图就是重要的图，我们希望将其画出来</li>
+<li>编程手一定要与论文手多沟通，否则优秀的算法思想没有办法被写出来</li>
+<li>最后一天晚上当然熬夜写摘要，摘要主要是B写的，然后我在写优缺点分析、灵敏度分析的事情</li>
+<li>摘要的文字一定要符合习惯，不能有错误，我在写论文的时候也非常注意，英文表达习惯被动句，而很多人先写中文后写英文的喜欢翻译成主动句，这是一个巨大的差别</li>
+</ul>
+<h4 id="赛后">赛后</h4>
+<ul>
+<li>国赛重结果，论文其次，美赛重创新和论文，结果其次，这是这个比赛固有的事实</li>
+</ul>
+<h3 id="经验c">经验C</h3>
+<h4 id="赛前-2">赛前</h4>
+<ul>
+<li><p>学习内容：</p>
+<ul>
+<li>ALL：数学建模常用模型和算法的知识、查找文献、修改论文的能力</li>
+<li>论文手：学会使用Latex或者word排版、学会使用VISIO、亿图、Excel、PPT等基本绘图和图表可视化，学会如何表述数学建模过程、阐述问题，了解美赛论文基本结构框架（充分准备，可以速成）</li>
+<li>编程手：学会使用mathlab、python、C、SPSS、R、Origin等基本编程和数据处理软件，学会数据处理和算法实现</li>
+<li>建模手：30种常用算法和模型原理的熟悉，对模型的实际运用能力，问题分析能力</li>
+</ul></li>
+<li><p>读论文每个人看论文都必须要有针对性，否则看了几乎等于没有看，因为没有任何印象</p></li>
+<li><p>适用写作和建模</p>
+<ul>
+<li>拿到一篇O奖论文，不看摘要 不看摘要 不看摘要，把所有的内容和题目看一次，理清文章思路</li>
+<li>试着把你看到的和理解的，总结下来，自己写出这篇文章的摘要，反复修改直到满意为止，一定要写，然后反复修改</li>
+<li>你写的摘要和原文摘要进行对比，找出差距和不足，或者明显不一样的地方，看完以后，再修改你原来写的，逐渐模仿到和原文差距不大，甚至超越原文的地步</li>
+</ul>
+<blockquote>
+<p>每年美赛评委会仅仅通过看摘要会筛选出<strong>50%左右</strong>的论文</p>
+</blockquote></li>
+</ul>
+<p>赛中</p>
+<ul>
+<li><p>Day1</p>
+<ul>
+<li><p>早上6点左右，官网放出了题目，我把题目下载了以后进行翻译复制到word里面，发到群里，然后我们都开始选题的工作</p></li>
+<li><p>数模乐园官方也给出了中文版的翻译，我们对比着两个翻译版本进行分析</p></li>
+<li><p>第一周里面只有ADE三类题目，所以我们的选择范围相对有限。我们果断放弃了A，开始纠结D和E。开始我和W学长都比较赞同D题，看上去题目意思比较直观，而且D有数据包，很多数据不需要查找，但最后Z学长说D题不容易实现，然后我们再看了一下题目发现也好像是那么回事。最后我们决定选了E题，关于<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=环境保护&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22107590650%22%7D">环境保护</a>类的。E题容易在模型比较简单，而且主观性很强可以发挥的空间很大；难点在于没有数据 没有数据 没有数据</p></li>
+<li><blockquote>
+<p>解题模型和数据的冲突</p>
+</blockquote></li>
+</ul></li>
+<li><p>Day2</p>
+<ul>
+<li><p>W学长开始尝试建立第一问的模型，我着手开始写论文的introduction和restatement of problem 这些不需要解题就能写的部分,整理了论文的框架；然后我继续帮忙找数据，期间我们W学长一直在和我们讨论题目，建立模型，Z学长一直在处理已有的部分数据，进行可视化分析</p>
+<blockquote>
+<p>组员的时间分配</p>
+</blockquote></li>
+</ul></li>
+<li><p>Day3</p>
+<ul>
+<li><p>把每个题目都分成不同的文档,包括整体的思路和解题过程,这样看上去整体性比较强,可以尽量减少建模和写作之间的gap.然后明天就是需要把这些翻译出来，放在整体的论文里面，还有一些图标格式绘制的问题</p>
+<blockquote>
+<p>题目之间的联系</p>
+</blockquote></li>
+</ul></li>
+<li><p>Day4</p>
+<ul>
+<li>一整天都在进行庞大的整理、翻译、格式调整、排版的工作</li>
+<li>手写摘要，把摘要单独放在了一个文档里面</li>
+</ul></li>
+</ul>
+<h4 id="经验d张浩驰">经验D（张浩驰）</h4>
+<h4 id="赛前-3">赛前</h4>
+<ul>
+<li><p>在求解过程中存在一些灵感，倒是建议<strong>大胆</strong>使用</p></li>
+<li><p>推荐一本官方写作书籍《正确写作美国大学生数学建模竞赛》</p></li>
+<li><p>公式编辑器推荐AxMath</p>
+<blockquote>
+<p>Windows 下有什么用过之后就离不开的冷门软件？ - 张浩驰的回答 - 知乎 https://www.zhihu.com/question/21175572/answer/588082133</p>
+</blockquote></li>
+<li><p>可视化工具</p>
+<ul>
+<li><p>Matlab</p></li>
+<li><p>Python-Matplotlib &amp; Python-Seaborn</p>
+<blockquote>
+<p>Seaborn是用户把自己常用到的可视化绘图过程进行了函数封装，形成的一个“快捷方式”，他相比Matplotlib的好处是代码更简洁，可以用一行代码实现一个清晰好看的可视化输出</p>
+</blockquote></li>
+<li><p>R-ggplot2：R语言主要就是面向数据科学的语言</p></li>
+</ul></li>
+<li><p>绘图工具</p>
+<ul>
+<li><p>VISIO</p></li>
+<li><p>AxGlyph</p></li>
+<li><p>Geogebra</p></li>
+<li><p>Gephi</p>
+<blockquote>
+<p>建议的配色是加一点灰度，大红大绿的配色容易让评审产生审美疲劳，所以，我最常用的图表配色类似于右图（注：本文为下图），每种颜色都带一点灰度，使得图表更有学术范。</p>
+<p>图示的字体（包括坐标轴）不能太小，需要与正文字体相当或者小一号，MATLAB绘制的图可以放在Visio中进行再加工，添加图示和文字。</p>
+</blockquote></li>
+</ul></li>
+<li><p>排版</p>
+<ul>
+<li><p>图文穿插</p></li>
+<li><p>表格直接固定图片格式</p>
+<p>如果直接插入图片，很有可能会导致乱格式，一般我喜欢利用表格进行格式控制。最后将表格边框调整成“无边框”即可。（注：这点真的是非常好，自己调节图片大小往往不能做到嵌入进表格这样简单、便捷、优美）</p></li>
+<li><p>三线表</p>
+<p>如果有多行可以考虑添加背景阴影使得行与行之间区分开来。</p></li>
+<li><p>段落</p>
+<p>取消“定义文档网格时对齐网格”（注：在Word中被称之为如果定义了文档网格，则对齐到网格），这可以避免在输入公式后行间距不一致。（这与我那种方法不一样的另外一种解决行间公式嵌入导致公式前后行间距不一致的情况）</p></li>
+<li><p>框架式绘图</p></li>
+</ul></li>
+<li><p>数据</p>
+<ul>
+<li>https://blog.csdn.net/weixin_43102634/article/details/103696632</li>
+<li>https://max.book118.com/html/2019/0204/6232125043002005.shtm</li>
+<li>世界卫生组织 https://www.who.int/data/gho</li>
+<li>美国农业部 https://www.usda.gov/topics/data</li>
+<li>直接访问美国政府总网站，搜索关键字+data或者部门官网</li>
+<li>实在没有数据
+<ul>
+<li>如果这道题并没有限定国家，或者说对于文化背景要求不高，那么我们就考虑把伟大的祖国作为研究对象</li>
+<li>我们应该利用数据挖掘的能力，也就是说，我们需要自己利用一定的技术手段去收集数据，比如爬虫技术，自己去爬一些可能用得到的内容</li>
+</ul></li>
+<li>天池大数据（以下是数据科学竞赛平台） https://tianchi.aliyun.com/dataset/?spm=5176.12281905.0.0.358b5699IjonJQ</li>
+<li>Datasets https://www.kaggle.com/datasets?tags=15006-socrata</li>
+<li>UCI机器学习库 https://archive.ics.uci.edu/ml/index.php</li>
+</ul></li>
+<li><p>解题流程</p>
+<figure>
+<img src="https://pica.zhimg.com/80/v2-b1d29028a05e718b5832f7f9774ec9ae_1440w.jpg" srcset="/blog/img/loading.gif" lazyload alt="img" /><figcaption aria-hidden="true">img</figcaption>
+</figure></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Python/">Python</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E5%B0%8F%E4%B9%A0%E9%A2%98%E5%84%BF/">小习题儿</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Matlab/">Matlab</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/23478/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Python  科学计算</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/13932/">
+                        <span class="hidden-mobile">贰零贰贰</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>

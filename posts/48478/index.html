@@ -1,0 +1,977 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="暑期课程强化学习与人工智能笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reinforcement Learning and Artificial Intelligence">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/48478/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="暑期课程强化学习与人工智能笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://47.100.74.245/blog/post_img/81514130_p0_master1200.jpg">
+<meta property="article:published_time" content="2022-07-29T23:13:58.535Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.535Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="RL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://47.100.74.245/blog/post_img/81514130_p0_master1200.jpg">
+  
+  
+  <title>Reinforcement Learning and Artificial Intelligence - 苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/post_img/81514130_p0_master1200.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Reinforcement Learning and Artificial Intelligence">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-29 23:13" pubdate>
+        2022年7月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      16k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      132 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Reinforcement Learning and Artificial Intelligence</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="introduction">Introduction</h2>
+<p>Reinforcement Learning (RL) is a <strong>scientific theory</strong> (or hypothesis) that seeks to provide a <strong>computational explanation</strong> to the widely <strong>observed phenomenon</strong> that some complex <strong>physical system</strong> can adapt to the <strong>physical environment</strong> around it.</p>
+<ul>
+<li>scientific theory: links an observation (i.e. the subject) to some other reproducible observations (i.e. the evidence) with logic.</li>
+<li>computational explanation</li>
+<li>observed phenomenon</li>
+<li>physical system</li>
+<li>physical environment</li>
+</ul>
+<p>The Rl regard the physical world as a Markov chain. Consider a physical system that interacts with a surrounding environment by exchanging mass/energy across the system boundary. The <strong>world (system + environment)</strong> changes over time, and is in a certain state <span class="math inline">\(\mathbf{s_t}\)</span> at each moment <span class="math inline">\(t\)</span>.</p>
+<p>Different physical theories may formulate <span class="math inline">\(\mathbf{s_t}\)</span> into different mathematical objects (<span class="math inline">\(s\)</span> can be a vector, a tensor, a function, a function of functions, etc.). But in most physical theories, the time evolution of the state follows time-invariant (possibly stochastic) transition laws, such that <span class="math inline">\(\mathbf{s_t}\)</span> decouples the past from the future.</p>
+<blockquote>
+<p>Theorem (H. M. Sheffer, in Transactions of the American Mathematical Society, 1913): Every digital computer is functionally equivalent to an NAND network.</p>
+</blockquote>
+<h2 id="math-basics">Math Basics</h2>
+<h3 id="probability-theory-basics">Probability Theory Basics</h3>
+<blockquote>
+<p>详见概率论相关的文章，这里摘录一下课上的大纲</p>
+</blockquote>
+<h4 id="probability-space">Probability Space</h4>
+<ul>
+<li>Sample Space, a set of all “possible worlds” under concern, each with full certainty and definiteness.</li>
+<li>Event Space, a set of all random events; each event may occur in a subset of the possible worlds.</li>
+<li>Probability function, mapping that assigns a real number to each random event to indicate its “propensity of occurrence”.</li>
+</ul>
+<h4 id="joint-probability-union-probability-union-bound">Joint Probability, Union Probability, Union Bound</h4>
+<p>Union Bound:</p>
+<p><span class="math display">\[
+\begin{array}{c}
+  P[{A_1}or{A_1}or{\dotsb}{ {A_n} }]{\le}\sum_{i=1}^{n}P[A_i]
+\end{array}
+\]</span></p>
+<h4 id="conditional-probability-independence">Conditional Probability, Independence</h4>
+<p>The conditional probability has been in a new probability space, so much different with joint probability.And to point it, use <span class="math inline">\(P_B[A]\)</span> is better than <span class="math inline">\(P[A|B]\)</span>.</p>
+<p>To change the probability space</p>
+<p><span class="math display">\[
+\begin{array}{c}
+  P[AB]=P[A|B]P[B]=P[B|A]P[A]
+\end{array}
+\]</span></p>
+<p>And if we want to add a probability of C</p>
+<p><span class="math display">\[
+\begin{array}{c}
+  P[AB|C]=P[A|BC]P[BC], or this form\\
+  P_C[AB]=P_C[AB]P_C[B].\\
+\end{array}
+\]</span></p>
+<h4 id="random-variable">Random Variable</h4>
+<p>If <span class="math inline">\(X\)</span> is continuous, we will (ab-)use 𝐏[𝑋 = 𝑥] to refer (instead) to the probability density of <span class="math inline">\(X = x\)</span>.</p>
+<p>If 𝑋 is continuous, we will (ab-)use Σ𝑥 (instead of ∫ d𝑥) to refer to the probabilistic integration</p>
+<h4 id="probability-distribution">Probability Distribution</h4>
+<p>A function 𝑷 is a probability distribution function if and only if (1) 𝑃 𝒙 ≥ 𝟎 and (2) σ𝒙 𝑃(𝒙) = �</p>
+<h4 id="multivariate-variable-categorical-variable">Multivariate Variable, Categorical Variable</h4>
+<ul>
+<li>Multivariate variable (random vector), a vector of random variables.</li>
+<li>Categorical variable, rand. var. whose values are “labels” (rather than “numbers”)</li>
+<li>One-hot vectors, numerical representation for categorical variables</li>
+</ul>
+<h4 id="function-of-random-variable">Function of Random Variable</h4>
+<p>For an ordinary, definite, and deterministic function, its output becomes a random variable if the input of the function is a random variable.</p>
+<p>𝐏 𝑓 𝑋 = 𝑦 = σ{𝑥: 𝑓 𝑥 =𝑦} 𝐏[𝑋 = 𝑥]</p>
+<h4 id="expectation-conditional-expectation-and-function-of-random-variables-expectation">Expectation, Conditional Expectation and Function of Random Variable's Expectation</h4>
+<p>Expectation, also called expected value, or mean value, or simply the mean, is the probability-weighted average over all possible values of a random variable.</p>
+<p>conditional expectation is conditioned on a random event, not on a random variable.</p>
+<p>For a function, <span class="math inline">\(P[f(X)=y]=\sum_{\{x:f(x)=y\} }P[X=x]\)</span>, and <span class="math inline">\(E[f(X)]=\sum_{x}P[X=x]{\cdot}f(x)\)</span></p>
+<p>typically used as <strong>distance unit</strong> to measure how far a particular value of 𝑋 deviates from the mean 𝐄[𝑋]</p>
+<h4 id="variance-standard-deviation">Variance, Standard Deviation</h4>
+<p>The variance of 𝑋 is the probability-weighted average of the squared distances between possible values of 𝑋 and its mean</p>
+<p><span class="math display">\[
+\begin{array}{c}
+  Var[X]=E[(X-E[X])^2], and conveniently\\
+  Var[X]=E[X^2]=(E[X])^2
+\end{array}{c}
+\]</span></p>
+<p>Standard deviation <span class="math inline">\(\sigma(X)=\sqrt{Var[X]}\)</span></p>
+<h4 id="covariance-and-correlation">Covariance and Correlation</h4>
+<p>The covariance between two random variables 𝑋 and 𝑌 measures the tendency that the values of 𝑋 and 𝑌 jointly deviate in the same way from their respective mean values.</p>
+<p>$$</p>
+<p>$$</p>
+<p>Pearson correlation coefficient normalizes the deviations by dividing the standard deviations, so that we always have 0 ≤ 𝜌(𝑋, 𝑌) ≤ 1</p>
+<p>For multivariate random variable 𝑿 = 𝑋1, 𝑋2, … ,𝑋𝑛 T, the covariance matrix of 𝑿consists of all the pairwise covariances between the elements in 𝑿</p>
+<h4 id="entropy-and-cross-entropy">Entropy and Cross Entropy</h4>
+<p>The entropy of a random variable 𝑋 characterizes the inherent uncertainty of 𝑋, or equivalently, the “expected surprise” when observing a sample of 𝑋.</p>
+<p>The uniform distribution is the maximum-entropy distribution among all probability distributions with the same support.</p>
+<p>For two random variables 𝑋 and 𝑌 with the same support, the cross entropy of 𝒀relative to 𝑿 measures <strong>how 𝑌’s distribution differs from 𝑋’s distribution</strong>.</p>
+<p>Cross entropy (or more accurately, 𝑯 𝒀 𝑿 − 𝑯(𝑿), called the KL-divergence) is usually used as a measure of the <strong>distance between two distributions</strong></p>
+<h3 id="parametric-models-in-statistics">Parametric Models in Statistics</h3>
+<h4 id="gaussian-model">Gaussian Model</h4>
+<p>Gaussian distribution is so widely observed that it’s been called, the normal</p>
+<p>当样本数据 X 是一维数据（Univariate）时，高斯分布遵从下方概率密度函数（Probability Density Function）<sup>2</sup>：</p>
+<p><span class="math display">\[
+N(x;\mu,\sigma^2)={\frac{1}{\sigma \sqrt{2\pi} } }e^{ {-\frac{1}{2} }(\frac{x-\mu}{\sigma})^2}
+\]</span></p>
+<blockquote>
+<p>A parametric model that well captures the probability distribution of not a single, but many random variables encountered in the real world.</p>
+</blockquote>
+<p><strong>Gaussian distribution</strong> has a single “peak” (called the mode of the distribution). For many random variables <span class="math inline">\(Y\)</span> in the real world, its marginal distribution <span class="math inline">\(P(y)\)</span> is <strong>multi-modal</strong>.</p>
+<p>Sometimes such <span class="math inline">\(P(y)\)</span> can be decomposed into a mixture of unimodal distributions.</p>
+<p><span class="math display">\[
+P(y)=\sum_{x}P(x)P(y|x)
+\]</span></p>
+<p>where <span class="math inline">\(X\)</span> is another observable random variable.</p>
+<p>we can fit the conditional distribution <span class="math inline">\(P(y|x)\)</span> , with a separate Gaussian function, for each <span class="math inline">\(x\)</span></p>
+<p><span class="math display">\[
+f(y;\mathbf{\theta})=\sum_{x}P(x)N(y;\mu_x,\sigma_x^2), \\
+where {\quad}\mathbf{\theta}=({\mu_1},{\mu_2},\dotsb,{\mu_n},{\sigma_1},{\sigma_2},\dotsb,{\sigma_n})
+\]</span></p>
+<p><strong>Gaussian Mixture Model, GMM</strong> method seeks to estimate <span class="math inline">\(\mathbf{\theta}\)</span> for the mixture distribution <span class="math inline">\(f\)</span> without observing <span class="math inline">\(X\)</span>.</p>
+<p>高斯混合模型可以看作是由 K 个单高斯模型组合而成的模型，这 K 个子模型是混合模型的隐变量（Hidden variable）。一般来说，一个混合模型可以使用任何概率分布，这里使用高斯混合模型是因为高斯分布具备很好的数学性质以及良好的计算性能<sup>2</sup>。</p>
+<p>We can further factorize <span class="math inline">\(X\)</span> into a mixture distribution, depending on some <span class="math inline">\(Z\)</span>, and so on, eventually leading to a <strong>Probabilistic Graphical Model</strong> (called <strong>Bayesian Network</strong>)</p>
+<h4 id="gaussian-linear-model1">Gaussian Linear Model<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="机器学习——线性高斯模型
+">[1]</span></a></sup></h4>
+<p>When <span class="math inline">\(X\)</span> has infinite support, we can’t parameterize <span class="math inline">\(f\)</span> with a finite number of <span class="math inline">\(\mu x\)</span> and <span class="math inline">\(\sigma x\)</span>.</p>
+<p>In this case, we can make <span class="math inline">\(\mu\)</span> (and <span class="math inline">\(\sigma\)</span>) a function of <span class="math inline">\(x\)</span>, and parameterize <span class="math inline">\(f\)</span> through parameterizing the functions <span class="math inline">\(\mu(x)\)</span> and <span class="math inline">\(\sigma(x)\)</span></p>
+<p>Gaussian Linear Models (or Linear Gaussian Models) are parametric models that seek to fit the <strong>conditional probabilities</strong> <span class="math inline">\(P[Y=y|X=x]\)</span>, where both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are observablerandom variables, with a Gaussian function with linear mean:</p>
+<p><span class="math display">\[
+f(y|x;a,b,\sigma)=N(y;ax+b,\sigma)={\frac{1}{\sigma{\sqrt{2\pi} } } }e^{ {-\frac{1}{2} }{(\frac{y-(ax+b)}{\sigma})}^2}
+\]</span></p>
+<p>With separately learned distribution <span class="math inline">\(P(x)\)</span>, the Gaussian Linear function <span class="math inline">\(f(y|x;a,b,\sigma)\)</span>can model more complex marginal distribution of <span class="math inline">\(Y\)</span> (than a single Gaussian function can), <span class="math inline">\(P[Y=y]=\sigma_x{P(x)f(y|x;a,b,\sigma)}\)</span>.</p>
+<p>Often, we just care about the conditional probability for its own sake (e.g. in policy learning), <span class="math inline">\(P[Y=y|X=x]=f(y|x;a,b,\sigma)\)</span>.</p>
+<h4 id="maximum-likelihood-estimation-mle">Maximum Likelihood Estimation, MLE</h4>
+<p>对于单高斯模型，我们可以用最大似然法估算参数 <span class="math inline">\(\mathbf{\theta}\)</span>的值<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="高斯混合模型（GMM） - 戴文亮的文章 - 知乎
+">[2]</span></a></sup></p>
+<p><span class="math display">\[
+\prod^{n}_{i=1}{\mathbf{P_{\theta} } }[{Y_i}={y_i}|{X_i}={x_i}]=\prod^{n}_{i=1}f({x_i,y_i;\mathbf{\theta} })
+\]</span></p>
+<p>The MLE principle proposes to choose the parameter vector <span class="math inline">\(\mathbf{\theta}\)</span> that maximizes the function, which is equivalent to minimize the <strong>negative-log-likelihood (NLL) function</strong>:</p>
+<p><span class="math display">\[
+-\log{\prod^{n}_{i=1}f({x_i,y_i;\mathbf{\theta} })}=-{\sum_i}\log f({x_i,y_i;a,b,\sigma})={\frac{1}{2\sigma^2} }{({\sum_i}(a{x_i}+b-{y_i})^2)}+n\log{\sigma{\sqrt{2\pi} } }
+\]</span></p>
+<h4 id="gaussian-linear-model-with-multivariate">Gaussian Linear Model with Multivariate</h4>
+<p>Multivariate Gaussian Linear Model is a parametric model that seeks to fit the conditional distribution <span class="math inline">\(Y=y|\mathbf{X}=\mathbf{x}\)</span>, where <span class="math inline">\(\mathbf{X}\)</span> is an observable <strong>multivariate random variable</strong>, such that</p>
+<p><span class="math display">\[
+f(y|\mathbf{x};\mathbf{w},\sigma)=N(y;{\mathbf{w}\cdot\mathbf{x} },\sigma)={\frac{1}{\sigma{\sqrt{2\pi} } } }e^{ {-\frac{1}{2} }{(\frac{y-{\mathbf{w}\cdot\mathbf{x} } }{\sigma})}^2}
+\]</span></p>
+<h4 id="gasussian-linear-regression-and-mean-squared-error-mse">Gasussian Linear Regression and Mean Squared Error, MSE</h4>
+<p>The Gaussian linear function can be alternatively viewed as a parametric model for a “perturbed mapping” from a vector variable 𝒙 to a scalar variable 𝑦, where the perturbation is a Gaussian noise <span class="math inline">\(\epsilon ~ N(0,\sigma^2)\)</span></p>
+<p>Given observations and the parameter vector as the linear coefficients, can be equivalently chosen based on the <strong>Mean Squared Error (MSE) principle</strong>, without the explicit probabilistic interpretation</p>
+<p><span class="math display">\[
+{L_{MSE} }={\frac{1}{n} }\sum_i{(\mathbf{w\cdot x}-{y_i})^2}
+\]</span></p>
+<h4 id="logistic-regression">Logistic Regression</h4>
+<p>深度学习的实践说明，线性回归总是存在他的局限性。</p>
+<p>Generalized linear model in the form of</p>
+<p><span class="math display">\[
+g(\mathbb{}{x};\mathbb{w})=\phi(\mathbf{w}\cdot \mathbf{x}), {\quad}\phi(s)=\frac{1}{1+e^{-s} }
+\]</span></p>
+<p>or other function with the similar S-shape curve</p>
+<h4 id="deep-logistic-networks">Deep Logistic Networks</h4>
+<h2 id="elements-in-reinforcement-learning">Elements in Reinforcement Learning</h2>
+<p><strong>RL is a Cross-disciplinary nature.</strong></p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3ve5vqbuoj20xa0u0q5v.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20220705010806726" /><figcaption aria-hidden="true">image-20220705010806726</figcaption>
+</figure>
+<h3 id="origin-of-rl">Origin of RL</h3>
+<p>Reinforcement: The observation that under some conditions, some stimulus has the effect that it can increase the likelihood of the action preceding it, with a reproducible pattern.</p>
+<p>Behavioral psychology research not only gave birth to the name of RL, but more importantly, provides abundant experimental data for the RL theory to explain.</p>
+<h3 id="the-policy">The Policy</h3>
+<p>Policy is changing during learning.</p>
+<p>When a system learns, the mapping rule between its inputs (=observations) and outputs (=actions) must be changing.</p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3vef3efh3j20na0b03yy.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20220705011701586" /><figcaption aria-hidden="true">image-20220705011701586</figcaption>
+</figure>
+<p>The mapping rule is called <strong>a decision policy function</strong>, or just <strong>policy</strong> for short.</p>
+<ul>
+<li>Deterministic policy: <span class="math inline">\(\mathbf{a_t}=\pi(\mathbf{x_t})\)</span></li>
+<li>Stochastic policy: <span class="math inline">\(P[{A_t}=\mathbf{a_t}|{X_t}=\mathbf{x_t}]=\pi(\mathbf{x_t},\mathbf{a_t})\)</span>,so that <span class="math inline">\({A_t}~\pi({x_t},\cdot)\)</span></li>
+</ul>
+<h4 id="parameterization">Parameterization</h4>
+<p>For any system to learn anything, its policy <span class="math inline">\(\pi\)</span> must be able to change flexibly</p>
+<p>With a parameter <span class="math inline">\(\theta\)</span>, we get</p>
+<ul>
+<li>Deterministic policy: <span class="math inline">\(\mathbf{a_t}=\pi(\mathbf{x_t},\theta)\)</span></li>
+<li>Stochastic policy: <span class="math inline">\(P[{A_t}=\mathbf{a_t}|{X_t}=\mathbf{x_t}]=\pi(\mathbf{x_t},\mathbf{a_t},\theta)\)</span></li>
+</ul>
+<p>To change the model <span class="math inline">\(\pi\)</span>, we only need to change its parameter <span class="math inline">\(\theta\)</span>.</p>
+<p>For flexible learning, we want the model to cover a large enough set of possible policy functions. For example, a linear model is impossible to learn effectively if the optimal policy is <span class="math inline">\(a=x^2\)</span>.</p>
+<h4 id="trial-and-error">Trial and Error</h4>
+<p>Trial and Error is family of optimization methods that can optimize an objective function <span class="math inline">\(J\)</span> without explicit knowledge (e.g. the closed form) about <span class="math inline">\(J\)</span>.</p>
+<p>The trial-and-error process results in a trace of policies with improving performance</p>
+<h3 id="related-modelspreview">Related models(preview)</h3>
+<p>About parameterization:</p>
+<ul>
+<li>Regression models in statistics</li>
+<li>Parameterization in biological neuronal networks</li>
+<li>Artificial neural networks</li>
+<li>From Genotype to Biological Fitness</li>
+</ul>
+<p>About trial and error:</p>
+<ul>
+<li>Evolution as a special form of trial-and-error learning</li>
+<li>Evolutionary algorithms in AI</li>
+<li>Policy Gradient Method, Stochastic Gradient Descent (SGD)</li>
+<li>Bandit Algorithms, Upper Confidence Bound (UCB) Algorithm</li>
+<li>Q-Learning</li>
+<li>Monte-Carlo Tree Search</li>
+<li>Correspondence in Cognitive Neuroscience</li>
+<li>Deep Reinforcement Learning</li>
+</ul>
+<h2 id="biological-neural-nwtwork">Biological Neural Nwtwork</h2>
+<p>Brain consists of two types of cells: glial cells and neurons.</p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3x8m229o2j218e0u0gr7.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20220706152706244" /><figcaption aria-hidden="true">image-20220706152706244</figcaption>
+</figure>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3x8nz6x74j21aa0fktbd.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20220706152905711" /><figcaption aria-hidden="true">image-20220706152905711</figcaption>
+</figure>
+<h3 id="integrate-and-fire-model">Integrate-and-fire Model</h3>
+<p><strong>Action potential</strong> in pre-synaptic neuron induces <strong>response current</strong> in post-synaptic neuron.Resoonse current decays over time.</p>
+<p><span class="math display">\[
+{I_{response}({\Delta t})}={\frac{w_i}{\tau_s} }e^{-{\Delta t}/{\tau_s} }
+\]</span></p>
+<blockquote>
+<p>Response currents from all synapses integrate through the dendrite of the post-synaptic neuron, accumulating potential imbalance in the membrane of the cell, until <strong>reaching a threshold</strong> at which point a post-synaptic action potential is released (which resets the membrane potential)</p>
+</blockquote>
+<p>Firing-rate model is a statistical model of biological neural networks, which assumes that functionality of a biological neural network mostly depends on <strong>frequency patterns of the action potentials</strong> flowing in the network, whose precise timing patterns do not matter.</p>
+<p>The firing rate of a neuron is a <strong>function of time <span class="math inline">\(t\)</span></strong> which gives the <strong>frequency density of action potentials</strong> that the neuron would probabilistically release at each time point <span class="math inline">\(t\)</span>.</p>
+<p><span class="math display">\[
+{x(t)}=\lim_{ {\Delta t}\rightarrow 0}\mathbf{E}[\frac{ {spikes{\ }in}[t-{\Delta t},t]}{\Delta t}]
+\]</span></p>
+<p>Firing-rate <span class="math inline">\(x_i(\cdot)\)</span> of pre-synaptic neuron <span class="math inline">\(i\)</span> induces a response current <span class="math inline">\(I_i(\cdot)\)</span> at post synaptic neuron. Response currents from all synapses integrate into a total synaptic current <span class="math inline">\(I(\cdot)\)</span> which induces the firing-rate <span class="math inline">\(y(\cdot)\)</span> of the post-synaptic neuron.</p>
+<p>Step by step,</p>
+<ol type="1">
+<li>Response current induced by a single action potential: <span class="math inline">\({I_{response}(\Delta t)}={\frac{w_i}{\tau_s} }e^{-{\Delta t}/{\tau_s} }\)</span></li>
+<li>Response current induced by all spikes of synapse <span class="math inline">\(i\)</span>: <span class="math inline">\({I_i(t)}={\int_{-\infty}^{t} }{I_{response}(t-\tau){s_i(\tau)d\tau} }\)</span></li>
+<li>Total synaptic current induced by all spikes of all synapses: <span class="math inline">\(I(t)=\sum_i{T_i(t)}\)</span></li>
+</ol>
+<p>Finally, firing rates <span class="math inline">\(\mathbf{x}\)</span> of all the pre-synaptic neurons collectively induce total synaptic current <span class="math inline">\(I\)</span> at the post-synaptic neuron:</p>
+<p><span class="math display">\[
+{\tau_s}{\frac{\mathrm{d}I}{\mathrm{d}t} }=-I\,+\,\mathbf{w}\cdot\mathbf{x}
+\]</span></p>
+<p>Total synaptic current <span class="math inline">\(I\)</span> determines the firing rate <span class="math inline">\(y\)</span> of the post-synaptic neuron</p>
+<p><span class="math display">\[
+{\tau_r}{\frac{\mathrm{d}y}{\mathrm{d}t} }=-y+\phi(I)
+\]</span></p>
+<p>where <span class="math inline">\(\phi(\cdot)\)</span> is called the <strong>activation function</strong> of the (post-synaptic) neuron.</p>
+<h3 id="activity-independent-synaptic-plasticity-and-hebbian-rule">Activity-independent Synaptic Plasticity and Hebbian Rule</h3>
+<p><strong>Plasticity</strong> is the ability of a solid material to undergo permanent deformation, a persistent change of shape in response to applied forces.</p>
+<p>Changes of a synapse’s strength <span class="math inline">\(w\)</span> that persist for tens of minutes or longer are generally called long-term potentiation (LTP) and long-term depression (LTD). Activity-dependent long-term synaptic plasticity is widely believed to be the biological foundation underlying the phenomenon of learning and memory.</p>
+<p>The <strong>Hebbian theory</strong> is the best-known model for activity-dependent long-term synaptic plasticity. The <strong>Hebbian rule</strong> states that synapses change in proportion to the covariance between activities of the pre- and post-synaptic neurons.</p>
+<p>赫布理论（英語：Hebbian theory）是一个神经科学理论，解释了在学习的过程中脑中的神经元所发生的变化。赫布理论描述了突触可塑性的基本原理，即突触前神经元向突触后神经元的持续重复的刺激，可以导致突触传递效能的增加。这一理论由唐纳德·赫布于1949年提出，又被称为赫布定律（Hebb's rule）、赫布假说（Hebb's postulate）、细胞结集理论（cell assembly theory）等<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="赫布理论 - 维基百科
+">[3]</span></a></sup>。</p>
+<p>“当神经元 A 的一个轴突和神经元 B 很近，足以 对它产生影响，并且持续地、重复地参与了对神经元 B 的兴奋，那么在这两个神 经元或其中之一会发生某种生长过程或新陈代谢变化，以致神经元 A 作为能使 神经元B兴奋的细胞之一，它的效能加强了．”这个机制称为赫布理论（Hebbian Theory）或赫布规则（Hebbian Rule，或 Hebb’s Rule）．如果两个神经元总是相 关联地受到刺激，它们之间的突触强度增加．这样的学习方法被称为赫布型学习 （Hebbian learning）．Hebb认为人脑有两种记忆：长期记忆和短期记忆．短期记 忆持续时间不超过一分钟．如果一个经验重复足够的次数，此经验就可储存在长 期记忆中．短期记忆转化为长期记忆的过程就称为凝固作用．人脑中的海马区为 大脑结构凝固作用的核心区域<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="机器学习简介
+">[4]</span></a></sup></p>
+<ul>
+<li>Let real number <span class="math inline">\(w\)</span> denote the <strong>strength of an excitatory synapse</strong>, <span class="math inline">\(x(t)\)</span> and <span class="math inline">\(y(t)\)</span> the pre- and post-synaptic firing rates at time <span class="math inline">\(t\)</span>,</li>
+</ul>
+<p><span class="math display">\[
+{\tau_w}{\frac{\mathrm{d}w}{\mathrm{d}t} }=x(t){\,}y(t)
+\]</span></p>
+<ul>
+<li>Let <strong>random variable</strong> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be the pre- and post-synaptic firing rates at a random time <span class="math inline">\(\tau\)</span> in a time window <span class="math inline">\([t-{\Delta t},t]\)</span>,</li>
+</ul>
+<p><span class="math display">\[
+{\tau_w}{\frac{\mathrm{d}w}{\mathrm{d}t} }=\mathbf{E}[XY]-{\mathbf{E}[X]}{\mathbf{E}[Y]}
+\]</span></p>
+<h2 id="artificial-neural-networks-ann">Artificial Neural Networks, ANN</h2>
+<blockquote>
+<p>ANN在统计领域由于难以证明，近几年虽然在动力系统、抽象代数的方向上有研究，但可解释性还是比较差；生物科学方面，过于复杂的脑神经系统仍然难以模仿，不过话说回来，全脑模拟也确实是一个研究方向；最后，AI领域曾在早期被提出，但由于过于庞大被搁置了数十年</p>
+</blockquote>
+<p>Parameterization in AI:</p>
+<ul>
+<li>Neural-network models</li>
+<li>Tabular models</li>
+<li>Non-differentiable models</li>
+</ul>
+<h3 id="multi-layer-perceptron-mlp">Multi-Layer Perceptron, MLP</h3>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3ycb4jbvej20si0jcn08.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20220707142039567" /><figcaption aria-hidden="true">image-20220707142039567</figcaption>
+</figure>
+<p>Each hidden-layer and ouput-layer node <span class="math inline">\(i\)</span> repoesents a sub-mode <span class="math inline">\(g(\mathbf{x};\mathbf{w_i},b_i)=\phi({\mathbf{w_i}\cdot{\mathbf{x} }+{b_i} })\)</span>. If define <span class="math inline">\(\mathbf{\bar{x} }=(\mathbf{x},1)^T,{\;}\bar{\mathbf{w_i} }=(\mathbf{w_i},{b_i})\)</span></p>
+<h3 id="activitation-functions">Activitation Functions</h3>
+<ul>
+<li><p>Sigmoid, it can seperate when the <strong>input is too large</strong>: <span class="math display">\[
+\sigma(x)=\frac{1}{1+e^{-x} }
+\]</span></p></li>
+<li><p>tanh: <span class="math inline">\(\tanh(x)\)</span></p></li>
+<li><p>ReLU: <span class="math inline">\(max(0,x)\)</span></p></li>
+<li><p>Leaky</p></li>
+<li><p>ReLU</p></li>
+<li><p>Maxout</p></li>
+<li><p>ELU</p></li>
+</ul>
+<p>一个MLP模型的需要的参数是非常多的，以一个输入<span class="math inline">\(\mathbb{R}^5\)</span>，有两个<span class="math inline">\(\mathbb{R}^7\)</span>隐藏层并输出<span class="math inline">\(\mathbb{R}^4\)</span>的网络来讲，他需要的参数是</p>
+<p><span class="math display">\[
+n=[(N_{input}+1)\cdot{N_{next} }]+[(N_{hidden1}+1)\cdot{N_{next} }]+[(N_{hidden2}+1)\cdot{N_{output} }]=170
+\]</span></p>
+<p>A <strong>decision policy</strong> determines the probability that an “intelligent” system would output a particular “action” in a time step conditioned on aparticular “state” of the system.</p>
+<p>A policy function 𝜋 is a conditional probability distribution. As a probability distribution, any policy function has to satisfy the following constraints</p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3ycvp1fuaj20wu0fuad9.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20220707144028629" /><figcaption aria-hidden="true">image-20220707144028629</figcaption>
+</figure>
+<p>For a discrete output, define <strong>softmax function</strong> and add it to the output layer</p>
+<p><span class="math display">\[
+\sigma:\mathbb{R}^K{\rightarrow}[0,1]^K,{\;}where{\;}\sigma_i(z)={\frac{e^{z_i} }{\sum_{j=1}^K}{e^{z_j} } },{\,} for{\,} i=1,\dotsb,K
+\]</span></p>
+<blockquote>
+<p>由于指数的增长速率很大，这个函数可以“柔软”的放大输出之间的差异，并共同成为一个概率分布函数。</br> Softmax function是为了将输出转换为一个条件概率，而不是获得一个最大值。</p>
+</blockquote>
+<p>Then <span class="math inline">\(\pi(\mathbf{s},\mathbf{a};\mathbf{\theta})=\sigma(f_{MLP}(\mathbf{s};\mathbf{\theta}))\cdot\mathbf{a}\)</span></p>
+<p>其中<span class="math inline">\(\mathbf{a}\)</span>是一组one-hot vector。</p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3yd81y6lyj21400fgq6i.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20220707144606874" /><figcaption aria-hidden="true">image-20220707144606874</figcaption>
+</figure>
+<h3 id="example-locomotion-control">Example: Locomotion Control</h3>
+<h3 id="domain-specific-nn-architecture">Domain-specific NN architecture</h3>
+<h4 id="convolutional-network">Convolutional Network</h4>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3yec7ew8rj214u0q6tc2.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20220707153056204" /><figcaption aria-hidden="true">image-20220707153056204</figcaption>
+</figure>
+<h4 id="transformer-network">Transformer Network</h4>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3yem057wej21z60magpd.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20220707154021201" /><figcaption aria-hidden="true">image-20220707154021201</figcaption>
+</figure>
+<h4 id="graph-network">Graph Network</h4>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3yep7une0j210g0jmwfq.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20220707154326848" /><figcaption aria-hidden="true">image-20220707154326848</figcaption>
+</figure>
+<h2 id="tabular-model-and-non-differential-model">Tabular Model and Non-differential Model</h2>
+<p>A tabular model is a parametric model that covers the entire policy space.</p>
+<h2 id="biological-evolution">Biological Evolution</h2>
+<h2 id="homeworkds">HomeWorkds</h2>
+<h3 id="homework-1.a">homework-1.a</h3>
+<h2 id="references">References</h2>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.cnblogs.com/young978/p/15813842.html">机器学习——线性高斯模型</a> <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30483076">高斯混合模型（GMM） - 戴文亮的文章 - 知乎</a> <a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/zh/赫布理论">赫布理论 - 维基百科</a> <a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:4" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40808154/article/details/115407544">机器学习简介</a> <a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/AI/">AI</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/RL/">RL</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/21062/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Python入门</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/63900/">
+                        <span class="hidden-mobile">Thinking in Java 笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>

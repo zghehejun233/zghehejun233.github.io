@@ -1,0 +1,869 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="概率统计建模方法暑期课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概率统计建模方法">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/23003/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="概率统计建模方法暑期课程笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://47.100.74.245/blog/post_img/83755246_p0_master1200.jpg">
+<meta property="article:published_time" content="2022-07-29T23:13:58.539Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.539Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="数学建模">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://47.100.74.245/blog/post_img/83755246_p0_master1200.jpg">
+  
+  
+  <title>概率统计建模方法 - 苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/post_img/83755246_p0_master1200.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="概率统计建模方法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-29 23:13" pubdate>
+        2022年7月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.9k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      33 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">概率统计建模方法</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="数学知识基础">数学知识基础</h2>
+<h3 id="概率论">概率论</h3>
+<h4 id="常见概率公式">常见概率公式</h4>
+<ol type="1">
+<li>条件概率公式<span class="math inline">\(P(A|B)=\frac{P(AB)}{P(B)}\)</span></li>
+<li>概率乘法公式<span class="math inline">\(P(AB)=P(A)P(B)\)</span></li>
+<li>概率加法公式<span class="math inline">\(P(A\cup B)=P(A)+P(B)-P(AB)\)</span></li>
+<li>全概率公式 <span class="math display">\[
+P(A)=\sum_{k=1}^{\infin}P(A|{B_k})P(B_k)
+\]</span></li>
+<li>贝叶斯公式（逆概率公式） <span class="math display">\[
+P({B_k}|A)=\frac{P(A|{B_k})P(B_k)}{\sum_{k=1}^{\infin}P(A|{B_k})P(B_k)}
+\]</span></li>
+</ol>
+<h3 id="常见概率分布">常见概率分布</h3>
+<h4 id="二项分布xbnp">二项分布<span class="math inline">\(X~B(n,p)\)</span></h4>
+<p><span class="math display">\[
+\begin{array}{l}
+  P\{X=k\} = {C_n^k}{p^k}{(1-p)}^{n-k},{\quad}k=0,1,2,{\dotsc},n\\
+  EX=np,DX=np(1-p)
+\end{array}
+\]</span></p>
+<p><span class="math inline">\(n=1\)</span>时被称为两点分布或伯努利分布</p>
+<h4 id="泊松poisson分布xplambda">泊松（Poisson）分布<span class="math inline">\(X~P(\lambda)\)</span></h4>
+<p><span class="math display">\[
+\begin{array}{l}
+  P\{X=k\} = \frac{ {\lambda}^k{e}^{-\lambda} }{k!},{\quad}k=0,1,2,{\dotsc}\\
+  EX=DX=\lambda
+\end{array}
+\]</span></p>
+<blockquote>
+<p>常用于研究服务领域中柏松流的分布规律。如单位时间内设备发生故障的次数、公共场所的客流量</p>
+</blockquote>
+<h4 id="负二项巴斯卡pascal分布">负二项（巴斯卡，Pascal）分布</h4>
+<p>设每次实验事件<span class="math inline">\(A\)</span>发生的概率为<span class="math inline">\(p\)</span>，记<span class="math inline">\(A_k\)</span>为<span class="math inline">\(\{事件的第r次发生出现在第k次试验中\}\)</span>，则 <span class="math display">\[
+\begin{array}
+  P(A_k)=f(k;r,p)={C_{k-1}^{r-1} }{p^r}{q^{k-r} }\\
+  记X为直到事件A发生所进行的试验次数，则\\
+  P(X=k)={q^{k-1} }p\\
+  EX=\frac{1}{p},DX=\frac{q}{p^2}
+\end{array}\]</span></p>
+<blockquote>
+<p>常用语计算产品备用件消耗概率，试验成功或失败概率等。</p>
+</blockquote>
+<p><span class="math inline">\(r=1\)</span>时即为几何分布（等待分布），具有无记忆性</p>
+<h4 id="均匀分布">均匀分布</h4>
+<p><span class="math display">\[
+X
+\]</span></p>
+<h4 id="伽马分布">伽马分布</h4>
+<blockquote>
+<p>计算产品可靠度、失效率应用较广泛</p>
+</blockquote>
+<h4 id="正态分布">正态分布</h4>
+<h2 id="简单示例">简单示例</h2>
+<h3 id="传送带">传送带</h3>
+<h3 id="航空公司的预定票策略">航空公司的预定票策略</h3>
+<h4 id="问题">问题</h4>
+<p>在预订票业务中，航空公司为争取客源开展优质服务，预先订票的乘客如果未能按时乘机,可乘坐下一航班或退票而无需附加任何费用若公司限制预订票教量等于飞机容量,由子部分订票乘客不按时来机,致使飞机不满员而利润降低。若公司不限制預订票数量,则持票按时来的乘客数给公司声誉带来损失。公司需要综合考虑经济利益和社会声誉,如何确定预订票数量的最佳限額.</p>
+<h4 id="问题分析">问题分析</h4>
+<p>公司的经济利益可用机票收入扣除飞行费用和賠偿金后的利润来衡量．社会声誉可用持票按时来乘机、因满员不能走的来客(被挤掉者限制在一定数量为标准．预订票的乘客是否按时前来乘机是一个随机因素,经济利益和社会声誉两个指标都应该在平均意义下衡量.这是两目标优化问題，决策变量是预订票数量的限额。</p>
+<h4 id="楧型假设">楧型假设</h4>
+<ol type="1">
+<li>飞机容量<span class="math inline">\(n\)</span>;飞行费用<span class="math inline">\(r\)</span>(与乘容数量无关)：机票价格<span class="math inline">\(g=\frac{r}{\lambda n}\)</span>，其中<span class="math inline">\(\lambda(\lt 1)\)</span>是利润调节因子，<span class="math inline">\(\lambda\)</span>表示飞机达到60%满员率就不亏本</li>
+<li>预订票教量限额<span class="math inline">\(m\gt n\)</span>：每位乘容不按时前来乘机的概率<span class="math inline">\(p\)</span>;"各位来客是否按时前来"相互独立</li>
+<li>每位被挤掉者获得的賠偿金为常数<span class="math inline">\(b\)</span></li>
+</ol>
+<h2 id="马尔可夫链与">马尔可夫链与</h2>
+<h3 id="马尔可夫链">马尔可夫链</h3>
+<p>三个特点</p>
+<ol type="1">
+<li>系统在每个时期的状态是随机的。指不知道将来的状态。</li>
+<li>从某一时期到下个时期的状态按照一定概率来转移。</li>
+<li>下一时期只取决于本时期状态和转移概率。即已知现在，将来与过去无关，也就是无后效性。</li>
+</ol>
+<h3 id="转移概率矩阵和柯尔莫哥洛夫定理">转移概率矩阵和柯尔莫哥洛夫定理</h3>
+<h4 id="柯尔莫哥洛夫-开普曼定理">柯尔莫哥洛夫-开普曼定理</h4>
+<p><span class="math display">\[
+p_{ij}(n+m)=\sum_{k\in E}{p_{ij}(n)}{p_{kj}(m)}
+\]</span></p>
+<h4 id="马尔科夫预测模型">马尔科夫预测模型</h4>
+<p><span class="math inline">\(P\)</span>是一个转换矩阵，<span class="math inline">\(p^{(0)}\)</span>是初始分布行向量，则</p>
+<p><span class="math display">\[
+P^{(n)} = {P^{(0)} }{P^n}
+\]</span></p>
+<h3 id="极限概率分布">极限概率分布</h3>
+<p>设<span class="math inline">\(P\)</span>是一个概率转移矩阵，若存在某一正整数<span class="math inline">\(k\)</span>，使<span class="math inline">\(P^k\)</span>的每一元素都为正数，則称<span class="math inline">\(P\)</span>为正则矩阵。</p>
+<p>设<span class="math inline">\(P\)</span>是一个概率转移矩阵，若存在行向量<span class="math inline">\(\mathbf{u}\)</span>使得<span class="math inline">\(\mathbf{u}P=\mathbf{u}\)</span>，即<span class="math inline">\(\mathbf{u}\)</span>是<span class="math inline">\(P\)</span>的特征值为<span class="math inline">\(1\)</span>的特征向量,則称<span class="math inline">\(\mathbf{u}\)</span>为<span class="math inline">\(P\)</span>的不动点向量。</p>
+<p>若<span class="math inline">\(P^n\)</span>的极限矩阵的每一行向量均等于不动点向量<span class="math inline">\(\mathbf{u}\)</span>，则称对应的马氏链具有遍历性,若不动点向量<span class="math inline">\(\mathbf{u}\)</span>的各分量非负且和为<span class="math inline">\(1\)</span>，则称<span class="math inline">\(\mathbf{u}\)</span>为马氏链的极限分布。</p>
+<p>若<span class="math inline">\(P\)</span>是一个马氏链的正则矩阵，則</p>
+<ol type="1">
+<li><span class="math inline">\(P\)</span>有唯一的不动点向量<span class="math inline">\(\mathbf{u}\)</span>，<span class="math inline">\(\mathbf{u}\)</span>的每个分量为正.</li>
+<li><span class="math inline">\(P^n\)</span>的极限短阵的每一行向量均等于不动点向量么</li>
+</ol>
+<p>设时齐（齐次）马氏链<span class="math inline">\(\{ {X_n},n=1,2,\dotsb,n\}\)</span>的状态空问为<span class="math inline">\(E=\{ {a_1},{a_2},{\dotsb},{a_n}\}\)</span>，<span class="math inline">\(P=p(ij)\)</span>是其一步转移概率矩阵，若存在正整数<span class="math inline">\(m\)</span>，使对任意的<span class="math inline">\(a_i,a_j\in E\)</span>都有<span class="math inline">\({p_{ij}(m)\gt 0,i,j=1,\dotsb,N}\)</span>则此链具有遍历性，且有唯一的极限分布<span class="math inline">\(u={u_1},{u_2},\dotsb,{u_n}\)</span></p>
+<h3 id="吸收链">吸收链</h3>
+<h2 id="统计推断方法">统计推断方法</h2>
+<h3 id="数据预处理">数据预处理</h3>
+<blockquote>
+<p>利用Matlab Statics Toolbox</p>
+</blockquote>
+<h4 id="一些数据统计量">一些数据统计量</h4>
+<p>平时数据总体分布的统计量</p>
+<ul>
+<li>平均值</li>
+<li>中位数</li>
+<li>方差，标准差</li>
+<li>极差</li>
+</ul>
+<p>表示分布情况的统计量</p>
+<ul>
+<li>标准偏度：一般用<span class="math inline">\(g_1\)</span>表示</li>
+<li>标准峰度：一般用<span class="math inline">\(g_2\)</span>表示</li>
+</ul>
+<blockquote>
+<p>正态分布峰度为3，大于3时数据的尾巴会更大</p>
+</blockquote>
+<h3 id="四个主要的概率分布">四个主要的概率分布</h3>
+<p>分别是正态分布、卡方分布、t分布和F分布。</p>
+<p>在Matlab中，对于任何一个分布，有五个相关函数</p>
+<ul>
+<li>概率密度函数(PDF)</li>
+<li>分布函数(CDF)</li>
+<li>分布函数的反函数(INV)</li>
+<li>均值与方差(STAT)</li>
+<li>随机数生成(RND)</li>
+</ul>
+<h3 id="参数估计">参数估计</h3>
+<h4 id="矩估计法">矩估计法</h4>
+<h4 id="极大似然估计法">极大似然估计法</h4>
+<h4 id="衡量估计效果的指标">衡量估计效果的指标</h4>
+<ul>
+<li>无偏性</li>
+<li>有效性</li>
+<li>一致性</li>
+</ul>
+<h3 id="估计模型">估计模型</h3>
+<ul>
+<li>平均值模型：样本平均值=总体平均值。有偏。</li>
+<li>中位数模型：样本中位数=总体中位数。有偏。</li>
+<li>极大似然估计：</li>
+<li>两端间隔对称模型：</li>
+<li>区间均分模型：</li>
+<li>平均间隔模型</li>
+<li>序列号模型</li>
+</ul>
+<p>也可以以一定的概率（置信度或置信水平），给出参数的估计区间的区间估计模型</p>
+<h3 id="假设检验">假设检验</h3>
+<p>有一个原假设/零假设<span class="math inline">\(H_0\)</span>，对立假设<span class="math inline">\(H-1\)</span>。</p>
+<p>检验有三种情况，双侧检验、右侧检验和左侧检验</p>
+<p>这种情况使用u检验法，方差已知，检验均值</p>
+<p><span class="math display">\[
+检验统计量u=\frac{\bar{x}-\mu}{\sigma/\sqrt{n} }
+\]</span></p>
+<p>方差未知时，应当使用t检验法。</p>
+<p>检验后。如果<span class="math inline">\(H_0\)</span>被接受，原假设就是成立的</p>
+<p>检验两总体的方差用F检验</p>
+<h3 id="两正态总体方差比的检验">两正态总体方差比的检验</h3>
+<h3 id="分布拟合检验">分布拟合检验</h3>
+<h4 id="卡方拟合优度检验法">卡方拟合优度检验法</h4>
+<h2 id="方差分析方法">方差分析方法</h2>
+<p>方差分析又称“变异数分析”或“F检验”，用于两个及以上同方差（一般大于2）正态总体样本均值差别的显著性检验。</p>
+<h3 id="单因素方差分析">单因素方差分析</h3>
+<ul>
+<li>方差分析模型</li>
+</ul>
+<h3 id="两因素方差分析">两因素方差分析</h3>
+<h2 id="作业题">作业题</h2>
+<h3 id="第一章">第一章</h3>
+<h4 id="section">1.1</h4>
+<p>在足球比賽中,球员在对方球门前不网的位置起脚射门对对方球门的威胁是不一样的。近距离的射门对球门的威胁要大于远射；在球门的正前方的威胁要大于再球门两侧射门。虽然球员之间的基本素质可能有一定差异，但对于职业球员来讲一般可以认为这种差别不大。同时根据统计资料显示，射门时球的速度一般在10m/s左右。已知标准球场的长、宽；球门的高、宽。</p>
+<p>试建立数学模型研究下列问题</p>
+<ol type="1">
+<li>针对球员在不同位置射门对球门的威胁度进行分析，得出危险区域</li>
+<li>在有一名守门员防守的情况下，对球员射门的威胁度和危险区域作进一步研究</li>
+</ol>
+<h4 id="section-1">1.2</h4>
+<p>决策是为达到某个预定目标在若干可选方案中决定一个合适方案的过程，进行可行性决策时，但个人认为是否可行称为个体决策，多个人（至少三个人且人数为单数）按少数服从多数原则决定是否可行被称为集体决策。</p>
+<p>分析：习惯上认为的“人多力量大，集体决策优于单个个体决策”是否一定正确？</p>
+<p>应该考虑多个人组成的群体，其中每个个体的决策能力是相近的，那么每个个体的决策就是某个正态分布的样本，集体决策的效益也就是这几个样本的期望；个体决策是这个正态分布的期望值。</p>
+<h4 id="section-2">1.3</h4>
+<p>设某货物的需求量在17件到26件之间，已知需求量的概率分布如下表</p>
+<table>
+<thead>
+<tr class="header">
+<th>需求量x</th>
+<th>17</th>
+<th>18</th>
+<th>19</th>
+<th>20</th>
+<th>21</th>
+<th>22</th>
+<th>23</th>
+<th>24</th>
+<th>25</th>
+<th>26</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>概率P(x)</td>
+<td>0.12</td>
+<td>0.18</td>
+<td>0.23</td>
+<td>0.13</td>
+<td>0.10</td>
+<td>0.08</td>
+<td>0.05</td>
+<td>0.04</td>
+<td>0.04</td>
+<td>0.03</td>
+</tr>
+</tbody>
+</table>
+<p>成本每件5元，售价每件10元，处理每件2元。问应该进货多少，能使总利润的期望值最大？</p>
+<p><span class="math display">\[
+\begin{array}{l}
+  假设进货量为n，记题中所给的三个数据为a,b,c\\
+  售出一件的利润为b-a，处理一件赔a-c\\
+  当x\lt n时，进货存在没有卖完的部分，利润S可以表示为\\
+  {S_1} = {\sum_{x=17}^{n}(a-b)P(x)}-{\sum_{x=n}^{26}(a-c)P(x)}\\
+  x\gt n时，{S_2} = {\sum_{x=17}^{26} }
+\end{array}
+\]</span></p>
+<h4 id="section-3">1.4</h4>
+<p>某市上半年平均每月发生171次火灾，若7月份发生了153次火灾，问7月份的火灾率是实际减少了还是一个随机波动？</p>
+<h4 id="section-4">1.5</h4>
+<p>保险储备</p>
+<h4 id="section-5">1.6</h4>
+<p>在当前生育政策下建立一个人口模型。</p>
+<h2 id="参考资料">参考资料</h2>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/29139/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">机器学习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/40258/">
+                        <span class="hidden-mobile">特征值、特征向量、相似矩阵与二次型等</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>

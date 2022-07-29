@@ -1,0 +1,1594 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux应用课程的备考笔记，包含常见指令和Shell脚本的一些东西">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux应用">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/7ae00066/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="Linux应用课程的备考笔记，包含常见指令和Shell脚本的一些东西">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gxdpoolvpxj31000js0xa.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gxdmr2rijjj310u0ikwif.jpg">
+<meta property="article:published_time" content="2021-12-15T10:08:21.000Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.535Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gxdpoolvpxj31000js0xa.jpg">
+  
+  
+  <title>Linux应用 - 苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/banner.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Linux应用">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-15 10:08" pubdate>
+        2021年12月15日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      16k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      130 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux应用</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="课程基础">课程基础</h2>
+<h3 id="计算机硬件系统基本原理">计算机硬件系统基本原理</h3>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/008i3skNly1gxdpoolvpxj31000js0xa.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20211214220439572" /><figcaption aria-hidden="true">image-20211214220439572</figcaption>
+</figure>
+<h3 id="操作系统发展简史">操作系统发展简史</h3>
+<h3 id="操作系统定义">操作系统定义</h3>
+<h3 id="linux内核组成及简介">Linux内核组成及简介</h3>
+<ul>
+<li><p>基本组成：Kernel(内核)、Shell、Applications</p></li>
+<li><p>Linux启动顺序：init -&gt; login -&gt; passwd -&gt; shell</p>
+<h4 id="关于kernel">关于Kernel</h4>
+<ul>
+<li><p>管理程序的运行，为程序分配资源，并且处理程序之间的通信。</p></li>
+<li><p>管理对文件系统的读写，把对文件系统的操作映射成对磁盘或其它块设备的操作。</p></li>
+<li><p>管理存储器，为程序分配内存，并且管理虚拟内存。</p></li>
+<li><p>管理输入、输出，将设备映射成设备文件。</p></li>
+<li><p>管理网络。</p></li>
+</ul>
+<h4 id="关于shell">关于Shell</h4>
+<ul>
+<li>Shell本身是一个解释器，是Kernel和用户之间的接口</li>
+<li>Shell是一种脚本语言(Shell script)</li>
+<li>Shell会在用户登录后启动</li>
+<li>Shell能够为用户屏蔽内核的复杂性并保护内核</li>
+<li>Shell有好几种，常见的如bash，csh，zsh</li>
+</ul>
+<h4 id="关于application">关于Application</h4>
+<ul>
+<li>Linux应用程序：标准的LInux应用程序都具有一整套称为应用程序的程序集，包括文本编辑器、Xwindow、办公套件、Internet工具和数据库等</li>
+</ul></li>
+</ul>
+<h2 id="linux基本命令">Linux基本命令</h2>
+<h3 id="登录和退出">登录和退出</h3>
+<ul>
+<li>登录</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$login:userName
+$passwd:[your password]</code></pre></div>
+<ul>
+<li>退出</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&lt;ctrl + D&gt;
+$exit
+$logout</code></pre></div>
+<blockquote>
+<p>logout是专门用于命令行中退出当前登录的Shell命令，<strong>exit也具有logout的功能</strong>，但exit同时还能<strong>用于退出执行的shell脚本</strong>，并通过设置参数返回给调用shell的程序本身，这个可以方便协同跨程序间的调用。</p>
+</blockquote>
+<h3 id="关于echo">关于echo</h3>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># Enter &quot;\&quot; to have a new line
+$echo &quot;Hello&quot;
+$echo Hello \World</code></pre></div>
+<ul>
+<li>添加选项 -n 表示输出文字后不换行</li>
+<li>字符串加不加引号都可以，加双引号全部视作字符串但保留变量引用，<strong>单引号全部强制视作字符串</strong></li>
+</ul>
+<h3 id="日期和时间">日期和时间</h3>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 显示时间
+$date
+# 设置时间
+$date -s 
+# 显示日历
+$cal[month][year]
+# 显示当前月份
+$cal
+# 显示年份（0&lt;year&lt;1000）
+$cal[year]</code></pre></div>
+<ul>
+<li>date实例</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$date    显示日期和时间	
+-&gt; Wed Sep 29 09:58:29 CST 2004
+#date -s 20041229    设置日期	
+-&gt; Wed Dec 29 00:00:00 CST 2004
+#date -s 12:23:23    设置时间
+#date -s “2006-10-10 12:12:23″</code></pre></div>
+<blockquote>
+<p>设置日期和时间需要管理员权限</p>
+</blockquote>
+<h3 id="其他基本命令">其他基本命令</h3>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 清屏
+$clear
+# 显示登录到系统的所有用户的信息
+$who
+# 显示当前登录的用户的信息
+$whoami
+# 打印当前目录
+$pwd
+# 中断当前的命令并返回Shell
+&lt;ctrl-c&gt;     
+# 中断当前的通信或从文件中退出
+&lt;Ctrl-d&gt;     
+# 删除整行
+&lt;ctrl-u&gt;     
+</code></pre></div>
+<h3 id="关于mail">关于mail</h3>
+<ul>
+<li><p>发送mail：$mail [-n] address</p></li>
+<li><p>一旦邮件被打开，其将被放在 $HOME/mbox目录中，若想再看这些信息则用：mail –f</p></li>
+</ul>
+<h3 id="关于man">关于man</h3>
+<h3 id="关于source命令">关于source命令</h3>
+<ul>
+<li>source命令也称为“点命令”，也就是一个点符号（.）。source命令通常用于<strong>重新执行刚修改的初始化文件</strong>，使之立即生效，而不必注销并重新登录。</li>
+</ul>
+<blockquote>
+<p>/etc/profile:此文件为<strong>系统的每个用户设置环境信息</strong>,当用户<strong>第一次登录</strong>时,该文件被执行.并从/etc/profile.d目录的配置文件中搜集shell的设置.</p>
+<p>/etc/bashrc:为<strong>每一个运行bash shell的用户执行此文件</strong>.当bash shell被打开时,该文件被读取.</p>
+<p>~/.bash_profile:每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.</p>
+<p>~/.bashrc:该文件包含专用于你的bash shell的bash信息,当登录时以及每次打开新的shell时,该该文件被读取.~/.bash_logout:当每次退出系统(退出bash shell)时,执行该文件.</p>
+</blockquote>
+<ul>
+<li>bash是大多数Linux系统默认的shell 。</li>
+<li>bash的命令语法是Bourne shell命令语法的超集。数量庞大的Bourne shell脚本大多不经修改即可以在bash中执行，只有那些引用了Bourne特殊变量或使用了Bourne的内置命令的脚本才需要修改。</li>
+</ul>
+<h2 id="文件系统">文件系统</h2>
+<ul>
+<li>Linux文件名最长256个字符</li>
+<li>不能含有"/"（路径的分隔符）</li>
+<li><strong>大小写敏感</strong></li>
+<li>由一组普通文件、目录文件、设备文件和<strong>符号链接</strong>组成</li>
+<li>Linux下的所有文件都依附在根目录/下</li>
+</ul>
+<h3 id="文件类型">文件类型</h3>
+<ul>
+<li><p>普通文件</p>
+<ul>
+<li>二进制文件</li>
+<li>文本文件(.txt)</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>从本质上来说文本文件和二进制文件之间没有什么区别，因为他们在硬盘上都有一种的存放方式：<strong>二进制</strong> 但是如果要对他们有些区分的话，那可以这样理解。我们现在的每个字符 由一个或多个字节组成，每个字节都是用的-128—127之间的<strong>部分数值</strong>来表示的，也就是说，-128—127之间还有一些数据没有对应任何字符的任何字节。如果一个文件中的<strong>每个字节的内容都是可以表示成字符的数据</strong>，我们就可以称这个文件为文本文件，可见，<strong>文本文件只是二进制文件中的一种特例</strong>。 为了与文本文件相区别，人们又把除了文本文件以外的文件称为二进制文件。 由于很难严格区分文本文件和二进制文件的概念，所以我们可以简单地认为，如果一个文件专门用于存储文本字符的数据，没有包含字符以外的其他数据，我们就称之为文本文件，除此之外的文件就是二进制文件</p>
+</blockquote>
+<ul>
+<li><p>目录文件</p>
+<ul>
+<li><p>是一个包含文件的容器，用于存放目录中文件列表信息。</p></li>
+<li><p>目录文件存储一组相关文件的<strong>位置、大小等与文件有关的信息</strong>，但它不包含具体的文件内容，因而和常规文件相比占用的<strong>磁盘空间很小</strong>。</p></li>
+<li><p>每一项(entry) 主要表示的是一个文件名(或子目录名)以及文件的<strong>索引节点号</strong>(i-node number ) 。</p>
+<p><strong>索引节点号：</strong>指向<strong>该文件内容所在的数据块的位置，记录了该文件的属性</strong></p>
+<p>通过 i-node表与文件之间建立对应关系，<strong>目录文件是存放文件名唯一的地方</strong>，<strong>但文件名不放在 i-node表中</strong></p></li>
+<li><p>访问一个文件或子目录时，首先访问他所在的目录（因此需要目录文件的执行权限），找到该文件的i-node值，然后再查找i-node 表找出相应的i-node项（i-node entry），从而找到了相应的数据。</p></li>
+<li><p>在Linux系统中，也可以把目录文件看作是将文<strong>件的名称和它的索引节点号</strong>结合在一起的一张表。</p></li>
+</ul></li>
+<li><p>设备文件</p>
+<ul>
+<li>块设备：以块为单位进行随机存取。如软盘、光盘和硬盘</li>
+<li>字符设备：以单个字符为单位进行顺序存取。如：打印机终端、键盘、鼠标</li>
+</ul>
+<blockquote>
+<p>在Linux中 ，因为它是Unix的一种，系统可以使用的不同文件系统，不能像Windows或DOS一样通过设备标识符存取(例如一个驱动器数字或一个驱动器命名)， 而是它们被构建成为一个单一的层次树状结构以作为代表文件系统的实体。</p>
+</blockquote></li>
+</ul>
+<h3 id="关于i-node">关于i-node</h3>
+<ul>
+<li><p>i-node是什么</p>
+<p>硬盘的最小存储单位叫做”扇区”（Sector）。每个扇区储存512字节（相当于0.5KB）。操作系统读取硬盘的时候，不会一个个扇区地读取，这样效率太低，而是<strong>一次性读取一个：“块”（block），每个”块”（block）由八个连续的sector组成</strong>。这种由多个扇区组成的<strong>“块”，是文件存取的最小单位</strong>。”块”的大小，最常见的是4KB，文件数据都储存在”块”中，那么还必须找到<strong>一个地方储存文件的元信息</strong>，比如文件的创建者、文件的创建日期、文件的大小等等。这种<strong>储存文件元信息的区域就叫做inode</strong>，中文译名为”索引节点”。每一个文件都有对应的inode，里面包含了与该文件有关的一些信息。</p></li>
+<li><p>i-node的内容</p>
+<p>inode包含文件的元信息，具体有以下内容：</p>
+<ul>
+<li><p>文件的字节数</p></li>
+<li><p>文件拥有者的User ID</p></li>
+<li><p>文件的Group ID</p></li>
+<li><p>文件的读、写、执行权限</p></li>
+<li><p>文件的时间戳，共有三个：ctime指inode上一次变动的时间，mtime指文件内容上一次变动的时间，atime指文件上一次打开的时间。</p></li>
+<li><p>链接数，即<strong>有多少文件名指向这个inode</strong></p></li>
+<li><p>文件数据block的位置</p></li>
+</ul>
+<blockquote>
+<p>可以用stat命令查看某个文件的inode信息</p>
+</blockquote></li>
+<li><p>i-node号码</p>
+<p>每个<strong>inode都有一个号码</strong>，Unix/Linux系统<strong>内部不使用文件名，而使用inode号码来识别文件</strong>。对于系统来说，文件名只是inode号码便于识别的别称或者绰号。表面上，用户通过文件名，打开文件。实际上，系统内部这个过程分成三步：首先，系统找到这个文件名对应的inode号码；其次，通过inode号码，获取inode信息；最后，根据inode信息，找到文件数据所在的block，读出数据。</p>
+<blockquote>
+<p>使用ls -i命令，可以看到文件名对应的inode号码</p>
+</blockquote></li>
+<li><p>目录文件和i-node</p>
+<p>Unix/Linux系统中，目录（directory）也是一种文件。打开目录，实际上就是打开目录文件。 目录文件的结构非常简单，就是一系列目录项（dirent）的列表。每个目录项，由两部分组成：<strong>所包含文件的文件名，以及该文件名对应的inode号码。</strong> ls命令只列出目录文件中的所有文件名，ls -i命令列出整个目录文件，即文件名和inode号码</p>
+<p>目录文件的读权限（r）和写权限（w），都是针对目录文件本身。由于目录文件内只有文件名和inode号码，所以<strong>如果只有读权限，只能获取文件名，无法获取其他信息，因为其他信息都储存在inode节点中</strong>，而<strong>读取inode节点内的信息需要目录文件的执行权限（x）</strong>。</p></li>
+</ul>
+<h3 id="挂接mount">挂接（mount）</h3>
+<ul>
+<li><p>Linux 通过挂接（mount）一个文件系统将该新文件系统加入它的文件系统树中。</p></li>
+<li><p>所有的文件系统, 不管是什么类型，都挂接在文件系统树的一个目录上并且<strong>该文件系统之上的文件将掩盖掉这个挂接目录中原来存在的内容</strong>。</p></li>
+<li><p>这个目录称为挂接目录或挂接点。当文件系统被卸掉之后，挂接目录中原来的文件才再次可见。</p></li>
+</ul>
+<h3 id="用户主目录">用户主目录</h3>
+<ul>
+<li>用户每次登录后自动位于主目录下</li>
+<li>用户主目录由系统管理员在创建帐号时建立，每个合法的用户在文件系统中都有一个唯一的起始目录。默认的主目录位于<strong>/home目录下，以该用户名命名</strong>。</li>
+</ul>
+<h3 id="链接文件">链接文件</h3>
+<ul>
+<li>目录中每一对<strong>文件名称和索引节点号</strong>称为一个链接</li>
+</ul>
+<h4 id="硬链接">硬链接</h4>
+<ul>
+<li>原文件名和链接文件名都指向相同的<strong>物理位址</strong>（i-node number）</li>
+<li>如果删除硬链接文件的源文件，<strong>硬链接文件仍然存在，而且保留了原有的内容</strong></li>
+<li>不允许<strong>普通用户对目录建立硬链接</strong>；硬链接不能跨越文件系统（不能跨越不同的分区）</li>
+</ul>
+<h4 id="符号链接">符号链接</h4>
+<ul>
+<li>内容是它所<strong>链接的文件的路径名</strong></li>
+<li>每个链接文件<strong>都有各自的索引节点号</strong></li>
+<li>如果删除符号链接文件的源文件，符号链接文件将无法找到原有资料</li>
+<li>可用于链接目录，且符号链接能够跨越文件系统</li>
+</ul>
+<h3 id="相关指令">相关指令</h3>
+<h4 id="catmore">cat、more</h4>
+<ul>
+<li><p>cat是将文件的文本内容一次全部显示在屏幕上，more可以分屏显示全部内容</p></li>
+<li><p>cat（concatenate）用于连接文件并打印到标准输出设备上:</p>
+<ul>
+<li>-n(number):打印行号</li>
+<li>-b(blank):打印行号，<strong>空行不编号</strong></li>
+<li>cat可以通过<strong>重定向</strong>实现文件的合并、建立、覆盖和添加内容等操作</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 把 textfile1 的文档内容加上行号后输入 textfile2 这个文档里：
+$cat -n textfile1 &gt; textfile2
+# 把 textfile1 和 textfile2 的文档内容加上行号（空白行不加）之后将内容附加到 textfile3 文档里：
+$cat -b textfile1 textfile2 &gt;&gt; textfile3
+# 清空 &#x2F;etc&#x2F;test.txt 文档内容：
+$cat &#x2F;dev&#x2F;null &gt; &#x2F;etc&#x2F;test.txt
+# 例如要制作软盘的镜像文件，将软盘放好后输入：
+$cat &#x2F;dev&#x2F;fd0 &gt; OUTFILE
+# 相反的，如果想把 image file 写到软盘，输入：
+$cat IMG_FILE &gt; &#x2F;dev&#x2F;fd0</code></pre></div></li>
+<li><p>more</p>
+<ul>
+<li>F或space：下一页</li>
+<li>B:上一页</li>
+<li>Enter:向下移动一行</li>
+<li>q:退出</li>
+</ul></li>
+</ul>
+<h4 id="wc">wc</h4>
+<ul>
+<li>统计文件中的字符数、单词数和行数</li>
+<li>若不给出文件名，则从标准输入中读取</li>
+<li>选项，若不加选项则会列出字符数、单词数和行数。格式为：<strong>行数 单词数 字符数 文件名</strong>
+<ul>
+<li>-c(char):显示字符数</li>
+<li>-l:显示行数</li>
+<li>-w:显示单词数</li>
+</ul></li>
+</ul>
+<h4 id="ls">ls</h4>
+<ul>
+<li>不带任何选项的ls命令只列出文件名</li>
+<li>选项
+<ul>
+<li>-a:列出所有文件，包含.开头的隐藏文件</li>
+<li>-l：长格式列出文件，格式为：文件类型 操作权限 链接数 属主名 属组名 字节数 最近修改时间 文件名。其中文件类型包括：
+<ul>
+<li>d：目录文件</li>
+<li>-：普通文件</li>
+<li>l(link)：符号链接文件</li>
+<li>b(byte)：块设备文件</li>
+<li>c(char)：字符设备文件</li>
+</ul></li>
+<li>-d：显示<strong>目录名而不现实文件</strong></li>
+<li>-R(recursion)：递归列出子目录</li>
+<li>-r(reverse)：逆序显示文件名列表</li>
+<li>-x：显示时以字母顺序，正常是按照ASCII码顺序</li>
+<li>--color：着色显示(/etc/DIR_COLORS可以修改颜色)
+<ul>
+<li>绿色：可执行文件</li>
+<li>蓝色：目录</li>
+<li>红色：压缩文件</li>
+<li>浅蓝色：链接文件</li>
+<li>灰色：一般文件</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id="touch">touch</h4>
+<ul>
+<li>以当前时间创建文件或更新已有文件的时间戳</li>
+<li>时间格式为[YYYY] [MMDDhhmm]</li>
+<li>选项为-t</li>
+</ul>
+<h4 id="cp-src_file-dst_file">cp src_file dst_file</h4>
+<ul>
+<li>若目标文件名已存在，则会<strong>覆盖目标文件</strong></li>
+<li>如果目的文件是一个目录，那么将源文件拷贝到目录下</li>
+<li>拷贝多个文件，则最后一个参数是<strong>目标目录</strong></li>
+<li>选项
+<ul>
+<li>-i：在覆盖文件前提示用户</li>
+<li>-R/r：递归复制目录</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>​ 可以试一下 -f 选项，-f 一般表示强制执行（force）：cp -f file dir ​ 但好像结果并不像我们希望的那样，系统依然会有覆盖提示。为什么呢？ ​ 原因很简单，系统将 <strong>cp 命令alias为 cp -i</strong>。当我们执行cp命令的时候，系统往往执行的是cp -i，-i 选项表示有交互的提示信息，所以执行 cp -f 的时候，<strong>系统实际执行的是 cp -i -f</strong>， 所以仍然会有覆盖提示。 　　想要执行原始的cp也很简单，可以在<strong>调用cp的时候加入绝对路径</strong>，当然还可以直接执行下面的语句：<strong>-f file dir</strong></p>
+</blockquote>
+<h4 id="mv">mv</h4>
+<ul>
+<li><p>对文件进行名称更改或路径迁移</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 把文件aaa改名为bbb
+$mv aaa  bbb         
+# 把文件aaa移动到&#x2F;home&#x2F;paul下
+$mv aaa &#x2F;home&#x2F;paul  
+# 将version1改名为proposal，并提示用户确认。
+$mv -i version1 proposal 
+# 把当前目录下的file1文件移动到当前目录的父目录下
+$mv file1 .. 
+# 另一种文件重命名的方式
+$mv file1  ..&#x2F;new-filename
+
+</code></pre></div></li>
+<li><p>选项</p>
+<ul>
+<li>-f：强制执行</li>
+<li>-i：提示覆盖信息</li>
+</ul></li>
+</ul>
+<h4 id="rm">rm</h4>
+<ul>
+<li>选项
+<ul>
+<li>-f</li>
+<li>-r</li>
+<li>-i</li>
+</ul></li>
+</ul>
+<h4 id="rmdir">rmdir</h4>
+<ul>
+<li>删除空目录</li>
+<li>对该目录的<strong>父目录文件必须有写权限</strong></li>
+<li>被删除的目录必须是<strong>空目录</strong>，否则只能考虑-p</li>
+<li><strong>比起rm -rf来，rmdir是更安全的操作</strong></li>
+<li>选项
+<ul>
+<li>-p：由指定目录的最底层开始，<strong>逐层尝试删除空目录</strong>，当碰到非空目录时便停止删除的动作。</li>
+</ul></li>
+</ul>
+<h4 id="mkdir">mkdir</h4>
+<ul>
+<li><p>创建新目录时必须对其<strong>父目录文件有写权限</strong></p></li>
+<li><p>选项</p>
+<ul>
+<li>-p(parent)：自动建立父目录</li>
+<li>-m(mode)：建立指定权限的目录</li>
+</ul></li>
+</ul>
+<h4 id="whereis">whereis</h4>
+<ul>
+<li>显示指令的二进制码、原始码与在线手册说明文件的存放目录</li>
+<li>选项
+<ul>
+<li>-b：只查找二进制</li>
+<li>-m：只查找在线手册</li>
+<li>-s：只查找原始码文件</li>
+</ul></li>
+<li>whereis找不到某个文件的部分原因可能是这个文件没有存在于任何whereis命令搜索的子目录中</li>
+<li>whereis命令检索的子目录是固定编写在它的程序中的</li>
+</ul>
+<h4 id="locate">locate</h4>
+<ul>
+<li>使用的是一个文件名数据库</li>
+<li>查找文件位置又比whereis命令速度更快</li>
+<li>数据库的更新是<strong>每星期执行一次</strong>,可执行 updatedb 手工更新数据库</li>
+</ul>
+<h4 id="ln">ln</h4>
+<ul>
+<li><p><strong>一个物理文件可以有多个文件名</strong></p></li>
+<li><p>ln用于对一个已经存在的文件再创建一个新的链接，而不复制文件的内容</p></li>
+<li><p>ln后的链接文件名与物理文件<strong>具有相同的权限</strong></p></li>
+<li><p>格式： ln [-s] target [link name]</p>
+<ul>
+<li><p>-s(soft)：符号链接。不加此选项代表硬连接</p></li>
+<li><p>Target:链接所对应的源文件</p></li>
+<li><p>Link name：链接文件名。<strong>如果是符号链接，也可以是目录名</strong></p></li>
+</ul></li>
+<li><p>ls –l 命令可列出一个文件拥有的硬链接数。</p></li>
+</ul>
+<h4 id="cd">cd</h4>
+<ul>
+<li>cd/cd ～：返回到HOME目录下</li>
+</ul>
+<h2 id="权限管理">权限管理</h2>
+<h3 id="用户类型">用户类型</h3>
+<ul>
+<li>文件所有者：能够设定同组用户和其他用户对该文件的访问权限。一般来说是文件的创建者。</li>
+<li>同组用户：具有相同性质的所有用户,被系统管理员分在同一组。<strong>文件所有者或系统管理员</strong>可将文件的权限赋予组内的其它用户。</li>
+<li>其他用户：文件所有者或系统管理员还可以将文件的访问权赋予系统中所有其它的用户。这 样,系统中每一位用户可能都能访问你的某一文件或目录。</li>
+</ul>
+<h3 id="表示方法">表示方法</h3>
+<h4 id="用户的表示">用户的表示</h4>
+<ul>
+<li>所有者u(user)</li>
+<li>同组用户g(group)</li>
+<li>其他用户o(other)</li>
+<li>所有用户a(all)</li>
+</ul>
+<h4 id="权限的表示">权限的表示</h4>
+<ul>
+<li><p>三组分别表示文件所有者、同组用户和其他用户的权限</p>
+<table>
+<thead>
+<tr class="header">
+<th>rwx</th>
+<th>7</th>
+<th>4+2+1</th>
+<th>读、写、执行</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>rw-</td>
+<td>6</td>
+<td>4+2+0</td>
+<td>读、写</td>
+</tr>
+<tr class="even">
+<td>r-x</td>
+<td>5</td>
+<td>4+1</td>
+<td>读、执行</td>
+</tr>
+<tr class="odd">
+<td>r--</td>
+<td>4</td>
+<td>4+0+0</td>
+<td>只读</td>
+</tr>
+<tr class="even">
+<td>-wx</td>
+<td>3</td>
+<td>2+1</td>
+<td>写、执行</td>
+</tr>
+<tr class="odd">
+<td>-w-</td>
+<td>2</td>
+<td>0+2+0</td>
+<td>只写</td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td>0</td>
+<td>0+0+0</td>
+<td>禁止读、写、执行</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<h3 id="权限控制实例">权限控制实例</h3>
+<ul>
+<li>在移动文件时不需要被移动文件的权限，但需其<strong>所在目录具有写和执行权限</strong></li>
+<li>在目录下<strong>增删文件、子目录</strong>时要有目录的写权限（touch,rm,mkdir,rmdir）</li>
+<li>用ls列目录要有<strong>目录的读权限</strong>(这里只读了目录的文件名列表而不涉及到i-node)</li>
+<li><strong>进入目录或将该目录作路径分量</strong>时(cd)要有目录的<strong>执行权限</strong>，故要<strong>使用任一个文件，必须有该文件及找到该文件的路径上所有目录分量的执行权限。</strong></li>
+<li>只有执行权限只能进入目录，不能看到目录下的内容，要想<strong>看到目录下的文件名和目录名，需要可读权限</strong></li>
+<li>一个文件能不能被删除，主要看该<strong>文件所在的目录对用户是否具有写权限，</strong>如果目录对用户没有写权限，则该目录下的所有文件都不能被删除，文件所有者除外</li>
+<li>仅当要打开一个文件时，即执行<strong>涉及到文件内容的操作</strong>时，才需要文件的许可。</li>
+</ul>
+<h3 id="相关指令-1">相关指令</h3>
+<h4 id="chmod">chmod</h4>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ chmod [-options] xyz [filelist]
+$ chmod [-options] u&#x2F;g&#x2F;o&#x2F;a  +&#x2F;-&#x2F;&#x3D;  r&#x2F;w&#x2F;x  [filelist]
+-c（check）：只有在文件权限确实改变时才进行详细说明；
+-f（force）：不打印“权限不能改变”之类的文件错误信息；
+-R：递归改变目录及其内容的权限；
+-v：详细说明权限的变化。</code></pre></div>
+<ul>
+<li>用户修改密码，是通过运行命令passwd来实现的，最终必须要修改/etc/passwd文件，而passwd的文件只对于root用户是可写的，而对于所有的他用户来说都是没有写权限的。</li>
+</ul>
+<h4 id="chown">chown</h4>
+<ul>
+<li>用于改变文件的所有者,可以同时也改变其所属用户组 $chmod user:usergroup file</li>
+<li>仅用于<strong>系统管理员</strong>对文件和用户的管理</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ chown [-options] user[：group] filelist 
+ -R：递归改变目录及其内容的所属用户或用户组；</code></pre></div>
+<h4 id="su">su</h4>
+<h4 id="sudo">sudo</h4>
+<h2 id="进程管理">进程管理</h2>
+<ul>
+<li><p>进程是程序的执行的过程，是<strong>执行的程序</strong></p></li>
+<li><p>程序是静态的，是保存在磁盘上的<strong>可执行代码和数据</strong>的集合；</p>
+<p>进程是动态的，是Linux系统的基本调度单位</p></li>
+<li><p>PID(Process Identity number)：一个PID唯一的标识一个进程。</p>
+<p>PPID(Parent Process ID)：进程的父进程号。</p></li>
+</ul>
+<h3 id="init进程">init进程</h3>
+<ul>
+<li><p>内核启动后的第一个进程，其PID=1</p></li>
+<li><p>扮演<strong>终结父进程</strong>的角色，所有进程追溯其祖先最终都会落到init进程身上。</p></li>
+<li><p>因为init进程永远不会被终止，所以系统总是可以确信它的存在，并在必要的时候以它为参照。如果某个进程在它衍生出来的全部子进程结束之前被终止，此时那些<strong>失去了父进程的子进程就都会以init作为它们的父进程</strong>。</p></li>
+</ul>
+<h3 id="启动方式">启动方式</h3>
+<ul>
+<li><p>手工启动：当时设置当时启动</p>
+<ul>
+<li><p>前台启动:启动一个进程后，如果不中断或挂起该进程，用户会<strong>一直被禁止与 Shell 进行交互</strong>，直至该进程执行结束。经常用于一般Linux命令的执行，和一些不太耗时的进程的启动。</p>
+<p>停止: &lt;Ctrl+c&gt; 挂起：&lt;Ctrl+z&gt;</p></li>
+<li><p>后台启动:启动进程后，用户仍可以与Shell进行交互。可用于一些耗时长的作业运行。</p>
+<p>启动：$command &amp;，附一个<strong>&amp;</strong></p>
+<p>终止和挂起后台进程：<strong>使用kill命令</strong></p></li>
+</ul></li>
+<li><p>调度启动：用户可事先进行设置安排，指定任务运行的时间或场合，到时候由系统自动启动进程完成此项任务。</p></li>
+</ul>
+<h3 id="进程的挂起和恢复">进程的挂起和恢复</h3>
+<h4 id="进程挂起">进程挂起</h4>
+<ul>
+<li>前台进程的挂起： &lt;Ctrl+z&gt;</li>
+<li>后台进程的挂起： kill –s 01 {PID|%job ID}</li>
+</ul>
+<h4 id="进程恢复">进程恢复</h4>
+<ul>
+<li>恢复到前台： fg %jobID</li>
+<li>恢复到后台： bg %jobID</li>
+</ul>
+<h3 id="相关指令-2">相关指令</h3>
+<h4 id="ps">ps</h4>
+<ul>
+<li><p>确定有哪些进程正在运行以及运行的状态、进程是否结束、进程有没有僵死、哪些进程占用了过多的资源等等。</p></li>
+<li><p>是一个<strong>静态列表</strong>，显示启动这个命令时正在运行的进程的快照</p></li>
+<li><p>不跟任何选项表示查看系统中<strong>属于自己的进程</strong></p></li>
+<li><p>选项</p>
+<ul>
+<li>-e：显示<strong>所有</strong>进程</li>
+<li>-f(full)：全格式</li>
+<li>-l：长格式</li>
+<li>-w：宽格式</li>
+<li>-a：显示<strong>所有用户</strong>的进程</li>
+<li>-u：用户格式，显示用户名和进程起止世间</li>
+<li>-x：显示与终端无关的所有进程</li>
+</ul>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/008i3skNly1gxdmr2rijjj310u0ikwif.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20211214202306806" /><figcaption aria-hidden="true">image-20211214202306806</figcaption>
+</figure></li>
+</ul>
+<blockquote>
+<p>Linux下显示系统进程的命令ps，最常用的有<strong>ps -ef 和ps aux</strong> (请不要使用ps -aux) 这两个到底有什么区别呢？</p>
+<p>显然，没太大差别。</p>
+<p>讨论这个问题，要追溯到Unix系统中的两种风格，System Ｖ风格和BSD 风格，ps aux最初用到Unix Style中，而ps -ef被用在System V Style中，两者输出略有不同。现在的大部分Linux系统都是可以同时使用这两种方式的。</p>
+</blockquote>
+<blockquote>
+<p>linux上进程有5种状态: </p>
+<ol type="1">
+<li><p>运行(正在运行或在运行队列中等待)</p></li>
+<li><p>中断(休眠中, 受阻, 在等待某个条件的形成或接受到信号) </p></li>
+<li><p>不可中断(收到信号不唤醒和不可运行, 进程必须等待直到有中断发生) </p></li>
+<li><p>僵死(进程已终止, 但进程描述符存在, 直到父进程调用wait4()系统调用后释放) </p></li>
+<li><p>停止(进程收到SIGSTOP, SIGSTP, SIGTIN, SIGTOU信号后停止运行运行)</p></li>
+</ol>
+<p>ps工具标识进程的5种状态码:  1. D 不可中断 uninterruptible sleep <strong>(usually IO)</strong>   1. R 运行 runnable (on run queue)  1. S 中断 sleeping  1. T 停止 <strong>traced or stopped</strong>   1. Z 僵死 a defunct ("zombie") process  注: 其它状态还包括W(无驻留页), &lt;(高优先级进程), N(低优先级进程), L(内存锁页).</p>
+</blockquote>
+<h4 id="top">top</h4>
+<ul>
+<li>显示的是可根据真实情况 , 定时更新的运行进程列表</li>
+<li>与终端设备进行交互，根据用户从终端输入的交互命令来显示或管理进程</li>
+<li>交互命令（<strong>注意到排序的指令都是大写</strong>）
+<ul>
+<li>[Space] 立即刷新显示</li>
+<li>d 设置刷新进程的时间间隔，你会被提示输入一个数（秒）</li>
+<li>q <strong>退出top命令</strong>。</li>
+<li>k <strong>杀死某进程。你会被提示输入进程 ID 以及要发送给它的信号</strong>。<br />
+</li>
+<li>h 显示帮助屏幕</li>
+<li>n 显示的进程数量。你会被提示输入数量。</li>
+<li>u 选择用户。</li>
+<li>M <strong>按内存用量排序</strong>。</li>
+<li>P <strong>按 CPU 用量排序</strong>。</li>
+</ul></li>
+<li>top命令的功能强于ps，但需要长久占用前台，所以用户应该根据自己的情况来使用这个命令。</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># [例] 键入top命令查看系统状况
+$ top
+# 当前时间、系统启动时间、当前系统登录用户数目、平均负载。
+1：55pm up 7 min， 4 user， load average:0.07，0.09，0.06
+# 进程情况，依次为进程总数、休眠进程数、运行进程数、僵死进程数、终止进程数。
+29 processes:28 sleeping， 1 running， 0 zombie， 0 stopped
+# CPU状态，依次为用户占用、系统占用、优先进程占用、闲置进程占用。
+CPU states: 4.5% user， 3.6% system， 0.0% nice， 91.9%
+# 内存状态，依次为平均可用内存、已用内存、空闲内存、共享内存、缓存使用内存。
+idle
+Mem: 38916K av， 18564K used， 20352K free， 11660K shrd， 1220K buff
+# 交换状态，依次为平均可用交换容量、已用容量、闲置容量、高速缓存容量
+Swap: 33228K av， 0K used， 33228K free， 11820K cached
+# 下面就是和ps相仿的各进程情况列表
+---------------------------------------------------------------
+PID USER PRI NI SIZE RSS SHARE STAT LIB %CPU %MEM TIME 
+COMMAND
+363 root 14 0 708 708 552 R 0 8.1 1.8 0:00 top
+1 root 0 0 404 404 344 S 0 0.0 1.0 0:03 init
+2 root 0 0 0 0 0 SW 0 0.0 0.0 0:00 kflushd
+3 root -12 -12 0 0 0 SW&lt; 0 0.0 0.0 0:00 kswapd
+4 root 0 0 0 0 0 SW 0 0.0 0.0 0:00 md_thread
+5 root 0 0 0 0 0 SW 0 0.0 0.0 0:00 md_thread
+312 root 1 0 636 636 488 S 0 0.0 1.6 0:00 telnet
+285 root 6 0 1140 1140 804 S 0 0.0 2.9 0.00 bash
+286 root 0 0 1048 1048 792 S 0 0.0 2.6 0.00 bash
+25 root 0 0 364 364 312 S 0 0.0 0.9 0.00 kerneld
+153 root 0 0 456 456 372 S 0 0.0 1.1 0.00 syslogd
+160 root 0 0 552 552 344 S 0 0.0 1.4 0.00 klogd
+169 daemon 0 0 416 416 340 S 0 0.0 1.0 0.00 atd
+178 root 2 0 496 496 412 S 0 0.0 1.2 0.00 crond
+187 bin 0 0 352 352 284 S 0 0.0 0.9 0.00 portmap
+232 root 0 0 500 500 412 S 0 0.0 1.2 0.00 rpc.mountd
+206 root 0 0 412 412 344 S 0 0.0 1.0 0.00 inetd
+215 root 0 0 436 436 360 S 0 0.0 1.1 0.00 icmplog</code></pre></div>
+<blockquote>
+<p>什么是系统平均负载(Load average)？ 在Linux系统中，uptime、w、top等命令都会有系统平均负载load average的输出，那么什么是系统平均负载呢？</p>
+<p>系统平均负载被定义为在<strong>特定时间间隔内运行队列中的平均进程数</strong>。如果一个进程满足以下条件则其就会位于运行队列中：</p>
+<ul>
+<li>它没有在等待I/O操作的结果</li>
+<li>它没有主动进入等待状态(也就是没有调用'wait')</li>
+<li>没有被停止(例如：等待终止)</li>
+</ul>
+<p>例如： [root@opendigest root]# uptime 7:51pm up 2 days, 5:43, 2 users, load average: 8.13, 5.90, 4.94</p>
+<p>命令输出的最后内容表示在过去的1、5、15分钟内运行队列中的平均进程数量。 一般来说只要<strong>每个CPU的当前活动（指一分钟内）进程数不大于3那么系统的性能就是良好</strong>的，如果每个<strong>CPU的任务数大于5，那么就表示这台机器的性能有严重问题</strong>。对于上面的例子来说，假设系统有两个CPU，那么其每个CPU的当前任务数为：8.13/2=4.065。这表示该系统的性能是可以接受的。</p>
+</blockquote>
+<h4 id="jobs">jobs</h4>
+<ul>
+<li>用于显示和控制后台正在执行的和被挂起的任务序列。</li>
+<li>选项
+<ul>
+<li>-l：<strong>显示后台任务的进程号与信息</strong>。</li>
+<li>-p：<strong>只显示后台任务的 PID</strong>。</li>
+<li>-n（new）：显示上次通知用户后，执行状态有更动的后台任务状态。</li>
+<li>-r：显示执行中的后台任务。</li>
+<li>-s：显示暂停执行的后台任务。</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>+号和-号</p>
+<p>带有<strong>加号的作业被视为默认作业</strong>，如果命令行没有指定作业编号，则它应该是任何作业控制命令引用的作业。带有减号的作业是下一个默认作业。<strong>一次只有一个作业带有加号,一个作业带有减号</strong></p>
+</blockquote>
+<h4 id="kill">kill</h4>
+<ul>
+<li><p>向正在进行的进程发送信号，进程接收到信号后进行信号对应的相应操作</p></li>
+<li><p>格式</p>
+<p>kill [-option] [signal] {PID | %job ID}</p>
+<ul>
+<li>signal - 信号。与-s配合使用。不指定则送出信号 15(TERM）</li>
+<li>pid - 要终止的进程号</li>
+<li>job ID - 要终止的进程对应的后台任务编号。</li>
+</ul></li>
+<li><p>常用信号</p>
+<ul>
+<li>信号15（SIGTERM）
+<ul>
+<li>终止进程运行</li>
+<li>为kill命令的缺省信号</li>
+<li>经常用于<strong>后台进程的终止</strong></li>
+<li>当某个进程占用的CPU时间过多，或是某进程已经挂起，可以用这种方法终止其执行</li>
+<li>除root用户外，<strong>一般用户只能终止属于自己的进程</strong></li>
+</ul></li>
+<li>信号09(SIGKILL)
+<ul>
+<li><strong>强制</strong>终止进程</li>
+</ul></li>
+<li>信号01(SIGHUP)（ctrl+Z）</li>
+<li>信号02(SIGINT)</li>
+</ul></li>
+</ul>
+<h4 id="nohub">nohub</h4>
+<ul>
+<li>用于在用户退出系统时，继续执行程序</li>
+<li>格式：nohub {command|script} &amp;</li>
+</ul>
+<h2 id="vi编辑器">Vi编辑器</h2>
+<h4 id="启动命令">启动命令</h4>
+<ul>
+<li>基本语法： vi [-options] [+n] [file]</li>
+<li>常用选项：
+<ul>
+<li>-r 恢复系统突然崩溃时正在编辑的文件。</li>
+<li>-R 以只读方式打开文件</li>
+<li>+[n] 指明进入vi后直接位于文件的第n行，如果只有“+”而不指定n，则<strong>光标位于文本的最后一行</strong></li>
+</ul></li>
+</ul>
+<h4 id="搜索命令">搜索命令</h4>
+<ul>
+<li>正向搜索（/）：从光标所在位置起向文件末尾方向搜索。</li>
+<li>反向搜索（?）：从光标所在位置起向文件开头方向搜索。</li>
+<li>搜索得到结果后，可以使用重复命令n或N沿着相同或相反的方向重复上一次的搜索</li>
+</ul>
+<h2 id="shell">Shell</h2>
+<h3 id="shell的启动和退出">Shell的启动和退出</h3>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$shellname
+$exit</code></pre></div>
+<h3 id="环境变量和变量">环境变量和变量</h3>
+<ul>
+<li>环境变量的值只能传递给子进程，而不能传递给它所在的父进程</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 定义变量
+$ var&#x3D;value
+$ &#123;var&#x3D;value&#125;
+# 清除变量
+$ unset var
+# 显示所有shell环境变量
+$ set
+# 显示所有当前用户的用户环境变量
+$ env</code></pre></div>
+<h4 id="环境变量分类">环境变量分类</h4>
+<ul>
+<li><p>本地环境变量</p>
+<ul>
+<li><p>只能在当前shell中使用，不能传递给该shell创建的任何子进程</p></li>
+<li><p>这个值只在用户当前Shell生命期有意义</p></li>
+</ul></li>
+<li><p>全局环境变量</p>
+<ul>
+<li>可以用于所有进程，原则上均为<strong>大写</strong></li>
+<li>但赋值后必须将变量值导出，否则无法传递给子进程</li>
+<li>子进程不会自动地继承父进程中本地的变量</li>
+</ul></li>
+</ul>
+<h4 id="设置环境变量">设置环境变量</h4>
+<ul>
+<li>修改文件设置
+<ul>
+<li>/etc/profile：存放系统管理员设置的环境变量</li>
+<li>~/.bash profile：用于增加新变量或覆盖/etc/profile中设置的变量，<strong>每次登录时都会被初始化</strong></li>
+</ul></li>
+<li>命令行设置
+<ul>
+<li>显式赋值：var=value。<strong>等号两边不能直接接单独的空格。</strong></li>
+<li>read读取：read var1 var2 。若读入个数多于变量，则多出的都赋给最后一个变量；若少，则后面的变量赋空。</li>
+</ul></li>
+</ul>
+<h4 id="shell内嵌变量">Shell内嵌变量</h4>
+<ul>
+<li><p>HOME：用户主目录的完全路径名</p></li>
+<li><p>LOGNAME：登录用户名</p></li>
+<li><p>PS1：主提示符。对root用户是#，普通用户是$</p></li>
+<li><p>PATH：path1:path2:path3:</p>
+<p>添加新的PATH：$PATH=$PATH:filelist\$export PATH</p></li>
+</ul>
+<h3 id="引号">引号</h3>
+<h4 id="双引号">双引号</h4>
+<ul>
+<li>由双引号括起来的字符，除下面几种符号具有其特殊功能外，其余字符都作为普通字符对待
+<ul>
+<li>$符号：用其后指定的变量值来代替这个变量</li>
+<li> 符号：它是<strong>转义字符</strong>，它告诉Shell不要对其后面的特殊字符($、)进行特殊处理，只当做普通字符即可</li>
+<li>引号</li>
+</ul></li>
+</ul>
+<h4 id="单引号">单引号</h4>
+<ul>
+<li>单引号括起来的所有字符都作为普通字符出现</li>
+<li>特殊字符用单引号括起来后，也会失去原有意义，而只作为普通字符解释</li>
+</ul>
+<h4 id="反引号">反引号</h4>
+<ul>
+<li>内层嵌套的反引号要使用反斜线<strong>将其转义</strong></li>
+<li>反引号括起来的内容被Shell解释为命令行</li>
+</ul>
+<h3 id="通配符和正则表达式regular-expression">通配符和正则表达式(Regular Expression)</h3>
+<ul>
+<li>通配符
+<ul>
+<li>***** ：可以匹配文件名中的任何字符串</li>
+<li><strong>？</strong>：可以匹配文件名中的任何<strong>单个字符</strong></li>
+<li><strong>[…]</strong> ：匹配方括号[ ]中指定范围内的字符，可以<strong>使用-来连接两个字母或数字，以表示范围</strong></li>
+<li><strong>[!...]</strong> ：匹配不在指定范围内的任何字符</li>
+</ul></li>
+<li>正则
+<ul>
+<li>^：只匹配行首，用在字符串前面</li>
+<li>$：只匹配行尾，用在字符串后面</li>
+<li>X*：0个或多个字符X</li>
+<li>.：只匹配任意单字符</li>
+<li>[字符表]：字符表中的任意字符</li>
+<li>[^字符表]：不在字符表中的任意字符</li>
+<li>：屏蔽其后的特殊字符的特殊含义</li>
+<li>\{n\}：前导的正则表达式重复n次</li>
+<li>\{min, max\}：前导的正则表达式重复min~max次</li>
+</ul></li>
+</ul>
+<h3 id="变量参数">变量参数</h3>
+<ul>
+<li><p>位置变量参数 $0, $1,···</p>
+<ul>
+<li><p>Shell在解释用户命令时,将把<strong>命令行的第一个字</strong>作为命令,而其它字作为参数通过位置变量传递给程序</p></li>
+<li><p>$1-$9是第一到九个参数，<strong>第九个</strong>以后的参数都不会被访问</p></li>
+<li><p>位置变量$0指命令对应的可执行名</p></li>
+</ul></li>
+<li><p>特定变量参数</p>
+<ul>
+<li>$#：传递到脚本的参数个数</li>
+<li>$?：<strong>最后一个程序或命令的执行状态</strong>。用数字表示：0表示执行没有错误，其他任何值表明有错误</li>
+<li>$*：所有参数</li>
+<li>$$：<strong>脚本运行的当前Shell的PID</strong></li>
+<li>$@：所有参数，每个参数用双引号引起</li>
+</ul></li>
+</ul>
+<h3 id="标准文件和文件描述符">标准文件和文件描述符</h3>
+<ul>
+<li>在Shell中执行命令的时候，<strong>每个进程都和三个打开的文件相联系</strong>，并使用文件描述符来引用这些文件。 　 文件 　　　 文件描述符</li>
+<li>输入文件 —　标准输入 – stdin 0</li>
+<li>输出文件 —　标准输出 – stdout 1</li>
+<li>错误输出文件 —标准错误输出 – stderr 2</li>
+</ul>
+<h3 id="重定向和管道">重定向和管道</h3>
+<ul>
+<li><p>由于大多数命令都以参数的形式在命令行上指定输入档的文件名，所以输入重定向并不经常使用。尽管如此，当要使用一个不接受档名作为输入参数的命令，而需要的输入内容又存在一个文档里时，就能用输入重定向解决问题。</p></li>
+<li><p>重定向：&lt;、&gt;，追加：&lt;&lt;、&gt;&gt;</p></li>
+<li><p>错误重定向：2 &gt; errfile/2 &gt; /dev/null</p></li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 标准输入与标准错误输出
+$cat filea fileb
+# 标准输出
+-&gt;This is output from filea.
+# 标准错误输出
+-&gt;cat: cannot open fileb
+</code></pre></div>
+<ul>
+<li><p>再举个例子</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Command &gt; outfile  2&gt; errfile  &lt;  infile
+# 以infile为标准输入，将标准输出送到outfile,标准错误输出送到errfile. 
+Command &gt;&gt; outfile  2&gt;&gt; errfile  &lt; infile
+# 以infile为标准输入，将标准输出追加到outfile,标准错误输出追加到errfile. 
+</code></pre></div></li>
+<li><p>将stdout和stderr同时重定向到outfile：$Command &gt; outfile <strong>2&gt;&amp;1</strong></p></li>
+</ul>
+<blockquote>
+<p>https://www.jianshu.com/p/d5ea4a8acfb9</p>
+</blockquote>
+<ul>
+<li>管道是把一个命令在<strong>屏幕上的输出</strong>传递给另一个命令作为输入。用竖杠|表示。</li>
+</ul>
+<h3 id="算术扩展">算术扩展</h3>
+<ul>
+<li><p>$((expression))，有$符号</p></li>
+<li><p>运算符源于C</p></li>
+<li><p>算术扩展中包含的只有变量、运算符和常数，所以变量不需要$引用</p></li>
+<li><p>算术扩展内空格可以随意使用</p></li>
+<li><p>表达式内的变量若未定义，则当作其值为0</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 判断真假
+$i&#x3D;2 ; echo $((  i&#x3D;&#x3D;2 ))    
+# 变量赋值
+$ result&#x3D; $(( i&gt;&#x3D;0 &amp;&amp;i&lt;&#x3D;3))</code></pre></div></li>
+</ul>
+<h3 id="各种操作符号">各种操作符号</h3>
+<ul>
+<li><p>命令组</p>
+<p>多个命令在一行输入时，用 “;”作为命令间分隔符。</p></li>
+</ul>
+<h3 id="常用指令">常用指令</h3>
+<h4 id="exit">exit</h4>
+<ul>
+<li><p>正常退出返回0</p></li>
+<li><p>如果直接在终端上执行exit命令，会导致从系统注销，因为它会终止登陆Shell的执行。</p></li>
+</ul>
+<h4 id="和">$$和||</h4>
+<ul>
+<li>注意这个运算符也是短路的，只有前者为真后者才会进行or前者失败才执行后者</li>
+<li>注意这个是对于两个命令，而不是逻辑判断</li>
+</ul>
+<h4 id="test">test</h4>
+<ul>
+<li><p>用于测试一种或几种条件</p></li>
+<li><p>格式</p>
+<p>Test expression</p>
+<p>[ expression ]：要注意在<strong>条件两边加上空格</strong>。涉及到变量值（$variable）的比较时最好把<strong>变量取值用双引号括起来</strong>，以免Shell误解变量值。</p></li>
+</ul>
+<h5 id="字符串操作符">字符串操作符</h5>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 相等
+$test string1 &#x3D; string2
+# 不等
+$test string1 !&#x3D; string2
+# 非空
+$test string </code></pre></div>
+<ul>
+<li>等号和不等号操作符两边必须有空格</li>
+<li>在长度和内容上判断两个字符串相等</li>
+</ul>
+<h5 id="整数操作符">整数操作符</h5>
+<div class="code-wrapper"><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># 相等
+$test int1 -eq int2
+# 不等
+$test int1 -ne int2
+# 小于
+$test int1 -lt int2
+# 大于
+$test int1 -gt int2
+# 小于等于
+$test int1 -le int2
+# 大于等于
+$test int1 -ge int2</code></pre></div>
+<h5 id="文件操作符">文件操作符</h5>
+<ul>
+<li>-e(exist)：文件存在</li>
+<li>-d(directory)</li>
+<li>-f</li>
+<li>-s：文件大小不为0</li>
+<li>-r：及以下两个都需要有<strong>文件所有者</strong>的权限</li>
+<li>-w</li>
+<li>-x</li>
+</ul>
+<h5 id="逻辑操作符">逻辑操作符</h5>
+<ul>
+<li>-a(and)：与</li>
+<li>-o(or)：或</li>
+<li>!：非</li>
+</ul>
+<h4 id="expr">expr</h4>
+<ul>
+<li><p>表达式的各部分(操作数和运算符之间)必须以空格分隔。</p></li>
+<li><p>表达式中某些对shell有特殊意义的字符必须转义。</p></li>
+<li><p>*需要进行转义\*</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 多个算术表达式可以组合在一起
+$expr 5 + 7 &#x2F; 3
+# 使用反引号改变计算次序
+$expr &#96;$expr 5 + 7&#96; &#x2F; 3
+#expr命令一般用于整数值，此外，还可用于字符串测试
+$s1&#x3D;“hello”
+$expr  $s1 &#x3D; “hello”</code></pre></div></li>
+</ul>
+<h4 id="grepglobal-regular-expression-print">grep(global regular expression print)</h4>
+<ul>
+<li>允许对文本文件的内容进行模式查找。如果找到匹配模式，<strong>grep显示包含该模式的所有行</strong></li>
+<li>在g r e p命令中输入字符串参数时，最好将其用双引号括起来。在调用模<strong>式匹配时，应使用单引号</strong></li>
+<li>选项
+<ul>
+<li>-c(count)：只输出计数</li>
+<li>-n：显示匹配行及行号</li>
+<li>-v：显示不包含匹配文本的所有行</li>
+</ul></li>
+</ul>
+<h4 id="find">find</h4>
+<ul>
+<li><p>格式：find path expression [-exec -ok] [command]</p></li>
+<li><p>所查找的目录路径，对<strong>目录的搜索是递归</strong>的。.表示当前目录，/表示根目录</p></li>
+<li><p>-exec command：find命令对匹配的文件执行该参数所给出的Shell命令command</p>
+<p>-exec后的命令形式：command {} ; 注意{ }和；之间的空格。</p></li>
+<li><p>-ok command：和-exec的作用相同，只是在执行每一个命令之前，<strong>都会给出提示</strong>，让用户来确定是否执行。如果用户不回应 'y' 或 'Y'，command 将不予以执行，并回应 false。</p></li>
+<li><p>expression的名称标准：</p>
+<ul>
+<li>-name file：寻找名为file的文件，要找的文件名包括<strong>在引号中</strong>,可以使用通配符。</li>
+<li>-user name：按照<strong>文件属主</strong>来查找文件</li>
+<li>-group name</li>
+<li>-type type：查找某一类型的文件(b、c、d、f、l)</li>
+<li>-size n[c]：查找文件长度为n块(block)的文件，带有c时表示文件长度以字节计。</li>
+<li>时间标准 -mtime n：-n表示在n天以内，n/+n表示在n天以上</li>
+</ul></li>
+</ul>
+<h3 id="运行shell脚本">运行Shell脚本</h3>
+<ul>
+<li>sh：这种运行方式是启动了一个子Shell,set_dir 文件中的Shell命令都是在子Shell中执行, <strong>Shell命令执行完后，退回到命令提示符下</strong>时，子Shell结束</li>
+<li>.(source)：</li>
+<li>赋予执行权限：这种执行方式，Shell首先查找 <strong>PATH 变量中的各路径中是否有相应程序</strong>，若没有则会出错。因而需要在<strong>PATH变量中添加脚本所在的路径</strong>。这种方式也是在子Shell中执行脚本
+<ul>
+<li>用户必须对该文件具有读权限和执行权限</li>
+<li>开放执行权限：$chmod +x set_dir</li>
+<li>执行：$set_dir</li>
+</ul></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/d842f132/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java知识点总结</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/472738e0/">
+                        <span class="hidden-mobile">Hexo使用记录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,1499 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="主要参考教材为机械工业出版社《程序设计教程》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C&#x2F;C++入门学习笔记">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/5078/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="主要参考教材为机械工业出版社《程序设计教程》">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://47.100.74.245/blog/post_img/C.jpg">
+<meta property="article:published_time" content="2022-07-29T23:13:58.531Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.531Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://47.100.74.245/blog/post_img/C.jpg">
+  
+  
+  <title>C/C++入门学习笔记 - 苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/post_img/C.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="C/C++入门学习笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-29 23:13" pubdate>
+        2022年7月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      18k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      154 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">C/C++入门学习笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="基础知识">基础知识</h1>
+<h2 id="关于二进制">关于二进制</h2>
+<h3 id="存储和转换">存储和转换</h3>
+<h4 id="十进制整数">十进制整数</h4>
+<ul>
+<li>逐个与2相除，得到的余数依次组成一串数字，最后进行反转即可得到对应的二进制数</li>
+</ul>
+<h4 id="十进制小数">十进制小数</h4>
+<ul>
+<li>逐次与2相乘，得到的个位数组成一串数字，并且每次个位不为零时都抹去个位数进入下次操作</li>
+</ul>
+<h3 id="原码反码和补码">原码、反码和补码</h3>
+<ol type="1">
+<li>原码即数字的原形式</li>
+<li>将原码逐位取反，即得到对应的反码</li>
+<li>反码+1得到的就是补码</li>
+</ol>
+<blockquote>
+<p>求得反码时，<span class="math inline">\(0\)</span>会出现<span class="math inline">\(+0\)</span>和<span class="math inline">\(-0\)</span>两种表达，因此引入了补码</p>
+</blockquote>
+<h2 id="c的编码风格">C的编码风格</h2>
+<h3 id="匈牙利命名法">匈牙利命名法</h3>
+<ul>
+<li><p>以一个或多个小写字母开头，指定数据类型</p></li>
+<li><p>后跟一个或多个首字母大写的单词，描绘变量的功能</p>
+<blockquote>
+<p>可以视作对驼峰命名法的强化数据类型的命名方法</p>
+</blockquote></li>
+</ul>
+<h3 id="google标准">Google标准</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/" class="uri">https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/</a></p>
+</blockquote>
+<h3 id="定义和声明">定义和声明</h3>
+<ul>
+<li>定义性声明称为定义</li>
+<li>非定义性声明称为声明</li>
+</ul>
+<h2 id="结构化程序设计">结构化程序设计</h2>
+<ul>
+<li>单入口和单出口</li>
+<li>原来，面向过程就是结构化程序设计</li>
+</ul>
+<h2 id="c的简单示例">C++的简单示例</h2>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+
+using namespace std;
+
+int main()
+&#123;
+cout &lt;&lt; &quot;Hello World&quot; &lt;&lt; endl
+return 0;
+&#125;</code></pre></div>
+<ul>
+<li><code>#include&lt;name&gt;</code>与<code>import</code>的作用类似，可以近似理解为对文件的引用或调用</li>
+<li>C++一般使用流来进行输入输出，比如<code>cout &lt;&lt; "Hello World" &lt;&lt; endl</code>，而C一般会使用printf和scanf来实现基本输入输出</li>
+</ul>
+<h2 id="c一家人">C一家人</h2>
+<h3 id="c">C++</h3>
+<p>C++在C的基础上，添加类代表的面向对象语言；C++模板添加了泛型编程</p>
+<p>早期的C++编译器将C++代码转译为C代码，再由C编译器编译。这个编译器也就是下面要提到的前端（CFront）</p>
+<h1 id="编译与环境配置">编译与环境配置</h1>
+<h2 id="简述">简述</h2>
+<h3 id="gnugccclang和cmake都是些啥">GNU、GCC、CLang和CMake都是些啥</h3>
+<blockquote>
+<p>参考资料</p>
+<p><a target="_blank" rel="noopener" href="https://developer.51cto.com/article/630677.html" class="uri">https://developer.51cto.com/article/630677.html</a></p>
+</blockquote>
+<h4 id="编译器的一般构成">编译器的一般构成</h4>
+<p>传统的编译器通常分为三个部分，前端(frontEnd)，优化器(Optimizer)和后端(backEnd)</p>
+<p>在编译过程中，<strong>前端主要负责词法和语法分析</strong>，将源代码转化为抽象语法树；优化器则是在前端的基础上，对得到的中间代码进行优化，使代码更加高效；后端则是将已经优化的中间代码转化为针对各自平台的机器代码。</p>
+<h4 id="gccgnu-compiler-collection">GCC（GNU Compiler Collection）</h4>
+<p>GCC是一套GNU开发的<strong>编译器</strong></p>
+<p>GCC 作为一款开源的编译器，一直做得不错，但 Apple 逼事儿比较多，对编译工具会提出更高的要求。原因主要有以下两点</p>
+<ul>
+<li>GCC对Objective-C的支持慢。Apple 对 Objective-C 语言（包括后来对C语言）新增很多特性，但 GCC 开发者并不买Apple的账——不给实现，因此索性后来两者分成两条分支分别开发，这也造成 Apple 的编译器版本远落后于 GCC 的官方版本</li>
+<li>GCC代码质量差。GCC 的代码<strong>耦合度太高</strong>，很难独立，而且越是后期的版本，代码质量越差，但 Apple 想做的很多功能（比如更好的 IDE 支持），需要模块化的方式来调用 GCC，但 GCC一直不给做。</li>
+</ul>
+<h4 id="llvm-low-level-virtual-machine底层虚拟机">LLVM (Low Level Virtual Machine，底层虚拟机)</h4>
+<p>LLVM提供了与编译器相关的支持，能够进行程序语言的编译期优化、链接优化、在线编译优化、代码生成。简而言之，可以作为多种编译器的<strong>后台</strong>来使用</p>
+<h4 id="clangllvm2.0">Clang—LLVM2.0</h4>
+<p>Clang的诞生和Apple息息相关，准确的说，和巨佬Chiris Lattner相关。</p>
+<blockquote>
+<p>2000年，本科毕业的 Chris Lattner 像中国多数大学生一样，按部就班地考了GRE，最终前往UIUC（伊利诺伊大学厄巴纳香槟分校），开始了艰苦读计算机硕士和博士的生涯。</p>
+<p>在这阶段，他不仅周游美国各大景点，更是翻烂了《Compilers: Principles, Techniques, and Tools》，成了GPA满分(4.0) 牛人，并不断地研究探索关于编译器的未知领域，发表了一篇又一篇的论文。</p>
+</blockquote>
+<p>他在求学阶段一个值得讨论的故事，是在<strong>硕士毕业论文</strong>里提出了一套完整的在编译时、链接时、运行时甚至是在闲置时优化程序的编译思想，直<strong>接奠定了LLVM 的基础</strong>。</p>
+<p>LLVM 在他念博士时更加成熟，使用GCC 作为前端来对用户程序进行语义分析产生IF（Intermidiate Format），然后 LLVM 使用分析结果完成代码优化和生成。</p>
+<p>后来，Chirs Lattner被Apple吸收，在Apple，他干了这些事情</p>
+<ul>
+<li><p>优化OpenGL</p>
+<blockquote>
+<p>Chris Lattner把 LLVM运行时的编译架在 OpenGL 栈上，这样OpenGL 栈能够产出更高效率的图形代码。</p>
+<p>如果显卡足够高级，这些代码会直接扔入GPU 执行。但对于一些不支持全部OpenGL特性的显卡（比如当时的Intel GMA卡），LLVM 则能够把这些指令优化成高效的 CPU指令，使程序依然能够正常运行</p>
+</blockquote></li>
+<li><p>Apple1代码链接优化</p>
+<blockquote>
+<p>LLVM的链接优化被直接加入到 Apple 的代码链接器上，而 LLVM-GCC也被同步到使用 GCC4.0 代码。</p>
+</blockquote></li>
+<li><p>开发Clang</p></li>
+</ul>
+<p>Clang也就是文章这一部分的重头戏，它是LLVM的前端。相比GCC，只支持C/C++/Objective-C三种语言。</p>
+<p>与GCC相比，Clang有如下主要的特点</p>
+<ul>
+<li><p>高性能：Clang在编译速度、空间占用上都优于GCC</p>
+<blockquote>
+<p>速度快：通过编译 OS X 上几乎包含了所有 C 头文件的 carbon.h 的测试，包括预处理 (Preprocess)，语法 (lex)，解析 (parse)，语义分析 (Semantic Analysis)，抽象语法树生成 (Abstract Syntax Tree) 的时间，Clang 比 GCC 快2倍多。</p>
+<p>内存占用小：Clang 内存占用是源码的 130%，Apple GCC 则超过 10 倍。</p>
+</blockquote></li>
+<li><p>高可用性：Clang有更好的错误提示信息，还支持GCC不具有的静态分析</p>
+<blockquote>
+<p>Clang显示的错误的语法不但有源码提示，还会在错误的调用和相关上下文的下方有~~~~~和^的提示，相比之下 GCC 的提示很天书。</p>
+</blockquote></li>
+<li><p>高兼容性：可以说GCC最初就被设计为一个单独的应用程序，而Clang1有更好的可移植性。Clang与GCC相比更像是一个插件，任何IDE都可以考虑将他设计进去</p>
+<blockquote>
+<p>Clang 从一开始就被设计为一个API，允许它被源代码分析工具和 IDE 集成。GCC 被构建成一个单一的静态编译器，这使得它非常难以被作为 API 并集成到其他工具中。</p>
+</blockquote></li>
+<li><p>平台的局限：Clang的诞生和Apple高度绑定，而且GCC还支持Fortran等语言</p></li>
+</ul>
+<p>与此同时，二者的许可证也有区别。Clang使用BSD许可证，GCC则使用GPL许可证</p>
+<figure>
+<img src="https://s3.51cto.com/oss/202011/03/8a147a8adcb105088554299a2afecb87.jpg" srcset="/blog/img/loading.gif" lazyload alt="详解三大编译器：gcc、llvm 和 clang" /><figcaption aria-hidden="true">详解三大编译器：gcc、llvm 和 clang</figcaption>
+</figure>
+<h4 id="总结">总结</h4>
+<p>对新的项目而言，LLVM-GCC 看起來应该是个安全的选择，苹果公司认为它够稳定够成熟，所以才把它当做Xcode 4的预设选项。而且，既然选项使用的是GCC parser，向后兼容性应该没问题。</p>
+<p>回顾GCC的历史，虽然它取得了巨大的成功，但<strong>开发GCC的初衷是提供一款免费的开源编译器</strong>，仅此而已。可后来随着GCC支持了越来越多的语言，GCC架构的问题也逐渐暴露出来。</p>
+<p><strong>但GCC到底有什么问题呢？</strong></p>
+<p>LLVM的优点也正是GCC的缺点。</p>
+<p>传统编译器工作的时候过程一般如下</p>
+<ol type="1">
+<li><p>前端负责<strong>解析源代码，检查语法错误，并将其翻译为抽象的语法树（Abstract Syntax Tree）</strong>。</p></li>
+<li><p>优化器对这一中间代码进行<strong>优化，试图使代码更高效</strong>。</p></li>
+<li><p>后端则负责将优化器优化后的<strong>中间代码转换为目标机器的代码</strong>，这一过程后端会最大化的利用目标机器的特殊指令，以提高代码的性能。</p>
+<blockquote>
+<p>事实上，不光静态语言如此，动态语言也符合上面这个模型，例如Java。JVM也利用上面这个模型，将Java代码翻译为Java bytecode。</p>
+</blockquote></li>
+</ol>
+<p>这一模型的好处有</p>
+<ul>
+<li><p><strong>当我们要支持多种语言时，只需要添加多个前端就可以了</strong>。当需要支持多种目标机器时，只需要添加<strong>多个后端就可以</strong>了。对于中间的优化器，我们可以使用通用的中间代码。</p></li>
+<li><p><strong>开发前端的人只需要知道如何将源代码转换为优化器能够理解的中间代码</strong>就可以了，他不需要知道优化器的工作原理，也不需要了解目标机器的知识。这大大降低了编译器的开发难度，使更多的开发人员可以参与进来。</p></li>
+</ul>
+<p><strong>虽然这种三段式的编译器有很多优点，并且被写到了教科书上，但是在实际中这一结构却从来没有被完美实现过。</strong></p>
+<p>做的比较好的应该属Java和.NET虚拟机。虚拟机可以将目标语言翻译为bytecode，所以理论上讲我们可以将任何语言翻译为bytecode，然后输入虚拟机中运行。但是这一动态语言的模型并不太适合C语言，所以硬将C语言翻译为bytecode并实现垃圾回收机制的效率是非常低的。GCC也将三段式做的比较好，并且实现了很多前端，支持了很多语言。但是上述这些编译器的致命缺陷是，<strong>他们是一个完整的可执行文件，没有给其它语言的开发者提供代码重用的接口</strong>。即使GCC是开源的，但是源代码重用的难度也比较大。</p>
+<p>LLVM最初的定位是比较底层的虚拟机。它的出现正是为了解决<strong>编译器代码重用的问题</strong>，LLVM一上来就站在比较高的角度，制定了LLVM IR这一中间代码表示语言。LLVM IR充分考虑了各种应用场景，例如在IDE中调用LLVM进行实时的代码语法检查，对静态语言、动态语言的编译、优化等。从上面这个图中我们发现LLVM与GCC在三段式架构上并没有本质区别。</p>
+<p>LLVM与其它编译器最大的差别是，<strong>它不仅仅是Compiler Collection，也是Libraries Collection</strong>。</p>
+<blockquote>
+<p>举个例子，假如说我要写一个X语言的优化器，我自己实现了PassX算法，用以处理X语言与其它语言差别最大的地方。而LLVM优化器提供的PassA和PassB算法则提供了X语言与其它语言共性的优化算法。那么我可以选择X优化器在链接的时候把LLVM提供的算法链接进来。</p>
+</blockquote>
+<p>LLVM不仅仅是编译器，<strong>也是一个SDK</strong>。</p>
+<p>Apple LLVM compiler 4.2是一个真正的LLVM编译器，前端使用的是Clang，基于最新的LLVM 3.2编译的。LLVM GCC 4.2编译器的核心仍然是LLVM，但是前端使用的是GCC 4.2编译器。从LLVM的下载页面可以看出，LLVM从1.0到2.5使用的都是GCC作为前端，直到2.6开始才提供了Clang前端。</p>
+<p>如果你下载 LLVM 的代码，那么它就是一个IR到ARM/机器码的编译器。比如bin/opt就是对IR的优化器，bin/llc就是IR-&gt;ASM的翻译，bin/llvm-mc就是汇编器。如果你再从<a target="_blank" rel="noopener" href="http://llvm.org" class="uri">http://llvm.org</a>下载Clang，那么就有了C-&gt;IR的翻译以及完整的编译器Driver。GDB是GNU的调试器。只要编译器支持DWARF格式，就可以用GDB调试。</p>
+<h3 id="ide集成开发环境">IDE（集成开发环境）</h3>
+<h3 id="编辑器">编辑器</h3>
+<h2 id="gnu-make">GNU Make</h2>
+<blockquote>
+<p>参考资料 <a target="_blank" rel="noopener" href="https://seisman.github.io/how-to-write-makefile/overview.html" class="uri">https://seisman.github.io/how-to-write-makefile/overview.html</a></p>
+</blockquote>
+<h2 id="具体平台下的配置记录">具体平台下的配置记录</h2>
+<h3 id="vscode-with-clang-on-macos">VSCode with Clang on macOS</h3>
+<blockquote>
+<p>参考资料</p>
+<p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/cpp/config-clang-mac" class="uri">https://code.visualstudio.com/docs/cpp/config-clang-mac</a></p>
+</blockquote>
+<h4 id="概述">概述</h4>
+<h4 id="clang的安装与配置">Clang的安装与配置</h4>
+<h4 id="vscode配置">VSCode配置</h4>
+<h4 id="编译指令">编译指令</h4>
+<h4 id="备注">备注</h4>
+<h3 id="vscode-with-gcc-on-windows">VSCode with GCC on Windows</h3>
+<h3 id="visual-studio">Visual Studio</h3>
+<h1 id="语言的基本语法和特性">语言的基本语法和特性</h1>
+<h2 id="基本数据类型">基本数据类型</h2>
+<p>C为数据之间提供了基本的类型转换，但建议使用<code>&lt;type&gt;(var)</code>的形式（C++形式）</p>
+<h3 id="字面常量">字面常量</h3>
+<ul>
+<li>十进制、八进制和十六进制的表示</li>
+<li>整数类型字面常量默认为<code>int</code>类型，可以附加l/L、u/U表示类型</li>
+<li>浮点类型默认为double类型，也可以附加f和l</li>
+<li>特别的，有转义字符及其对应的八进制、十六进制</li>
+<li>字符串常量直接使用双引号引起，一般会存储一个终止位<code>\0</code></li>
+</ul>
+<h3 id="符号常量">符号常量</h3>
+<ul>
+<li><p>使用以下形式声明</p>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#define &lt;标识符&gt; &lt;值&gt;;
+const &lt;类型&gt; &lt;标识符&gt; &#x3D; &lt;值&gt;</code></pre></div>
+<blockquote>
+<p>值得注意的是，这里的<code>#define</code>和<code>#include</code>一样使用#表示 我们称这些命令为<strong>宏定义命令</strong>，他们是一种<strong>预处理命令</strong> <code>const</code>声明在c++中引入，建议使用</p>
+</blockquote></li>
+<li><p>使用<code>#define</code>声明会在预编译阶段替换标识符出现的位置为其值再进行进一步编译运算，<code>const</code>声明直接参与编译和运算</p></li>
+</ul>
+<h3 id="全局变量">全局变量</h3>
+<ul>
+<li>与Python、Dart不同，C中一般不会使用下划线开头的命名方式</li>
+<li>变量的基本特性有变量名、类型、值和内存空间地址</li>
+<li>全局变量会<strong>自动赋初值</strong></li>
+</ul>
+<blockquote>
+<p>全局变量可以定义在函数外的任何地方，如果在使用一个全局变量时未见到它的定义，则在使用前需要对该全局变量进行声明</p>
+</blockquote>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">extern &lt;类型名&gt; &lt;变量名&gt;;</code></pre></div>
+<h3 id="整型">整型</h3>
+<ul>
+<li><p>最基本的整型为int</p></li>
+<li><p>除int外，可以使用<strong>long和short</strong>进一步修饰。当使用修饰符时，也可以省略int关键字</p></li>
+<li><p>除此之外，还有<strong>long long int</strong>类型</p></li>
+<li><p>所有的数字类型都可以<strong>附加signed和unsigned来声明是否有符号</strong></p></li>
+<li><p>常见的实现大小</p>
+<table>
+<thead>
+<tr class="header">
+<th>类型</th>
+<th>大小</th>
+<th>数字范围</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>short int</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>int</td>
+<td>2或4</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>long int</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>long long int</td>
+<td>8</td>
+<td></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>计算机内，整型都是用<strong>二进制补码</strong>表示</p></li>
+</ul>
+<h3 id="浮点型">浮点型</h3>
+<ul>
+<li>float和double两种类型</li>
+<li>double提供了<strong>long double</strong>类型进一步表示更大的数</li>
+<li>float.h中定义了<code>FLT_EPSILON</code>和<code>DBL_EPSILON</code>两个值，约为<span class="math inline">\(1e-6\)</span>用来辅助判断浮点型之间是否近似相等</li>
+</ul>
+<h3 id="字符型">字符型</h3>
+<ul>
+<li><p>char类型</p></li>
+<li><p>提供signed和unsigned</p>
+<blockquote>
+<p>其实所谓的unsigned，也就是相当于最早的七位ASCII码</p>
+</blockquote></li>
+<li><p>ASCII码使得大小写转换等操作比较方便，例如</p>
+<ul>
+<li>大小写：相差32，或者<code>int a = 'd' - 'a' + 'D'</code></li>
+<li>提取字符数字：<code>int a = '9' - '0'</code></li>
+</ul></li>
+</ul>
+<h3 id="逻辑数据类型">逻辑数据类型</h3>
+<ul>
+<li>1为true，0为false</li>
+<li>bool同样使用了一个字节而不是位表示</li>
+</ul>
+<h3 id="空值数据类型">空值数据类型</h3>
+<p>主要用于以下场景</p>
+<ul>
+<li>没有返回值的函数</li>
+<li>通用指针<code>void *</code></li>
+</ul>
+<h3 id="整型和算术型">整型和算术型</h3>
+<ul>
+<li>int、char以及bool统称为<strong>整型</strong></li>
+<li>整型和float统称为算术型</li>
+</ul>
+<h2 id="变量的存储类型">变量的存储类型</h2>
+<h3 id="分类方法">分类方法</h3>
+<ul>
+<li>对于一个变量，我们会从两个角度考虑，一是这个变量的数据类型，具体体现就是在内存中开辟空间的大小；二是这个变量的生存周期，具体表现为在哪一块儿内存空间</li>
+<li>保存变量当前值的存储单元有两类，一类是<strong>内存</strong>，另一类是 CPU 的寄存 器</li>
+<li>C 语言中定义了 4 种存储属性，即<strong>自动变量、外部变量、静态变量和寄存器变量</strong></li>
+</ul>
+<h3 id="作用域">作用域</h3>
+<ul>
+<li><p>变量的<strong>作用范围又称为作用域</strong>,从空间角度,可以将变量分为<strong>全局变量和局部变量</strong></p></li>
+<li><p>局部变量是在一 个函数或复合语句内定义的变量，它仅在函数或复合语句内有效。</p>
+<p>编译时，编译系统不为局部变量分配内存单元，而是在程序运行过程中，当局部变量所在的函数被调用时，编译系统根据需要临时分配内存，调用结束，空间释放。</p></li>
+<li><p>全局变量是在函数之外定义的变量，其作用范围为从定义处开始到本文件结束编译时，编译系统为其分配固定的内存单元，在程序运行的自始至终都占用固定单元。</p></li>
+<li><p>默认情况下，使用<strong>作用范围最小的同名变量</strong>。</p>
+<p>如果要使用外部的变量，可以使用<code>::x</code>的形式调用。</p>
+<blockquote>
+<p>不要饱了撑的重复定义同名变量</p>
+</blockquote></li>
+</ul>
+<h3 id="生存期">生存期</h3>
+<ul>
+<li><p>变量的保留时间又称为生存期,从时间的角度,可将变量分为<strong>静态存储和动态存储</strong>两种情况</p></li>
+<li><p>静态存储是指<strong>变量存储在内存的静态存储区</strong>，在编译时就分配了存储空间</p>
+<p>在整个程序的运行期间，该变量占有固定的存储单元，程序结束后，这部分空间才释放，变量的值在整个程序中始终存在</p></li>
+<li><p>动态存储是指变量存储在内存的动态存储区，在程序的运行过程中，只有当变量所在的函数被调用时，编译系统才临时为该变量分配一段内存单元，函数调用结束，该变量空间释放，变量的值只在函数调用期存在</p></li>
+</ul>
+<h3 id="c中的内存分配">C中的内存分配</h3>
+<figure>
+<img src="https://pic3.zhimg.com/80/v2-deb39dc05a514a6e3bcf5751be932846_1440w.jpg" srcset="/blog/img/loading.gif" lazyload alt="img" /><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<ul>
+<li>stack</li>
+<li>heap</li>
+<li>bss(Block Started by Symbol)：通常是指用来存放程序中未初始化的全局变量的一块内存区域，由static修饰，BSS段属于静态内存分配。</li>
+<li>code/text segment：用来存放程序执行代码的一块内存区域。在代码段中，也有可能包含一些只读的常数变量，例如字符串常量等</li>
+</ul>
+<h3 id="存储类型">存储类型</h3>
+<h4 id="自动变量">自动变量</h4>
+<ul>
+<li>auto通常作为缺省选项自动添加</li>
+<li>自动型变量只能作为局部变量</li>
+<li>对于出现嵌套的重名变量，以<strong>作用域最小的变量为准</strong></li>
+</ul>
+<h4 id="寄存器变量">寄存器变量</h4>
+<ul>
+<li>使用register关键字声明</li>
+<li>通常用来声明<strong>少数调用最频繁的变量</strong>，将会被存储在<strong>CPU的通用寄存器中</strong></li>
+<li>值得注意的是，不是都会被存储在寄存器中，需要寄存器有空余空间，存储数据短于寄存器位长</li>
+</ul>
+<h4 id="外部变量">外部变量</h4>
+<ul>
+<li>使用extern关键字声明</li>
+<li>extern用于<strong>跨文件调用变量</strong>，将会存储在静态数据区</li>
+<li>对于一个在其他文件中定义的变量，在另一个文件中访问时需要使用extern关键字，编译器将会在其他源文件中寻找变量的定义</li>
+</ul>
+<h4 id="静态变量">静态变量</h4>
+<ul>
+<li><p>使用static关键字声明</p></li>
+<li><p>使用const定义也具有文件作用域</p>
+<blockquote>
+<p>建议使用在C++中引入的const</p>
+<p>二者的区别详见</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/cpp-static-const.html" class="uri">https://www.runoob.com/w3cnote/cpp-static-const.html</a></p>
+</blockquote></li>
+<li><p>static声明后的变量，<strong>不能通过extern引用</strong></p></li>
+</ul>
+<h2 id="基本输入输出">基本输入输出</h2>
+<blockquote>
+<p>记得引入stdio.h(cstdio)</p>
+</blockquote>
+<h3 id="格式化输出">格式化输出</h3>
+<ul>
+<li><p>与所有的格式化输出一样，printf函数接受两组变量，分别是输出格式和输出项系列，示例</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">printf(&quot;num &#x3D; %f \n&quot;,num);</code></pre></div></li>
+<li><p>常用转换说明符</p>
+<table>
+<thead>
+<tr class="header">
+<th>说明符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>%d</td>
+<td>十进制整数（<strong>D</strong>ecimal）</td>
+</tr>
+<tr class="even">
+<td>%x</td>
+<td>十六进制整数（he<strong>X</strong>）</td>
+</tr>
+<tr class="odd">
+<td>%f</td>
+<td>浮点数（<strong>F</strong>loat）</td>
+</tr>
+<tr class="even">
+<td>%c</td>
+<td>字符（<strong>C</strong>har）</td>
+</tr>
+<tr class="odd">
+<td>%s</td>
+<td>字符串（<strong>S</strong>tring）</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>说明符的更多控制方式（详见教材2.7.1）</p>
+<ul>
+<li><p>整数：</p>
+<p>%md，其中m为指定的输出长度，若长度不足则用<strong>空格补足</strong>，比如</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">int n &#x3D; 234;
+print(&quot;%6d&quot;,n);</code></pre></div>
+<p>由于234不足666位，将会输出“000234”</p>
+<p>%mld，输出长整型数据，同样可以指定长度</p></li>
+<li><p>浮点数</p>
+<p>留空，默认输出六位小数</p>
+<p>%m.nf，输出m位整数，n位小数，长度不足用空格补足</p></li>
+</ul></li>
+<li><p>值得注意的是，格式化输出中的格式说明符与输出项系列是一一对应的，例如</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">printf(&quot;%d %d %d&quot;,n1,n2,n3);</code></pre></div>
+<p>就会依次输出n1,n2,n3的内容</p></li>
+<li><p>使用转义字符要比<code>endl</code>效率更高</p></li>
+</ul>
+<h3 id="格式化输入">格式化输入</h3>
+<ul>
+<li><p>scanf函数与printf函数使用基本相同，需要记住的是输入项系列的每一项需要附加一个&amp;</p>
+<blockquote>
+<p>&amp;用来表示表示变量的地址</p>
+</blockquote></li>
+<li><p>输入分隔符的指定，示例</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">scanf(&quot;%d,%d&quot;,&amp;n1,&amp;n2);
+scanf(&quot;%d:%d&quot;,&amp;n1,&amp;n2);
+scanf(&quot;%d;%d&quot;,&amp;n1,&amp;n2);</code></pre></div>
+<p>他们的分隔符，分别为,、:和;</p></li>
+<li><p>输入长度的指定</p>
+<blockquote>
+<p>一定程度上可以用来解析数据</p>
+</blockquote>
+<p>示例：</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">scanf(&quot;%4d%2d%2d&quot;,&amp;a,&amp;b,&amp;c);</code></pre></div>
+<p>会将输入值“19900125”拆分为1990、01和25</p></li>
+</ul>
+<blockquote>
+<p>有些IDE会在结束执行任务之后关闭cmd窗口，这样会导致看不到运行的结果</p>
+<p>可以添加一个<code>cin.get</code>语句，读取依次键盘输入即可解决（如果一个不行那就来两个）</p>
+</blockquote>
+<h3 id="字符输入与输出">字符输入与输出</h3>
+<ul>
+<li>getchar与putchar函数</li>
+</ul>
+<h1 id="预处理器">预处理器</h1>
+<h1 id="数组类型">数组类型</h1>
+<blockquote>
+<p>数组之所以被叫做“复合数据类型”，是因为它有某个数据类型来创建的</p>
+<p>在C中，他们被叫做“派生数据类型”，但C++引入了类的“派生”，因此使用术语了“复合”来描述这个关系</p>
+<p>因此严格来讲，我们应该称呼一个数组为“xxx数组”</p>
+</blockquote>
+<h2 id="声明">声明</h2>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int nums[];
+int nums[10]; &#x2F;&#x2F; 并不会进行初始化
+int nums[] &#x3D; &#123;1,1,...&#125;;
+int nums[10] &#x3D; &#123;1,1&#125;;  &#x2F;&#x2F; 未初始化的位置都会初始化为0</code></pre></div>
+<p>C++11提供了一系列新的初始化方式</p>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int nums[] &#123;1,1,...&#125;; &#x2F;&#x2F;省略等号
+int nums[10] &#123;&#125;; &#x2F;&#x2F;编译器将所有元素设置为0</code></pre></div>
+<blockquote>
+<p>C并不会对数组越界问题报错，如果我们访问了这个数组以外的位置，C会从最后一个元素所在的内存地址继续找下去。因此数组越界在这里只是找到了另一个地址，他确实能取到值，但不知道会是什么</p>
+</blockquote>
+<h2 id="数组的大小">数组的大小</h2>
+<p>对数组使用<code>sizeof()</code>获得的是这个数组占用的内存空间，因此元素个数可以使用以下方式获得</p>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">type nums[] &#123;1,1,...&#125;;
+int num_of_list &#x3D; sizeof(nums)&#x2F;sizeof(type);</code></pre></div>
+<blockquote>
+<p>需要注意<code>sizeof()</code>返回的是<code>sizez_t</code>数据类型，他的占位符是<code>%zd</code>或<code>%zu</code></p>
+</blockquote>
+<h2 id="参数传递">参数传递</h2>
+<p>由于数组是内存中连续的一串空间，所以需要一个开头的内存地址即可，但是我们一般还会传入她的长度</p>
+<p>因此C也将数组的变量名直接作为内存地址来处理，所以我们在将数组作为指针时就是采用了引用传递，比如说下面二者就是等价的</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; 写法一
+int sum(int arr[], int len);
+&#x2F;&#x2F; 写法二
+int sum(int* arr, int len);</code></pre></div>
+<p>传递二维数组时，形参必须含有列数、不含行数，例如<code>int[][5]</code>；如果函数的参数是多维数组，那么除了第一维的长度可以当作参数传入函数，其他维的长度需要写入函数的定义。举个例子</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">int sum_array (int a[][4], int n);</code></pre></div>
+<p>函数sum_array()的参数是一个二维数组。第一个参数是数组本身（a[][4]），这时可以不写第一维的长度，因为它作为第二个参数，会传入函数，但是一定要写第二维的长度4。</p>
+<blockquote>
+<p>这是因为函数内部拿到的，只是数组的起始地址a，以及第一维的成员数量2。如果要正确计算数组的结束地址，还必须知道第一维每个成员的字节长度。写成int a[][4]，编译器就知道了，第一维每个成员本身也是一个数组，里面包含了4个整数，所以每个成员的字节长度就是4 * sizeof(int)。</p>
+</blockquote>
+<p>传入变长数组时，需要注意先传入数组长度这个参数才能确定需要划分的内存大小</p>
+<p>基于这种思想，我们可以得到一种新的传入高维数组的方式</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">int sum_array(int n, int m, int a[n][m]);</code></pre></div>
+<h2 id="数组指针">数组指针</h2>
+<p>C对数组名和数组指针的处理，带来一些有意思的特性</p>
+<p>首先是对数组成员的访问，有这样的关系恒成立</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">a[b] &#x3D;&#x3D; *(a + b)</code></pre></div>
+<p>对于一个指针变量，我们都知道它是具有加法的，数组指针的加法其表现就是在数组元素之间移动，因此<code>p++</code>其实就是指针移向下一个元素，利用这个性质可以遍历数组，比如</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">int a[] &#x3D; &#123;11, 22, 33, 44, 55, 999&#125;;
+
+int* p &#x3D; a;
+
+while (*p !&#x3D; 999) &#123;
+  printf(&quot;%d\n&quot;, *p);
+  p++;
+&#125;</code></pre></div>
+<p>这份demo有两个需要关注的地方</p>
+<ol type="1">
+<li>数组名<code>a</code>相当于被<code>const</code>修饰，是不可以改变指向的。因此不能够使用<code>a++</code>这样的语句，而是使用<code>p</code>进行操作；显然，这是为了保护数组，避免数组称为垃圾</li>
+<li>循环条件的判断一般使用数组元素，或者也可以接受<code>start</code>和<code>end</code>两个指针</li>
+</ol>
+<p>由于数组名是不可变的指针，所以其复制不能简单使用一个声明语句；非要说的话，<code>a=b</code>的含义也只是指向同一块内存地址而已，并不能算是复制，应该叫做“备份”。要复制一个数组，有两种方式</p>
+<ol type="1">
+<li>循环遍历，不建议使用，low</li>
+<li><code>memcpy()</code>函数。顾名思义，可以拷贝内存数据，其调用形式为<code>memcpy(*ptr,*new_ptr,int length)</code>，速度要快得多</li>
+</ol>
+<blockquote>
+<p>其实从这个复制操作，可以看出C具有底层操作性的特点，这里<code>memcpy()</code>所做的就是直接操作内存，其效率确实要比遍历复制快得多，但也相对危险 简化指针的操作，在C++中引入代替C的指针</p>
+</blockquote>
+<h1 id="字符串类型">字符串类型</h1>
+<p>字符串处理的方便与否是衡量语言便利程度的标尺（暴论</p>
+<h2 id="c风格字符串">C风格字符串</h2>
+<p>C风格字符串是一个末位元素为<code>\0</code>的char数组</p>
+<blockquote>
+<p>严格来讲，C没有字符串类型</p>
+</blockquote>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">char string[] &#x3D; &#123;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;\0&#39;&#125;; &#x2F;&#x2F; 这才是一个字符串
+char not_string[] &#x3D; &#123;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;&#125;; &#x2F;&#x2F; 这个不是！</code></pre></div>
+<p>当然，这样写多少有点离谱，C提供了一个语法糖，将双引号之间的内容自动处理成字符数组；对于跨行的字符串，为了便于缩紧，C还可以将两个间隔只包含空格的双引号的内容进行连接</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;* &#123;&#39;H&#39;,&#39;e&#39;,&#39;l&#39;,&#39;l&#39;,&#39;o&#39;&#125; &#x3D; &quot;Hello&quot;*&#x2F;
+
+char string[50] &#x3D; &quot;Hello&quot;
+  &quot;world&quot;;</code></pre></div>
+<h3 id="声明-1">声明</h3>
+<p>C有两种基本的声明形式，字符数组和字符指针</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">char* s &#x3D; &quot;Hello, world&quot;;
+char s[] &#x3D; &quot;Hello,world&quot;;</code></pre></div>
+<h3 id="基本属性">基本属性</h3>
+<p>C字符串对应的<code>cstring</code>头文件提供了<code>strlen()</code>函数，可以计算字符串的长度（而不是数组的长度）；同时，<code>strlen()</code>不会计算空字符</p>
+<h3 id="读入数据">读入数据</h3>
+<p><code>cin</code>对象默认是以‘单词’作为对象读取的，他根据空白符（空格、制表符等等）作为分割的依据，因此使用<code>cin &gt;&gt; string</code>不能读入一行字符串</p>
+<p><code>cin</code>提供了<code>getline()</code>和<code>get()</code>函数来解决问题，他们都接受目标字符串和接受字符长度两个参数</p>
+<p>二者的区别在于<code>getline()</code>会抛弃换行符，也就是说，使用<code>get()</code>函数的话，命令行中结束输入时的最后一个换行符，将被留在输入队列而不读入，如果在这个语句之后紧跟着一个<code>cin.get()</code>就可以吞掉没有读入的换行符</p>
+<h3 id="复制和拼接">复制和拼接</h3>
+<p><code>cstring</code>提供了<code>strcpy()</code>和<code>strcat()</code>实现复制粘贴 还有更安全的两个函数<code>strncpy()</code>和<code>strncat()</code>，他们接受第三个参数作为目标数组的最大长度</p>
+<figure>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h120dptlhrj20x20qsq62.jpg" srcset="/blog/img/loading.gif" lazyload alt="image-20220408082914099" /><figcaption aria-hidden="true">image-20220408082914099</figcaption>
+</figure>
+<h2 id="string类">string类</h2>
+<p>C++98提供了string类库，将string作为一种对象处理，string因此可以被看做一个“数据类型”</p>
+<p>与C字符串比起来，string类有这样的特点</p>
+<ul>
+<li><p>自适应长度</p></li>
+<li><p>重载了<code>+、+=、=</code>等运算符</p></li>
+<li><p>string作为一个对象，使用<code>.size()</code>方法获取长度</p></li>
+<li><p>由于istream类在设计时没有考虑到string类型的读写，因此我们使用另一个<code>getline()</code>方法读取string</p>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">string str; &#x2F;&#x2F; 未被初始化的string长度将被置为0
+getline(cin,str);</code></pre></div></li>
+</ul>
+<h1 id="c的函数">C的函数</h1>
+<h2 id="定义与调用">定义与调用</h2>
+<h3 id="函数的定义">函数的定义</h3>
+<ul>
+<li><p>函数是对过程/功能的抽象</p></li>
+<li><p>一般建议函数的体积不超过单屏的显示面积</p></li>
+<li><p>C中采用如下格式声明函数</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">&lt;存储类型&gt; &lt;返回值类型&gt; function (形式参数及其说明)&#123;
+ ;
+&#125;</code></pre></div>
+<p>注意，存储类型只有extern和static两种</p>
+<p>返回值除了常见的数据类型，还可以是指针和结构体</p></li>
+<li><p>C的实参可以指定参数名</p></li>
+<li><p>C支持可变参数的定义，通过<code>...</code>标识</p></li>
+<li><p>对于main函数，返回值可以使用<code>EXIT_SUCCESS</code>或<code>EXIT_FAILURE</code>宏，其被定义在<code>&lt;strlib&gt;</code>中</p></li>
+</ul>
+<h3 id="函数的调用">函数的调用</h3>
+<p>函数调用主要存在两种情况，本文件调用和跨文件调用，但在此之前首先要明确函数的声明以及函数原型。</p>
+<p>由于C编译器在编译时如果发现一个函数，需要立刻对其进行编译，因此调用的函数必须在调用前进行声明后使用；但问题来了，如果函数很多，甚至我们调用了外部的函数，就会难以满足这个条件，因此C提供了函数原型。只需要在源文件头部生命函数原型，即可正常调用该函数。</p>
+<h3 id="static标识符">static标识符</h3>
+<p>static标识符在发展过程中得到了三种主要的作用，首先最直观的是</p>
+<ol type="1">
+<li>声明静态变量。</br> 对一个函数来讲，其内部变量在函数被调用时总是会被初始化；使用<code>static</code>声明后，该变量将在第一次初始化之后被保护起来</li>
+<li>声明内部函数。</br> 既然可以对一个变量使用<code>statcic</code>声明，自然也可以对一个函数使用。这种情况下，函数被视作内部函数，不可以被其他文件调用</li>
+</ol>
+<blockquote>
+<p>换句话讲，这意味着函数不刻意生命的话是能够被其他文件调用的。这其实是<code>extern</code>标识符的作用，二者在这一角度上正好有相反的作用，而所有函数相当于默认都会添加一个<code>extern</code>标识符允许外部调用</p>
+</blockquote>
+<ol type="1">
+<li>修饰数组参数。</li>
+</ol>
+<p>比如<code>void function(int a[static 3])</code>意味着该参数的数组长度应当大于3，这与其字面含义有些出入</p>
+<h3 id="const标识符">const标识符</h3>
+<p><code>const</code>含义更多的在于维持原本的值，而不是<code>static</code>这样一直保持这个值。在函数参数中出现的<code>cosnt</code>，意义在于表示函数内部不得修改该参数变量。</p>
+<p>特别的，对于函数指针会有两种情况</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">void f(const int* p );
+void f(int* const p);</code></pre></div>
+<p>前者<code>const</code>能够保证<code>p</code>这个指针的值不会被修改，也就是<code>p</code>所指向的内存被保护起来，其值不可以被修改；后者保证了<code>p</code>的安全，也就意味着<code>p</code>的指向不可以被修改，但其指向的值并没有被保护起来；当然，我们也可以在两个位置都使用<code>const</code>声明。</p>
+<h4 id="头文件声明">头文件声明</h4>
+<ul>
+<li><p>对于C标准库，我们通过类似<code>#include &lt;stdio.h&gt;</code>的形式调用</p></li>
+<li><p>自己定义头文件，使用类似<code>#include "file.h"</code>的形式调用</p>
+<blockquote>
+<p><code>&lt;文件名&gt;</code>表示在<strong>系统指定的目录</strong>下寻找指定文件。</p>
+<p><code>“文件名”</code>表示先在包含#include命令的源文件所在的目录下查找指定文件，找不到时，再到系统指定的目录下寻找指定文件。</p>
+</blockquote></li>
+</ul>
+<h2 id="由函数终止程序">由函数终止程序</h2>
+<p>其实就是讨论<code>exit()</code>函数</p>
+<p>exit()函数用来终止整个程序的运行。一旦执行到该函数，程序就会立即结束。该函数的原型定义在头文件stdlib.h里面。其返回值一是<code>EXIT_SUCCESS</code>或<code>EXIT_FAILURE</code></p>
+<p>有时调用<code>exit()</code>函数时还需要一些其他函数，C提供了一个<code>atexit()</code>函数，用来登记exit()执行时额外执行的函数，用来做一些退出程序时的收尾工作。该函数的原型也是定义在头文件stdlib.h。</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">int atexit(void (*func)(void));</code></pre></div>
+<h2 id="函数间数据传递">函数间数据传递</h2>
+<h3 id="通过参数值传递">通过参数（值）传递</h3>
+<blockquote>
+<p>C默认使用值传递</p>
+</blockquote>
+<ul>
+<li>只适合传输少数数据</li>
+<li>传送的数据的<strong>一份样本</strong></li>
+<li>传入值的所有操作不会对外部变量产生影响</li>
+</ul>
+<h3 id="通过地址传递">通过地址传递</h3>
+<p>很明显值传递往往是不符合需要的，而且C/C++不支持返回多个返回值，这会带来很大不便</p>
+<p>要解决这个小问题，只需要传入变量的地址即可，比如</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">void Swap(int* x, int* y) &#123;
+  int temp;
+  temp &#x3D; *x;
+  *x &#x3D; *y;
+  *y &#x3D; temp;
+&#125;</code></pre></div>
+<h3 id="可变参数">可变参数</h3>
+<p>有时函数接受的参数长度并不确定，可以使用<code>...</code>来表示可变数量的参数</p>
+<p>头文件stdarg.h定义了一些宏，可以操作可变参数。</p>
+<ol type="1">
+<li><code>va_list</code>：一个数据类型，用来定义一个可变参数对象。它必须在操作可变参数时，首先使用。</li>
+<li><code>va_start</code>：一个函数，用来初始化可变参数对象。它接受两个参数，第一个参数是可变参数对象，第二个参数是原始函数里面，可变参数之前的那个参数，用来为可变参数定位。</li>
+<li><code>va_arg</code>：一个函数，用来取出当前那个可变参数，每次调用后，内部指针就会指向下一个可变参数。它接受两个参数，第一个是可变参数对象，第二个是当前可变参数的类型。</li>
+<li><code>va_end</code>：一个函数，用来清理可变参数对象。</li>
+</ol>
+<p>示例</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">double average(int i, ...) &#123;
+  double total &#x3D; 0;
+  va_list ap;
+  va_start(ap, i);
+  for (int j &#x3D; 1; j &lt;&#x3D; i; ++j) &#123;
+    total +&#x3D; va_arg(ap, double);
+  &#125;
+  va_end(ap);
+  return total &#x2F; i;
+&#125;</code></pre></div>
+<p>上面示例中，va_list ap定义ap为可变参数对象，va_start(ap, i)将参数i后面的参数统一放入ap，va_arg(ap, double)用来从ap依次取出一个参数，并且指定该参数为 double 类型，va_end(ap)用来清理可变参数对象。</p>
+<h1 id="指针">指针</h1>
+<p>首先啊要明确，指针是C的概念，它是一个记录内存地址的值；C++为了简化，设计了引用。</p>
+<h2 id="基本概念和引入">基本概念和引入</h2>
+<p>不难理解指针是一个指向某个内存地址的值，那么指针迎来了第一个问题——类型</p>
+<p>指针是有类型的，它的类型决定了内存地址块的大小，区分数据类型本身和他的指针的方式就是指针类型会添加一个<code>*</code>。准确来说，<code>*</code>并不依附于原本类型，比如说</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">int* p1;
+int * p2;
+int *p3;
+int        *             p4;</code></pre></div>
+<p>都是合法的声明方式，只是添加一个<code>*</code>即可。一般来说，我们使用<code>type* p</code>的形式，用来强调指针类型也是一种类型。</p>
+<p>在声明后，编译器会为指针随机指向一块内存空间，显然这是不安全的，我们可以用声明同种数据类型的方式对他进行初始化</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">int* p;
+int i;
+p &#x3D; &amp;i;
+
+int* p &#x3D; NULL;</code></pre></div>
+<blockquote>
+<p>为了防止错误的使用，我们可以像最后一行那样将指针变量先指向<code>NULL</code>(内存地址0)，在没有初始化时对其调用就会报错</p>
+</blockquote>
+<p>指针指向一块内存地址，我们需要有方法得到和保存着快地址的一些信息</p>
+<ul>
+<li>取出地址:使用<code>&amp;</code>运算符，获得该指针指向的<strong>内存地址</strong></li>
+<li>取出值:使用<code>*</code>运算符，获得该指针指向的内存地址所保存的<strong>数据值</strong></li>
+</ul>
+<h2 id="指针运算">指针运算</h2>
+<p>指针的运算会有所不同，首先我们考虑指针具有的数据类型，其类型决定一个变量在内存中占据的大小，因此我们可以得到指针变量加法和减法的一些概念</p>
+<ul>
+<li>指针变量与数值加减：在原来内存地址的基础上，移动若干个类型的长度</li>
+<li>指针变量之间的减法：返回两个指针指向的内存地址之间相隔该数据类型的个数 &gt; 此时返回值为`<code>ptrdiff_t，被定义在</code>stddef.h`中</li>
+<li>指针变量之间的比较：较大的一方返回1</li>
+</ul>
+<h2 id="受限指针">受限指针</h2>
+<p>声明指针变量时，可以使用<code>restrict</code>说明符，告诉编译器，该块内存区域只有当前指针一种访问方式，其他指针不能读写该块内存。这种指针称为“受限指针”（restrict pointer）。</p>
+<h2 id="指针与数组">指针与数组</h2>
+<h2 id="指针与函数">指针与函数</h2>
+<blockquote>
+<p>在C内部，函数名也被视作一个指针：函数名本身就是指向函数代码的指针，通过函数名就能获取函数地址</p>
+</blockquote>
+<p>函数指针的定义和使用会有些混乱，但我们先考虑上面所说的因素，这会使得调用函数有如下形式</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">print(var);
+(*print)(var);
+(&amp;print)(var);</code></pre></div>
+<p>笔者认为其实这三种都可以认为是通过函数名直接调用，只是第一种方式通过符号名与实际内存地址的映射进行调用，有点像是语法糖的感觉；</p>
+<blockquote>
+<p>之所以这样说，是因为我们可以考虑将所有变量调用、函数调用都视作对内存的直接操作，这种语境下符号名显然就不具有实在的作用——特别是与后面两者相比，它既没有取出函数的地址也没有取出函数的值，所以不妨把它看作一种简化、语法糖</p>
+</blockquote>
+<p>第二种方式取出该函数名作为指针指向的内存的值，相当于取出了整块内存的数据得到这个函数；第三种则是将变量传入这块内存中。</p>
+<p>如果我们引入函数指针，首先一个问题是它的声明会有些奇怪</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">void (*print_ptr)(int) &#x3D; &amp;print;</code></pre></div>
+<p>这样对函数的调用还有两种</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">(*print_ptr)(var);
+*print_ptr(var);</code></pre></div>
+<p>那么问题来了，为什么没有</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">&amp;print_ptr(var);</code></pre></div>
+<h1 id="c的内存操作">C的内存操作</h1>
+<h2 id="分配内存">分配内存</h2>
+<p>C提供了几个可以为程序在堆区分配内存的函数，分别是<code>malloc()</code>、<code>calloc()</code>和<code>realloc()</code>，他们都可以在内存中开辟指定大小的连续空间，其中<code>calloc()</code>简化了<code>malloc()</code>部分操作，<code>realloc()</code>则用于修改内存空间。</p>
+<h3 id="开辟内存空间">开辟内存空间</h3>
+<p><code>malloc()</code>接受一个<code>size_t</code>类型的参数，返回万能指针<code>void*</code>，用来记录开辟的内存的地址。</p>
+<p><code>malloc()</code>分配的内存空间不包含类型信息，也没有对内存进行初始化，也就是说，仅仅分配内存也是可以访问的，但不安全也不确定。</p>
+<p>通常会使用<code>sizeof(type)</code>来计算需要的内存空间大小，有时还会进行一次强制类型转换增强可读性，比如这样</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">int* p &#x3D; (int*) malloc(sizeof(int));
+&#x2F;&#x2F;动态分配内存
+int* q &#x3D; (int*) malloc(sizeof(*q));</code></pre></div>
+<blockquote>
+<p>由于<code>malloc()</code>可以指定要分配的内存大小，所以在参数中包含的变量能够实现动态数组——根据前面运行的情况分配一定大小的数组，这是直接使用数组声明无法实现的。</p>
+</blockquote>
+<p><code>malloc()</code>分配内存有可能分配失败，这时返回常量 <code>NULL</code>。<code>Null</code>的值为0，是一个无法读写的内存地址，可以理解成一个不指向任何地方的指针。它在包括<code>stdlib.h</code>等多个头文件里面都有定义，所以只要可以使用<code>malloc()</code>，就可以使用NULL。由于存在分配失败的可能，所以最好在使用<code>malloc()</code>之后检查一下，是否分配成功。比如</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">int* p &#x3D; malloc(sizeof(int));
+
+if (p &#x3D;&#x3D; NULL) &#123;
+  &#x2F;&#x2F; 内存分配失败
+&#125;
+
+&#x2F;&#x2F; or
+if (!p) &#123;
+  &#x2F;&#x2F;...
+&#125;</code></pre></div>
+<blockquote>
+<p>事实上，<code>NULL</code>的值不一定是0.前桥和弥在《征服C指针》中提到了<code>NULL</code>的细节</p>
+</blockquote>
+<p>malloc()最常用的场合，就是为数组和自定义数据结构分配内存。</p>
+<h3 id="calloc的简化"><code>calloc()</code>的简化</h3>
+<p><code>calloc()</code>可以视作对<code>malloc()</code>的简化，他有两个差异</p>
+<ol type="1">
+<li>接受两个参数，分别是数据类型的数量和单位字节长度。这使得使用<code>malloc()</code>时的<code>sizeof(type)*n</code>更换为两个参数，有更好的可读性。</li>
+<li><code>calloc()</code>会将所分配的内存全部初始化为0。<code>malloc()</code>不会对内存进行初始化，如果想要初始化为0，还要额外调用<code>memset()</code>函数。</li>
+</ol>
+<h3 id="内存块大小的修改">内存块大小的修改</h3>
+<p><code>realloc()</code>函数用于修改已经分配的内存块的大小，可以放大也可以缩小，返回一个指向新的内存块的指针。如果分配不成功，返回<code>NULL</code>。</p>
+<p><code>realloc()</code>可能返回一个全新的地址（数据也会自动复制过去），也可能返回跟原来一样的地址。<code>realloc()</code>优先在原有内存块上进行缩减，尽量不移动数据，所以通常是返回原先的地址。如果新内存块小于原来的大小，则丢弃超出的部分；如果大于原来的大小，则不对新增的部分进行初始化（程序员可以自行调用<code>memset()</code>）。比如下面的例子就是动态控制数组的长度</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">int* b;
+
+b &#x3D; malloc(sizeof(int) * 10);
+b &#x3D; realloc(b, sizeof(int) * 2000);</code></pre></div>
+<p>当<code>realloc()</code>的第一个参数为<code>Null</code>，等价于开辟一块新的内存空间；第二个参数为<code>0</code>等价于清空内存。</p>
+<h2 id="对内存的操作">对内存的操作</h2>
+<h3 id="设置值">设置值</h3>
+<p><code>memset()</code>函数可以向内存地址填充连续的同一个值，常用来初始化分配的新的内存块。</p>
+<h3 id="复制">复制</h3>
+<p><code>memcpy()</code>可以将内存中的内容从一个地址复制到另一个地址，这两个内存块不应该有互相重叠的区域。</p>
+<p><code>memcpy()</code>可以取代<code>strcpy()</code>进行字符串拷贝，而且是更好的方法，不仅更安全，速度也更快。</p>
+<p>以下是一种实现方式</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">void* my_memcpy(void* dest, void* src, int byte_count) &#123;
+  char* s &#x3D; src;
+  char* d &#x3D; dest;
+
+  while (byte_count--) &#123;
+    *d++ &#x3D; *s++;
+  &#125;
+
+  return dest;
+
+&#125;</code></pre></div>
+<p><code>memmove()</code>函数用于将一段内存数据复制到另一段内存。它跟<code>memcpy()</code>的主要区别是，它允许目标区域与源区域有重叠。如果发生重叠，源区域的内容会被更改；如果没有重叠，它与<code>memcpy()</code>行为相同。</p>
+<h3 id="比较内容">比较内容</h3>
+<p><code>memcmp()</code>函数用来比较两个内存区域。</p>
+<h2 id="清理内存">清理内存</h2>
+<p><code>free()</code>用于释放<code>malloc()</code>函数分配的内存，将这块内存还给系统以便重新使用，否则这个内存块会一直占用到程序运行结束。</p>
+<blockquote>
+<p>如果程序存在未被回收的内存，最终就会引发“内存溢出”。</br> C中使用<code>malloc()</code>、<code>free()</code>等函数的过程可以算是一些语言的内存垃圾回收机制的核心工作。</p>
+</blockquote>
+<h1 id="结构与联合">结构与联合</h1>
+<h2 id="结构">结构</h2>
+<h3 id="声明和初始化">声明和初始化</h3>
+<p>C与C++在声明结构时有语法习惯的差异，C会保留关键字<code>struct</code>，而C++会省略，这种改变目的在于强调对数据类型的声明</p>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">struct c_style_type &#123;&#125;;
+cpp_style_type &#123;&#125;;</code></pre></div>
+<p>通常情况下，使用外部声明声明结构数据类型，这也是C++鼓励的用法</p>
+<p>C中，由于<code>struct</code>的声明需要采用这种形式</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">struct hello &#123;
+  int a;
+  int b;
+&#125;;
+
+struct hello h;</code></pre></div>
+<p>总是需要带上<code>struct</code>很是别扭，所以往往使用<code>typedef</code>关键字定义一个别名便于使用，增强可读性。</p>
+<p><code>struct</code>占用的存储空间，不是各个属性存储空间的总和，而是最大内存占用属性的存储空间的倍数，其他属性会添加空位与之对齐。</p>
+<blockquote>
+<p>为什么浪费这么多空间进行内存对齐呢？这是为了加快读写速度，把内存占用划分成等长的区块，就可以快速在 Struct 结构体中定位到每个属性的起始地址。</br> 由于这个特性，在有必要的情况下，定义 Struct 结构体时，可以采用存储空间递减的顺序定义每个属性将最大的一个属性放在最后，这样就能节省一些空间。</p>
+</blockquote>
+<h3 id="参数的传递">参数的传递</h3>
+<ul>
+<li>默认情况下，结构数据类型作为形参使用值传递</li>
+</ul>
+<p>在使用<code>struct</code>指针时，<code>(*t).age</code>这样的写法很麻烦。C 语言就引入了一个新的箭头运算符<code>-&gt;</code>，可以从 <code>struct</code>指针上直接获取属性，大大增强了代码的可读性。比如</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">void happy(struct turtle* t) &#123;
+  t-&gt;age &#x3D; t-&gt;age + 1;
+&#125;</code></pre></div>
+<p>也就是说，对于<code>struct</code>变量名，使用点运算符<code>.</code>获取属性；对于<code>struct</code>变量指针，使用箭头运算符<code>-&gt;</code>获取属性。</p>
+<h3 id="位字段">位字段</h3>
+<h3 id="弹性数组成员">弹性数组成员</h3>
+<p>很多时候，不能事先确定数组到底有多少个成员。如果声明数组的时候，事先给出一个很大的成员数，就会很浪费空间。C 语言提供了一个解决方法，叫做弹性数组成员（flexible array member）。</p>
+<p>弹性数组成员总是为结构的最后一个属性，且这个结构需要至少一个其他属性</p>
+<div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c">struct vstring &#123;
+  int len;
+  char chars[];
+&#125;;
+struct vstring* str &#x3D; malloc(sizeof(struct vstring) + n * sizeof(char));
+str-&gt;len &#x3D; n;</code></pre></div>
+<h2 id="typedef"><code>typedef</code></h2>
+<h2 id="联合共用体">联合/共用体</h2>
+<p>共用体像是对数据类型的重载，他可以保存多种数据类型，但只能使用一种类型</p>
+<p>他最常见的目的是节省内存</p>
+<h1 id="c与c">C++与C</h1>
+<h2 id="c引入的特性">C++引入的特性</h2>
+<h3 id="一些关键字">一些关键字</h3>
+<h3 id="命名空间">命名空间</h3>
+<ul>
+<li><p>在一个源文件中要用到两个分别在另外两个源文件中定义的不同全局程序实体（如：全局函数），而这两个全局程序实体的名字相同。</p></li>
+<li><p>在一个命名空间中定义的全局标识符，其作用域为该命名空间</p></li>
+<li><p>当在一个命名空间外部需要使用该名空间中定义的全局标识符时，可用该命名空间的名字来修饰或受限。</p></li>
+<li><p>示例</p>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;模块1
+namespace A
+&#123; int x&#x3D;1;
+void f()
+&#123; ;
+&#125; 
+&#125;
+&#x2F;&#x2F;模块2
+namespace B
+&#123; int x&#x3D;0;
+void f()
+&#123; ;
+&#125; &#125;
+
+&#x2F;&#x2F;模块3
+... A::x ... &#x2F;&#x2F;A中的x 
+A::f(); &#x2F;&#x2F;A中的f
+... B::x ... &#x2F;&#x2F;B中的x
+B::f(); &#x2F;&#x2F;B中的f</code></pre></div></li>
+</ul>
+<h2 id="类与结构体">类与结构体</h2>
+<h1 id="c多模块结构">C++多模块结构</h1>
+<h2 id="简介">简介</h2>
+<ul>
+<li>模块是为了便于从物理上对程序进行组织、管理和理解，便于多人合作开发一个程序</li>
+<li>可以按某种规则对构成C++程序的各个逻辑单位（全局函数、全局常量、全局变量/对象、类等）的定义进行分组，分别把它们放在若干个源文件中（.cpp），构成若干个模块</li>
+<li>模块可以单独编译</li>
+</ul>
+<h2 id="构成和实现">构成和实现</h2>
+<ul>
+<li>接口（.h）：给出在本模块中定义的、提供给其它模块使用的一些程序实体（如：全局函数、全局变量等）的<strong>声明</strong>和（如类型、常量等）<strong>定义</strong></li>
+<li>实现(.cpp)：给出模块中的<strong>程序实体的定义</strong></li>
+<li>在模块A中要用到模块B中定义的程序实体时，可以在A的.cpp文件中用文件<strong>包含命令（#include）把B的.h文件包含进来</strong></li>
+</ul>
+<h1 id="面向对象">面向对象</h1>
+<h2 id="类与对象">类与对象</h2>
+<h2 id="this指针">this指针</h2>
+<h2 id="类成员特殊成员和对象成员等">类成员、特殊成员和对象成员等</h2>
+<h2 id="友元">友元</h2>
+<h2 id="继承">继承</h2>
+<h2 id="多态">多态</h2>
+<h1 id="常用库">常用库</h1>
+<h2 id="stdio.h">&lt;stdio.h&gt;</h2>
+<h2 id="cctype.h">&lt;cctype.h&gt;</h2>
+<ul>
+<li><code>tolower</code>和<code>tohigher</code></li>
+</ul>
+<h2 id="bios.h">&lt;bios.h&gt;</h2>
+<ul>
+<li>basic input &amp; output system</li>
+</ul>
+<h3 id="常用函数">常用函数</h3>
+<ul>
+<li><p>bioskey()</p>
+<p>读取参数0时，能够获取键盘上的功能键</p></li>
+</ul>
+<h1 id="c和c的风格差异">C和C++的风格差异</h1>
+<h2 id="小规则">小规则</h2>
+<ul>
+<li><p>类型强制转换</p>
+<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">(type) var;&#x2F;&#x2F; C
+type(var);&#x2F;&#x2F; C++</code></pre></div></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/C/">C</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/c6a6fb5e/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">微积分</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/44011/">
+                        <span class="hidden-mobile">C++练习和DSA课程的准备</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>

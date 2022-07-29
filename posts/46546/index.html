@@ -1,0 +1,807 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="关于行列式的知识和题目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="行列式">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/46546/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="关于行列式的知识和题目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://47.100.74.245/blog/post_img/81170245_p0-3-2.jpg">
+<meta property="article:published_time" content="2022-07-29T23:13:58.539Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.539Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="线性代数">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="Matlab">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://47.100.74.245/blog/post_img/81170245_p0-3-2.jpg">
+  
+  
+  <title>行列式 - 苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/post_img/81170245_p0-3-2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="行列式">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-29 23:13" pubdate>
+        2022年7月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">行列式</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="基本知识">基本知识</h2>
+<h3 id="行列式的概念和意义">行列式的概念和意义</h3>
+<p>行列式的绝对值，反映了矩阵对原向量的改变程度，在集合上反映为面积、体积的变化比例；正负反映了手性的改变。</p>
+<p>一个<span class="math inline">\(n\times{n}\)</span>行列式展开大概需要<span class="math inline">\(2n^3/3\)</span>次运算，通过算法优化充分利用0可以进一步加速。</p>
+<h3 id="行列式的性质">行列式的性质</h3>
+<p>若<span class="math inline">\(|A|\neq{0}\)</span>，那么<span class="math inline">\(|A| = |A^T|\)</span>成立。</p>
+<div class="note note-success">
+            <p>这是由于对于原矩阵的一行/列展开，等于对其转置矩阵的一列/行展开，在考虑到行列式的递归定义，可以证明其正确性。</p>
+          </div>
+<p>方阵可逆当且仅当其行列式不为0.</p>
+<blockquote>
+<p>这个性质被用在特征向量的计算上，它反映了矩阵对向量变换时出现的降维打击现象。一旦一个向量被变换到了更低维度，其就不可能逆向到原向量，因为在变换的过程中已经失去了部分信息。</br> 习题3.2 21-23</p>
+</blockquote>
+<p>对于两个<span class="math inline">\(n\times{n}\)</span>矩阵<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，有<span class="math inline">\(det(AB) = (detA)(detB)\)</span></p>
+<div class="note note-warning">
+            <p>一般来讲，加法<span class="math inline">\(det(A+B) = detA + detB\)</span>是不成立的，</p>
+          </div>
+<p>矩阵的逆的行列式与该矩阵的行列式互为倒数</p>
+<blockquote>
+<p>由于<span class="math inline">\(det(A A^{-1}) = 1\Rightarrow (detA)(detA^{-1})=1\)</span></p>
+</blockquote>
+<h3 id="基本的代数变换">基本的代数变换</h3>
+<p><span class="math display">\[
+\begin{array}{l}
+|{k}A| = {k^n}|A| ,n为矩阵的阶\\
+|A{\cdot}B| = |A|{\cdot}|B|  \\
+|A^T| = |A|  \\
+|A^{-1}| {\cdot} |A| = 1  \\
+|A^*| = |A|^{n-1}  \\
+|A| = \prod_{i=1}^{n}{\lambda}_i  \\
+|A| = |B|, A与B相似
+\end{array}
+\]</span></p>
+<h2 id="计算技巧">计算技巧</h2>
+<h3 id="times-3行列式"><span class="math inline">\(3\times 3\)</span>行列式</h3>
+<p><span class="math inline">\(3\times 3\)</span>行列式可以将前两列写在后面，得到一个<span class="math inline">\(3\times 5\)</span>行列式，这个行列式由左下到右上、左上到右下依次有六个对角线，将对角线上的元素相乘，下面的取正，上面取负后相加即可得到结果。</p>
+<p>结论证明很简单，同样的道理竖着堆叠也一样；其本质应该是将计算的过程进行了展开。</p>
+<h3 id="初等变换">初等变换</h3>
+<p>矩阵的初等变换，无论是行变换还是列变换，对行列式的影响都是相似的</p>
+<ol type="1">
+<li>行/列交换：行列式为原矩阵的相反数</li>
+<li>行/列倍加：不改变行列式的值</li>
+<li>行/列倍乘：<span class="math inline">\(|kA|=k|A|\)</span></li>
+</ol>
+<p>有这样的性质，我们可以将矩阵化为阶梯形简化计算。</p>
+<p>同样的，注意将眼光放大到列变换。对于一些线性相关的列，其行列式也为0；一列也可以利用倍加法则进行分离得到两个独立的矩阵。</p>
+<h3 id="对称矩阵等特殊矩阵的性质">对称矩阵等特殊矩阵的性质</h3>
+<p>对于对称矩阵，有</p>
+<p><span class="math display">\[
+\begin{array}{l}
+A{A^T}=E\\
+{\because}|A{A^T}|=|A||A^T|=|A|^2=|E|=1\\
+{\therefore}|A|={\plusmn}1
+\end{array}
+\]</span></p>
+<h3 id="克拉默法则">克拉默法则</h3>
+<blockquote>
+<p>克拉默法则提供了一个通过计算行列式得到线性方程的根的方式。仅适用于未知量个数与方程数量相等时使用</p>
+</blockquote>
+<p>克拉默法则可以描述为将矩阵的第<span class="math inline">\(i\)</span>列使用目标向量<span class="math inline">\(\mathbf{b}\)</span>替换，解向量的第<span class="math inline">\(i\)</span>个元素<span class="math inline">\(x_i = { {det{A_i}{(\mathbf{b})} }\over{detA} }\)</span></p>
+<ul>
+<li><p>如果非齐次线性方程组<strong>无解</strong>或<strong>有两个不同解</strong>，则它的系数行列式必为0。</p></li>
+<li><p>若齐次线性方程组的系数行列式不为0，则齐次线性方程组只有0解；如果方程组<strong>有非零解</strong>，那么必有<span class="math inline">\(|A|=0\)</span>。</p></li>
+</ul>
+<h3 id="逆矩阵公式">逆矩阵公式</h3>
+<p><span class="math display">\[
+{A^{-1} } = { {1}\over{detA} }{adjA}
+\]</span></p>
+<p>其中，<span class="math inline">\(adjA\)</span>为伴随矩阵，它是由<span class="math inline">\(A\)</span>的余因子组成的，但元素的位置由<span class="math inline">\((i,j)\)</span>变为<span class="math inline">\((j,i)\)</span>。</p>
+<h3 id="三角形面积公式">三角形面积公式</h3>
+<p><span class="math display">\[
+S = {1\over{2} }
+  {
+  \left |
+  \begin{array}{ccc}
+  {x_1} &amp; {y_1} &amp; 1 \\
+  {x_2} &amp; {y_2} &amp; 1 \\
+  {x_3} &amp; {y_3} &amp; 1 \\
+  \end{array}
+  \right |
+}
+\]</span></p>
+<h2 id="使用行列式进行判定">使用行列式进行判定</h2>
+<h3 id="线性无关相关">线性无关/相关</h3>
+<p>由可逆矩阵定理，行列式等于0<span class="math inline">\(\Rightarrow\)</span>矩阵不可逆<span class="math inline">\(\Rightarrow\)</span>矩阵存在线性相关的列</p>
+<blockquote>
+<p>线性相关的列会导致变化后不是满秩，输出向量被降维，因此其行列式为0</br> 对于全为0的列/行，相当于零向量，自然会与其他列/行线性相关，导致行列式为0</br> 习题3.2 24-26</p>
+</blockquote>
+<h2 id="特殊行列式">特殊行列式</h2>
+<h3 id="上下三角行列式">上下三角行列式</h3>
+<p>行列式为对角线元素的乘积。</p>
+<h3 id="副对角线行列式">副对角线行列式</h3>
+<p>副对角线元素的乘积与<span class="math inline">\((-1)^{ {n(n-1)\over{2} } }\)</span>的乘积。</p>
+<h3 id="拉普拉斯展开式">拉普拉斯展开式</h3>
+<blockquote>
+<p>面向分块矩阵使用</p>
+</blockquote>
+<p>对于<span class="math inline">\(m{\times}m\)</span>矩阵<span class="math inline">\(A\)</span>和<span class="math inline">\(n{\times}n\)</span>矩阵<span class="math inline">\(B\)</span>，有</p>
+<p><span class="math display">\[
+\left |
+\begin{array}{cc}
+A &amp; 0 \\
+* &amp; B
+\end{array}
+\right | =
+\left |
+\begin{array}{cc}
+A &amp; * \\
+0 &amp; B
+\end{array}
+\right | =
+|A|{\cdot}|B|
+\]</span></p>
+<p><span class="math display">\[
+\left |
+\begin{array}{cc}
+0 &amp; A \\
+B &amp; *
+\end{array}
+\right | =
+\left |
+\begin{array}{cc}
+* &amp; A \\
+B &amp; 0
+\end{array}
+\right | =
+(-1)^{mn}{\cdot}|A|{\cdot}|B|
+\]</span></p>
+<h3 id="范德蒙德展开式">范德蒙德展开式</h3>
+<p><span class="math display">\[
+\left |
+\begin{array}{cccc}
+{ {x_1}^0} &amp; { {x_2}^0} &amp; {\dotsc} &amp; { {x_n}^0} \\
+{ {x_1}^1} &amp; { {x_2}^1} &amp; {\dotsc} &amp; { {x_n}^1} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+{ {x_1}^n} &amp; { {x_2}^n} &amp; {\dotsc} &amp; { {x_n}^n}
+\end{array}
+\right | =
+{\prod_{n{\ge}i{\gt}j{\ge}1} }({x_i}-{x_j})
+\]</span></p>
+<h3 id="对角线元素相同且其他元素也相同的行列式">对角线元素相同且其他元素也相同的行列式</h3>
+<p><span class="math display">\[
+\left |
+\begin{array}{ccccc}
+a &amp; b &amp; b &amp; \dotsb &amp; b \\
+b &amp; a &amp; b &amp; \dotsb &amp; b \\
+b &amp; b &amp; a &amp; \dotsb &amp; b \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+b &amp; b &amp; b &amp; \dotsb &amp; a
+\end{array}
+\right | =
+[a +(n-1)b](a-b)^{n-1}
+\]</span></p>
+<h2 id="进一步研究行列式">进一步研究行列式</h2>
+<h3 id="行列式的线性性质">行列式的线性性质</h3>
+<blockquote>
+<p>参考教材3.2最后一段，还没太学会</p>
+</blockquote>
+<p>对于行列式的求解，可以视作从<span class="math inline">\(R^n\)</span>到<span class="math inline">\(R\)</span>的线性变换，其自变量是一组列向量，此时如果对某一个列向量进行变换，行列式就是关于这个列向量的线性函数。也就是说，如果将矩阵<span class="math inline">\(A\)</span>的列向量<span class="math inline">\(\mathbf{a_{j} }\)</span>更换为向量<span class="math inline">\(\mathbf{x}\)</span>，那么这个行列式就是关于它的线性函数<span class="math inline">\(T\)</span>。</p>
+<p><span class="math display">\[
+T(c\mathbf{x}) = cT(\mathbf{x})\\
+T(\mathbf{u}+\mathbf{v}) = T(\mathbf{u})+T(\mathbf{v})
+\]</span></p>
+<h3 id="拉普拉斯变换">拉普拉斯变换</h3>
+<p>拉普拉斯变换允许将一个线性微分方程组视作一个线性代数方程组，但其系数含有一个参数。</p>
+<p>求解这样一个线性方程组在满足行列式不为0时的唯一解，只需使用克拉默法则即可。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Matlab/">Matlab</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/28245/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">线性代数</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/30847/">
+                        <span class="hidden-mobile">计算机是怎样跑起来的 笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,1217 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Springboot入门记录和Spring相关的东西">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot入门">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/22597/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="Springboot入门记录和Spring相关的东西">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://47.100.74.245/blog/post_img/spring_boot.jpg">
+<meta property="article:published_time" content="2022-04-05T12:39:00.000Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.535Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="单元测试">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://47.100.74.245/blog/post_img/spring_boot.jpg">
+  
+  
+  <title>Spring Boot入门 - 苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/post_img/spring_boot.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Spring Boot入门">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-05 12:39" pubdate>
+        2022年4月5日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      15k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      128 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Spring Boot入门</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <script src='https://gitee.com/guo-surui/fuck_course_design/widget_preview' async defer></script>
+<div id="osc-gitee-widget-tag">
+
+</div>
+<style>
+.osc_pro_color {color: #4183c4 !important;}
+.osc_panel_color {background-color: #ffffff !important;}
+.osc_background_color {background-color: #ffffff !important;}
+.osc_border_color {border-color: #e3e9ed !important;}
+.osc_desc_color {color: #666666 !important;}
+.osc_link_color * {color: #9b9b9b !important;}
+</style>
+<h1 id="前言">前言</h1>
+<h2 id="三层架构">三层架构</h2>
+<h3 id="基本层次">基本层次</h3>
+<h3 id="podtodao等">PO、DTO、DAO等</h3>
+<h3 id="各层设计原则">各层设计原则</h3>
+<h3 id="一些范例">一些范例</h3>
+<h2 id="restfulapi">RESTfulAPI</h2>
+<blockquote>
+<p>参考资料</p>
+<p>https://www.runoob.com/w3cnote/restful-architecture.html</p>
+</blockquote>
+<h3 id="简述">简述</h3>
+<p>REST全称是Representational State Transfer，中文意思是表述（编者注：通常译为表征）性状态转移。</p>
+<blockquote>
+<p>它首次出现在2000年Roy Fielding的博士论文中，Roy Fielding是HTTP规范的主要编写者之一。</p>
+<p>他在论文中提到："我这篇文章的写作目的，就是想在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。</p>
+</blockquote>
+<p>REST指的是<strong>一组架构约束条件和原则</strong>。" 如果一个架构符合REST的约束条件和原则，我们就称它为RESTful架构。</p>
+<p>REST本身并没有创造新的技术、组件或服务，而隐藏在RESTful背后的理念就是使用Web的现有特征和能力， 更好地使用现有Web标准中的一些准则和约束。</p>
+<p>虽然REST本身受Web技术的影响很深， 但是理论上REST架构风格并不是绑定在HTTP上，只不过目前HTTP是唯一与REST相关的实例。 所以我们这里描述的REST也是通过HTTP实现的REST。</p>
+<h3 id="进一步解释">进一步解释</h3>
+<h4 id="资源与uri">资源与URI</h4>
+<blockquote>
+<p>REST全称是表述性状态转移，那究竟指的是什么的表述? 其实指的就是资源。</p>
+<p><strong>任何事物，只要有被引用到的必要，它就是一个资源。</strong></p>
+<p>资源可以是实体(例如手机号码)，也可以只是一个抽象概念(例如价值) 。</p>
+</blockquote>
+<p>要让一个资源可以被识别，需要有个唯一标识，在Web中这个唯一标识就是URI(Uniform Resource Identifier)。</p>
+<p>URI既可以看成是资源的地址，也可以看成是资源的名称。</p>
+<blockquote>
+<p>如果某些信息没有使用URI来表示，那它就不能算是一个资源， 只能算是资源的一些信息而已。</p>
+</blockquote>
+<p>URI的设计应该遵循可寻址性原则，具有自描述性，需要在形式上给人以直觉上的关联</p>
+<h3 id="api的设计">API的设计</h3>
+<h2 id="spring家族">Spring家族</h2>
+<h3 id="spring">Spring</h3>
+<h3 id="springboot">SpringBoot</h3>
+<h3 id="ssm架构">SSM架构</h3>
+<h3 id="springcloud">SpringCloud</h3>
+<h1 id="spring原理">Spring原理</h1>
+<h2 id="ioc容器">IOC容器</h2>
+<h2 id="aop">AOP</h2>
+<h1 id="springboot基本应用">SpringBoot基本应用</h1>
+<h2 id="创建一个项目">创建一个项目</h2>
+<h3 id="项目结构">项目结构</h3>
+<p>一个全新的Springboot Web项目目录基本长成这个样子</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">|- java
+  |- com.package.name
+    |- SpringBootDemoApplication
+  |- resources
+    |- application.properties
+|- test
+  |- java
+    |- com.package.name
+      |- SpringBootDemoApplicationTest
+|- pom.xml</code></pre></div>
+<p>可以参考如下形式构建项目结构</p>
+<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">|- POJO
+|- DAO
+|- DTO
+|- VO
+|- service
+|- service Implements
+|- controller
+|- config
+|- utils
+|- constants</code></pre></div>
+<p>其中一些分包和层次的解释</p>
+<ul>
+<li>POJO/PO：实体类，对于JPA项目可以使用models/domain，MyBatis项目可以使用pojo/entity</li>
+<li>DAO：数据访问层，对于JPA项目可以使用repository，MyBatis项目可以使用mapper</li>
+<li>DTO：数据传输对象，用于实现非侵入式的封装多个实体类之间的关系</li>
+<li>VO：显示层对象，通常是Web向模板渲染引擎层传输的对象。</li>
+<li>Service：数据服务接口层</li>
+<li>service implements：数据服务接口实现层，一般使用impl</li>
+<li>controller：前端控制器</li>
+</ul>
+<p>对于Controller层，有一些约定</p>
+<ul>
+<li>参数传递建议不要使用HashMap，建议使用数据模型定义</li>
+<li>可以做参数校验、异常抛出等操作，但建议不要放太多业务逻辑，业务逻辑尽量放到Service层代码中去做</li>
+</ul>
+<blockquote>
+<p>参考资料</p>
+<p>分层资料</p>
+<p>https://blog.csdn.net/qq_35246620/article/details/77247427</p>
+<p>https://www.zhihu.com/question/39651928</p>
+<p>https://blog.csdn.net/qq_39615545/article/details/90172038</p>
+<p>https://zhuanlan.zhihu.com/p/115403195</p>
+<p>命名规范</p>
+<p>https://blog.csdn.net/Luomingkui1109/article/details/78882468</p>
+<p>https://blog.csdn.net/qq_33404395/article/details/79877384?utm_medium=distribute.pc_relevant.none-task-blog-2<sub>default</sub>baidujs_baidulandingword~default-1.pc_relevant_aa&amp;spm=1001.2101.3001.4242.2&amp;utm_relevant_index=4</p>
+<p>https://blog.csdn.net/weixin_30474613/article/details/95303995?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2.pc_relevant_paycolumn_v3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2.pc_relevant_paycolumn_v3&amp;utm_relevant_index=5</p>
+</blockquote>
+<h3 id="依赖分析">依赖分析</h3>
+<blockquote>
+<p>对于一个使用Maven配置的Springboot项目，依赖由<code>pom.xml</code>文件来描述。</p>
+</blockquote>
+<div class="code-wrapper"><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"># 版本号和编码
+&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;
+&lt;project xmlns&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0&quot; xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;
+         xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0 https:&#x2F;&#x2F;maven.apache.org&#x2F;xsd&#x2F;maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;&#x2F;modelVersion&gt;
+    # 1------parent
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;&#x2F;artifactId&gt;
+        &lt;version&gt;2.6.4&lt;&#x2F;version&gt;
+        &lt;relativePath&#x2F;&gt; &lt;!-- lookup parent from repository --&gt;
+    &lt;&#x2F;parent&gt;
+    # 2-----项目元数据
+    # 这一部分就是在创建时的Project Metadata
+    &lt;groupId&gt;com.surui&lt;&#x2F;groupId&gt;
+    &lt;artifactId&gt;spring_boot_example&lt;&#x2F;artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;&#x2F;version&gt;
+    &lt;name&gt;spring_boot_example&lt;&#x2F;name&gt;
+    &lt;description&gt;spring_boot_example&lt;&#x2F;description&gt;
+  
+    &lt;properties&gt;
+        &lt;java.version&gt;11&lt;&#x2F;java.version&gt;
+    &lt;&#x2F;properties&gt;
+    # 3-----具体依赖
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter&lt;&#x2F;artifactId&gt;
+        &lt;&#x2F;dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;&#x2F;artifactId&gt;
+            &lt;scope&gt;test&lt;&#x2F;scope&gt;
+        &lt;&#x2F;dependency&gt;
+    &lt;&#x2F;dependencies&gt;
+    # 4----构建配置
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;&#x2F;artifactId&gt;
+            &lt;&#x2F;plugin&gt;
+        &lt;&#x2F;plugins&gt;
+    &lt;&#x2F;build&gt;
+
+&lt;&#x2F;project&gt;
+</code></pre></div>
+<p>以上主要分为四个部分</p>
+<ol type="1">
+<li><p>parent：继承spring-boot-starter-parent的依赖管理，控制版本与打包等内容</p></li>
+<li><p>项目元数据：创建时候输入的Project Metadata部分，也就是Maven项目的基本元素，包括：groupId、artifactId、version、name、description等</p></li>
+<li><p>dependencies：项目具体依赖，这里包含了spring-boot-starter-web用于实现HTTP接口（该依赖中包含了Spring MVC）；spring-boot-starter-test用于编写单元测试的依赖包。更多功能模块的使用我们将在后面的教程中逐步展开。</p></li>
+<li><p>build：构建配置部分。默认使用了spring-boot-maven-plugin，配合spring-boot-starter-parent就可以把Spring Boot应用打包成JAR来直接运行。</p></li>
+</ol>
+<h2 id="配置文件">配置文件</h2>
+<blockquote>
+<p>参考资料</p>
+<p>https://blog.didispace.com/spring-boot-learning-21-1-3/</p>
+</blockquote>
+<p><code>src/main/resources</code>目录是Spring Boot的配置目录，所以我们要为应用创建配置个性化配置时，就是在该目录之下。Spring Boot的默认配置文件位置为： <code>src/main/resources/application.properties</code>。</p>
+<p>关于Spring Boot应用的配置内容都可以集中在该文件中了，根据我们引入的不同Starter模块，可以在这里定义诸如：容器端口名、数据库链接信息、日志级别等各种配置信息。</p>
+<blockquote>
+<p>比如，我们需要自定义web模块的服务端口号，可以在<code>application.properties</code>中添加<code>server.port=8888</code>来指定服务端口为8888，也可以通过<code>spring.application.name=hello</code>来指定应用名（该名字在Spring Cloud应用中会被注册为服务名）。</p>
+</blockquote>
+<p>Spring Boot的配置文件除了可以使用传统的properties文件之外，还支持现在被广泛推荐使用的YAML文件。</p>
+<h3 id="多个环境分别配置">多个环境分别配置</h3>
+<p>对于多环境的配置，各种项目构建工具或是框架的基本思路是一致的，通过配置多份不同环境的配置文件，再通过打包命令指定需要打包的内容之后进行区分打包，Spring Boot也不例外，或者说更加简单。</p>
+<p>在Spring Boot中多环境配置文件名需要满足<code>application-&#123;profile&#125;.properties</code>的格式，其中<code>&#123;profile&#125;</code>对应你的环境标识，比如：</p>
+<ul>
+<li><code>application-dev.properties</code>：开发环境</li>
+<li><code>application-test.properties</code>：测试环境</li>
+<li><code>application-prod.properties</code>：生产环境</li>
+</ul>
+<p>至于哪个具体的配置文件会被加载，需要在<code>application.properties</code>文件中通过<code>spring.profiles.active</code>属性来设置，其值对应配置文件中的<code>&#123;profile&#125;</code>值。如：<code>spring.profiles.active=test</code>就会加载<code>application-test.properties</code>配置文件内容。</p>
+<p>因此，多环境配置有这个思路</p>
+<ul>
+<li><code>application.properties</code>中配置通用内容，并设置<code>spring.profiles.active=dev</code>，以开发环境为默认配置</li>
+<li><code>application-&#123;profile&#125;.properties</code>中配置各个环境不同的内容</li>
+<li>通过命令行方式去激活不同环境的配置</li>
+</ul>
+<p>特别的，YAML可以在一个单个文件中通过使用<code>spring.profiles</code>属性来定义多个不同的环境配置。</p>
+<p>例如下面的内容，在指定为test环境时，<code>server.port</code>将使用8882端口；而在prod环境，<code>server.port</code>将使用8883端口；如果没有指定环境，<code>server.port</code>将使用8881端口。</p>
+<div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">server:
+  port: 8881
+---
+spring:
+  profiles: test
+server:
+  port: 8882
+---
+spring:
+  profiles: prod
+server:
+  port: 8883</code></pre></div>
+<h3 id="自定义参数和参数引用">自定义参数和参数引用</h3>
+<p>在配置文件中添加<strong>自定义参数</strong></p>
+<div class="code-wrapper"><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">book.name&#x3D;SpringCloudInAction
+book.author&#x3D;ZhaiYongchao</code></pre></div>
+<p>自定义参数时还可以<strong>引用参数</strong></p>
+<div class="code-wrapper"><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">book.name&#x3D;SpringCloud
+book.author&#x3D;ZhaiYongchao
+book.desc&#x3D;$&#123;book.author&#125;  is writing《$&#123;book.name&#125;》</code></pre></div>
+<p>就可以直接使用<code>@Value</code>注解调用自定义参数</p>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">@Component
+public class Book &#123;
+
+    @Value(&quot;$&#123;book.name&#125;&quot;)
+    private String name;
+    @Value(&quot;$&#123;book.author&#125;&quot;)
+    private String author;
+
+    &#x2F;&#x2F; 省略getter和setter
+&#125;</code></pre></div>
+<h3 id="建立实体类">建立实体类</h3>
+<p>示例</p>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">@Data
+public class User &#123;
+
+    private Long id;
+    private String name;
+    private Integer age;
+
+&#125;</code></pre></div>
+<blockquote>
+<p>这里使用<code>@Data</code>注解可以实现在编译器自动添加set和get函数的效果。该注解是lombok提供的，只需要在<code>pom.xml</code>里引入即可</p>
+</blockquote>
+<h2 id="实现一个接口">实现一个接口</h2>
+<h3 id="可能使用到的注解">可能使用到的注解</h3>
+<ul>
+<li><code>@Controller</code>：修饰class，用来创建处理http请求的对象</li>
+<li><code>@RestController</code>：Spring4之后加入的注解，原来在<code>@Controller</code>中返回json需要<code>@ResponseBody</code>来配合，如果直接用<code>@RestController</code>替代<code>@Controller</code>就不需要再配置<code>@ResponseBody</code>，默认返回json格式</li>
+<li><code>@RequestMapping</code>：配置url映射。现在更多的也会直接用以Http Method直接关联的映射注解来定义，比如：<code>GetMapping</code>、<code>PostMapping</code>、<code>DeleteMapping</code>、<code>PutMapping</code>等</li>
+</ul>
+<p>参数的绑定</p>
+<ul>
+<li><code>@RequestParam</code>：接受页面中传递来的参数</li>
+<li><code>@RequestBody</code>：用来绑定通过http请求中application/json类型上传的数据</li>
+<li><code>@PathVariable</code>：用于获取url中的参数，需要在映射时使用花括号注明</li>
+</ul>
+<h3 id="编写controller">编写Controller</h3>
+<p>首先在类声明外使用注解<code>@RequestMapping(value = "/users")</code>进行一次分发，将所有<code>.../users/...</code>都分发到这个controller下</p>
+<p>使用<code>GetMapping</code>等注解实现具体请求</p>
+<blockquote>
+<p>在这里没有对service层进行分离</p>
+</blockquote>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">@RestController
+@RequestMapping(value &#x3D; &quot;&#x2F;users&quot;)     &#x2F;&#x2F; 通过这里配置使下面的映射都在&#x2F;users下
+public class UserController &#123;
+
+    &#x2F;&#x2F; 创建线程安全的Map，模拟users信息的存储
+    static Map&lt;Long, User&gt; users &#x3D; Collections.synchronizedMap(new HashMap&lt;Long, User&gt;());
+
+    &#x2F;**
+     * 处理&quot;&#x2F;users&#x2F;&quot;的GET请求，用来获取用户列表
+     *
+     * @return
+     *&#x2F;
+    @GetMapping(&quot;&#x2F;&quot;)
+    public List&lt;User&gt; getUserList() &#123;
+        &#x2F;&#x2F; 还可以通过@RequestParam从页面中传递参数来进行查询条件或者翻页信息的传递
+        List&lt;User&gt; r &#x3D; new ArrayList&lt;User&gt;(users.values());
+        return r;
+    &#125;
+
+    &#x2F;**
+     * 处理&quot;&#x2F;users&#x2F;&quot;的POST请求，用来创建User
+     *
+     * @param user
+     * @return
+     *&#x2F;
+    @PostMapping(&quot;&#x2F;&quot;)
+    public String postUser(@RequestBody User user) &#123;
+        &#x2F;&#x2F; @RequestBody注解用来绑定通过http请求中application&#x2F;json类型上传的数据
+        users.put(user.getId(), user);
+        return &quot;success&quot;;
+    &#125;
+
+    &#x2F;**
+     * 处理&quot;&#x2F;users&#x2F;&#123;id&#125;&quot;的GET请求，用来获取url中id值的User信息
+     *
+     * @param id
+     * @return
+     *&#x2F;
+    @GetMapping(&quot;&#x2F;&#123;id&#125;&quot;)
+    public User getUser(@PathVariable Long id) &#123;
+        &#x2F;&#x2F; url中的id可通过@PathVariable绑定到函数的参数中
+        return users.get(id);
+    &#125;
+
+    &#x2F;**
+     * 处理&quot;&#x2F;users&#x2F;&#123;id&#125;&quot;的PUT请求，用来更新User信息
+     *
+     * @param id
+     * @param user
+     * @return
+     *&#x2F;
+    @PutMapping(&quot;&#x2F;&#123;id&#125;&quot;)
+    public String putUser(@PathVariable Long id, @RequestBody User user) &#123;
+        User u &#x3D; users.get(id);
+        u.setName(user.getName());
+        u.setAge(user.getAge());
+        users.put(id, u);
+        return &quot;success&quot;;
+    &#125;
+
+    &#x2F;**
+     * 处理&quot;&#x2F;users&#x2F;&#123;id&#125;&quot;的DELETE请求，用来删除User
+     *
+     * @param id
+     * @return
+     *&#x2F;
+    @DeleteMapping(&quot;&#x2F;&#123;id&#125;&quot;)
+    public String deleteUser(@PathVariable Long id) &#123;
+        users.remove(id);
+        return &quot;success&quot;;
+    &#125;
+
+&#125;</code></pre></div>
+<h1 id="mybatis">MyBatis</h1>
+<h2 id="示例">示例</h2>
+<ul>
+<li><p>引入MyBatis的Starter以及MySQL Connector依赖</p>
+<blockquote>
+<p>注意MyBatis的版本关系</p>
+<ul>
+<li><code>2.1.x</code>版本适用于：MyBatis 3.5+、Java 8+、Spring Boot 2.1+</li>
+<li><code>2.0.x</code>版本适用于：MyBatis 3.5+、Java 8+、Spring Boot 2.0/2.1</li>
+<li><code>1.3.x</code>版本适用于：MyBatis 3.4+、Java 6+、Spring Boot 1.5</li>
+</ul>
+<p>其中，目前还在维护的是<code>2.1.x</code>版本和<code>1.3.x</code>版本</p>
+</blockquote></li>
+<li><p>在<code>application.properties</code>中配置mysql的连接配置</p></li>
+<li><p>Mysql中创建一张用来测试的表</p></li>
+<li><p>创建User表的映射对象User</p></li>
+<li><p>创建User表的操作接口：UserMapper</p>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">@Mapper
+public interface UserMapper &#123;
+
+    @Select(&quot;SELECT * FROM USER WHERE NAME &#x3D; #&#123;name&#125;&quot;)
+    User findByName(@Param(&quot;name&quot;) String name);
+
+    @Insert(&quot;INSERT INTO USER(NAME, AGE) VALUES(#&#123;name&#125;, #&#123;age&#125;)&quot;)
+    int insert(@Param(&quot;name&quot;) String name, @Param(&quot;age&quot;) Integer age);
+
+&#125;</code></pre></div></li>
+</ul>
+<h2 id="可能用到的注解">可能用到的注解</h2>
+<ul>
+<li><code>@Param：</code><span class="citation" data-cites="Param">@Param</span><code>中定义的</code>name<code>对应了SQL中的</code>#{name}<code>，</code>age<code>对应了SQL中的</code>#{age}`。</li>
+<li><code>@Map</code>：通过<code>Map&lt;String, Object&gt;</code>对象来作为传递参数的容器</li>
+</ul>
+<h2 id="增删改查的实现">增删改查的实现</h2>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public interface UserMapper &#123;
+
+    @Select(&quot;SELECT * FROM user WHERE name &#x3D; #&#123;name&#125;&quot;)
+    User findByName(@Param(&quot;name&quot;) String name);
+
+    @Insert(&quot;INSERT INTO user(name, age) VALUES(#&#123;name&#125;, #&#123;age&#125;)&quot;)
+    int insert(@Param(&quot;name&quot;) String name, @Param(&quot;age&quot;) Integer age);
+
+    @Update(&quot;UPDATE user SET age&#x3D;#&#123;age&#125; WHERE name&#x3D;#&#123;name&#125;&quot;)
+    void update(User user);
+
+    @Delete(&quot;DELETE FROM user WHERE id &#x3D;#&#123;id&#125;&quot;)
+    void delete(Long id);
+&#125;</code></pre></div>
+<h3 id="查询">查询</h3>
+<p>对于增、删、改操作相对变化较小。而对于“查”操作，我们往往需要进行多表关联，汇总计算等操作，那么对于查询的结果往往就不再是简单的实体对象了，往往需要返回一个与数据库实体不同的包装类，那么对于这类情况，就可以通过<code>@Results</code>和<code>@Result</code>注解来进行绑定，具体如下：</p>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">@Results(&#123;
+    @Result(property &#x3D; &quot;name&quot;, column &#x3D; &quot;name&quot;),
+    @Result(property &#x3D; &quot;age&quot;, column &#x3D; &quot;age&quot;)
+&#125;)
+@Select(&quot;SELECT name, age FROM user&quot;)
+List&lt;User&gt; findAll();</code></pre></div>
+<p>在上面代码中，<span class="citation" data-cites="Result中的property属性对应User对象中的成员名">@Result中的property属性对应User对象中的成员名</span>，column对应SELECT出的字段名。在该配置中故意没有查出id属性，只对User对应中的name和age对象做了映射配置</p>
+<h2 id="自动建表">自动建表</h2>
+<blockquote>
+<p>参考资料</p>
+<p>https://github.com/zyf970617/mybatis-auto-create-table</p>
+</blockquote>
+<h2 id="跨表查询">跨表查询</h2>
+<blockquote>
+<p>参考资料</p>
+<p>https://blog.51cto.com/u_15305798/3130563</p>
+</blockquote>
+<h1 id="spring-jpa">Spring Jpa</h1>
+<h2 id="基本的实体管理">基本的实体管理</h2>
+<h3 id="唯一性约束">唯一性约束</h3>
+<h2 id="多表关联">多表关联</h2>
+<blockquote>
+<p>参考资料</p>
+<p>https://glory.blog.csdn.net/article/details/79465859?spm=1001.2101.3001.6661.1&amp;utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&amp;utm_relevant_index=1</p>
+<p>https://chuhang123.github.io/2017/10/09/Learning-JPA-OneToMany/</p>
+<p>https://www.jianshu.com/p/bf6b7b0da8d8</p>
+<p>http://wangzhenhua.rocks/zh-hans/java/jpa-one-to-many-many-to-one-best-practice</p>
+</blockquote>
+<p>我们在使用JPA的时候，会使用OneToMany表示对象之间的一对多的关系，ManyToOne表示多对一的关系。</p>
+<p>多对一和一对多只是对象关系中的正面描述和反面描述，在JPA中不一样的定义方法会有不同的SQL生成，对性能会有比较大的影响。</p>
+<blockquote>
+<p>比如我们举一个例子：一个学校会有很多的学生，很多学生都会在一个学校上学，那么我们应该会设计一个父对象School和一个子对象Student，School实体会和和Student之间有一对多的关联关系，Student实体和School实体有多对一的关联关系。</p>
+</blockquote>
+<p>在JPA中对于上述的场景描述我们会有三个不同的做法：</p>
+<ol type="1">
+<li>在父对象中使用<code>@OneToMany</code>建立和子对象的关系关系</li>
+<li>在父对象中使用<code>@OneToMany</code>和<code>@JoinColumn</code>来建立和子对象的关系</li>
+<li>建立双向关系，在父对象中使用<code>@OneToMany</code>，在子对象中使用<code>@ManyToOne</code></li>
+<li>在子对象中使用<code>@ManyToOne</code>建立和父对象的联系</li>
+</ol>
+<h3 id="只在父对象中使用onetomany">只在父对象中使用<code>@OneToMany</code></h3>
+<ul>
+<li><p>只需要在父对象中声明即可，例如</p>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class School &#123;
+    @Id
+    @GeneratedValue(strategy &#x3D; GenerationType.SEQUENCE)
+    private long id;
+
+    private String name;
+
+    @OneToMany(
+            cascade &#x3D; CascadeType.ALL,
+            orphanRemoval &#x3D; true
+    )
+    @JoinColumn(name &#x3D; &quot;school_id&quot;)
+    private List&lt;Student&gt; students;
+
+&#125;
+
+public class Student &#123;
+
+    @Id
+    @GeneratedValue(strategy &#x3D; GenerationType.SEQUENCE)
+    private long id;
+
+    private String name;
+&#125;</code></pre></div></li>
+<li><p>这种方式实际上上建立了多对多的关系，也就是说Jpa会建立一张新的多对多表进行记录，SQL语句示例</p>
+<div class="code-wrapper"><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">Hibernate: insert into School (name) values (?)
+Hibernate: insert into Student (name) values (?)
+Hibernate: insert into Student (name) values (?)
+Hibernate: insert into Student (name) values (?)
+Hibernate: insert into School_Student (School_id, students_id) values (?, ?)
+Hibernate: insert into School_Student (School_id, students_id) values (?, ?)
+Hibernate: insert into School_Student (School_id, students_id) values (?, ?)</code></pre></div></li>
+</ul>
+<h3 id="在父对象中使用onetomany和joincolumn">在父对象中使用<code>@OneToMany</code>和<code>@JoinColumn</code></h3>
+<ul>
+<li><p>示例</p>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class School &#123;
+    @Id
+    @GeneratedValue(strategy &#x3D; GenerationType.SEQUENCE)
+    private long id;
+
+    private String name;
+
+    @OneToMany(
+            cascade &#x3D; CascadeType.ALL,
+            orphanRemoval &#x3D; true
+    )
+    @JoinColumn(name &#x3D; &quot;school_id&quot;)
+    private List&lt;Student&gt; students;
+
+&#125;</code></pre></div></li>
+<li><p>这里没有生成多对多的中间表，而是在student表中多了一个school_id的字段，要比上面生成的sql要精简了很多，但是问题是这里创建student的school_id的值是通过update语句更新进去的。因此这还不是一个最佳的sql语句。</p></li>
+</ul>
+<h3 id="父对象中使用onetomany子对象使用manytoone">父对象中使用<code>@OneToMany</code>，子对象使用<code>ManyToOne</code></h3>
+<ul>
+<li><p>示例</p>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class School &#123;
+    @Id
+    @GeneratedValue(strategy &#x3D; GenerationType.IDENTITY)
+    @GenericGenerator(name &#x3D; &quot;native&quot;, strategy &#x3D; &quot;native&quot;)
+    @Column(name &#x3D; &quot;id&quot;, updatable &#x3D; false, nullable &#x3D; false)
+    private long id;
+
+    private String name;
+
+    @OneToMany(
+            mappedBy &#x3D; &quot;school&quot;,
+            cascade &#x3D; CascadeType.ALL,
+            orphanRemoval &#x3D; true
+    )
+    private Set&lt;Student&gt; students;
+
+&#125;
+
+public class Student &#123;
+
+    @Id
+    @GeneratedValue(strategy &#x3D; GenerationType.SEQUENCE)
+    private long id;
+
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name &#x3D; &quot;school_id&quot;)
+    private School school;
+
+&#125;</code></pre></div></li>
+<li><p>请注意，这里<code>@JoinColumn</code>在子对象中被使用，其注解的是一个父对象，但其作用还是相同的</p></li>
+<li><p>这个结果是我们预期生成的，并没有额外的SQL产生。但是这里还存在的问题是在School中定义的OneToMany有导致内存泄漏的风险，因为我们没有办法控制它获取数据的数量，即使我们使用了懒加载，也有内存泄漏的问题。</p></li>
+</ul>
+<h3 id="子对象中使用manytoone">子对象中使用<code>@ManyToOne</code></h3>
+<ul>
+<li>这个就是一对多关系最完美的解决方案</li>
+<li>可以实现的查询方式</li>
+</ul>
+<h3 id="使用manytoone和onetomany实现双向一对多关系">使用<code>@ManyToOne</code>和<code>@OneToMany</code>实现双向一对多关系</h3>
+<blockquote>
+<p>本质上是双向一对多的关系，并不能叫做多对多</p>
+</blockquote>
+<h3 id="使用manytomany实现多对多关系">使用<code>@ManyToMany</code>实现多对多关系</h3>
+<ol type="1">
+<li><code>@ManyToMany 注解用于关系的发出端和接收端</code></li>
+<li><code>同时关系的发出端和接收端--定义一个集合类型的接收端的字段属性；</code></li>
+<li><code>关系的接收端，@ManyToMany(mappedBy='集合类型发出端实体的字段名称')；</code></li>
+</ol>
+<p>由于<code>@JoinTable</code>和<code>@JoinColumn</code>一般定义在拥有关系的这一端，而<code>@mappedBy</code>一定是定义在关系的被拥有方（the owned side），也就是跟定义<code>@JoinTable</code>和<code>@JoinColumn</code>互斥的一方，它的值指向拥有方中关于被拥有方的字段，可能是一个对象（<code>@OneToMany</code>），也可能是一个对象集合（<code>@ManyToMany</code>）。</p>
+<h2 id="一多对多关系中的级联管理">一/多对多关系中的级联管理</h2>
+<blockquote>
+<p>参考资料</p>
+<p>https://wycode.cn/2018-04-19-many_to_many.html</p>
+</blockquote>
+<p>实际业务中，我们通常会遇到以下情况：</p>
+<ol type="1">
+<li>用户和用户的收货地址是一对多关系，当用户被删除时，这个用户的所有收货地址也应该<strong>一并删除</strong>。</li>
+<li>订单和订单中的商品也是一对多关系，但订单被删除时，订单所关联的商品肯定<strong>不能被删除</strong>。</li>
+</ol>
+<p>此时只要配置正确的级联关系，就能达到想要的效果。</p>
+<p>级联关系有</p>
+<ul>
+<li>CascadeType.REFRESH：级联刷新，当多个用户同时作操作一个实体，为了用户取到的数据是实时的，在用实体中的数据之前就可以调用一下refresh()方法</li>
+<li>CascadeType.REMOVE：级联删除，当调用remove()方法删除Order实体时会先级联删除OrderItem的相关数据</li>
+<li>CascadeType.MERGE：级联更新，当调用了Merge()方法，如果Order中的数据改变了会相应的更新OrderItem中的数据</li>
+<li>CascadeType.ALL：包含以上所有级联属性</li>
+<li>CascadeType.PERSIST：级联保存，当调用了Persist() 方法，会级联保存相应的数据</li>
+</ul>
+<h1 id="鉴权的实现">鉴权的实现</h1>
+<h1 id="单元测试">单元测试</h1>
+<h2 id="简单的单元测试">简单的单元测试</h2>
+<h1 id="日志">日志</h1>
+<h2 id="配置">配置</h2>
+<ul>
+<li><p>启动日志：通过在<code>pom.xml</code>中引入了Lombok，然后使用<code>@Slf4j</code>声明引入Slf4j的<code>log</code>日志记录对象，之后就可以轻松的用它来日志了。而这个日志具体是如何写到控制台或者文件的，则有Spring Boot项目中引入了什么具体的日志框架决定，默认情况下就是Logback</p></li>
+<li><p>开启DEBUG日志：在配置文件<code>application.properties</code>中配置<code>debug=true</code></p>
+<blockquote>
+<p>这里开启的DEBUG日志，仅影响核心Logger，包含嵌入式容器、hibernate、spring等这些框架层面的会输出更多内容，但是你自己应用的日志并不会输出为DEBUG级别</p>
+</blockquote></li>
+<li><p>多彩输出：</p></li>
+<li><p>通过在<code>application.properties</code>中设置<code>spring.output.ansi.enabled</code>参数来支持，该参数有三个选项：</p>
+<ul>
+<li>NEVER：禁用ANSI-colored输出</li>
+<li>DETECT：会检查终端是否支持ANSI，是的话就采用彩色输出（默认项）</li>
+<li>ALWAYS：总是使用ANSI-colored格式输出，若终端不支持的时候，会有很多干扰信息，不推荐使用</li>
+</ul></li>
+</ul>
+<h1 id="部署">部署</h1>
+<h2 id="启动springboot项目">启动Springboot项目</h2>
+<h2 id="打包">打包</h2>
+<h2 id="在服务器上润起来">在服务器上润起来</h2>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E5%BC%80%E5%8F%91/">开发</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Spring/">Spring</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Spring-Boot/">Spring Boot</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/42360/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Spring Cloud入门</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/3097/">
+                        <span class="hidden-mobile">重整Windows10——再见win11</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>

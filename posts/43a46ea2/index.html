@@ -1,0 +1,1473 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Flutter的笔记，主要扒自官方站">
+<meta property="og:type" content="article">
+<meta property="og:title" content="苏喂">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/43a46ea2/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="Flutter的笔记，主要扒自官方站">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.kancloud.cn/3e/c9/3ec97a9f584132c2bcdbca60fd2888cc_442x422.png">
+<meta property="og:image" content="https://img.kancloud.cn/8a/e7/8ae7bf36f618a999da8847cbb4da4bf6_762x502.png">
+<meta property="og:image" content="https://book.flutterchina.club/assets/img/1-1.82c25693.png">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/20a53f87642e44a2ae19d3dd42787005~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.image">
+<meta property="article:published_time" content="2022-07-29T23:13:58.531Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.531Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="Flutter">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img.kancloud.cn/3e/c9/3ec97a9f584132c2bcdbca60fd2888cc_442x422.png">
+  
+  
+  <title>苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/banner.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-29 23:13" pubdate>
+        2022年7月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      22k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      180 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="简介">简介</h1>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><p>Flutter实战</p></li>
+<li><p>Flutter Codelab</p></li>
+<li><p>Flutter核心技术与实战</p></li>
+</ul>
+<h2 id="dart语言">Dart语言</h2>
+<blockquote>
+<p>Dart 在静态语法方面和 Java 非常相似，如类型定义、函数声明、泛型等，而在动态特性方面又和 JavaScript 很像，如函数式特性、异步支持等。</p>
+</blockquote>
+<h3 id="变量声明">变量声明</h3>
+<ol type="1">
+<li><p>使用var声明变量。</p>
+<p>Dart 中 var 变量一旦赋值，类型便会确定，则不能再改变其类型。</p>
+<blockquote>
+<p>Dart不管怎么说也是个强类型的语言，所以第一次使用后就被确定</p>
+</blockquote></li>
+<li><p>使用<code>dynamic</code>和<code>Object</code></p>
+<p>与Java相似，<code>Object</code>是所有对象的基类，<code>dynamic</code>与<code>Object</code>声明的变量都可以赋值任意对象，且后期可以改变赋值的类型，这和 <code>var</code> 是不同的</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">dynamic t;
+Object x;
+t &#x3D; &quot;hi world&quot;;
+x &#x3D; &#39;Hello Object&#39;;
+&#x2F;&#x2F;下面代码没有问题
+t &#x3D; 1000;
+x &#x3D; 1000;</code></pre></div>
+<blockquote>
+<p><code>dynamic</code>与<code>Object</code>不同的是<code>dynamic</code>声明的对象编译器会提供所有可能的组合，而<code>Object</code>声明的对象只能使用 <code>Object</code> 的属性与方法, 否则编译器会报错</p>
+</blockquote></li>
+<li><p><code>final</code>和<code>const</code></p>
+<p><code>const</code> 变量是一个编译时常量（<strong>编译时直接替换为常量值</strong>），<code>final</code>变量在第一次使用时被初始化。</p></li>
+<li><p>空安全</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">int i &#x3D; 8; &#x2F;&#x2F;默认为不可空，必须在定义时初始化。
+int? j; &#x2F;&#x2F; 定义为可空类型，对于可空变量，我们在使用前必须判空。
+
+&#x2F;&#x2F; 如果我们预期变量不能为空，但在定义时不能确定其初始值，则可以加上late关键字，
+&#x2F;&#x2F; 表示会稍后初始化，但是在正式使用它之前必须得保证初始化过了，否则会报错
+late int k;
+k&#x3D;9;</code></pre></div>
+<p>如果一个变量我们定义为可空类型，在某些情况下即使我们给它赋值过了，但是预处理器仍然有可能识别不出，这时我们就要显式（通过在变量后面加一个”!“符号）告诉预处理器它已经不是null</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">class Test&#123;
+  int? i;
+  Function? fun;
+  say()&#123;
+    if(i!&#x3D;null) &#123;
+      print(i! * 8); &#x2F;&#x2F;因为已经判过空，所以能走到这 i 必不为null，如果没有显式申明，则 IDE 会报错
+    &#125;
+    if(fun!&#x3D;null)&#123;
+      fun!(); &#x2F;&#x2F; 同上
+    &#125;
+  &#125;
+&#125;
+
+&#x2F;&#x2F; 这是个针对函数变量的语法糖
+fun?.call() &#x2F;&#x2F; fun 不为空时则会被调用</code></pre></div></li>
+</ol>
+<p>Dart同时提供了一些运算用于Null的处理，例如</p>
+<ul>
+<li><code>?.</code>：若为Null，则略过这一行</li>
+<li><code>??</code>：如果为Null，则返回右值，否则返回左值</li>
+<li><code>??=</code>：如果左边为Null，则给左值赋予右值</li>
+</ul>
+<h3 id="函数声明">函数声明</h3>
+<blockquote>
+<p>Dart是一种真正的面向对象的语言，所以<strong>即使是函数也是对象</strong>，并且有一个类型<strong>Function</strong>。这意味着函数可以赋值给变量或作为参数传递给其他函数，这是函数式编程的典型特征。</p>
+</blockquote>
+<p>Dart函数声明如果没有显式声明返回值类型时会默认当做<code>dynamic</code>处理</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">bool isNoble(int atomicNumber) &#123;
+  return _nobleGases[atomicNumber] !&#x3D; null;
+&#125;</code></pre></div>
+<p>函数可以被作为变量使用</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">var say &#x3D; (str)&#123;
+  print(str);
+&#125;;
+say(&quot;hi world&quot;);</code></pre></div>
+<p>可变参数的声明</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">String say(String from, String msg, [String device]) &#123;
+  var result &#x3D; &#39;$from says $msg&#39;;
+  if (device !&#x3D; null) &#123;
+    result &#x3D; &#39;$result with a $device&#39;;
+  &#125;
+  return result;
+&#125;</code></pre></div>
+<p>定义函数时，使用{param1, param2, …}，放在参数列表的最后面，用于指定命名参数</p>
+<p><strong>不能同时使用可选的位置参数和可选的命名参数</strong></p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">&#x2F;&#x2F;设置[bold]和[hidden]标志
+void enableFlags(&#123;bool bold, bool hidden&#125;) &#123;
+    &#x2F;&#x2F; ... 
+&#125;</code></pre></div>
+<h3 id="mixin相当于对多继承的一种实现">mixin(相当于对多继承的一种实现)</h3>
+<blockquote>
+<p>Dart 是不支持多继承的，但是它支持 mixin，简单来讲 mixin 可以 “组合” 多个类</p>
+</blockquote>
+<p>我们定义了几个 mixin，然后通过 with 关键字将它们组合成不同的类</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">class Person &#123;
+  say() &#123;
+    print(&#39;say&#39;);
+  &#125;
+&#125;
+
+mixin Eat &#123;
+  eat() &#123;
+    print(&#39;eat&#39;);
+  &#125;
+&#125;
+
+mixin Walk &#123;
+  walk() &#123;
+    print(&#39;walk&#39;);
+  &#125;
+&#125;
+
+mixin Code &#123;
+  code() &#123;
+    print(&#39;key&#39;);
+  &#125;
+&#125;
+
+class Dog with Eat, Walk&#123;&#125;
+class Man extends Person with Eat, Walk, Code&#123;&#125;</code></pre></div>
+<h3 id="异步">异步</h3>
+<blockquote>
+<p>Dart类库有非常多的返回<code>Future</code>或者<code>Stream</code>对象的函数。 这些函数被称为<strong>异步函数</strong>：它们只会在设置好一些耗时操作之后返回，比如像 IO操作，而不是等到这个操作完成。</p>
+</blockquote>
+<h4 id="future">Future</h4>
+<p><code>Future</code>与JavaScript中的<code>Promise</code>非常相似，表示一个异步操作的最终完成（或失败）及其结果值的表示</p>
+<p><code>Future</code> 的所有API的返回值仍然是一个<code>Future</code>对象，所以可以很方便的进行链式调用</p>
+<p>使用Future.delayed 创建了一个延时任务（实际场景会是一个真正的耗时任务，比如一次网络请求），即2秒后返回结果字符串"hi world!"，然后我们在then中接收异步结果并打印结果</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">Future.delayed(Duration(seconds: 2),()&#123;
+   return &quot;hi world!&quot;;
+&#125;).then((data)&#123;
+   print(data);
+&#125;);</code></pre></div>
+<p>如果异步任务发生错误，我们可以在<code>catchError</code>中捕获错误</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">Future.delayed(Duration(seconds: 2),()&#123;
+   &#x2F;&#x2F;return &quot;hi world!&quot;;
+   throw AssertionError(&quot;Error&quot;);  
+&#125;).then((data)&#123;
+   &#x2F;&#x2F;执行成功会走到这里  
+   print(&quot;success&quot;);
+&#125;).catchError((e)&#123;
+   &#x2F;&#x2F;执行失败会走到这里  
+   print(e);
+&#125;);</code></pre></div>
+<p>有些时候，我们会遇到无论异步任务执行成功或失败都需要做一些事的场景，比如在网络请求前弹出加载对话框，在请求结束后关闭对话框。这种场景，有两种方法，第一种是分别在<code>then</code>或<code>catch</code>中关闭一下对话框，第二种就是使用<code>Future</code>的<code>whenComplete</code>回调</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">Future.delayed(Duration(seconds: 2),()&#123;
+   &#x2F;&#x2F;return &quot;hi world!&quot;;
+   throw AssertionError(&quot;Error&quot;);
+&#125;).then((data)&#123;
+   &#x2F;&#x2F;执行成功会走到这里 
+   print(data);
+&#125;).catchError((e)&#123;
+   &#x2F;&#x2F;执行失败会走到这里   
+   print(e);
+&#125;).whenComplete(()&#123;
+   &#x2F;&#x2F;无论成功或失败都会走到这里
+&#125;);</code></pre></div>
+<p>总的来说，使用<code>Future</code>执行一段异步调用的语句包含四个部分，一是<code>.delayed(&#123;&#125;)</code>，要执行的语句；二是<code>.then((data)&#123;&#125;)</code>执行成功要执行的语句；三是失败时执行的<code>.catchError((e)&#123;&#125;)</code>；四是总是执行的<code>.whenComplete(()&#123;&#125;)</code></p>
+<p>记得在执行时抛出<code>AssertionError("Error")</code>异常！</p>
+<p>对于一组要执行的异步操作，我们使用<code>Future.wait</code>，它接受一个<code>Future</code>数组参数，只有数组中所有<code>Future</code>都执行成功后，才会触发<code>then</code>的成功回调，只要有一个<code>Future</code>执行失败，就会触发错误回调</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">Future.wait([
+  &#x2F;&#x2F; 2秒后返回结果  
+  Future.delayed(Duration(seconds: 2), () &#123;
+    return &quot;hello&quot;;
+  &#125;),
+  &#x2F;&#x2F; 4秒后返回结果  
+  Future.delayed(Duration(seconds: 4), () &#123;
+    return &quot; world&quot;;
+  &#125;)
+]).then((results)&#123;
+  print(results[0]+results[1]);
+&#125;).catchError((e)&#123;
+  print(e);
+&#125;);</code></pre></div>
+<h4 id="asyncawait">Async/Await</h4>
+<blockquote>
+<p>Dart中的<code>async/await</code> 和JavaScript中的<code>async/await</code>功能和用法是一模一样的</p>
+</blockquote>
+<h4 id="回调的整体解决思路">回调的整体解决思路</h4>
+<p>如果代码中有大量异步逻辑，并且出现大量异步任务依赖其它异步任务的结果时，必然会出现<code>Future.then</code>回调中套回调情况。因此我们可以将调用的结果缓存在本地文件系统，再统一进行调用</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">&#x2F;&#x2F;先分别定义各个异步任务
+Future&lt;String&gt; login(String userName, String pwd)&#123;
+	...
+    &#x2F;&#x2F;用户登录
+&#125;;
+Future&lt;String&gt; getUserInfo(String id)&#123;
+	...
+    &#x2F;&#x2F;获取用户信息 
+&#125;;
+Future saveUserInfo(String userInfo)&#123;
+	...
+	&#x2F;&#x2F; 保存用户信息 
+&#125;; 
+
+login(&quot;alice&quot;,&quot;******&quot;).then((id)&#123;
+ &#x2F;&#x2F;登录成功后通过，id获取用户信息    
+ getUserInfo(id).then((userInfo)&#123;
+    &#x2F;&#x2F;获取用户信息后保存 
+    saveUserInfo(userInfo).then(()&#123;
+       &#x2F;&#x2F;保存用户信息，接下来执行其它操作
+        ...
+    &#125;);
+  &#125;);
+&#125;)</code></pre></div>
+<p>这个问题被形象的称为<strong>回调地狱（Callback Hell）</strong></p>
+<p><code>Dart</code>语言提供两种方案，第一个是<code>Future</code>。利用其始终返回一个<code>Future</code>对象的特性，我们可以进行如下格式的调用</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">login(&quot;alice&quot;,&quot;******&quot;).then((id)&#123;
+  	return getUserInfo(id);
+&#125;).then((userInfo)&#123;
+    return saveUserInfo(userInfo);
+&#125;).then((e)&#123;
+   &#x2F;&#x2F;执行接下来的操作 
+&#125;).catchError((e)&#123;
+  &#x2F;&#x2F;错误处理  
+  print(e);
+&#125;);</code></pre></div>
+<p>使用async/await也可以实现，例如</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">task() async &#123;
+   try&#123;
+    String id &#x3D; await login(&quot;alice&quot;,&quot;******&quot;);
+    String userInfo &#x3D; await getUserInfo(id);
+    await saveUserInfo(userInfo);
+    &#x2F;&#x2F;执行接下来的操作   
+   &#125; catch(e)&#123;
+    &#x2F;&#x2F;错误处理   
+    print(e);   
+   &#125;  
+&#125;</code></pre></div>
+<h4 id="stream">Stream</h4>
+<p><code>Stream</code> 也是用于接收异步事件数据，和 <code>Future</code> 不同的是，它可以接收多个异步操作的结果（成功或失败）。</p>
+<p>也就是说，在执行异步任务时，可以通过<strong>多次触发成功或失败事件来传递结果数据或错误异常。</strong></p>
+<p><code>Stream</code> 常用于会<strong>多次读取数据的异步任务场景</strong>，如网络内容下载、文件读写等</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">Stream.fromFutures([
+  &#x2F;&#x2F; 1秒后返回结果
+  Future.delayed(Duration(seconds: 1), () &#123;
+    return &quot;hello 1&quot;;
+  &#125;),
+  &#x2F;&#x2F; 抛出一个异常
+  Future.delayed(Duration(seconds: 2),()&#123;
+    throw AssertionError(&quot;Error&quot;);
+  &#125;),
+  &#x2F;&#x2F; 3秒后返回结果
+  Future.delayed(Duration(seconds: 3), () &#123;
+    return &quot;hello 3&quot;;
+  &#125;)
+]).listen((data)&#123;
+   print(data);
+&#125;, onError: (e)&#123;
+   print(e.message);
+&#125;,onDone: ()&#123;
+
+&#125;);</code></pre></div>
+<h3 id="dart和其他主流语言">Dart和其他主流语言</h3>
+<h2 id="widget简介">Widget简介</h2>
+<p>在 Flutter 中，Widget 采用由父到子、自顶向下的方式进行构建，父 Widget 控制着子 Widget 的显示样式，其样式配置由父 Widget 在构建时提供。</p>
+<h3 id="statelesswidget">StatelessWidget</h3>
+<figure>
+<img src="https://img.kancloud.cn/3e/c9/3ec97a9f584132c2bcdbca60fd2888cc_442x422.png" srcset="/blog/img/loading.gif" lazyload alt="img" /><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<blockquote>
+<p>第一个小例子是，我需要创建一个自定义的弹窗控件，把使用 App 过程中出现的一些错误信息提示给用户。这个组件的父 Widget，能够完全在子 Widget 初始化时将组件所需要的样式信息和错误提示信息传递给它，也就意味着父 Widget 通过初始化参数就能完全控制其展示效果。所以，我可以采用继承 StatelessWidget 的方式，来进行组件自定义。</p>
+<p>第二个小例子是，我需要定义一个计数器按钮，用户每次点击按钮后，按钮颜色都会随之加深。可以看到，这个组件的父 Widget 只能控制子 Widget 初始的样式展示效果，而无法控制在交互过程中发生的颜色变化。所以，我无法通过继承 StatelessWidget 的方式来自定义组件。那么，这个时候就轮到 StatefulWidget 出场了。</p>
+</blockquote>
+<h3 id="statefulwidget">StatefulWidget</h3>
+<figure>
+<img src="https://img.kancloud.cn/8a/e7/8ae7bf36f618a999da8847cbb4da4bf6_762x502.png" srcset="/blog/img/loading.gif" lazyload alt="img" /><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>与 StatelessWidget 相对应的，有一些 Widget（比如 Image、Checkbox）的展示，除了父 Widget 初始化时传入的静态配置之外，还需要处理用户的交互（比如，用户点击按钮）或其内部数据的变化（比如，网络数据回包），并体现在 UI 上。</p>
+<h2 id="flutter简介">Flutter简介</h2>
+<h3 id="如何理解flutter">如何理解Flutter</h3>
+<p>Flutter可以被看作是一个UI框架，它的存在有效提高了跨平台开发的效率和UI的美观。</p>
+<p>Flutter使用Dart语言开发，支持<strong>空安全(Null Safety)</strong>、单行函数之类的语法特性；能够实现很多业务逻辑的处理；可以调用原生平台的代码进行开发；大量的包也已经实现了如调用摄像头这样的操作。</p>
+<h3 id="flutter原理">Flutter原理</h3>
+<p>Flutter框架示意图</p>
+<figure>
+<img src="https://book.flutterchina.club/assets/img/1-1.82c25693.png" srcset="/blog/img/loading.gif" lazyload alt="图1-1" /><figcaption aria-hidden="true">图1-1</figcaption>
+</figure>
+<h3 id="flutter项目的结构">Flutter项目的结构</h3>
+<h4 id="开发习惯">开发习惯</h4>
+<blockquote>
+<p>目前为止这些都是观察到的规律，并不一定是合适的</p>
+</blockquote>
+<ul>
+<li><p>与Java不同，Dart一般不会按照类来组织文件，一个文件一般会包含一整个业务逻辑</p></li>
+<li><p>Dart语言不存在接口等概念，一般也不会考虑设计模式（据说设计模式主要是为了弥补Java的一些乱七八糟的小问题才被提出）。分包的依据主要考虑组件功能，例如:</p>
+<ul>
+<li>widgets：用于存放自定义的组件</li>
+<li>routes：存放导航页面，或者仅为一个用于注册命名路由的文件</li>
+<li>models：存放实体类，一般只放一个文件</li>
+<li>common/data：存放常量</li>
+<li>l10n：国际化</li>
+<li>pages</li>
+<li>themes</li>
+</ul>
+<blockquote>
+<p>官方示例Gallery</p>
+<p>https://github.com/flutter/gallery/tree/master/lib</p>
+<p>组件化和平台化，该如何组织合理稳定的Flutter工程结构？——Flutter核心技术与实践</p>
+<p>https://www.kancloud.cn/alex_wsc/flutter_demo/1572034</p>
+</blockquote></li>
+</ul>
+<h3 id="基本元素">基本元素</h3>
+<p>一个Flutter项目同样是从<code>main</code>方法开始执行的，然后调用<code>MyApp</code>方法开始build一个Widget树</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">void main() &#x3D;&gt; runApp(const MyApp());</code></pre></div>
+<p>Flutter中，万物皆为Widget，甚至连居中这样的排版元素也是Widget，整个App也是一个MaterialApp</p>
+<p>所有的Widget，不管是StatefulWidget还是StatelessWidget都有一个build方法构建，除此以外涉及到的还有Flutter中Widget的生命周期问题</p>
+<figure>
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/20a53f87642e44a2ae19d3dd42787005~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.image" srcset="/blog/img/loading.gif" lazyload alt="State生命周期方法" /><figcaption aria-hidden="true">State生命周期方法</figcaption>
+</figure>
+<p>Flutter中采用的是和Vue、React类似的响应式布局，通过声明Widget、State双向绑定数据实现数据和UI的更新。当数据更新时，State状态改变，触发build方法，依次向下逐个触发build方法更新视图。</p>
+<h1 id="基本概念和一些原理">基本概念和一些原理</h1>
+<h2 id="context">Context</h2>
+<p>context是BuildContext的一个示例，它是对该组件再Widget树中位置的描述，提供了一些方法。</p>
+<blockquote>
+<p>如果 StatefulWidget 的状态是希望暴露出的，应当在 StatefulWidget 中提供一个of 静态方法来获取其 State 对象，开发者便可直接通过该方法来获取；如果 State不希望暴露，则不提供of方法。</p>
+</blockquote>
+<h2 id="调试">调试</h2>
+<ol type="1">
+<li><code>debugger()</code>语句采用一个可选<code>when</code>参数，我们可以指定该参数仅在特定条件为真时中断</li>
+<li><code>print()</code>功能将输出到系统控制台，我们可以使用<code>flutter logs</code>来查看它（基本上是一个包装<code>adb logcat</code>）</li>
+<li><code>debugPrint()</code>是一个封装print，它将输出限制在一个级别，避免被Android内核丢弃</li>
+</ol>
+<h2 id="异常">异常</h2>
+<blockquote>
+<p><code>debugPrint()</code>是一个封装print，它将输出限制在一个级别，避免被Android内核丢弃</p>
+</blockquote>
+<h1 id="基本组件和布局">基本组件和布局</h1>
+<h2 id="文本和按钮">文本和按钮</h2>
+<h3 id="text">Text</h3>
+<p>Text是最基本的一个组件，用来显示单一文本</p>
+<p>Text组件由三部分组成，一是显示的内容，二是和显示格式有关的一系列参数，三是style参数，一般传入一个TextStyle对象控制字体格式</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">Text(
+  &#39;文本是视图系统中的常见控件，用来显示一段特定样式的字符串，就比如 Android 里的 TextView，或是 iOS 中的 UILabel。&#39;,
+  textAlign: TextAlign.center,&#x2F;&#x2F; 居中显示
+  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.red),&#x2F;&#x2F;20 号红色粗体展示
+);</code></pre></div>
+<h3 id="text.rich和textspan">Text.rich和TextSpan</h3>
+<p>TextSpan主要用来解决切片显示的问题</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">TextStyle blackStyle &#x3D; TextStyle(fontWeight: FontWeight.normal, fontSize: 20, color: Colors.black); &#x2F;&#x2F; 黑色样式
+ 
+TextStyle redStyle &#x3D; TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.red); &#x2F;&#x2F; 红色样式
+ 
+Text.rich(
+    TextSpan(
+        children: &lt;TextSpan&gt;[
+          TextSpan(text:&#39;文本是视图系统中常见的控件，它用来显示一段特定样式的字符串，类似&#39;, style: redStyle), &#x2F;&#x2F; 第 1 个片段，红色样式 
+          TextSpan(text:&#39;Android&#39;, style: blackStyle), &#x2F;&#x2F; 第 1 个片段，黑色样式 
+          TextSpan(text:&#39;中的&#39;, style:redStyle), &#x2F;&#x2F; 第 1 个片段，红色样式 
+          TextSpan(text:&#39;TextView&#39;, style: blackStyle) &#x2F;&#x2F; 第 1 个片段，黑色样式 
+        ]),
+  textAlign: TextAlign.center,
+);</code></pre></div>
+<h3 id="button">Button</h3>
+<p>Button有很多种，包括FloatingActionButton、ElevatedButton、RaisedButton和FlatButton等</p>
+<p>一个Button组件主要包括两个属性，onPressed和child</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">FlatButton(
+    color: Colors.yellow, &#x2F;&#x2F; 设置背景色为黄色
+    shape:BeveledRectangleBorder(borderRadius: BorderRadius.circular(20.0)), &#x2F;&#x2F; 设置斜角矩形边框
+    colorBrightness: Brightness.light, &#x2F;&#x2F; 确保文字按钮为深色
+    onPressed: () &#x3D;&gt; print(&#39;FlatButton pressed&#39;), 
+    child: Row(children: &lt;Widget&gt;[Icon(Icons.add), Text(&quot;Add&quot;)],)
+)；</code></pre></div>
+<p>除此之外，还有一个icon参数，能够方便的制作带图标的按钮</p>
+<h2 id="图片和图标">图片和图标</h2>
+<h3 id="image">Image</h3>
+<p>Image控件有三个主要方式，分别是加载Asset资源<code>Image.asset('path')</code>、加载file资源<code>Image.file(new File('path'))</code>和网络图片<code>Image.network('URL')</code></p>
+<p>除了可以根据图片的显示方式设置不同的图片源之外，图片的构造方法还提供了填充模式 fit、拉伸模式 centerSlice、重复模式 repeat 等属性，可以针对图片与目标区域的宽高比差异制定排版模式</p>
+<h3 id="fadeinimage">FadeInImage</h3>
+<p>FadeInImage 控件提供了图片占位的功能，并且支持在图片加载完成时淡入淡出的视觉效果。此外，由于 Image 支持 gif 格式，我们甚至还可以将一些炫酷的加载动画作为占位图。</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">FadeInImage.assetNetwork(
+  placeholder: &#39;assets&#x2F;loading.gif&#39;, &#x2F;&#x2F;gif 占位
+  image: &#39;https:&#x2F;&#x2F;xxx&#x2F;xxx&#x2F;xxx.jpg&#39;,
+  fit: BoxFit.cover, &#x2F;&#x2F; 图片拉伸模式
+  width: 200,
+  height: 200,
+)</code></pre></div>
+<h3 id="cachednetworkimage">CachedNetworkImage</h3>
+<p>ImageCache 使用 LRU（Least Recently Used，最近最少使用）算法进行缓存更新策略，并且默认最多存储 1000 张图片，最大缓存限制为 100MB，当限定的空间已存满数据时，把最久没有被访问到的图片清除。图片<strong>缓存只会在运行期间生效，也就是只缓存在内存中</strong>。</p>
+<p>如果想要支持缓存到文件系统，可以使用第三方的<a target="_blank" rel="noopener" href="https://pub.dev/packages/cached_network_image/">CachedNetworkImage</a>控件。</p>
+<p>CachedNetworkImage 的使用方法与 Image 类似，除了支持图片缓存外，还提供了比 FadeInImage 更为强大的加载过程占位与加载错误占位，可以支持比用图片占位更灵活的自定义控件占位。</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">CachedNetworkImage(
+        imageUrl: &quot;http:&#x2F;&#x2F;xxx&#x2F;xxx&#x2F;jpg&quot;,
+        placeholder: (context, url) &#x3D;&gt; CircularProgressIndicator(),
+        errorWidget: (context, url, error) &#x3D;&gt; Icon(Icons.error),
+     )</code></pre></div>
+<h2 id="对齐和定位">对齐和定位</h2>
+<h2 id="可滚动组件">可滚动组件</h2>
+<h3 id="listview">ListView</h3>
+<p><strong>ListView 提供了一个默认构造函数 ListView</strong>，我们可以通过设置它的 children 参数，很方便地将所有的子 Widget 包含到 ListView 中。</p>
+<p>ListTile 是 Flutter 提供的用于快速构建列表项元素的一个小组件单元，用于 1~3 行（leading、title、subtitle）展示文本、图标等视图元素的场景，通常与 ListView 配合使用。</p>
+<p><strong>ListView 的另一个构造函数 ListView.builder，则适用于子 Widget 比较多的场景</strong>。这个构造函数有两个关键参数：</p>
+<ul>
+<li>itemBuilder，是列表项的创建方法。当列表滚动到相应位置时，ListView 会调用该方法创建对应的子 Widget。</li>
+<li>itemCount，表示列表项的数量，如果为空，则表示 ListView 为无限列表。</li>
+</ul>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">ListView.builder(
+    itemCount: 100, &#x2F;&#x2F; 元素个数
+    itemExtent: 50.0, &#x2F;&#x2F; 列表项高度
+    itemBuilder: (BuildContext context, int index) &#x3D;&gt; ListTile(title: Text(&quot;title $index&quot;), subtitle: Text(&quot;body $index&quot;))
+);</code></pre></div>
+<p>与 ListView.builder 抽离出了子 Widget 的构建方法类似，ListView.separated 抽离出了分割线的创建方法 separatorBuilder，以便根据 index 设置不同样式的分割线。</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">&#x2F;&#x2F; 使用 ListView.separated 设置分割线
+ListView.separated(
+    itemCount: 100,
+    separatorBuilder: (BuildContext context, int index) &#x3D;&gt; index %2 &#x3D;&#x3D;0? Divider(color: Colors.green) : Divider(color: Colors.red),&#x2F;&#x2F;index 为偶数，创建绿色分割线；index 为奇数，则创建红色分割线
+    itemBuilder: (BuildContext context, int index) &#x3D;&gt; ListTile(title: Text(&quot;title $index&quot;), subtitle: Text(&quot;body $index&quot;))&#x2F;&#x2F; 创建子 Widget
+)</code></pre></div>
+<h3 id="滚动嵌套">滚动嵌套</h3>
+<p>Flutter 中有一个专门的控件 CustomScrollView，用来处理多个需要自定义滚动效果的 Widget。在 CustomScrollView 中，<strong>这些彼此独立的、可滚动的 Widget 被统称为 Sliver</strong>。</p>
+<h2 id="线性布局使用row和column">线性布局——使用Row和Column</h2>
+<h2 id="弹性布局源于web的flex">弹性布局——源于Web的Flex</h2>
+<h2 id="流式布局不太清楚">流式布局——不太清楚</h2>
+<h2 id="层叠布局不了解">层叠布局——不了解</h2>
+<h1 id="功能性组件">功能性组件</h1>
+<h2 id="进度指示器">进度指示器</h2>
+<h2 id="输入框表单单选开关和复选框">输入框、表单、单选开关和复选框</h2>
+<h3 id="textfiled组件">TextFiled组件</h3>
+<p><code>TextField</code>组件提供了一个输入框，示例</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">Column(
+  children: &lt;Widget&gt;[
+    TextField(
+      autofocus: true,
+      decoration: InputDecoration(
+        labelText: &quot;用户名&quot;,
+        hintText: &quot;用户名或邮箱&quot;,
+        prefixIcon: Icon(Icons.person)
+      ),
+    ),
+    TextField(
+      decoration: InputDecoration(
+        labelText: &quot;密码&quot;,
+        hintText: &quot;您的登录密码&quot;,
+        prefixIcon: Icon(Icons.lock)
+      ),
+      obscureText: true,
+    ),
+  ],
+);</code></pre></div>
+<p>其具有的controller属性可以配置一个controller，用于文本的获取或控制光标位置、选择状态等。</p>
+<p>controller可以用来直接获取输入内容，调用<code>.text()</code>方法即可。</p>
+<p>可以对一个controller配置监听,当然，也可以通过<code>onChanged()</code>实现，例如</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">@override
+void initState() &#123;
+  &#x2F;&#x2F;监听输入改变  
+  _unameController.addListener(()&#123;
+    print(_unameController.text);
+  &#125;);
+&#125;</code></pre></div>
+<p><code>onChanged</code>是专门用于监听文本变化，而<code>controller</code>的功能却多一些，除了能监听文本变化外，它还可以设置默认值、选择文本，例如</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">_selectionController.text&#x3D;&quot;hello world!&quot;;
+_selectionController.selection&#x3D;TextSelection(
+    baseOffset: 2,
+    extentOffset: _selectionController.text.length
+);</code></pre></div>
+<p>文本输入时的焦点可以通过<code>FocusNode</code>和<code>FocusScopeNode</code>来控制，<strong>默认情况下，焦点由<code>FocusScope</code>来管理</strong>，它代表焦点控制范围，可以在这个范围内可以通过<code>FocusScopeNode</code>在输入框之间移动焦点、设置默认焦点等。</p>
+<p>我们可以通过<code>FocusScope.of(context)</code> 来获取Widget树中默认的<code>FocusScopeNode</code>。</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">class FocusTestRoute extends StatefulWidget &#123;
+  @override
+  _FocusTestRouteState createState() &#x3D;&gt; _FocusTestRouteState();
+&#125;
+
+class _FocusTestRouteState extends State&lt;FocusTestRoute&gt; &#123;
+  FocusNode focusNode1 &#x3D; FocusNode();
+  FocusNode focusNode2 &#x3D; FocusNode();
+  FocusScopeNode? focusScopeNode;
+
+  @override
+  Widget build(BuildContext context) &#123;
+    return Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        children: &lt;Widget&gt;[
+          TextField(
+            autofocus: true, 
+            focusNode: focusNode1,&#x2F;&#x2F;关联focusNode1
+            decoration: InputDecoration(
+                labelText: &quot;input1&quot;
+            ),
+          ),
+          TextField(
+            focusNode: focusNode2,&#x2F;&#x2F;关联focusNode2
+            decoration: InputDecoration(
+                labelText: &quot;input2&quot;
+            ),
+          ),
+          Builder(builder: (ctx) &#123;
+            return Column(
+              children: &lt;Widget&gt;[
+                ElevatedButton(
+                  child: Text(&quot;移动焦点&quot;),
+                  onPressed: () &#123;
+                    &#x2F;&#x2F;将焦点从第一个TextField移到第二个TextField
+                    &#x2F;&#x2F; 这是一种写法 FocusScope.of(context).requestFocus(focusNode2);
+                    &#x2F;&#x2F; 这是第二种写法
+                    if(null &#x3D;&#x3D; focusScopeNode)&#123;
+                      focusScopeNode &#x3D; FocusScope.of(context);
+                    &#125;
+                    focusScopeNode.requestFocus(focusNode2);
+                  &#125;,
+                ),
+                ElevatedButton(
+                  child: Text(&quot;隐藏键盘&quot;),
+                  onPressed: () &#123;
+                    &#x2F;&#x2F; 当所有编辑框都失去焦点时键盘就会收起  
+                    focusNode1.unfocus();
+                    focusNode2.unfocus();
+                  &#125;,
+                ),
+              ],
+            );
+          &#125;,
+          ),
+        ],
+      ),
+    );
+  &#125;</code></pre></div>
+<p>同样的，我们可以为<code>FocusNode</code>创建一个监听</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">...
+&#x2F;&#x2F; 创建 focusNode   
+FocusNode focusNode &#x3D; FocusNode();
+...
+&#x2F;&#x2F; focusNode绑定输入框   
+TextField(focusNode: focusNode);
+...
+&#x2F;&#x2F; 监听焦点变化    
+focusNode.addListener(()&#123;
+   print(focusNode.hasFocus);
+&#125;);</code></pre></div>
+<h3 id="form组件">Form组件</h3>
+<p>Flutter提供了一个<code>Form</code> 组件，它可以对输入框进行分组，然后进行一些统一操作，如输入内容校验、输入框重置以及输入内容保存</p>
+<p><code>Form</code>的子孙元素必须是<code>FormField</code>类型，为了方便使用，Flutter 提供了一个<code>TextFormField</code>组件，它继承自<code>FormField</code>类，也是<code>TextField</code>的一个包装类，所以除了<code>FormField</code>定义的属性之外，它还包括<code>TextField</code>的属性</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">import &#39;package:flutter&#x2F;material.dart&#39;;
+
+class FormTestRoute extends StatefulWidget &#123;
+  @override
+  _FormTestRouteState createState() &#x3D;&gt; _FormTestRouteState();
+&#125;
+
+class _FormTestRouteState extends State&lt;FormTestRoute&gt; &#123;
+  TextEditingController _unameController &#x3D; TextEditingController();
+  TextEditingController _pwdController &#x3D; TextEditingController();
+  GlobalKey _formKey &#x3D; GlobalKey&lt;FormState&gt;();
+
+  @override
+  Widget build(BuildContext context) &#123;
+    return Form(
+      key: _formKey, &#x2F;&#x2F;设置globalKey，用于后面获取FormState
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      child: Column(
+        children: &lt;Widget&gt;[
+          TextFormField(
+            autofocus: true,
+            controller: _unameController,
+            decoration: InputDecoration(
+              labelText: &quot;用户名&quot;,
+              hintText: &quot;用户名或邮箱&quot;,
+              icon: Icon(Icons.person),
+            ),
+            &#x2F;&#x2F; 校验用户名
+            validator: (v) &#123;
+              return v!.trim().isNotEmpty ? null : &quot;用户名不能为空&quot;;
+            &#125;,
+          ),
+          TextFormField(
+            controller: _pwdController,
+            decoration: InputDecoration(
+              labelText: &quot;密码&quot;,
+              hintText: &quot;您的登录密码&quot;,
+              icon: Icon(Icons.lock),
+            ),
+            obscureText: true,
+            &#x2F;&#x2F;校验密码
+            validator: (v) &#123;
+              return v!.trim().length &gt; 5 ? null : &quot;密码不能少于6位&quot;;
+            &#125;,
+          ),
+          &#x2F;&#x2F; 登录按钮
+          Padding(
+            padding: const EdgeInsets.only(top: 28.0),
+            child: Row(
+              children: &lt;Widget&gt;[
+                Expanded(
+                  child: ElevatedButton(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(&quot;登录&quot;),
+                    ),
+                    onPressed: () &#123;
+                      &#x2F;&#x2F; 通过_formKey.currentState 获取FormState后，
+                      &#x2F;&#x2F; 调用validate()方法校验用户名密码是否合法，校验
+                      &#x2F;&#x2F; 通过后再提交数据。
+                      if ((_formKey.currentState as FormState).validate()) &#123;
+                        &#x2F;&#x2F;验证通过提交数据
+                      &#125;
+                    &#125;,
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  &#125;
+&#125;</code></pre></div>
+<h3 id="switch组件">Switch组件</h3>
+<p><code>Switch</code>组件提供了一个Material风格的单选开关。</p>
+<p>他的状态由父组件进行管理</p>
+<p>当<code>Switch</code>或<code>Checkbox</code>被点击时，会触发它们的<code>onChanged</code>回调，我们可以在此回调中处理选中状态改变逻辑</p>
+<p>有一个<code>activeColor</code>属性，用于设置激活态的颜色</p>
+<h3 id="checkbox组件">CheckBox组件</h3>
+<p><code>CheckBox</code>大部分属性与<code>Switch</code>相同。</p>
+<p><code>Checkbox</code>有一个属性<code>tristate</code> ，表示是否为<strong>三态</strong>，其默认值为<code>false</code> ，这时 Checkbox 有两种状态即“选中”和“不选中”，对应的 value 值为<code>true</code>和<code>false</code> ；如果<code>tristate</code>值为<code>true</code>时，value 的值会增加一个状态<code>null</code></p>
+<h2 id="装饰相关的组件">装饰相关的组件</h2>
+<h2 id="scaffold组件">Scaffold组件</h2>
+<h2 id="大小适配相关的组件">大小适配相关的组件</h2>
+<h1 id="路由和状态管理">路由和状态管理</h1>
+<h2 id="数据共享和跨组件状态共享">数据共享和跨组件状态共享</h2>
+<h2 id="路由管理">路由管理</h2>
+<p>路由管理主要涉及到Route和Navigator两个类，Route是对页面的抽象，主要使用MaterialPageRoute建立路由模板。</p>
+<p>MaterialPageRoute 是一种路由模板，定义了路由创建及切换过渡动画的相关配置，可以针对不同平台，实现与平台页面切换动画风格一致的路由切换动画。</p>
+<p>Navigator负责维护一个Route栈。</p>
+<h3 id="基本操作">基本操作</h3>
+<p>使用<code>Navigator.push(context, NewRoute)</code>转到新page</p>
+<p>使用<code>Navigator.pop()</code>移去栈顶的page</p>
+<h3 id="命名路由">命名路由</h3>
+<p>要想通过名字来指定页面切换，我们必须先给应用程序 MaterialApp 提供一个页面名称映射规则，即路由表 routes，这样 Flutter 才知道名字与页面 Widget 的对应关系。</p>
+<p>路由表实际上是一个 Map，其中 key 值对应页面名字，而 value 值则是一个 WidgetBuilder 回调函数，我们需要在这个函数中创建对应的页面。</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">MaterialApp(
+    ...
+    &#x2F;&#x2F; 注册路由
+    routes:&#123;
+      &quot;second_page&quot;:(context)&#x3D;&gt;SecondPage(),
+    &#125;,
+);
+&#x2F;&#x2F; 使用名字打开页面
+Navigator.pushNamed(context,&quot;second_page&quot;);</code></pre></div>
+<p>对于一个潜在的空路由，我们考虑对用户进行友好的错误提示，比如跳转到一个统一的 NotFoundScreen 页面，也方便我们对这类错误进行统一收集、上报。因此，在注册路由表时，Flutter 提供了 UnknownRoute 属性，我们可以对未知的路由标识符进行统一的页面跳转处理。</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">MaterialApp(
+    ...
+    &#x2F;&#x2F; 注册路由
+    routes:&#123;
+      &quot;second_page&quot;:(context)&#x3D;&gt;SecondPage(),
+    &#125;,
+    &#x2F;&#x2F; 错误路由处理，统一返回 UnknownPage
+    onUnknownRoute: (RouteSettings setting) &#x3D;&gt; MaterialPageRoute(builder: (context) &#x3D;&gt; UnknownPage()),
+);
+ 
+&#x2F;&#x2F; 使用错误名字打开页面
+Navigator.pushNamed(context,&quot;unknown_page&quot;);</code></pre></div>
+<h3 id="页面参数的传递">页面参数的传递</h3>
+<p>Flutter 提供了<strong>路由参数</strong>的机制，可以在打开路由时传递相关参数，在目标页面通过 RouteSettings 来获取页面参数</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">&#x2F;&#x2F; 打开页面时传递字符串参数
+Navigator.of(context).pushNamed(&quot;second_page&quot;, arguments: &quot;Hey&quot;);
+ 
+class SecondPage extends StatelessWidget &#123;
+  @override
+  Widget build(BuildContext context) &#123;
+    &#x2F;&#x2F; 取出路由参数
+    String msg &#x3D; ModalRoute.of(context).settings.arguments as String;
+    return Text(msg);
+  &#125;
+&#125;</code></pre></div>
+<p>Flutter 也提供了<strong>返回参数</strong>的机制。在 push 目标页面时，可以设置目标页面关闭时监听函数，以获取返回参数；而目标页面可以在关闭路由时传递相关参数。</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">class SecondPage extends StatelessWidget &#123;
+  @override
+  Widget build(BuildContext context) &#123;
+    return Scaffold(
+      body: Column(
+        children: &lt;Widget&gt;[
+          Text(&#39;Message from first screen: $msg&#39;),
+          RaisedButton(
+            child: Text(&#39;back&#39;),
+            &#x2F;&#x2F; 页面关闭时传递参数
+            onPressed: ()&#x3D;&gt; Navigator.pop(context,&quot;Hi&quot;)
+          )
+        ]
+      ));
+  &#125;
+&#125;
+ 
+class _FirstPageState extends State&lt;FirstPage&gt; &#123;
+  String _msg&#x3D;&#39;&#39;;
+  @override
+  Widget build(BuildContext context) &#123;
+    return new Scaffold(
+      body: Column(children: &lt;Widget&gt;[
+        RaisedButton(
+            child: Text(&#39;命名路由（参数 &amp; 回调）&#39;),
+            &#x2F;&#x2F; 打开页面，并监听页面关闭时传递的参数
+            onPressed: ()&#x3D;&gt; Navigator.pushNamed(context, &quot;third_page&quot;,arguments: &quot;Hey&quot;).then((msg)&#x3D;&gt;setState(()&#x3D;&gt;_msg&#x3D;msg)),
+        ),
+        Text(&#39;Message from Second screen: $_msg&#39;),
+ 
+      ],),
+    );
+  &#125;
+&#125;</code></pre></div>
+<h2 id="导航返回拦截">导航返回拦截</h2>
+<h1 id="手势通知和动画">手势、通知和动画</h1>
+<h2 id="手势的识别">手势的识别</h2>
+<h2 id="通知">通知</h2>
+<h1 id="网络">网络</h1>
+<h2 id="http-client">HTTP Client</h2>
+<h2 id="dio">Dio</h2>
+<p>get方法示例</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">void getRequest() async &#123;
+  &#x2F;&#x2F; 创建网络调用示例
+  Dio dio &#x3D; new Dio();
+  
+  &#x2F;&#x2F; 设置 URI 及请求 user-agent 后发起请求
+  var response &#x3D; await dio.get(&quot;https:&#x2F;&#x2F;flutter.dev&quot;, options:Options(headers: &#123;&quot;user-agent&quot; : &quot;Custom-UA&quot;&#125;));
+  
+ &#x2F;&#x2F; 打印请求结果
+  if(response.statusCode &#x3D;&#x3D; HttpStatus.ok) &#123;
+    print(response.data.toString());
+  &#125; else &#123;
+    print(&quot;Error: $&#123;response.statusCode&#125;&quot;);
+  &#125;
+&#125;</code></pre></div>
+<p>文件的上传下载</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">&#x2F;&#x2F; 使用 FormData 表单构建待上传文件
+FormData formData &#x3D; FormData.from(&#123;
+  &quot;file1&quot;: UploadFileInfo(File(&quot;.&#x2F;file1.txt&quot;), &quot;file1.txt&quot;),
+  &quot;file2&quot;: UploadFileInfo(File(&quot;.&#x2F;file2.txt&quot;), &quot;file1.txt&quot;),
+ 
+&#125;);
+&#x2F;&#x2F; 通过 post 方法发送至服务端
+var responseY &#x3D; await dio.post(&quot;https:&#x2F;&#x2F;xxx.com&#x2F;upload&quot;, data: formData);
+print(responseY.toString());
+ 
+&#x2F;&#x2F; 使用 download 方法下载文件
+dio.download(&quot;https:&#x2F;&#x2F;xxx.com&#x2F;file1&quot;, &quot;xx1.zip&quot;);
+ 
+&#x2F;&#x2F; 增加下载进度回调函数
+dio.download(&quot;https:&#x2F;&#x2F;xxx.com&#x2F;file1&quot;, &quot;xx2.zip&quot;, onReceiveProgress: (count, total) &#123;
+	&#x2F;&#x2F;do something      
+&#125;);</code></pre></div>
+<p>使用拦截器添加Token、User-Agent等参数</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">&#x2F;&#x2F; 增加拦截器
+dio.interceptors.add(InterceptorsWrapper(
+    onRequest: (RequestOptions options)&#123;
+      &#x2F;&#x2F; 为每个请求头都增加 user-agent
+      options.headers[&quot;user-agent&quot;] &#x3D; &quot;Custom-UA&quot;;
+      &#x2F;&#x2F; 检查是否有 token，没有则直接报错
+      if(options.headers[&#39;token&#39;] &#x3D;&#x3D; null) &#123;
+        return dio.reject(&quot;Error: 请先登录 &quot;);
+      &#125; 
+      &#x2F;&#x2F; 检查缓存是否有数据
+      if(options.uri &#x3D;&#x3D; Uri.parse(&#39;http:&#x2F;&#x2F;xxx.com&#x2F;file1&#39;)) &#123;
+        return dio.resolve(&quot; 返回缓存数据 &quot;);
+      &#125;
+      &#x2F;&#x2F; 放行请求
+      return options;
+    &#125;
+));
+ 
+&#x2F;&#x2F; 增加 try catch，防止请求报错
+try &#123;
+  var response &#x3D; await dio.get(&quot;https:&#x2F;&#x2F;xxx.com&#x2F;xxx.zip&quot;);
+  print(response.data.toString());
+&#125;catch(e) &#123;
+  print(e);
+&#125;</code></pre></div>
+<h2 id="json的解析">JSON的解析</h2>
+<h3 id="bean的编写">Bean的编写</h3>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">class User &#123;
+  final String name;
+  final String email;
+
+  User(this.name, this.email);
+
+  User.fromJson(Map&lt;String, dynamic&gt; json)
+      : name &#x3D; json[&#39;name&#39;],
+        email &#x3D; json[&#39;email&#39;];
+
+  Map&lt;String, dynamic&gt; toJson() &#x3D;&gt;
+    &lt;String, dynamic&gt;&#123;
+      &#39;name&#39;: name,
+      &#39;email&#39;: email,
+    &#125;;
+&#125;</code></pre></div>
+<p>需要关注的有两个方法，<code>.fromJson</code>和<code>.toJson()</code></p>
+<h3 id="jsonserializable自动生成model">JsonSerializable自动生成Model</h3>
+<blockquote>
+<p><code>json_serializable package</code>是一个自动化的源代码生成器，可以在开发阶段为我们生成 JSON 序列化模板，这样一来，由于序列化代码不再由我们手写和维护，我们将运行时产生 JSON 序列化异常的风险降至最低</p>
+</blockquote>
+<p>使用它需要调用如下两个开发依赖项</p>
+<div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">dependencies:
+  json_annotation: &lt;最新版本&gt;
+
+dev_dependencies:
+  build_runner: &lt;最新版本&gt;
+  json_serializable: &lt;最新版本&gt;</code></pre></div>
+<p>Bean文件的声明</p>
+<div class="code-wrapper"><pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">import &#39;package:json_annotation&#x2F;json_annotation.dart&#39;;
+
+&#x2F;&#x2F; user.g.dart 将在我们运行生成命令后自动生成
+part &#39;user.g.dart&#39;;
+
+&#x2F;&#x2F;&#x2F;这个标注是告诉生成器，这个类是需要生成Model类的
+@JsonSerializable()
+
+class User&#123;
+  User(this.name, this.email);
+
+  String name;
+  String email;
+  &#x2F;&#x2F;不同的类使用不同的mixin即可
+  factory User.fromJson(Map&lt;String, dynamic&gt; json) &#x3D;&gt; _$UserFromJson(json);
+  Map&lt;String, dynamic&gt; toJson() &#x3D;&gt; _$UserToJson(this);  
+&#125;</code></pre></div>
+<p>在配置好后，并不会得到对应的bean，一种方案是通过<code>flutter packages pub run build_runner watch</code>在项目根目录下运行来启动_watcher_。只需启动一次观察器，然后它就会在后台运行，这是安全的</p>
+<h3 id="自动化脚本">自动化脚本</h3>
+<h2 id="网络的封装">网络的封装</h2>
+<h1 id="数据存储">数据存储</h1>
+<h2 id="文件存储">文件存储</h2>
+<h2 id="shared-preference">Shared Preference</h2>
+<h2 id="本地数据库">本地数据库</h2>
+<h1 id="多平台适配">多平台适配</h1>
+<h2 id="platformchannel">PlatformChannel</h2>
+<h2 id="windows">Windows</h2>
+<h2 id="android">Android</h2>
+<h1 id="常用功能的实现">常用功能的实现</h1>
+<h2 id="摄像头和相册的调用">摄像头和相册的调用</h2>
+<h2 id="主题系统">主题系统</h2>
+<h2 id="多语言">多语言</h2>
+<h2 id="自动登录">自动登录</h2>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E5%BC%80%E5%8F%91/">开发</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Flutter/">Flutter</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Android/">Android</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/44011/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C++练习和DSA课程的准备</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/57343/">
+                        <span class="hidden-mobile">Go语言与微服务初步</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>

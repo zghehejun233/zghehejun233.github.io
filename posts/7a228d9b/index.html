@@ -1,0 +1,1606 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="计算机科学引论复习笔记（教材：机械工业出版社）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机科学引论">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/7a228d9b/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="计算机科学引论复习笔记（教材：机械工业出版社）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-29T23:13:58.539Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.539Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="当代大学牲实录">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>计算机科学引论 - 苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/banner.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="计算机科学引论">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-29 23:13" pubdate>
+        2022年7月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      25k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      213 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机科学引论</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="分享">分享</h2>
+<ul>
+<li>善用wiki</li>
+<li>整理一下内容（yysy书组织的层次有点乱）</li>
+<li>排除法yyds</li>
+<li>问答题回答作用、定义、特点都可以</li>
+<li>以关键词组织体系</li>
+</ul>
+<h2 id="名词翻译">名词翻译</h2>
+<h2 id="判断">判断</h2>
+<ul>
+<li>RAM是易失的，所以他需要供电</li>
+<li>The software you install（安装） to help a printer communicate with a computer is called a device driver.</li>
+<li>Serial processing is when a processor begins executing（执行） one instruction before it completes the previous instruction.</li>
+<li>Public key encryption uses a public key to encrypt messages, but <strong>a private key is required to decrypt</strong> messages.</li>
+<li>A computer’s operating system is not a type of application software.</li>
+<li>The list of codes for a microprocessor’s instruction set is called machine language.</li>
+<li>A compiler converts source code to <strong>object code.</strong></li>
+<li>A dictionary attack is a virus that hides out in the spelling checker for your word processing software.</li>
+<li>Today’s computers typically process 32 or 64 bits at a time.</li>
+<li>In RAM microscopic（微型的） electronic parts called capacitors（电容器） hold the bits that represent datA.</li>
+<li>ROM is a type of memory that holds the6 computer’s startup routine.</li>
+<li>Hard disk drives, optical drives, and solid state drives are <strong>not random access devices.</strong></li>
+<li>CD-RWs doesn't allow you to record data, but data cannot be changed once it is recorded</li>
+<li>The most popular type of wired connection is Ethernet.</li>
+<li>The Domain Name System stores IP addresses and their equivalent domain names</li>
+<li>Dial-up and DSL provide Internet access using telephone cabling.</li>
+<li>The Web uses cookies because HTTP is stateless.</li>
+<li>E-mail attachments are converted with MIME into ASCII code.</li>
+<li>Any access to data or programs by hackers, criminals, or other unauthorized persons is called intrusion.</li>
+<li>Ethernet simultaneously broadcasts data packets to all network devices.</li>
+<li>A B2C e-commerce transaction occurs when individual consumers purchase goods and services from online merchants.</li>
+</ul>
+<h2 id="选择">选择</h2>
+<ul>
+<li><p>The type of code that uses only seven bits for each character is ASCII</p>
+<p>The Extended ASCII uses 8bits</p></li>
+<li><p>If virus protection software identifies a virus, it can try to take all of the following actions including remove the infection,delete the file,put the file in quarantine,but except shut down the computer</p></li>
+<li><p>A submenu,menu selection or dialog box is an additional set of commands that the computer displays after you make a selection from the main menu.</p></li>
+<li><p>The main directory maintained by your computer’s operating system is the root directory (based on Linux/Unix)</p></li>
+<li><p>Application software is designed to accomplish real-world tasks.</p></li>
+<li><p>RAM is a temporary holding area for data, application program instructions, and the operating system.</p></li>
+<li><p>RAM can be thought of as the waiting room for the computer’s processor</p></li>
+<li><p>A connecting link is a physical path or a frequency used for signal transmissions.</p></li>
+<li><p>A hard disk platter is a flat, rigid disk made of aluminum or glass and coated with magnetic iron oxide particles.</p></li>
+<li><p>Antispyware software is a type of security software designed to identify and neutralize Web bugs, ad-serving cookies, and other types of malware.</p></li>
+<li><p>A(n) web is a collection of related information organized and formatted so it can be accessed using software called a browser</p></li>
+<li><p>To find a particular record or group of records in a database, you use a query.</p></li>
+<li><p>A group of sectors is called a cluster.</p></li>
+<li><p>Cable currently offers the fastest Internet access speeds.</p></li>
+<li><p>Cable Internet service needs circuitry to handle Ethernet protocols and a cable modem.</p></li>
+<li><p>Portable Internet access includes all of the following EXCEPT WIFI</p></li>
+<li><p>A compute-intensive problem runs on a supercomputer</p></li>
+<li></li>
+</ul>
+<h2 id="专题">专题</h2>
+<h2 id="storage-type">storage type</h2>
+<ul>
+<li>solid state storage</li>
+<li>magnetic storage</li>
+<li>bubble storage</li>
+<li>optical storage</li>
+</ul>
+<h2 id="chapter1-information-technologythe-internetand-you">Chapter1 Information Technology,the Internet,and You</h2>
+<h3 id="information-systems">Information Systems</h3>
+<p>Consider PC as a part of the information system.</p>
+<h4 id="people">People</h4>
+<ul>
+<li>The PCs are making <strong>people, end users</strong> like you,more productive.</li>
+</ul>
+<h5 id="making-it-work-for-you">Making IT Work for You</h5>
+<h5 id="tips">Tips</h5>
+<ul>
+<li>Privacy</li>
+<li>Environment</li>
+<li>Ethics</li>
+<li>Careers in IT</li>
+</ul>
+<h4 id="procedures">Procedures</h4>
+<ul>
+<li><p>The rules or guidelines for people to follow when using software,harware,data are procedures.</p></li>
+<li><p>They are usually <strong>documented in manuals</strong></p></li>
+</ul>
+<h4 id="software">Software</h4>
+<ul>
+<li>Tell the computer how to do its work.</li>
+<li>Anothe name for a program</li>
+<li>Convert <strong>data(umprocessed facts) into Information(processed facts).</strong></li>
+</ul>
+<h5 id="system-softwarechapter4">System Software(Chapter4)</h5>
+<ul>
+<li>Enables the application software to interact with the computer hardware</li>
+<li>a collection of programs
+<ul>
+<li>Operating System（操作系统）:smartphones use embedded operating system,also known as real-time operating systems(RTOS);desktop computers use standalone operating systems;networks use network operating system.</li>
+<li>Utilities:An example,antivirus program.</li>
+</ul></li>
+</ul>
+<h5 id="application-softwarechapter3">Application Software(Chapter3)</h5>
+<ul>
+<li><p>General-purpose applications（通用应用程序）</p>
+<p>To be considered an efficient and effective end user.</p>
+<ul>
+<li>Word processors</li>
+<li>Spreadsheets:Analyze and summarize numerical data.</li>
+<li>Database management systems（数据库管理系统）</li>
+<li>Presentation software:Communicate a message or persuade other people.</li>
+</ul></li>
+<li><p>Specialized applications</p>
+<p>More narrowly focused on specific disciplines and occupations</p>
+<ul>
+<li>Graphics（图像处理）</li>
+<li>Web authoring programs</li>
+</ul></li>
+<li><p>Mobile apps</p>
+<p>Primiraly designed for mobile device.</p>
+<ul>
+<li>Social networking</li>
+<li>Games</li>
+<li>Downloading music and videos</li>
+</ul></li>
+</ul>
+<h4 id="hardware">Hardware</h4>
+<ul>
+<li>The equipment that processes the data to create information.</li>
+<li>Includes smartphones, tablet,keyboards,mice,displays,system units,and other devices.</li>
+<li><strong>Controlled by software.</strong></li>
+</ul>
+<h5 id="types-of-computers">Types of Computers</h5>
+<ul>
+<li>Supercomputers（超算）:most powerful;analyze and predict worldwide weather patterns;for example,IBM's Blur Gene</li>
+<li>Mainframe computers（大型机）:for example,insurance companies use them to process information about millions of policyholders.</li>
+<li>Midrange computers（中型机）:support or serve end users for such specific needs as retrieving data from a database or supplying access to application software.</li>
+<li>Personal computers(PCs):five types
+<ul>
+<li>Desktop computers</li>
+<li>Laptop computers(notebook computers)</li>
+<li>Tablets(Tablet computers)</li>
+<li>Smartphones</li>
+<li>Wearable device</li>
+</ul></li>
+</ul>
+<h5 id="cell-phones">Cell Phones</h5>
+<p>Cell phone is also a computer</p>
+<h5 id="personal-computer-hardware">Personal Computer Hardware</h5>
+<ul>
+<li><p><strong>System unit(Chapter5)（系统单元）</strong>:a contaniner thar houses most of the electronic components that make up a computer system;<strong>microprocessors and memory</strong> are two important components</p>
+<p>One type of memory is random-access memory(RAM) which is sometimes referred to as temporary storage</p>
+<blockquote>
+<p>此概念是指计算机的硬件组成</p>
+</blockquote></li>
+<li><p><strong>Input/output(Chapter6)</strong>:keyboard and mouse; display,as known monitor</p></li>
+<li><p><strong>Secondary storage(Chapter7)(外存)</strong>:holds data constantly</p>
+<p>Hard disks:using rigid metallic platters and read/write heas that move across the platters,data and information are stored using <strong>magnetic charges</strong> on diks's surface.</p>
+<p>Solid-state storage:save data similar to RAMs</p>
+<p>Optical discs:using <strong>laser tchnology</strong> to store data and programs; i<strong>ncluding compact discs(CDs),digital versatile(or video) discs(DvD),and Blu-ray Discs(BD)</strong></p></li>
+<li><p><strong>Communication(Chapter8)</strong></p></li>
+</ul>
+<h4 id="data">Data</h4>
+<ul>
+<li><p>The raw information</p>
+<blockquote>
+<p>与information相对，data是指未经处理的元数据</p>
+</blockquote></li>
+</ul>
+<h5 id="types">Types</h5>
+<ul>
+<li>Document files</li>
+<li>Worksheet files</li>
+<li>Database files</li>
+<li>Presentation files</li>
+</ul>
+<h4 id="internet">Internet</h4>
+<ul>
+<li>A way to connect to other people and computers.</li>
+</ul>
+<h3 id="connectivity-and-the-mobile-internet">Connectivity and the Mobile Internet</h3>
+<ul>
+<li>A network is a communications system connecting two or more computers</li>
+<li>The largest network in the world is the Internet</li>
+<li>The web provides a multimedia interface to the resource</li>
+</ul>
+<h5 id="things-driving-the-impact-of-tehcnology">Things Driving the Impact of Tehcnology</h5>
+<ul>
+<li>Cloud computing(云计算)</li>
+<li>Wireless communication</li>
+<li>Internet of Things(物联网)</li>
+</ul>
+<hr />
+<h2 id="chapter2-the-internetthe-web-and-electronic-commerce">Chapter2 The Internet,The WEB ,and Electronic Commerce</h2>
+<h3 id="the-internet-and-the-web">The Internet and the Web</h3>
+<ul>
+<li>Adavanced Research Project Agency Network(ARPANET), an immense network that connects small er networks was <strong>launched in 1969</strong></li>
+<li>The web, also known as the World Wide Web or WWW, <strong>was introduced in 1991.</strong></li>
+<li>The web made a multimedia interface to resources on ther internet.</li>
+</ul>
+<h4 id="the-three-generations-of-web">The three generations of Web</h4>
+<ul>
+<li>Web1.0: <strong>linking existing information</strong>
+<ul>
+<li>Google and other research engines made it possible to search web pages</li>
+<li>Many users can view web content, but few can create web content</li>
+</ul></li>
+<li>Web2.0:<strong>more dynamic content creation and social interaction</strong>
+<ul>
+<li>Facebook and othe social media are examples</li>
+</ul></li>
+<li>Web3.0:identifies <strong>relations between data</strong>
+<ul>
+<li>Siri and Google Assistant are exmples</li>
+</ul></li>
+<li>Web4.0:connect data and devices into a seamless integration into our physical life</li>
+</ul>
+<h4 id="web-and-internet">Web and Internet</h4>
+<ul>
+<li><p>The <strong>Internet is a physical network</strong>, which is made up of wires, cables,satallites, and rules for exchanging information between computers connected to the network.</p></li>
+<li><p>Being connected to the web is called <strong>online.</strong></p></li>
+<li><p>The <strong>web is a multimedia interface.</strong></p>
+<blockquote>
+<p>区分internet和web的根本差异就是internet是一个物理层面的网络，web是对internet这个物理网络的封装。在web出现之前，对internet的使用就像是GUI出现之前使用DOS</p>
+</blockquote></li>
+</ul>
+<h4 id="the-common-uses-of-web">The common uses of Web</h4>
+<ul>
+<li>Communicating</li>
+<li>Shopping</li>
+<li>Searching</li>
+<li>Education or e-learning</li>
+<li>Online entertainment</li>
+</ul>
+<h4 id="online-entertainment">Online Entertainment</h4>
+<ul>
+<li>TV Shows and Movies</li>
+<li>Online Music</li>
+<li>Online Book</li>
+<li>Social Media</li>
+<li>News feeds</li>
+</ul>
+<h3 id="internet-access">Internet Access</h3>
+<h4 id="providers提供商">Providers(提供商)</h4>
+<ul>
+<li><p>The most common way to connect to the Internet is through an <strong>Internet service provider(ISP)(网络服务提供商)</strong></p></li>
+<li><p>Using telephone lines cable, and/or wireless connections</p>
+<blockquote>
+<p>该条目是指连接的物理方式</p>
+</blockquote></li>
+<li><p>Providers in America includs AT&amp;T, Comcast,Sprint,T-Mobile, and Verizon</p></li>
+<li><p>Connection techonologies including <strong>DSL, cable, and wireless modem</strong></p>
+<blockquote>
+<p>该条目是指连接的技术</p>
+</blockquote></li>
+</ul>
+<h4 id="browsers浏览器">Browsers(浏览器)</h4>
+<ul>
+<li><p>The progrm to connect to theInterne is called the browsers</p></li>
+<li><p>Apple Safari,Google Chrome,FireFox,Microsoft Egde,etc</p></li>
+<li><p>The location or address of the resource is called <strong>uniform resource locators(URLs)(统一资源定位符)</strong></p>
+<blockquote>
+<p>URL：统一资源定位符</p>
+<p>URI(uniform resource identiter)：统一资源识别符</p>
+</blockquote></li>
+<li><p>All URLs have at least two basic parts</p>
+<ul>
+<li><p>To present the <strong>protocol(协议)</strong>. http/https is used for web traffic</p></li>
+<li><p>To present the <strong>domain name(域名)</strong>. The last part of the domain name following the dot is the <strong>top-level domain(TLD)（顶级域名）</strong>,also known as the <strong>web suffix</strong>,which identifies thetype of the organization.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Domain</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.com</td>
+<td>Commercial</td>
+</tr>
+<tr class="even">
+<td>.edu</td>
+<td>Educational</td>
+</tr>
+<tr class="odd">
+<td>.gov</td>
+<td>Goverment</td>
+</tr>
+<tr class="even">
+<td>.mil</td>
+<td>U.S.military</td>
+</tr>
+<tr class="odd">
+<td>.net</td>
+<td>Network</td>
+</tr>
+<tr class="even">
+<td>.org</td>
+<td>Organization</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li><p>An document will be sent back once connected to the website, which usually contains <strong>Hypertext Markup Language(HTML)(超文本标记语言)</strong>,a language displaying web page.</p></li>
+<li><p>Many techonologies are used to show animated and interactive websites</p>
+<ul>
+<li><p>JavaScript:used within HTML to trigger interactive features, executes on the <strong>user's computer</strong></p></li>
+<li><p>PHP:<strong>executes on the website's computer</strong></p></li>
+<li><p>Cascading style sheets(CSS):control the appearence of the web page</p>
+<blockquote>
+<p>JavaScript是一种运行在浏览器上的脚本语言，往往被用在客户端；PHP往往被用于服务端开发</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h3 id="web-utilities">Web Utilities</h3>
+<h4 id="filters过滤器">Filters(过滤器)</h4>
+<ul>
+<li>block access to selected sites</li>
+</ul>
+<h4 id="web-transfer-utilitiesweb传输工具">Web Transfer Utilities(web传输工具)</h4>
+<ul>
+<li><p>Web-based file transfer services:make use of a <strong>browser to upload and download</strong> files,such as dropbox.com</p></li>
+<li><p>BitTorrent(种子): distributes a file across many computers to accelerate.</p>
+<p><strong>A single file might be located on dozens of individual computers.</strong></p>
+<p>Have been used for distributing unauthorized copies of copyrighted music and video</p></li>
+<li><p><strong>FIle transfer pritocol(FTP)</strong> and secure FTP(SFTP)</p></li>
+</ul>
+<h4 id="internet-security-suites">Internet Security Suites</h4>
+<ul>
+<li>Designed to maintain the security and privacy</li>
+</ul>
+<h3 id="communications">Communications</h3>
+<h4 id="social-networking">Social Networking</h4>
+<ul>
+<li><p>Profiles:created by users to share information about them</p></li>
+<li><p>Pages:created by companies to promote their bussiness</p></li>
+<li><p>Groups:communities of individuals</p></li>
+<li><p>Friends</p></li>
+<li><p>News feed:the first page you see after you log in.</p>
+<p>consists of a collection of recent posts</p></li>
+<li><p>Share settings</p></li>
+</ul>
+<h4 id="blogsmicroblogspodcastsand-wikis">Blogs,MicroBlogs,podcasts,and Wikis</h4>
+<ul>
+<li>Personal websites is called blogs</li>
+<li>Microblogs are designed to use with mobile devices,such as Twitter and Instagram</li>
+<li>wiki is a website designed to allow visitors to add, edit,or delete the content</li>
+</ul>
+<h4 id="messaging">Messaging</h4>
+<ul>
+<li>Text Massaging,or <strong>short message service(SMS)</strong>:typically fewer than 160 characters</li>
+<li><strong>Multimedia message servie(MMS)</strong>:a SMS with images, video or sound</li>
+<li>Instant message(IM)</li>
+</ul>
+<h4 id="e-mail">E-mail</h4>
+<p>A typical e-mail message has four basic parts:<strong>header, message,signature and newsletters</strong></p>
+<p>Header appears first and includes</p>
+<ul>
+<li>Address:username@domain name</li>
+<li>Subject:A one-line description</li>
+</ul>
+<p>You can add attachments in an e-mail</p>
+<p>Two basic types of e-mail systems</p>
+<ul>
+<li>Client-based e-mail system:Run <strong>a program to communicate with ther e-mail service provider,</strong>such as Apple's Mail and Microsofts' Outlook</li>
+<li>Web-based e-mail system:Once the web browser connected to the e-mail service provider, <strong>a webmail client is run on the provider's computer</strong> ,known as the webmail.</li>
+</ul>
+<p>Webmail is userd more widely because if frees the user</p>
+<p>The unwelcomed e-mail is called spam</p>
+<h3 id="search-tools">Search Tools</h3>
+<ul>
+<li>Special Programs called spiderscontinually look fornew information and update the search service's database</li>
+</ul>
+<h4 id="search-engine">Search Engine</h4>
+<h4 id="contant-evalution">Contant Evalution</h4>
+<ul>
+<li>Authority</li>
+<li>Accuracy</li>
+<li>Objectivity</li>
+<li>Currency</li>
+</ul>
+<h3 id="electronic-commerce">Electronic Commerce</h3>
+<h4 id="basic-types-of-electronic-commerce">Basic types of Electronic Commerce</h4>
+<ul>
+<li>Bussiness-to-consumer(B2C)</li>
+<li>Consumer-to-consumer(C2C):such as web auctions,ebay.com</li>
+<li>Business-to-Bussiness(B2B)</li>
+</ul>
+<h4 id="security">Security</h4>
+<h3 id="cloud-computing">Cloud Computing</h3>
+<p>Basic components</p>
+<ul>
+<li>Clients</li>
+<li>The internet</li>
+<li>The service provider</li>
+</ul>
+<h3 id="the-internet-of-thingsiots">The Internet of Things(IoTs)</h3>
+<hr />
+<h2 id="chapter3-application-software">Chapter3 Application Software</h2>
+<h3 id="application-software">Application Software</h3>
+<h4 id="user-interface用户界面">User Interface(用户界面)</h4>
+<ul>
+<li><strong>Graphic user interface (GUI)(图形用户界面)</strong> displays graphical elements called icons to represent familiar objects.</li>
+<li>The standard GUI includes
+<ul>
+<li>Menus:on the top of a window,displays in a menu bar</li>
+<li>Toolbars:appear below the menu bar and include small graphical elements called buttons</li>
+<li>Dialog boxes:additioanl information and request user input</li>
+</ul></li>
+<li>Many applications use <strong>an iterface known as the Ribbon GUI</strong>, which changes based on the need of the user
+<ul>
+<li>Ribbons:replace toolbars and menus by re-combining them together,displayed at tabs and appear in the first ribbon</li>
+<li>Tabs:divide the ribbon into major activity areas.Then organized into groups containg related items. Some taabs called contextual tabs appear only when they are needed</li>
+<li>Galleries:provide additional options and simplify choosing and option by showing the effect</li>
+</ul></li>
+</ul>
+<h4 id="common-featuers">Common featuers</h4>
+<ul>
+<li>Spell checker</li>
+<li>Alignment-centers</li>
+<li>Fonts and font sizings</li>
+<li>Character effects</li>
+<li>Edit options: provide easy ways to edit text, such as cut, copy and paste</li>
+<li>Find and Replace</li>
+</ul>
+<h3 id="general-purpose-applications">General-Purpose Applications</h3>
+<h4 id="word-processors">Word Processors</h4>
+<ul>
+<li>Grmmar chacker</li>
+<li>Autocorrect</li>
+<li>Captions:Identifying figures with captions in areport makes the report easier to read and more professional</li>
+<li>Footnote</li>
+<li>Header ot Footer</li>
+</ul>
+<h4 id="spreadsheets">Spreadsheets</h4>
+<ul>
+<li>Workssheets</li>
+<li>Functions</li>
+<li>Cells</li>
+<li>Formulas</li>
+<li>Workbook</li>
+</ul>
+<h4 id="presentation-doftware">Presentation Doftware</h4>
+<ul>
+<li>Templates:provide an easy way to create a presentation by providing pre-designed styles and layouts</li>
+<li>Animation</li>
+<li>Document Theme</li>
+</ul>
+<h4 id="database-management-software">Database Management Software</h4>
+<ul>
+<li>Primary Key:the unique identification key</li>
+<li>Record:A combination of data</li>
+<li>Fields:are given names that are displayed at the top of each table</li>
+</ul>
+<h3 id="specialized-applications">Specialized Applications</h3>
+<h4 id="graphic-programs">Graphic Programs</h4>
+<ul>
+<li><p>Video editors</p></li>
+<li><p>Image Editor, also known as photo editor</p>
+<p>A picture consists of thousands of <strong>dots, or pixels(像素) is referred as bitmap(位图) or raster images.</strong></p></li>
+<li><p>Illustration programs, also known as drawing programs:to create and edit <strong>vector(矢量图) images</strong></p></li>
+<li><p>Desktop Publishing programs</p></li>
+</ul>
+<h4 id="video-game-design-software">Video Game Design Software</h4>
+<h4 id="web-authoring-programs">Web Authoring Programs</h4>
+<h3 id="mobile-apps">Mobile APPs</h3>
+<h4 id="apps">Apps</h4>
+<h4 id="app-stores">App Stores</h4>
+<h3 id="software-suites">Software Suites</h3>
+<h4 id="office-suites">Office Suites</h4>
+<h4 id="cloud-computing-1">Cloud Computing</h4>
+<h4 id="specialized-and-utility-suites">Specialized and Utility Suites</h4>
+<hr />
+<h2 id="chapter4-system-software">Chapter4 System Software</h2>
+<h3 id="system-software">System Software</h3>
+<p>Four types</p>
+<ul>
+<li>Operating system</li>
+<li>Utilities: perform specific taks related to computer's resources</li>
+<li>Device Drivers（设备驱动）</li>
+<li>Language translators(编译器): convert the programming instructions written by programmers into a language that computers understand and process</li>
+</ul>
+<h3 id="operating-software">Operating Software</h3>
+<p>The most important type of computer programs</p>
+<p>Often referred to as the software environment or software platform</p>
+<h4 id="functions">Functions</h4>
+<ul>
+<li>Managing resource:coordinate computer's resource including memory, processing. storage and devices; monitor system performance, schedule taks, etc</li>
+<li>Providing user interface</li>
+<li>Running applications: most support multitasking or the ability to switch between different applications stored in the memory; the application you're running is in the <strong>foreground</strong>, the others are in the <strong>background</strong></li>
+</ul>
+<h4 id="features">Features</h4>
+<ul>
+<li>Starting or restarting a computer is called <strong>booting the system.</strong></li>
+<li>Booting has two ways: <strong>a warm boot and a cold boot</strong></li>
+<li>A warm boot is when the computer is running and you restart it without cutting the power off</li>
+<li>A cold boot means start a computer that has been turned off</li>
+<li>Most OSs provide a <strong>desktop</strong> to access the computer resource
+<ul>
+<li>Icons: a graphical representation of a application, a file or function</li>
+<li>Pointer</li>
+<li>Windows</li>
+<li>Menus: a list of options or commands</li>
+<li>Tabs: devide menus into major activity areas such as format and page layout</li>
+<li>Dialog Boxes</li>
+<li>Help:provide online assistance</li>
+<li>Gesture control: <strong>ability to control operation with finger movements,</strong> such as swiping, sliding and pinching</li>
+</ul></li>
+</ul>
+<h4 id="categories">Categories</h4>
+<ul>
+<li>Embedded operating systems, also <strong>real-time operating systems(RTOS)</strong>:small electronic devices such as smartphones and smartwatches.</li>
+<li>Stand-alone operating systems,also known as <strong>desktop operating systems</strong>: control a single desktop or laptop computer</li>
+<li>Netork operating systems: used to control and coordinate computers that are networked or linked together; thet're typically located on one of the connected computers' hard disks. the computer is called network server.</li>
+</ul>
+<h3 id="mobile-operating-systems">Mobile Operating Systems</h3>
+<p>Less complicateed and more specialized for wireless communications</p>
+<ul>
+<li>Android: developed by Google based on the Linux</li>
+<li>iOS</li>
+</ul>
+<h3 id="desktop-operating-systems">Desktop Operating Systems</h3>
+<h4 id="windows">Windows</h4>
+<h4 id="macos">macOS</h4>
+<h4 id="unix-and-linux">UNIX and Linux</h4>
+<ul>
+<li>Linux is an operating system that extended onr of the UNIX versions</li>
+<li>Chrome OS is based on Linux</li>
+</ul>
+<h4 id="virtualization">Virtualization</h4>
+<ul>
+<li><strong>A single computer can support multiple operating systems</strong> that operate independently</li>
+<li>The virtual computers are called <strong>virtual machines</strong></li>
+<li>The OS of the physical machine is called <strong>host operating system</strong>, and of the virtual machines are called <strong>guest operating systems</strong></li>
+</ul>
+<h3 id="utilities">Utilities</h3>
+<ul>
+<li>Search programs</li>
+<li>Storage management programs</li>
+<li>Backup programs</li>
+<li>Antivirus programs</li>
+<li>Troubleshooting or diagnostic programs</li>
+<li>Virtual assistance</li>
+</ul>
+<h4 id="operating-system-utilities">Operating System Utilities</h4>
+<ul>
+<li>Search programs</li>
+<li>Storage management program: identify and remove unused files and applications</li>
+<li>Backup programe</li>
+</ul>
+<h4 id="utility-suites">Utility Suites</h4>
+<hr />
+<h2 id="chapter5-the-ststem-unit">Chapter5 The Ststem Unit</h2>
+<h3 id="system-unit">System Unit</h3>
+<ul>
+<li>System unit, also known as system chassis is a container of electronic components</li>
+</ul>
+<h4 id="smartphones">Smartphones</h4>
+<h4 id="tablets">Tablets</h4>
+<h4 id="laptops">Laptops</h4>
+<ul>
+<li>Two-in-one laptops</li>
+<li>Gaming laptops</li>
+<li>Ultrabooks/ultraportables/mini notebooks</li>
+</ul>
+<h4 id="desktops">Desktops</h4>
+<ul>
+<li>All-in-one desktops</li>
+<li>Tower unit or tower computer</li>
+</ul>
+<h4 id="wearble-computers">Wearble Computers</h4>
+<ul>
+<li>Smartwatches</li>
+<li>Activity trackers</li>
+</ul>
+<h3 id="system-board">System Board</h3>
+<ul>
+<li><p>Also known as the <strong>mainboard or the mother board</strong></p></li>
+<li><p>For mobile devices, the system board is located behind the screen; and for laptops and desktops is located at the bottom of the system unit or along one side</p></li>
+<li><p>It's a flat circuit board covered with components, like:</p>
+<ul>
+<li><p>Sockets: a connection point for small specialized <strong>electronice parts called chips</strong></p>
+<p><strong>Chips consist of tiny circuit boards</strong> etched onto squares of sandlike material called silicon</p>
+<p>A chip is also called a silicon chip,semicondeuctor, or integrated circuit</p>
+<p><strong>Chips are mounted onto chip carriers</strong>, and the carriers can be plugged into slots on the system board</p></li>
+<li><p>Slots: a connection point for specialized <strong>cards or circuit boards</strong></p></li>
+<li><p>Bus lines,also known as connecting lines: provide pathways for communicating</p></li>
+</ul></li>
+</ul>
+<h3 id="microprocessor">Microprocessor</h3>
+<p>Mostly, the central processing unit(CPU) or processor is contained on a single chip cakked the microprocessor</p>
+<ul>
+<li>Control unit: directs the movements of electronic signals between memory</li>
+<li>Arithmetic-logic unit(ALU): Artithmetic operations includes: addition, subtraction, multiplication, and division;Logical operations consists equal, less than and greater than</li>
+</ul>
+<h4 id="microprocessor-chips">Microprocessor Chips</h4>
+<ul>
+<li>Chip <strong>processing capacity</strong> are expressed in <strong>word sizes</strong> such as 32/64bits</li>
+<li>The <strong>processing speed</strong> is represented by its <strong>clock speed</strong></li>
+<li>Many computers have <strong>multicore processor</strong>s that can provide two or more sparate and independent CPUs</li>
+<li><strong>Parallel processing</strong> is a method to divide tasks into each CPU</li>
+</ul>
+<h4 id="specialty-processors">Specialty Processors</h4>
+<ul>
+<li><strong>Coprocessors</strong> are special chips to improve specific computing operations</li>
+<li>Graphic coprocessors, also known <strong>as a GPU(graphics processing uni)</strong></li>
+</ul>
+<h3 id="memory">Memory</h3>
+<h4 id="ramrandom-access-memory">RAM(Random-access memory)</h4>
+<ul>
+<li>RAM is called t<strong>emporary or volatile storage</strong> because ecerything in the RAM is lost once the power is cut off</li>
+<li><strong>Cache memory</strong> acts as a temporary high-speed holding area between memory and the PCU</li>
+<li><strong>DIMM(dual in-line memory module)</strong> can be inserted into the system board to expand the RAM</li>
+<li><strong>Virtual memory</strong> is able to work as a RAM to run large programs</li>
+</ul>
+<h4 id="romread-only-memory">ROM(Read-only memory)</h4>
+<ul>
+<li>It's not volatile and can't be changed by the user</li>
+<li>only CPU can read , or retrieve, data and programs written on the ROM chip</li>
+</ul>
+<h4 id="flash-memory">Flash Memory</h4>
+<ul>
+<li>used to store the start-up instructions, which is called the system's <strong>BIOS(basic input/output system).</strong></li>
+</ul>
+<h3 id="expansion-cards-and-slots">Expansion Cards and Slots</h3>
+<ul>
+<li>Graphics cards</li>
+<li>Network interface cards(NIC),also known as network adapter cards</li>
+<li>Wireless network cards</li>
+</ul>
+<h3 id="bus-lines">Bus Lines</h3>
+<ul>
+<li><strong>The number of bits</strong> that can travel simultaneously down a bus is known as the bus width</li>
+<li><strong>System buses</strong> connects the <strong>CPU to memory</strong> and e<strong>xpansion buses</strong> connects CPU to other components on the system board, <strong>including expansion slots</strong></li>
+</ul>
+<h4 id="expansion-buses">Expansion Buses</h4>
+<ul>
+<li>Universal Serial Bus(USB):the current USB standard is USB 3.2</li>
+<li>FireWire buses: used to connect video and audio devices</li>
+<li>PCI express(PCIe): provide <strong>a singele dedicated path</strong> for each connected device</li>
+</ul>
+<h3 id="ports">Ports</h3>
+<h4 id="standdard-ports">Standdard Ports</h4>
+<ul>
+<li>Universal serial bus ports:USB-A,B,C;a single SUB port can connect to many USB devices</li>
+<li>HIgh Definition Multimedia Interface(HDMI) port</li>
+<li>Thunderbolt ports</li>
+<li>Ethernet ports</li>
+</ul>
+<h4 id="specialized-ports">Specialized Ports</h4>
+<ul>
+<li>Mini DisplayPort</li>
+<li>VGA(Video Graphics Adapter) and DVI(Digital Video Interface)</li>
+<li>FireWire ports</li>
+</ul>
+<h4 id="cables">Cables</h4>
+<h3 id="power-supply">Power Supply</h3>
+<p><strong>Computers require direcet current(DC)</strong></p>
+<ul>
+<li>DC adpter can convert AC to DC and charge the battery</li>
+<li>Wireless charging platform can chage without cable</li>
+<li>Power supply unit is working in a desktop</li>
+</ul>
+<h3 id="electronic-data-and-instructions">Electronic Data and Instructions</h3>
+<h4 id="numeric-representation">Numeric representation</h4>
+<ul>
+<li>Decimal, binary and Hexadecimal system</li>
+</ul>
+<h4 id="character-encoding">Character Encoding</h4>
+<ul>
+<li>In the history, pC uses ASCII(America Standard Code for Information Interchange), the Mainframe uses EBCDIC(Extended Binary CodedDecimal Interchange Code)</li>
+<li>Unicode</li>
+</ul>
+<hr />
+<h2 id="chapter6-input-and-output">Chapter6 Input and Output</h2>
+<h3 id="input-and-output">Input and Output</h3>
+<h3 id="keyboard-entry">Keyboard Entry</h3>
+<ul>
+<li>Virtual keyboards</li>
+<li>Laptop keyboards</li>
+<li>Traditional keyboards: toggle keys and combination keys</li>
+</ul>
+<h3 id="pointing-devices">Pointing devices</h3>
+<h4 id="touch-screen">Touch Screen</h4>
+<ul>
+<li>A <strong>stylus is a penlike device</strong> which works with the handwriting recognition software</li>
+<li><strong>Writing recognition software</strong> translates handwritten notes into a form that the system unit can process</li>
+<li>Multitouch screens can be touched with one or ore fingers</li>
+</ul>
+<h4 id="mouse">Mouse</h4>
+<h4 id="game-controllers">Game Controllers</h4>
+<ul>
+<li>Joysticks</li>
+<li>Gaming mice</li>
+<li>Gamepads</li>
+<li>Motion-sensing devices</li>
+</ul>
+<h3 id="scanning-devices">Scanning Devices</h3>
+<h4 id="optical-scanners">Optical Scanners</h4>
+<ul>
+<li>Flatbed scanner: like a copy machine</li>
+<li>Document scanner: quickly scan multipage document</li>
+<li>Portable scanner</li>
+<li>3D scanner</li>
+</ul>
+<h4 id="card-readers">Card Readers</h4>
+<ul>
+<li>Read the encoded information stored in the card</li>
+</ul>
+<h4 id="bar-code-readers">Bar Code Readers</h4>
+<ul>
+<li>UPC(Universal Product Codes): automate the process to check oult customers, change product prices and to maintain inventory records</li>
+<li>MaxiCode</li>
+</ul>
+<h4 id="rfid-readers">RFID Readers</h4>
+<h4 id="character-and-mark-recognition-device">Character and Mark Recognition Device</h4>
+<ul>
+<li>Magnetic-ink character recognition(MICR)</li>
+<li><strong>Optical-character recognition(OCR)</strong></li>
+<li>Optical-mark recognition(OMR): often <strong>used to score standardized multiple-choice test</strong>s</li>
+</ul>
+<h3 id="image-capturing-devices">Image Capturing Devices</h3>
+<h4 id="digital-cameras">Digital Cameras</h4>
+<h4 id="webcams">Webcams</h4>
+<h3 id="audio-input-devices">Audio-Input Devices</h3>
+<h3 id="monitors">Monitors</h3>
+<h4 id="features-1">Features</h4>
+<p>Clarity refers to the quality and sharpness of the displayed images</p>
+<ul>
+<li>Resolution</li>
+<li><strong>Dot(pixel) pitch</strong>: the distance between each pixel; Cell phones can have smaller pitches</li>
+<li>Contrast ratios</li>
+<li>Active display area</li>
+<li>Aspect ratio</li>
+</ul>
+<h4 id="flat-panel-monitors">Flat-Panel Monitors</h4>
+<ul>
+<li>LCD(liquid crystal display): used for older monitors and less expensive</li>
+<li>LED(light-emitting diode)</li>
+<li>OLED(organic light-emitting diode)</li>
+</ul>
+<h4 id="e-book-readers">E-Book Readers</h4>
+<ul>
+<li>E-ink, used by E-book readers, produces images that reflect light like ordinary paper</li>
+</ul>
+<h4 id="other-monitors">other Monitors</h4>
+<ul>
+<li>Digital or interactive monitors</li>
+<li>Flexible screens</li>
+<li>DIgital projectors</li>
+</ul>
+<h3 id="printers">Printers</h3>
+<h4 id="features-2">Features</h4>
+<ul>
+<li>Resolution: meaured in dpi(dots per inch), the higher the better</li>
+<li>Color capability: grayscale, images are displayed using many shades of gray</li>
+<li>Speed</li>
+<li>Memory: to store printing instructions and documents</li>
+<li><strong>Duplex printing: printing in both sides of a sheet of paper</strong></li>
+<li>Connectivity: the ability to connect to the network</li>
+</ul>
+<h4 id="inkjet-printers">Inkjet Printers</h4>
+<h4 id="laser-printers">Laser Printers</h4>
+<h4 id="d-printersadditive-manufacturing">3D Printers(additive manufacturing)</h4>
+<h4 id="other-printers">Other Printers</h4>
+<ul>
+<li>Cloud printer</li>
+<li>Thermal printer: use heat elements to produce image on heat-sensitive paper</li>
+<li>Plotter</li>
+</ul>
+<h3 id="audio-output-device">Audio-output Device</h3>
+<h3 id="combination-input-and-output-devices">Combination Input and Output Devices</h3>
+<h4 id="headsets">Headsets</h4>
+<h4 id="multifunctional-devicesmfd">Multifunctional Devices(MFD)</h4>
+<h4 id="virtual-reality-head-mounted-displays-and-controllers">Virtual Reality Head-Mounted Displays and Controllers</h4>
+<h4 id="drones">Drones</h4>
+<h3 id="ergonomics">Ergonomics</h3>
+<h2 id="chapter7-secondary-storage">Chapter7 Secondary Storage</h2>
+<h3 id="storage">Storage</h3>
+<ul>
+<li>RAM is sometimes referred to as primary storage</li>
+<li>characteristics of secondary storage
+<ul>
+<li>Media: physical material that holds the data and programes</li>
+<li>Capacity: how much a device can hold</li>
+<li>Storage devices: hardware that read data and programs from storage media. Often referred to as drives</li>
+<li>Access speed</li>
+</ul></li>
+</ul>
+<h3 id="solid-state-storage">Solid-State Storage</h3>
+<ul>
+<li>Provide access to flash memory, also known as solid-state storage</li>
+</ul>
+<h4 id="solid-state-drivesssds">Solid-State Drives(SSDs)</h4>
+<ul>
+<li>characters are represented by positive and negative charges using ASCII, EBCDIC, or Unicode binary codes.</li>
+<li>Faster, durable and require little power</li>
+</ul>
+<h4 id="flash-memory-cards">Flash Memory Cards</h4>
+<h4 id="usb-drives">USB Drives</h4>
+<h3 id="hard-disks">Hard Disks</h3>
+<ul>
+<li>It rotates and have read/write heads that move in and out</li>
+<li>Save files by altering the magnetic charges of the disks's surface to present 1s and 0s</li>
+<li>Density refers to how tightly these charges can be packed next to one another on the disk</li>
+<li>Platters are stacked one on top of another</li>
+<li>Tracks are rings of concentric circles on the platter</li>
+<li>Sectors refers to the sections a track is devided into</li>
+<li>Cylinders differientes files stored on the same track</li>
+</ul>
+<h4 id="internal-hard-disks">Internal Hard Disks</h4>
+<ul>
+<li>Located inside the system unit</li>
+</ul>
+<h4 id="external-hard-disks">External Hard Disks</h4>
+<h4 id="network-drives">Network Drives</h4>
+<h4 id="performance-enhancements">Performance Enhancements</h4>
+<ul>
+<li>Disk caching: uses cache and anticipates data needs</li>
+<li>Hybrid drives: contain both solid-state and hard disks</li>
+<li>Redundant arrays of inexpensive disks(RAID)</li>
+<li>File comparison and file decomparision: replace repeating patterns with a token, leaving enough tokens so that the original can are rebuilt or decompressed</li>
+</ul>
+<h3 id="optical-disks">Optical Disks</h3>
+<p>The 1s and 0s are represented by flat areas called lands and bumpy areas called pits</p>
+<ul>
+<li>Compact discs: store 700MB; widely used for storing music</li>
+<li>Digital versatile discs: DVD drives and CD drives are very similar; store 4.7GB</li>
+<li>Blu-ray Discs</li>
+</ul>
+<p>Three types</p>
+<ul>
+<li>Read-only discs: cannot be written or erased by the user</li>
+<li>Write-once(R for recordable) discs: can be written on once</li>
+<li>Rewritable(RW for rewritable):</li>
+</ul>
+<h3 id="cloud-storage">Cloud Storage</h3>
+<h3 id="mass-storage-devices">Mass Storage Devices</h3>
+<h4 id="enterprise-storage-system">Enterprise Storage System</h4>
+<h4 id="storage-area-network">Storage Area Network</h4>
+<hr />
+<h2 id="chapter8-communications-and-networks">Chapter8 Communications and Networks</h2>
+<h3 id="communications-1">Communications</h3>
+<ul>
+<li>Texting</li>
+<li>E-mail</li>
+<li>Videoconferencing</li>
+<li>Electronic commerce</li>
+</ul>
+<h4 id="connectivity">Connectivity</h4>
+<p>Using computer network to link people and resources</p>
+<h4 id="the-wireless-revolution">The Wireless Revolution</h4>
+<h4 id="communication-systems">Communication Systems</h4>
+<p>Electronic systems that transmit data from one location to another</p>
+<p>Basic parts:</p>
+<ul>
+<li><p>Sending and receiving devices</p></li>
+<li><p>Connection devices: act as an interface between the sending and receiving devices and the communication channel</p>
+<p>They convert outgoing messages into packets that can travel across the communication channel</p></li>
+<li><p>Data transmission specifications: <strong>rules and procedures</strong> that coordinate the sending and receiving devices</p></li>
+<li><p>Communication channel: the <strong>actual connecting or transmission medium</strong> that carries the message. It can be physical wire or cable, or it can be wireless</p></li>
+</ul>
+<h3 id="communication-channels">Communication Channels</h3>
+<p>Carry data from one computer to another</p>
+<h4 id="wireless-connections">Wireless Connections</h4>
+<p>Most use radio waves to communicate</p>
+<ul>
+<li><p>Cellular(蜂窝网络):uses multiple antennae(cell towers) to send and receive data within relatively small graphic regions(cells)</p></li>
+<li><p>Bluetooth: short-range radio communication standard</p></li>
+<li><p>Wi-Fi(Wireless fidelity): uses high-frequency radio signals;standard is 802.11a(g,n,ac,ax)</p></li>
+<li><p>Microwave: sometimes referred to line-of-sight communication because it can only travel in a straight line; used in sending data between buildings in a city</p></li>
+<li><p>WiMax(Worldwide Interoperability fir Microwave Access): extends the range of Wi-Fi networks using microwave connections.</p></li>
+<li><p>Satellite: Intelsat(the International Telecommunications Satellite Consortium system):</p>
+<p>Uplink is a term relating to sending data to the satellite</p>
+<p>Global position system(GPS) uses satellite</p></li>
+<li><p>Infrared: sending and receiving devices mustbe in a clear view of one another without any obstructions</p></li>
+</ul>
+<h4 id="physical-connections">Physical Connections</h4>
+<ul>
+<li>Twisted-pair cable: telephone lines or Ethernet cables</li>
+<li>Coaxial cable</li>
+<li>Fiber-optic cable</li>
+</ul>
+<h3 id="connection-device">Connection Device</h3>
+<p>Telephone lines are designed to carry analog signals, while the coputer use digital signals, so you need to use modem to conver digital to analog</p>
+<h4 id="modems">Modems</h4>
+<ul>
+<li>modem is a short for modulator-demodulator</li>
+<li>Modulation means the process of converting from digital to analog</li>
+<li>Transfer rate is measured in Mbps</li>
+<li>Three types:
+<ul>
+<li>DSL(digital subscriber line): use standard phone lines</li>
+<li>cable modem: use coaxial cable</li>
+<li>wireless modem, or WWAN(wireless wide area network) modem: almost all hace built-in wireless modem</li>
+</ul></li>
+</ul>
+<h4 id="connection-service">Connection Service</h4>
+<ul>
+<li>Copper lines, knwon as T1 lines,could be combined to formhigher-capacity options known as T3 or DS3 lines</li>
+<li>The above lines have been replaced by faster optical carrier(OC) lines</li>
+<li>Used to use dial-up service, but replaced
+<ul>
+<li>Cellular service providers</li>
+<li>Digital subscriber line(DSL) services: use existing telephone lines; ADSL is one of the most widely used types</li>
+<li>Cable service</li>
+<li>Fiber-optic service(FiOS)</li>
+<li>Satellite connection services</li>
+</ul></li>
+</ul>
+<h3 id="data-transmission">Data Transmission</h3>
+<h4 id="bandwidth">bandwidth</h4>
+<p>The width or capacity of the communication channel</p>
+<ul>
+<li>Voiceband, or low bandwidth</li>
+<li>Medium band: connect midrange computers and mainframes; capable of high-speed data transfer</li>
+<li>Broadband: widely used for DSL, cable and satellite connection</li>
+<li>Baseband</li>
+</ul>
+<h4 id="protocols">Protocols</h4>
+<ul>
+<li>https(hypertext transfer protocol secure)</li>
+<li>TCP/IP(Transmission Control Protocol/Internet protocol): identifying sedning and receiving devices; breaking information into small parts or packets
+<ul>
+<li>Identification: use IP(Internet protocol) address; use DNS(domain name server) convert text-based addressto IP address</li>
+<li>Packetization</li>
+</ul></li>
+</ul>
+<h3 id="networks">Networks</h3>
+<ul>
+<li>Node</li>
+<li>Client</li>
+<li>Server</li>
+<li>Directory server</li>
+<li>Host</li>
+<li>Router</li>
+<li>Switch</li>
+<li>Network interface cards</li>
+<li>Network operating systems</li>
+<li>Network administrator</li>
+</ul>
+<h3 id="network-types">Network Types</h3>
+<h4 id="local-area-network">Local Area Network</h4>
+<h4 id="home-network">Home Network</h4>
+<h4 id="wireless-lan">Wireless LAN</h4>
+<h4 id="personal-area-network">Personal Area Network</h4>
+<h4 id="metropolitan-network">Metropolitan Network</h4>
+<h4 id="wide-area-network">Wide Area Network</h4>
+<h3 id="network-architecture">Network Architecture</h3>
+<h4 id="topologies">Topologies</h4>
+<ul>
+<li>Bus network</li>
+<li>Ring network</li>
+<li>Star network</li>
+<li>Tree network</li>
+<li>Mesh network</li>
+</ul>
+<h4 id="strategies">Strategies</h4>
+<ul>
+<li>Client/server networks</li>
+<li>Peer-to-peer (P2P) network</li>
+</ul>
+<h3 id="organizatioanl-networks">Organizatioanl Networks</h3>
+<h4 id="internet-techonologies">Internet Techonologies</h4>
+<ul>
+<li>Intranet</li>
+<li>Extranet: a private network that connects more than one organizations</li>
+</ul>
+<h4 id="network-security">Network Security</h4>
+<ul>
+<li>firewall: proxy server</li>
+<li>Intrusion detection system(IDS)</li>
+<li>Virtual private networks(VPN)</li>
+</ul>
+<hr />
+<h2 id="chapter9-privacysecurity-and-ethics">Chapter9 Privacy,Security and Ethics</h2>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E5%BD%93%E4%BB%A3%E5%A4%A7%E5%AD%A6%E7%89%B2%E5%AE%9E%E5%BD%95/">当代大学牲实录</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/30847/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机是怎样跑起来的 笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/47952/">
+                        <span class="hidden-mobile">计算机视觉领域简介</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,887 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="矩阵的基本知识、矩阵运算，以及对称矩阵、二次型等知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="矩阵与矩阵运算">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/9209/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="矩阵的基本知识、矩阵运算，以及对称矩阵、二次型等知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://47.100.74.245/blog/post_img/87360527_p0_master1200-2.jpg">
+<meta property="article:published_time" content="2022-07-29T23:13:58.539Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.539Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="线性代数">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="Matlab">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://47.100.74.245/blog/post_img/87360527_p0_master1200-2.jpg">
+  
+  
+  <title>矩阵与矩阵运算 - 苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/post_img/87360527_p0_master1200-2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="矩阵与矩阵运算">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-29 23:13" pubdate>
+        2022年7月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      47 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">矩阵与矩阵运算</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="矩阵的基本知识和运算">矩阵的基本知识和运算</h2>
+<h3 id="基本概念">基本概念</h3>
+<h3 id="矩阵的加法乘法">矩阵的加法乘法</h3>
+<p>矩阵的加法要求两个矩阵具有相同的大小。</p>
+<p>矩阵乘法是对两矩阵所描述的线性变换的复合。</p>
+<p>矩阵乘法满足结合律，左右分配律以<span class="math inline">\(I_n\)</span>为乘法单位元；但不满足消去律。</p>
+<p>对于常用平方差、立方差等公式，需要满足条件<span class="math inline">\(AB=BA\)</span>，例如</p>
+<p><span class="math display">\[
+\begin{array}{l}
+(A+B)(A-B)=A^2-AB+BA+B^2\\
+当且仅当AB=BA，上式=A^2+B^2
+\end{array}
+\]</span></p>
+<blockquote>
+<p>显然，如果其中一个元素数是单位矩阵<span class="math inline">\(E\)</span>，这一系列性质显然成立</p>
+</blockquote>
+<p>根据矩阵乘法的定义</p>
+<p><span class="math display">\[
+AB = {A\mathbf{b_1} }+{A\mathbf{b_2} }+{\dotsb}+{A\mathbf{b_n} }
+\]</span></p>
+<blockquote>
+<p>对于一些<span class="math inline">\(B\)</span>的各列都相等的情况，可以使用定义来化简</p>
+</blockquote>
+<p>由行列法则，同样可以在A的各列相同时有一个化简的思路</p>
+<p><span class="math display">\[
+AB = {row_1(A)B}+{row_2(A)B}+{\dotsb}+{row_m(A)B}
+\]</span></p>
+<p>对角矩阵一般可以保证<span class="math inline">\(AD=DA\)</span>，当然，特征矩阵更可以</p>
+<blockquote>
+<p>这是由于对角矩阵只有对角线元素对另一个矩阵有作用，而对角线元素的位置是“唯一”的，所以总是有相同的效果。</p>
+</blockquote>
+<h3 id="初等矩阵">初等矩阵</h3>
+<p>对特征矩阵<span class="math inline">\(I\)</span>进行一种初等变换得到的矩阵被称为初等矩阵，一般记作<span class="math inline">\(E\)</span>。</p>
+<p>初等矩阵的逆矩阵<span class="math inline">\(E^{-1}\)</span>可以通过反向的同一类初等变换得到，根据这个性质，得到了下面逆矩阵的算法。</p>
+<h2 id="矩阵的因式分解">矩阵的因式分解</h2>
+<p>矩阵因式分解有非常广泛的应用，常见的有满秩分解，QR分解，奇异值分解，特征分解，极分解定理，LU分解</p>
+<blockquote>
+<p>参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/356686048" class="uri">https://zhuanlan.zhihu.com/p/356686048</a></p>
+</blockquote>
+<h3 id="lu分解">LU分解</h3>
+<blockquote>
+<p>参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/144137832" class="uri">https://zhuanlan.zhihu.com/p/144137832</a> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/45784001" class="uri">https://zhuanlan.zhihu.com/p/45784001</a></p>
+</blockquote>
+<h4 id="lu分解的理解和意义">LU分解的理解和意义</h4>
+<blockquote>
+<p>参考 [LU分解法与Gauss消元法两者复杂度的比较，谁跟快？ - Artorias的回答 - 知乎]<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/346783313/answer/1139681118" class="uri">https://www.zhihu.com/question/346783313/answer/1139681118</a> [lu分解有什么意义啊？ - 王锐的回答 - 知乎]<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/52451868/answer/297354277" class="uri">https://www.zhihu.com/question/52451868/answer/297354277</a></p>
+</blockquote>
+<p>LU 分解的意义在于，将矩阵的<strong>分解</strong>与方程的<strong>求解</strong>分离.</p>
+<p>在不少应用场景中，当需要求解<span class="math inline">\(A\mathbf{x} =\mathbf{b}\)</span>的时候，左边的矩阵<span class="math inline">\(A\)</span>很多时候是不变的，而右边的<span class="math inline">\(\mathbf{b}\)</span>随着输入而变化。做LU分解时，只会用到矩阵<span class="math inline">\(A\)</span>，所以可以预先准备好<span class="math inline">\(L\)</span>与<span class="math inline">\(U\)</span>，当有求解<span class="math inline">\(b\)</span>的需求时，直接拿来用就好了。</p>
+<p>Gauss消元法的时间复杂度约为<span class="math inline">\(O(n^3)\)</span>,LU分解的时间复杂度也为<span class="math inline">\(O(n^3)\)</span>，但分解之后每次求解的复杂度为<span class="math inline">\(O(n^2)\)</span>；但是如果目标向量是一组k个，那直接使用Gauss消元法的时间复杂度为<span class="math inline">\(kO(n^3)\)</span>，先进行LU分解的复杂度则为<span class="math inline">\(O(n^3)+kO(n^2)\)</span>，所以对于求解一组目标向量的情况LU分解明显有更高的效率。</p>
+<h3 id="qr分解正交三角分解">QR分解（正交三角分解）</h3>
+<h3 id="谱分解满秩分解">谱分解（满秩分解）</h3>
+<h3 id="奇异值分解">奇异值分解</h3>
+<p>奇异值分解用于对行列式进一部分析，获得一系列奇异值，研究矩阵的奇异性。</p>
+<h2 id="矩阵的转置">矩阵的转置</h2>
+<div class="note note-warning">
+            <p>矩阵转置的理解涉及到对偶性，Duality，包括对偶基、对偶空间等，没学会。</p>
+          </div>
+<p>定义矩阵<span class="math inline">\(A\)</span>的转置<span class="math inline">\(A^T\)</span>是行由<span class="math inline">\(A\)</span>的列组成的矩阵。具有如下性质</p>
+<p><span class="math display">\[
+\begin{array}{l}
+(A^T)^T = A,\\
+(A+B)^T = A^T+B^T,\\
+(kA)^T = kA^T,\\
+(AB)^T = B^TA^T
+\end{array}
+\]</span></p>
+<p>显然最后一个是容易出现问题的，当然，这个结论也可以进一步推广到有限个。</p>
+<p>对于对称矩阵<span class="math inline">\(A\)</span>和反对称矩阵<span class="math inline">\(B\)</span>，有性质</p>
+<p><span class="math display">\[
+\begin{array}{l}
+A^T=A\\
+B^T=-B
+\end{array}
+\]</span></p>
+<blockquote>
+<p>因此，在判断矩阵是否对称时，利用这个性质直接判断矩阵的转置与原矩阵的关系即可。若既不相等也不是相反数，那就既不对称也不反对称。</p>
+</blockquote>
+<h2 id="矩阵的逆">矩阵的逆</h2>
+<p>逆矩阵是矩阵的乘法逆元，要求矩阵为方阵且行列式不为零。</p>
+<p>并不是所有方阵都有自己的逆矩阵，可逆矩阵被称为非奇异矩阵，不可逆矩阵则被称为奇异矩阵。</p>
+<div class="note note-success">
+            <p>数学上，“奇异”（singular）一词用来形容破坏了某种优良性质的数学对象。</br> 对于矩阵来说，“可逆”是一个好的性质，不可逆的矩阵就称为“奇异”矩阵。</p>
+          </div>
+<blockquote>
+<p>“奇异”一词在数学中的含义参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/462373339" class="uri">https://zhuanlan.zhihu.com/p/462373339</a> </br> 奇异矩阵对应奇异线性变换。所谓奇异的线性变换，就是不存在逆变换的线性变换，即变换不回来了，所以奇异矩阵的严格定义是行列式不为零。</p>
+</blockquote>
+<p>既然我们能知道“奇异”是个不良好的性质，自然可以找到一些指标，也就是异类指数描述矩阵“奇异”的程度，就可以逐步引出奇异值分解。</p>
+<p>异类指数需要描述的是线性变换在不同维度上缩放的差异程度，不同维度缩放的差距越大其奇异性越强。要获得异类指数，可以使用奇异值对矩阵进行分解。</p>
+<p><span class="math display">\[
+A=U{\Sigma}V^T =
+{[{\mathbf{u_1} } {\quad} {\mathbf{u_2} } {\quad} {\dotsb} {\quad} {\mathbf{u_n} }]}
+{\left []
+\begin{array}{ccccc}
+{\sigma_1} &amp; 0 &amp; 0 &amp; {\dotsc} &amp; 0 \\
+0 &amp; {\sigma_2} &amp; 0 &amp; {\dotsc} &amp; 0 \\
+0 &amp; 0 &amp; {\sigma_3} &amp; {\dotsc} &amp; 0 \\
+{\vdots} &amp; {\vdots} &amp; {\vdots} &amp; {\ddots} &amp; {\vdots} \\
+0 &amp; 0 &amp; 0 &amp; {\dotsc} &amp; {\sigma_n}
+\end{array}
+\right ]}
+{\left [
+\begin{array}{c}
+{\mathbf{v_1} }^T \\
+{\mathbf{v_2} }^T \\
+{\mathbf{v_3} }^T \\
+{\vdots} \\
+{\mathbf{v_n} }^T
+\end{array}
+\right ]}
+\]</span></p>
+<p>其中<span class="math inline">\(U\)</span>和<span class="math inline">\(V\)</span>是正交矩阵，而<span class="math inline">\(\Sigma\)</span>是对角矩阵，对角元素就是<span class="math inline">\(n\)</span>个非负奇异值，可以取<span class="math inline">\(0\)</span>值，从大到小排列。</p>
+<p>奇异值就是把行列式一个数变成<span class="math inline">\(n\)</span>个非负因子，从各个维度上分别衡量了线性变换的缩放情况。</p>
+<h3 id="二阶矩阵的逆">二阶矩阵的逆</h3>
+<p>对于二阶矩阵，有一个使用克拉默法则推出的公式可以直接使用</p>
+<p><span class="math display">\[
+{A^{-1} } = { {1}\over{|A|} }
+{\left [
+\begin{array}{cc}
+d &amp; -b \\
+-c &amp; a
+\end{array}
+\right ]}
+\]</span></p>
+<p>对于对角矩阵，其逆矩阵的对角线上元素与原矩阵互为倒数。</p>
+<h3 id="逆矩阵的性质">逆矩阵的性质</h3>
+<p>逆矩阵有与转置矩阵相似的一些性质</p>
+<p><span class="math display">\[
+\begin{array}{l}
+(A^{-1})^{-1} = A, \\
+(AB)^{-1} = {B^{-1} }{A^{-1} }
+\end{array}
+\]</span></p>
+<p>当逆矩阵与转置矩阵一起出现</p>
+<p><span class="math display">\[
+(A^T)^{-1} = (A^{-1})^T
+\]</span></p>
+<h3 id="逆矩阵的算法">逆矩阵的算法</h3>
+<p>对矩阵<span class="math inline">\(A\)</span>，当且仅当<span class="math inline">\([A{\quad}I]\)</span>可以行化简为<span class="math inline">\([I{\quad}A^{-1}]\)</span>，其逆矩阵<span class="math inline">\(A^{-1}\)</span>存在。</p>
+<p>如果将<span class="math inline">\(I\)</span>视作若干方程组，也就是从向量<span class="math inline">\(\mathbf{e_1},\mathbf{e_2},{\dotsb},\mathbf{e_n}\)</span>的角度来看，这个过程是求解线性方程组。这种角度可以得到某个或几个解，不必求出整个逆矩阵。</p>
+<p>对于对角矩阵，其逆矩阵就是取对角线上所有元素的倒数，即</p>
+<p><span class="math display">\[
+{\begin{bmatrix}
+  a &amp; 0 &amp; {\cdots} &amp;0 \\
+  0 &amp; b &amp; {\cdots} &amp;0 \\
+  {\vdots}&amp;  {\vdots}&amp; {\ddots}&amp;{\vdots} \\
+  0&amp;  0&amp; 0 &amp; c
+\end{bmatrix} }^{T}=
+\begin{bmatrix}
+  1/{a} &amp; 0 &amp; {\cdots} &amp;0 \\
+  0 &amp; 1/{b} &amp; {\cdots} &amp;0 \\
+  {\vdots}&amp;  {\vdots}&amp; {\ddots}&amp;{\vdots} \\
+  0&amp;  0&amp; 0 &amp; 1/{c}
+\end{bmatrix}
+\]</span></p>
+<h3 id="可逆矩阵定理">可逆矩阵定理</h3>
+<blockquote>
+<p>可逆矩阵定理贼几把难</p>
+</blockquote>
+<h2 id="子空间列空间与零空间">子空间、列空间与零空间</h2>
+<blockquote>
+<p>线性代数中，子空间往往以某个线性方程组的解集或者某几个向量的线性组合的形式出现，这对应了矩阵的两个子空间。</p>
+</blockquote>
+<h3 id="列空间">列空间</h3>
+<p>矩阵的所有列向量张成矩阵的列空间，记作<span class="math inline">\(ColA\)</span>或<span class="math inline">\(C(A)\)</span>。</p>
+<p>对一个<span class="math inline">\(m{\times}n\)</span>矩阵，列空间是<span class="math inline">\(R^m\)</span>的子空间；他是矩阵所对应的线性变换能包含的所有向量的集合，也就是说，经过该矩阵的变换，向量只能位于这个空间内。</p>
+<h3 id="零空间">零空间</h3>
+<p>矩阵的零空间是所有满足<span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span>的解的集合，记作<span class="math inline">\(NulA\)</span>。</p>
+<p>对一个<span class="math inline">\(m{\times}n\)</span>矩阵，零空间是<span class="math inline">\(R^n\)</span>的子空间。</p>
+<p>零空间是原空间<span class="math inline">\(V\)</span>在变换后被映射到<span class="math inline">\(W\)</span>中0的所有向量的集合，他也因此被称为线性变换的核，相应的，此时列空间对应值域。</p>
+<h3 id="维数">维数</h3>
+<p>向量空间的生成基中向量的个数，成为空间的维，记作<span class="math inline">\(dimV\)</span>。</p>
+<p>维度为n的空间的基可以有多于n个向量，但其中一定存在线性相关的向量，可以使用生成基定理去掉这些没有用的向量。</p>
+<p>对于列空间来讲，一个<span class="math inline">\(m{\times}n\)</span>矩阵有<span class="math inline">\(n\)</span>个列向量作为<span class="math inline">\(ColA\)</span>的基，但他们不一定都使得上劲；矩阵的主元列作为线性组合的权，是可以生成列空间的最小生成集，因此列空间的维数就是<span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span>的增广矩阵的主元列的个数。</p>
+<p>对于零空间来讲，非主元列的个数就是<span class="math inline">\(dimNulA\)</span>。</p>
+<h3 id="秩">秩</h3>
+<p>秩包括矩阵的秩、行秩和列秩，其中行秩、列秩分别是行空间、列空间的维度，行秩与列秩总是相等；秩被定义为非零子式的最高阶数，或者极大线性无关组的个数。</p>
+<p>秩反映了线性变换后所具有的最大维度，因此秩反映为列空间的维数。</p>
+<p>由列空间和零空间维数的求解可以知道对<span class="math inline">\(m{\times}n\)</span>矩阵</p>
+<p><span class="math display">\[
+rankA+dimNulA = n
+\]</span></p>
+<p>利用这条性质，还可以得出</p>
+<p><span class="math display">\[
+方程组A{\mathbf{x} }={\mathbf{0} }与A^TA{\mathbf{x} }={\mathbf{0} }同解，且有r(A)=r({A^T}A)
+\]</span></p>
+<p>对<span class="math inline">\(n\)</span>阶对称方阵，矩阵的秩等于非零特征值的个数。</p>
+<p>秩还具有以下性质<a href="refer-anchor-1"><sup>1</sup></a></p>
+<p><span class="math display">\[
+\begin{array}{l}
+r(A{\plusmn}B)\leq{r(A){\plusmn}r(B)},\\
+r(AB){\leq}{min\{r(A),r(B)\} },\\
+若AB=0,则r(A)+r(B){\leq}n\\
+r(kA)=r(A),\\
+r(A)=r({A^T}A)\\
+r(AC)=r(A),C是一个可逆矩阵
+\end{array}
+\]</span></p>
+<h2 id="伴随矩阵">伴随矩阵</h2>
+<p>先计算出矩阵的代数余子式，将其排列成矩阵之后转置得到就是矩阵的伴随矩阵。</p>
+<p><span class="math display">\[
+{A^*}=|A|{A^{-1} }
+\]</span></p>
+<p>伴随矩阵的性质</p>
+<p><span class="math display">\[
+AA^*=A^*A=|A|E
+\]</span></p>
+<p>对于一些代数余子式或余子式的和的求解，可以利用他们的性质。</p>
+<blockquote>
+<p>比如对<span class="math inline">\(4{\times}4\)</span>矩阵计算<span class="math inline">\({A_{31}+A_{32}+A_{34} }\)</span>，有<span class="math inline">\({A_{31}+A_{32}+A_{34} } = 1{\times}{A_{31} }+1{\times}{A_{32} }+0{\times}{A_{33} }+1{\times}{A_{34} }\)</span>，等价于将原矩阵第三行更换为<span class="math inline">\((1,1,0,1)\)</span>后计算新矩阵<span class="math inline">\(A&#39;\)</span>的行列式（因为被展开的一行不影响代数余子式的值，这一行也只决定代数余子式的系数）。</p>
+</blockquote>
+<h2 id="分块矩阵">分块矩阵</h2>
+<p>分块矩阵的逆有两种情况</p>
+<p><span class="math display">\[
+{\begin{pmatrix}
+\mathbf{B} &amp; \mathbf{0} \\
+\mathbf{0} &amp; \mathbf{C}
+\end{pmatrix} }^{-1}=
+{\begin{pmatrix}
+\mathbf{B}^{-1} &amp; \mathbf{0} \\
+\mathbf{0} &amp; \mathbf{C}^{-1}
+\end{pmatrix} }, \\
+{\begin{pmatrix}
+\mathbf{0} &amp; \mathbf{B} \\
+\mathbf{C} &amp; \mathbf{0}
+\end{pmatrix} }^{-1}=
+{\begin{pmatrix}
+\mathbf{0} &amp; \mathbf{C}^{-1} \\
+\mathbf{B}^{-1} &amp; \mathbf{0}
+\end{pmatrix} }
+\]</span></p>
+<h3 id="准对角矩阵">准对角矩阵</h3>
+<p>准对角矩阵（分块对角矩阵）是对角线上的分块以外全是0的分块矩阵。</p>
+<p><span class="math display">\[
+\begin{array}{l}
+|A|=|{A_1}|{\cdot}|{A_2}|{\cdots}|{A_n}|\\
+r(A)=r({A_1})+r({A_2})+{\cdots}+r({A_n})
+\end{array}
+\]</span></p>
+<h2 id="reference">Reference</h2>
+<div id="refer-anchor-1">
+
+</div>
+<ul>
+<li>[1] <a target="_blank" rel="noopener" href="https://kaoyan.wendu.com/2016/0202/74205.shtml">2017考研数学:矩阵秩的常用性质分析</a></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Matlab/">Matlab</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/40258/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">特征值、特征向量、相似矩阵与二次型等</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/28245/">
+                        <span class="hidden-mobile">线性代数</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>

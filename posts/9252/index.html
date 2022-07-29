@@ -1,0 +1,1010 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="为了离散的代数系统浅浅学一下近世代数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="近世代数初步">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/9252/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="为了离散的代数系统浅浅学一下近世代数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://47.100.74.245/blog/post_img/QQ20220526-225409@2x.png">
+<meta property="article:published_time" content="2022-07-29T23:13:58.539Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.539Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="离散数学">
+<meta property="article:tag" content="近世代数">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://47.100.74.245/blog/post_img/QQ20220526-225409@2x.png">
+  
+  
+  <title>近世代数初步 - 苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/post_img/QQ20220526-225409@2x.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="近世代数初步">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-29 23:13" pubdate>
+        2022年7月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      63 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">近世代数初步</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="基础知识">基础知识</h2>
+<div class="note note-warning">
+            <p>注意需要证明的对象或性质到底是针对哪个代数系统</br> 特别是涉及映射变换时</br> 需要证明哪个代数系统的性质，时刻记住在这个代数系统中取元素</br> 切忌由另一个代数系统去推理目标代数系统的性质</p>
+          </div>
+<h3 id="集合">集合</h3>
+<h3 id="映射">映射</h3>
+<blockquote>
+<p>映射是对集合之间关系的描述</p>
+</blockquote>
+<h3 id="运算">运算</h3>
+<h3 id="代数系统和运算律">代数系统和运算律</h3>
+<h3 id="同态">同态</h3>
+<blockquote>
+<p>同态是对代数系统之间关系的描述，他要求集合之间满射；乘积的像等于像的乘积。</p>
+</blockquote>
+<h4 id="定义和性质">定义和性质</h4>
+<p>对于两个集合<span class="math inline">\(A,{\bar{A} }\)</span>，其上分别定义了运算<span class="math inline">\({\circ},{\bar{\circ} }\)</span>，存在映射<span class="math inline">\({\Phi}:A{\rightarrow}{\bar{A} }\)</span>，如果总是有</p>
+<p><span class="math display">\[
+{\phi{(a{\circ}b)} }={ {\phi{a} }{\bar{\circ}{\phi{b} } } }
+\]</span></p>
+<p>则称<span class="math inline">\(\Phi\)</span>一个同态映射。</p>
+<p>如果这个映射是满射，则称它为同态满射。</p>
+<blockquote>
+<p>我们一般会说对于代数运算<span class="math inline">\(\circ\)</span>和<span class="math inline">\(\bar{\circ}\)</span>，<span class="math inline">\(A\)</span>和<span class="math inline">\(\bar{A}\)</span>同态。</p>
+</blockquote>
+<p>同态对结合律和交换律具有保留性：</p>
+<ol type="1">
+<li>如果<span class="math inline">\(\circ\)</span>满足结合律，那么<span class="math inline">\(\bar{\circ}\)</span>也满足结合律</li>
+<li>如果<span class="math inline">\(\circ\)</span>满足交换律，那么<span class="math inline">\(\bar{\circ}\)</span>也满足交换律</li>
+</ol>
+<p>对于定义了两个运算的代数系统，同态也能够保留分配律</p>
+<div class="note note-warning">
+            <p>同态的这两个性质只能从前者导出后者，反向不一定成立；同构是满足同是当且仅当的。</br> 这个性质差异主要是由同构满足双射导致的。</p>
+          </div>
+<p>对两个代数系统<span class="math inline">\(&lt;A,{\circ}&gt;\)</span>和<span class="math inline">\(&lt;{\bar{A} },{\bar{\circ} }&gt;\)</span>，<span class="math inline">\({\bar{e}{\in}{\bar{A} } }\)</span>是<span class="math inline">\({\bar{A} }\)</span>的单位元，如果满足</p>
+<p><span class="math display">\[
+f(a)=e,{\quad}{a{\in}A}
+\]</span></p>
+<p>则称<span class="math inline">\(f\)</span>是<span class="math inline">\(A\)</span>到<span class="math inline">\({\bar{A} }\)</span>的零同态。</p>
+<h4 id="单同态和满同态">单同态和满同态</h4>
+<p>如果两个代数系统之间同态，且</p>
+<ul>
+<li>映射<span class="math inline">\(f\)</span>为单射，称<span class="math inline">\(f\)</span>为单同态</li>
+<li>映射<span class="math inline">\(f\)</span>为满射，称<span class="math inline">\(f\)</span>为满同态，称<span class="math inline">\(\bar{A}\)</span>是<span class="math inline">\(A\)</span>在<span class="math inline">\(f\)</span>下的同态像，记作<span class="math inline">\(A{\sim}{\bar{A} }\)</span></li>
+<li>映射<span class="math inline">\(f\)</span>为双射，称<span class="math inline">\(f\)</span>为同构</li>
+</ul>
+<h3 id="同构">同构</h3>
+<blockquote>
+<p>在同态的基础上，同构还要求集合之间满足双射(一一映射)。</p>
+</blockquote>
+<h4 id="判定">判定</h4>
+<p>两个代数系统的集合中元素个数不同时，显然也不构成同构。</p>
+<p>如果两个代数系统的运算一个适合某运算律，另一个不适合，那么这两个代数系统必不可能是同构的。</p>
+<blockquote>
+<p>这个判定主要有前面性质是逆否命题推出。如果存在这个情况，与同构的性质相矛盾。</p>
+</blockquote>
+<h2 id="群">群</h2>
+<h3 id="群的定义">群的定义</h3>
+<p>下面的首先是群的第一定义</p>
+<p>一个在<span class="math inline">\(G\)</span>上定义了一个映射<span class="math inline">\(\circ\)</span>的代数系统满足三个条件</p>
+<ol type="1">
+<li>具有封闭性 &gt; 说明<span class="math inline">\(\circ\)</span>是一个代数运算</li>
+<li>满足结合律</li>
+<li>对于任意<span class="math inline">\(a{\circ}x=b\)</span>和<span class="math inline">\(y{\circ}a=b\)</span>都有解 &gt; 不需要考虑唯一性，这个公理与群最早用来解高次方程有关</li>
+</ol>
+<p>可以被称为群，记作<span class="math inline">\((G,{\circ})\)</span>。<span class="math inline">\(\circ\)</span>也称为<span class="math inline">\(G\)</span>上的乘法；以上三条被称为群的三个公理。</p>
+<p>比如代数系统<span class="math inline">\(({\mathbb{Z} }-\{0\},{\cdot})\)</span>不是一个群，因为不满足公理三；<span class="math inline">\(({\mathbb{Q} }-\{0\},{\cdot})\)</span>是一个群。</p>
+<blockquote>
+<p>比如对于方程<span class="math inline">\(2x=1\)</span>，第一个代数系统下是无解的。</p>
+</blockquote>
+<p>第二定义使用群的性质中的两个公理代替公理三</p>
+<p>当群的集合是有限集时，群是有限群。否则是无限群。</p>
+<p>如果群的运算额外满足交换律，该群被称为交换群（阿贝尔群）；否则是非交换群。</p>
+<blockquote>
+<p>若群满足<span class="math inline">\(x^2=e\)</span>，那么这个群是一个交换群。</p>
+</blockquote>
+<p><span class="math inline">\(G\)</span>中元素<span class="math inline">\(a\)</span>进行若干次运算，被称为<span class="math inline">\(a\)</span>的<span class="math inline">\(n\)</span>次幂（n为正整数）</p>
+<h4 id="有限群的群的第三定义">有限群的（群的第三）定义</h4>
+<p>如果<span class="math inline">\(G\)</span>一个<strong>有限集</strong>，如果满足封闭性、结合律和消去律，那么他一定满足公理三，他和他定义的运算构成一个有限群。</p>
+<h4 id="运算表的性质">运算表的性质</h4>
+<h4 id="另一种详细的定义">另一种详细的定义</h4>
+<ul>
+<li>满足结合律的代数系统被称为半群，其运算常用<span class="math inline">\(\circ\)</span>表示，这个运算被称为乘法。</li>
+<li>满足交换律的半群被称为可交换半群，其运算常用<span class="math inline">\(+\)</span>表示。</li>
+<li>含有单位元的半群被称为幺半群，使用加法记号时单位元被称为零元；此时一定有半群的逆元，使用加法记号时被称为负元。</li>
+<li>含有逆元的幺半群被称为群。</li>
+<li>满足交换律的群被称为可交换群，或者阿贝尔群。</li>
+</ul>
+<h3 id="群的简单性质">群的简单性质</h3>
+<p>群还有另外两个公理，首先是左、右单位元，这里放一个他们的证明</p>
+<p><span class="math display">\[
+\begin{array}{l}
+假设有群(G,\cdot)，设其中元素a=b=c，\\
+根据公理三，方程xc=c有解，设解为e,即有ec=c{\quad}(1) \\
+方程cx=c=a，设解为d，即为cd=a{\quad}(2)\\
+这样可以证明ea=e(cd)=(ec)d=cd=a
+\end{array}
+\]</span></p>
+<p>另一个公理是左逆元的证明基于左单位元</p>
+<p>进一步推出左逆元必定也是右逆元</p>
+<p><span class="math display">\[
+\begin{array}{l}
+已知{a^{-1} }a=e，由公理三，y{a^{-1} }=e有解，设为a&#39;\\
+那么a{a^{-1} }=e(a{a^{-1} })=(a&#39;{a^{-1} })a{a^{-1} }=a&#39;(a{a^{-1} })a^{-1}\\
+=a&#39;ea^{-1}=a&#39;(ea^{-1})=a&#39;a^{-1}=e\\
+由此可以证明a^{-1}既是a的左逆元也是a的右逆元
+\end{array}
+\]</span></p>
+<p>最后还可以推出左单位元必定是右单位元</p>
+<p><span class="math display">\[
+ae=a(a^{ {-1} }a)=(a{a^{-1} })a=ea=a
+\]</span></p>
+<p>群的n次幂有两个基本性质</p>
+<p><span class="math display">\[
+\begin{array}{l}
+a^{m+n}={a^m}{a^n}\\
+(a^m)^n=a^{mn}
+\end{array}
+\]</span></p>
+<p>当这是一个交换群时，还满足性质(m为正整数)</p>
+<p><span class="math display">\[
+(ab)^m={a^m}{b^m}
+\]</span></p>
+<blockquote>
+<p>主要依靠交换律将a和b交换到一起进行合并</p>
+</blockquote>
+<h3 id="单位元逆元和幂等元">单位元、逆元和幂等元</h3>
+<p>左单位元一定也是右单位元，被称为单位元。单位元存在且唯一；逆元同样具有唯一性。</p>
+<p>如果<span class="math inline">\(ab=e\)</span>，那么ab互为逆元。</p>
+<blockquote>
+<p>如果<span class="math inline">\(a^2=e\)</span>，那么<span class="math inline">\(a^{-1}=a\)</span>，进而<span class="math inline">\(e^{-1}=e\)</span>。</p>
+</blockquote>
+<p>逆元具有这样一系列性质</p>
+<p><span class="math display">\[
+\begin{array}{l}
+(a^{-1})^{-1}=a\\
+({a_1}{a_2}{\dots}{a_n})^{-1}={(a_n)^{-1} }{(a_{n-1})^{-1} }{\dots}{(a_1)^{-1} }\\
+(a^n)^{-1}=(a^{-1})^n
+\end{array}
+\]</span></p>
+<p>对于n次幂，利用单位元和逆元上面的性质可以得到推广</p>
+<p><span class="math display">\[
+\begin{array}{l}
+a^n=(a^{-1})^{-n},n为负数\\
+a^0=e
+\end{array}
+\]</span></p>
+<p>如果元<span class="math inline">\(a\)</span>满足<span class="math inline">\(a*a=a\)</span>，则称<span class="math inline">\(a\)</span>为幂等元。</p>
+<blockquote>
+<p>代数系统的单位元如果存在，那么他一定也是该代数系统的幂等元。</p>
+</blockquote>
+<h3 id="元的阶">元的阶</h3>
+<p>使得<span class="math inline">\(a^m=e\)</span>成立时，正整数m为a的阶，记作<span class="math inline">\(|a|=m\)</span>或者<span class="math inline">\(o(a)\)</span>；若不存在，则<span class="math inline">\(|a|=\infty\)</span></p>
+<blockquote>
+<p>对阶的讨论是基于元素的，比如整数加群中0的阶为1，其他元素为无穷。</p>
+</blockquote>
+<p>如果<span class="math inline">\(|a|=k\)</span>且<span class="math inline">\(a^n=e\)</span>，那么<span class="math inline">\(k|n\)</span>。</p>
+<p><span class="math display">\[
+\begin{array}{l}
+ 设n=kq+r,0{\le}r{\lt}q\\
+a^n=a^{kq+r}={(a^k)^q}{a^r}={e^q}{a^r}=a^r=e \\
+所以r=0
+\end{array}
+\]</span></p>
+<p>一个元的阶是1，<strong>当且仅当</strong>这个元就是单位元。</p>
+<p>一个元的逆元是他自身，<strong>当且仅当</strong>它的自身是单位元或二阶元。</p>
+<p>一个群中，阶为1的元只有一个（单位元）；阶为2的元个数不确定；阶大于2的元有偶数个，总是成对出现。</p>
+<blockquote>
+<p>所以一个有限群的阶由阶为2的元的个数决定。</p>
+</blockquote>
+<p>对任意元<span class="math inline">\(a\)</span>，有<span class="math inline">\(|a|=|a^{-1 }|\)</span></p>
+<p>一个有限群里阶大于2的元一定有偶数个。</p>
+<p>一个有限群的每一个元的阶都有限。</p>
+<h3 id="消去律">消去律</h3>
+<p>群的乘法一定适合消去律。</p>
+<blockquote>
+<p>也被称作群的公理3'</p>
+</blockquote>
+<p><span class="math display">\[
+\begin{array}{l}
+  ax=ax&#39; \\
+  a^{-1}(ax)=a^{-1}ax&#39;\\
+  (a^{-1}a)x=(a^{-1}a)x&#39;\\
+  ex=ex&#39;\\
+  x=x&#39;
+\end{array}
+\]</span></p>
+<p>根据消去律，可以得知<span class="math inline">\(ax=b\)</span>和<span class="math inline">\(ya=b\)</span>各有唯一解。</p>
+<p><span class="math display">\[
+\begin{array}{l}
+  假设有ax=b，设解为c\\
+  ac=b\\
+  ac&#39;=b\\
+  所以ac=ac&#39;\\
+  由消去律，c=c&#39;
+\end{array}{l}
+\]</span></p>
+<h3 id="群的同态">群的同态</h3>
+<blockquote>
+<p>提供了一个快速判断代数系统是否为群的方法</p>
+</blockquote>
+<p>已知群<span class="math inline">\((G,{\circ})\)</span>是一个群，<span class="math inline">\((\bar{G},\bar{\circ})\)</span>是一个代数系统，如果<span class="math inline">\(G {\sim}\bar{G}\)</span>，那么<span class="math inline">\(\bar{G}\)</span>也是一个群。</p>
+<p>这样得到的群<span class="math inline">\(\bar{G}\)</span>，<span class="math inline">\(\bar{G}\)</span>的单位元是<span class="math inline">\(G\)</span>的单位元的像；<span class="math inline">\(\bar{G}\)</span>的逆元是<span class="math inline">\(G\)</span>的逆元的像。</p>
+<p>如果<span class="math inline">\(G{\cong}\bar{G}\)</span>，那么<span class="math inline">\(G\)</span>中元<span class="math inline">\(a\)</span>在<span class="math inline">\(\bar{G}\)</span>中对应元的阶相等。</p>
+<h3 id="变换群">变换群</h3>
+<p>集合上的所有一一变换与变换的复合运算构成群。</p>
+<p>所有旋转、位似和平移都分别构成群。</p>
+<p>集合上的若干一一变换对变换的乘法作成群，这样的群被称为变换群。</p>
+<p>一个变换群的单位元一定是恒等变换。</p>
+<h4 id="凯莱定理">凯莱定理</h4>
+<p>任何一个群都同构于一个变换群</p>
+<h3 id="置换群">置换群</h3>
+<p>有限集上的一一变换叫做置换，同一集合上的若干置换构成的群叫做置换群。</p>
+<blockquote>
+<p>置换和变换的差异仅在于置换要求有限集，所以置换群是变换群的一种。</p>
+</blockquote>
+<p>包含<span class="math inline">\(n\)</span>个元素的集合上的<strong>全体置换</strong>作成的群叫做<span class="math inline">\(n\)</span>次对称群，记作<span class="math inline">\(S_n\)</span>。通常将其中元素记作</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+  1 &amp; 2 &amp; 3 &amp; {\dotsb} &amp; n \\
+  {r_1} &amp; {r_2} &amp; {r_3} &amp; {\dotsb} &amp; {r_n}
+\end{pmatrix}
+\]</span></p>
+<blockquote>
+<p><span class="math inline">\(n\)</span>次对称群是同一集合上最大的置换群</p>
+</blockquote>
+<p>这些元素也可以使用<span class="math inline">\(({r_1}{r_2}{\dotsb}{r_n})\)</span>的形式简写，其中简写形式括号内有<span class="math inline">\(k\)</span>个数字时该元素被称为一个<span class="math inline">\(k-循环\)</span>，统称所有<span class="math inline">\(k-循环\)</span>为循环置换。</p>
+<blockquote>
+<p>二循环也被称为对换。</p>
+</blockquote>
+<p><span class="math inline">\(S_n\)</span>中有<span class="math inline">\(n!\)</span>个，记作<span class="math inline">\(S_n\)</span>的阶，即<span class="math inline">\(|S_n|=n!\)</span>。</p>
+<blockquote>
+<p>其实就是矩阵第二行的全排列。</p>
+</blockquote>
+<p>置换的乘法，特别是使用简写形式下，可以配合图形辅助运算。由于置换本就是特殊的变换，所以置换乘法和变换复合是一回事儿。</p>
+<p>两个不相交的循环置换的乘积可交换。</p>
+<h4 id="有限群的凯莱定理">有限群的凯莱定理</h4>
+<p>任何一个<strong>有限群</strong>都同构于一个置换群</p>
+<h4 id="奇偶置换">奇、偶置换</h4>
+<p>任何一个<strong>置换</strong>可以表示为若干个不相交<strong>循环置换</strong>的乘积。</p>
+<p>任何一个<strong>循环置换</strong>都可以写成若干个相连的<strong>对换</strong>的乘积。</p>
+<p>上面的两个结论可以推出任何一个置换可以表示为若干个对换的乘积，即</p>
+<p><span class="math display">\[
+({r_1}{r_2}{\dotsb}{r_n})={({r_1}{r_k})}{({r_1}{r_{k-1} })}{\cdots}{({r_1}{r_2})}
+\]</span></p>
+<p>由此，所有可以使用偶数个对换乘积的置换称为偶置换，所有偶置换记作<span class="math inline">\(A_n\)</span>；否则称为奇置换。</p>
+<p><span class="math inline">\(n{\lt}2\)</span>时，<span class="math inline">\(S_n\)</span>中奇、偶置换各占一半。</p>
+<h4 id="置换群的逆元">置换群的逆元</h4>
+<p>对一个循环置换来讲</p>
+<ul>
+<li>矩阵形式下，可以很直观的写出一个置换的逆元。</li>
+<li>简写形式下，只需反序写循环；特别地，对换的逆元与它本身相等。</li>
+</ul>
+<h4 id="置换群的阶">置换群的阶</h4>
+<p>k-循环的阶等于k</p>
+<p>如果一个置换<span class="math inline">\(\sigma\)</span>可以表示为<span class="math inline">\(k\)</span>-循环和<span class="math inline">\(l\)</span>-循环的乘积，那么<span class="math inline">\(|\sigma|=lcm({k,l})\)</span>（最小公倍数）</p>
+<h3 id="循环群">循环群</h3>
+<blockquote>
+<p>循环群的结构、分类要比其他群简单</p>
+</blockquote>
+<p>设<span class="math inline">\(G\)</span>是一个群，<span class="math inline">\(a{\in}G\)</span>，对任意的<span class="math inline">\(b{\in}G\)</span>，总是有<span class="math inline">\(m{\in}\mathbb{Z}\)</span>满足<span class="math inline">\(b=a^m\)</span>，<span class="math inline">\(G\)</span>就是一个循环群，<span class="math inline">\(a\)</span>是这个循环群的生成元，记作<span class="math inline">\(G=(a)\)</span>。</p>
+<p>一个循环群一定是交换群。</p>
+<p>循环群的生成元可以不只有一个，比如说整数加群<span class="math inline">\((\mathbb{Z},+)\)</span>就是一个循环群，<span class="math inline">\(1\)</span>和<span class="math inline">\(-1\)</span>都是它的生成元。</p>
+<p>显然单位元不可能作为生成元。</p>
+<p><span class="math inline">\(A_n\)</span>关于变换的乘法作成群，这个群叫做<span class="math inline">\(n\)</span>次交错群。</p>
+<blockquote>
+<p>举个例子，<span class="math inline">\(A_3\)</span>体现正三角形的旋转对称性。</p>
+</blockquote>
+<h4 id="欧拉函数">欧拉函数</h4>
+<p>欧拉函数<span class="math inline">\(\phi({n})\)</span>被定义为小于<span class="math inline">\(n\)</span>且与<span class="math inline">\(n\)</span>互素的非负整数的个数。</p>
+<p>欧拉函数具有一些性质</p>
+<ul>
+<li>对质数<span class="math inline">\(n\)</span>来讲，<span class="math inline">\(\phi({n})=n-1\)</span></li>
+</ul>
+<h4 id="模n剩余类加群">模<span class="math inline">\(n\)</span>剩余类加群</h4>
+<p>在<span class="math inline">\(\mathbb{Z}_n\)</span>上定义<span class="math inline">\({\forall}{[a]},{[b]{\in} }{\mathbb{Z}_n},{[a]}+{[b]}={[a+b]}\)</span>，则<span class="math inline">\(({\mathbb{Z}_n},+)\)</span>是一个循环群，这个群叫做模<span class="math inline">\(n\)</span>剩余类加群。</p>
+<h4 id="循环群基本定理">循环群基本定理</h4>
+<blockquote>
+<p>任意给出一个循环群，可以使用两个基本的循环群大概描述它</p>
+</blockquote>
+<p>设<span class="math inline">\(G=(a)\)</span></p>
+<ul>
+<li><span class="math inline">\(|a|=\infty\)</span>时，<span class="math inline">\(G{\cong}(\mathbb{Z},+)\)</span></li>
+<li><span class="math inline">\(|a|=n\)</span>时，<span class="math inline">\(G{\cong}(\mathbb{Z}_n,+)\)</span></li>
+</ul>
+<p>可以得到推论</p>
+<ul>
+<li><span class="math inline">\(|a|=\infty\)</span>时，<span class="math inline">\(G\)</span>恰有两个生成元<span class="math inline">\(a,a^{-1}\)</span></li>
+<li><span class="math inline">\(|a|=n\)</span>时，<span class="math inline">\(G\)</span>至少有两个生成元<span class="math inline">\(a,a^{-1}\)</span>，分别对应<span class="math inline">\([1],[n-1]\)</span></li>
+</ul>
+<p>以及</p>
+<ul>
+<li><span class="math inline">\(|a|=\infty\)</span>时，则<span class="math inline">\(|G|=\infty\)</span></li>
+<li><span class="math inline">\(|a|=n\)</span>时，则<span class="math inline">\(|G|=n\)</span></li>
+</ul>
+<p>对一个<span class="math inline">\(n\)</span>阶循环群<span class="math inline">\(G=(a)\)</span>，<span class="math inline">\(G\)</span>中有欧拉函数<span class="math inline">\(\phi(n)\)</span>个生成元。</p>
+<h3 id="子群">子群</h3>
+<p>简单定义不难理解，记<span class="math inline">\(H\)</span>为<span class="math inline">\(G\)</span>的群为<span class="math inline">\(H{\le}G\)</span>。</p>
+<p>单位元子群(<span class="math inline">\(\{e\}\)</span>)、群(<span class="math inline">\(G\)</span>)本身被称为群的平凡子群，每个群都会有这两个群；其它子群被称为真子群。</p>
+<p>典型例子有</p>
+<p><span class="math display">\[
+{(\mathbb{Z},+)}{\le}{(\mathbb{Q},+)}{\le}{(\mathbb{R},+)}{\le}{(\mathbb{C},+)}
+\]</span></p>
+<p>同时具有性质<span class="math inline">\(e_H=e_G,a^{-1}_H=a^{-1}_G\)</span></p>
+<p>设<span class="math inline">\(G\)</span>是一个群，<span class="math inline">\(S\)</span>是<span class="math inline">\(G\)</span>的一个非空子集，则</p>
+<p><span class="math display">\[
+(S)=\{a^mb^n{\cdots}c^k|a,b,{\cdots},c{\in}S,m,n,k{\in}\mathbb{Z}\}
+\]</span></p>
+<p>其中<span class="math inline">\(a^mb^n{\cdots}c^k\)</span>是有限个元的有限次幂的乘积，他是一个<span class="math inline">\(G\)</span>的子群，并且是包含<span class="math inline">\(S\)</span>的最小子群，成为<span class="math inline">\(S\)</span>的生成子群。</p>
+<h4 id="子群的判定">子群的判定</h4>
+<p>第一判定定理，<span class="math inline">\(H\)</span>为<span class="math inline">\(G\)</span>的子群，当且仅当：</p>
+<ul>
+<li><span class="math inline">\({\forall}a,b{\in}H\)</span>，都有<span class="math inline">\(ab{\in}H\)</span></li>
+<li><span class="math inline">\(a{\in}H\)</span>，有<span class="math inline">\(a^{-1}{\in}H\)</span></li>
+</ul>
+<p>第二判定定理，<span class="math inline">\(H\)</span>为<span class="math inline">\(G\)</span>的子群，当且仅当：</p>
+<ul>
+<li><span class="math inline">\({\forall}a,b{\in}H\)</span>，总是有<span class="math inline">\(ab^{-1}{\in}H\)</span></li>
+</ul>
+<blockquote>
+<p>通过控制<span class="math inline">\(a,b\)</span>的取值可以得到第一判定定理的两个条件。</p>
+</blockquote>
+<p>第三判定定理，<span class="math inline">\(H\)</span>为<span class="math inline">\(G\)</span>的子群，当且仅当：</p>
+<ul>
+<li><span class="math inline">\(H\)</span>是<span class="math inline">\(G\)</span>的非空有限子集</li>
+<li><span class="math inline">\({\forall}a,b{\in}H\)</span>，总是有<span class="math inline">\(ab{\in}H\)</span></li>
+</ul>
+<h2 id="环与域">环与域</h2>
+<h3 id="环与域的基本内容">环与域的基本内容</h3>
+<h4 id="环的定义和性质">环的定义和性质</h4>
+<p>对集合<span class="math inline">\(R\)</span>，定义映射<span class="math inline">\(+,\cdot\)</span>，满足</p>
+<ol type="1">
+<li><span class="math inline">\((R,+)\)</span>是一个交换群（加群）</li>
+<li><span class="math inline">\((R,\cdot)\)</span>具有封闭性、结合律</li>
+<li>左右分配律</li>
+</ol>
+<p>称<span class="math inline">\(R\)</span>关于<span class="math inline">\(+.\cdot\)</span>作成一个环，记作<span class="math inline">\((R,+,\cdot)\)</span>。此时加群中的单位元改称零元，逆元改称复元，并定义简写“减法”；另一个群称呼不变。</p>
+<p>为了区分环内的加群，对一些运算的形式进行了改变，比如 <span class="math inline">\(a^0\)</span>变更为<span class="math inline">\(0a\)</span>的形式，<span class="math inline">\(a^n\)</span>变更为<span class="math inline">\(na\)</span>的形式等等。</p>
+<blockquote>
+<p>这些改变并没有改变运算和性质，作用范围和条件也没有改变，主要是为了区分加群和乘法群。</p>
+</blockquote>
+<h4 id="更详细的分类">更详细的分类</h4>
+<ul>
+<li>对代数系统的<span class="math inline">\(&lt;{\mathbb{R} },+,{\times}&gt;\)</span>，如果<span class="math inline">\(&lt;{\mathbb{R},+}&gt;\)</span>是一个Abel群，<span class="math inline">\(&lt;{\mathbb{R},{\times} }&gt;\)</span>是一个半群，且满足左右分配律，这样的代数系统被称为环。</li>
+<li>环<span class="math inline">\(R=\{0\}\)</span>被称为零环。</li>
+</ul>
+<blockquote>
+<p><span class="math inline">\(&lt;{\mathbb{Z},+,{\cdot} }&gt;\)</span>是整数环，<span class="math inline">\(&lt;{\mathbb{Z(i)},+,{\cdot} }&gt;,{\mathbb{Z(i)}=\{a+bi|a,b{\in}{\mathbb{Z} }\} }\)</span>是高斯环，<span class="math inline">\(&lt;{\mathbb{(Z)_n} },+,{\cdot}&gt;\)</span>是矩阵环，<span class="math inline">\(&lt;{\mathbb{Z[x]} },+,{\cdot}&gt;\)</span>是多项式环，<span class="math inline">\(&lt;{\mathbb{Z_n} },{+_n},{ {\cdot}_n}&gt;\)</span>是模n剩余环。</p>
+</blockquote>
+<p>啊吧啊</p>
+<ul>
+<li>若环<span class="math inline">\(&lt;{\mathbb{R} },+,{\cdot}&gt;\)</span>中，<span class="math inline">\(&lt;{\mathbb{R},{\cdot} }&gt;\)</span>是一个幺半群，其单位元被称为环的单位元，用1表示，此时该环被称为由单位元/1的环。</li>
+<li>对有1的环，如果<span class="math inline">\(&lt;{\mathbb{R},{\cdot} }&gt;\)</span>有逆元，该逆元也被称为环的逆元，用<span class="math inline">\(a^{-1}\)</span>表示。</li>
+<li>有1的环的所有可逆元在乘法运算下构成群<span class="math inline">\(R^*\)</span>，被称为环的乘法群。</li>
+<li>当<span class="math inline">\(&lt;{\mathbb{R},{\cdot} }&gt;\)</span>为可交换半群时，称这个环为可交换环。</li>
+<li>有单位元、无零因子的交换环被称为整环。</li>
+<li>对一个有1的环，令<span class="math inline">\({\hat{R} }=R-\{0\}\)</span>，如果<span class="math inline">\(&lt;{\hat{R} },{\cdot}&gt;\)</span>，是一个群则称<span class="math inline">\(R\)</span>为除环。</li>
+<li>一个无零因子的有限环，其模大于2，该环是一个除环。</li>
+<li>可交换的除环被称为域。</li>
+<li>有限整环必为域。</li>
+</ul>
+<h4 id="域的定义和性质">域的定义和性质</h4>
+<blockquote>
+<p>域是“最好的环”</p>
+</blockquote>
+<p>所有非零元关于乘法能作成交换群的环，被称为域。</p>
+<blockquote>
+<p>我们常常提到的实数域、复数域就和有理数环进一步定义得到的有理数域一样，就是这里所说的“域”。</p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">离散数学</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/">近世代数</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/3953/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">设计模式简介和示例</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/38741/">
+                        <span class="hidden-mobile">java课程设计实验报告</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>

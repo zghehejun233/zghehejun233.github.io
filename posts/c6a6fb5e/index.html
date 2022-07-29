@@ -1,0 +1,1168 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="概览 一元函数和多元函数 微积分讨论的一大基本问题就是函数的极限、微分（导数）和积分 从一元函数拓展到多元函数时会有一些有趣的概念，这里可以列出一个表格对比一下    操作 一元函数 多元函数     极限 只能从两个方向逼近 可以有无数种方式逼近   微分（导数） 可导就是微分 偏导全微分方向导数梯度   积分 不定积分定积分 二重、三重积分曲线积分（还是一元函数积分）曲面积分    向量和空间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微积分">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/c6a6fb5e/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="概览 一元函数和多元函数 微积分讨论的一大基本问题就是函数的极限、微分（导数）和积分 从一元函数拓展到多元函数时会有一些有趣的概念，这里可以列出一个表格对比一下    操作 一元函数 多元函数     极限 只能从两个方向逼近 可以有无数种方式逼近   微分（导数） 可导就是微分 偏导全微分方向导数梯度   积分 不定积分定积分 二重、三重积分曲线积分（还是一元函数积分）曲面积分    向量和空间">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-29T23:13:58.535Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.535Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="微积分">
+<meta property="article:tag" content="小习题儿">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>微积分 - 苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/banner.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="微积分">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-29 23:13" pubdate>
+        2022年7月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      9.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      82 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">微积分</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="概览">概览</h1>
+<h2 id="一元函数和多元函数">一元函数和多元函数</h2>
+<p>微积分讨论的一大基本问题就是函数的极限、微分（导数）和积分</p>
+<p>从一元函数拓展到多元函数时会有一些有趣的概念，这里可以列出一个表格对比一下</p>
+<table>
+<thead>
+<tr class="header">
+<th>操作</th>
+<th>一元函数</th>
+<th>多元函数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>极限</td>
+<td>只能从两个方向逼近</td>
+<td>可以有无数种方式逼近</td>
+</tr>
+<tr class="even">
+<td>微分（导数）</td>
+<td>可导就是微分</td>
+<td>偏导</br>全微分</br>方向导数</br>梯度</td>
+</tr>
+<tr class="odd">
+<td>积分</td>
+<td>不定积分</br>定积分</td>
+<td>二重、三重积分</br>曲线积分（还是一元函数积分）</br>曲面积分</td>
+</tr>
+</tbody>
+</table>
+<h2 id="向量和空间代数">向量和空间代数</h2>
+<p>提供了多元函数的直观印象。</p>
+<h3 id="向量">向量</h3>
+<h4 id="向量的内积">向量的内积</h4>
+<p>不妨先考虑一下如何证明（说到底还是投影）</p>
+<blockquote>
+<p>根据@李天意Providence的解释，能够被拆分并运算的量和运算，就是所谓的“线性”，也就构成了向量内积和线性代数的基础前提。</p>
+</blockquote>
+<p>向量<span class="math inline">\(\mathbb{a}\)</span>在向量<span class="math inline">\(\mathbb{b}\)</span>上的正交分解，其实就是施密特正交化</p>
+<p><span class="math display">\[
+\begin{array}{l}
+{\mathbb{a_1} }={\frac{ {\mathbb{a} }{\cdot}{\mathbb{b} } }{ {\mathbb{b} }{\cdot}{\mathbb{b} } } }\\
+{\mathbb{a_2} }={\mathbb{a} }-{\mathbb{a_1} }
+\end{array}
+\]</span></p>
+<p>也就是分解出来两个相互垂直的向量。</p>
+<blockquote>
+<p>向量内积也可以体现梯度和方向导数的关系</p>
+</blockquote>
+<h4 id="向量的外积">向量的外积</h4>
+<p>向量外积的方向描述了转轴的方向。</p>
+<p>对于手头的两个直线的标准式，二者联立意味着以他俩为方向向量的两个平面相交，此时，二者作为法向量的叉乘结果就是这个交线的方向向量。</p>
+<h4 id="空间曲线和曲面">空间曲线和曲面</h4>
+<blockquote>
+<p>至少掌握写出旋转曲面的方程的能力</p>
+</blockquote>
+<p>求旋转曲面时，旋转轴不变，其余轴（如沿x轴旋转，原曲线在xOy平面）的<span class="math inline">\(y\)</span>改写为<span class="math inline">\({\plusmn}\sqrt{ {y^2}+{z^2} }\)</span></p>
+<h2 id="多元函数微分学">多元函数微分学</h2>
+<h3 id="极限">极限</h3>
+<p>逼近方式的不同会导致不同的极限值。</p>
+<blockquote>
+<p>基本只会出现<span class="math inline">\({\lim}{\frac{0}{0} }\)</span>类型的极限，而且不建议使用洛必达硬干，合理运用等价无穷小、分子分母有理化等变形即可。</p>
+</blockquote>
+<p>可以按照下面的顺序来考虑处理方法</p>
+<ol type="1">
+<li>代入</li>
+<li>分子分母有理化</li>
+<li>等价无穷小代换</li>
+<li>指定变量的逼近方式（常用<span class="math inline">\(y=kx\)</span>和<span class="math inline">\(y=kx^2\)</span>的方式）</li>
+</ol>
+<h3 id="偏导数">偏导数</h3>
+<p><span class="math display">\[
+{\frac{\partial{z} }{\partial{x} } },{\quad}{\frac{\partial{z} }{\partial{y} } }
+\]</span></p>
+<p>偏导数连续是最高级的条件，偏导数连续则函数是可微的，可微则存在偏导数且函数连续。</p>
+<h3 id="全微分">全微分</h3>
+<p><span class="math display">\[
+dz={\frac{\partial{z} }{\partial{x} }dx}+{\frac{\partial{z} }{\partial{y} }dy}
+\]</span></p>
+<h3 id="方向导数">方向导数</h3>
+<p><span class="math display">\[
+{\frac{\partial{z} }{\partial{l} } }={\frac{\partial{z} }{\partial{x} }{cos{\theta} } }+{\frac{\partial{z} }{\partial{y} }{sin{\theta} } }
+\]</span></p>
+<h3 id="梯度">梯度</h3>
+<p><span class="math display">\[
+({\frac{\partial{z} }{\partial{x} } },{\frac{\partial{z} }{\partial{y} } })
+\]</span></p>
+<h2 id="重积分">重积分</h2>
+<h3 id="积分的基本技巧">积分的基本技巧</h3>
+<ul>
+<li>第一类换元（凑微分、凑常数）</li>
+<li>第二类换元</li>
+<li>分部积分（反对幂三指，分离不同类型的函数）</li>
+</ul>
+<h3 id="二重积分">二重积分</h3>
+<p>二重积分变成二次积分。</p>
+<p>借助极坐标求二重积分。</p>
+<p><span class="math display">\[
+\begin{align}
+\iint\limits_{D}{f(x,y)}{\mathrm{d}x\mathrm{d}y} &amp; = \int_{a}^{b}{\mathrm{d}x}\int_{\phi_1(x)}^{\phi_2(x)}{f(x,y)}{\mathrm{d}y}\\
+\iint\limits_{D}{f(x,y)}{\mathrm{d}\sigma} &amp; =  \iint\limits_{D}{f({r\cos{\theta} },r\sin{\theta})}{r\mathrm{d}r\mathrm{d}\theta}
+\end{align}
+\]</span></p>
+<h3 id="三重积分">三重积分</h3>
+<p>投影代替想象空间，非投影轴保证有两个约束作为上下底。</p>
+<h2 id="曲线积分和曲面积分">曲线积分和曲面积分</h2>
+<h2 id="无穷级数">无穷级数</h2>
+<h1 id="无穷级数-1">无穷级数</h1>
+<h2 id="常数项级数的概念和性质">常数项级数的概念和性质</h2>
+<h3 id="基本概念">基本概念</h3>
+<blockquote>
+<p>无穷级数是由计算的需求产生的</p>
+</blockquote>
+<ul>
+<li><p>(常数项)(无穷)级数的定义，注意无穷级数的记法<span class="math inline">\(\sum^{\infty}_{i=1}{u_i}\)</span>，其中<span class="math inline">\(u_n\)</span>被称为通项或一般项</p>
+<blockquote>
+<p>这个定义是不可以计算的，因为无法实现无穷多项的相加，这里继续引入逼近的思想</p>
+</blockquote></li>
+<li><p>定义级数的前n项和<span class="math inline">\(S_n=\sum^{n}_{i=1}{u_i}\)</span>，称为级数的部分和，由此得到部分和数列</p></li>
+<li><p>对于上面定义的部分和，如果<span class="math inline">\(\lim_{n\rightarrow\infty}{S_n}=S\)</span>，那么成这个级数是收敛的，否则是发散的</p></li>
+<li><p>级数收敛时，定义<span class="math inline">\(r_n=S-S_n\)</span>为级数第n项后的余项，定义误差为余项的绝对值</p></li>
+</ul>
+<h3 id="性质">性质</h3>
+<ul>
+<li><p>对收敛级数<span class="math inline">\(\sum^{\infty}_{i=1}{u_n}=S\)</span>，有<span class="math inline">\(\sum^{\infty}_{i=1}{ku_n}=k\sum^{\infty}_{i=1}{u_n}=kS\)</span></p></li>
+<li><p>两个收敛级数，可以逐项相加或逐项相减</p></li>
+<li><p>若原级数收敛，对各项按原来的次序，任意分组加括号后，所形成的新技术收敛且级数的和不变</p>
+<blockquote>
+<p>该命题的逆不为真</p>
+</blockquote>
+<blockquote>
+<p>以上是对级数之间运算的性质的讨论</p>
+</blockquote></li>
+<li><p>如果加括号后的级数发散，原级数一定也发散</p></li>
+<li><p>级数的每一项同时乘一个非零常数，其敛散性不变</p></li>
+<li><p>级数的无穷多项同时去掉或添加有限项，级数的敛散性不变；若原技术收敛，有可能改变级数的和</p></li>
+<li><p>改变级数的有限项，级数的敛散性不变</p>
+<blockquote>
+<p>以上是几个对级数敛散性性质的讨论</p>
+</blockquote></li>
+<li><p>（级数收敛的必要条件）如级数收敛，则<span class="math inline">\(\lim_{n\rightarrow\infty}{u_n}=0\)</span></p></li>
+<li><p>（级数发散的充要条件）若<span class="math inline">\(\lim_{n\rightarrow\infty}{u_n}\neq0\)</span>，原级数发散</p></li>
+</ul>
+<h3 id="常见级数">常见级数</h3>
+<h4 id="几何等比级数">几何/等比级数</h4>
+<ul>
+<li><p>几何级数：</p></li>
+<li><p>当<span class="math inline">\(q\lt{|1|}\)</span>，级数收敛，<span class="math inline">\(S={ {a}\over{1-q} }\)</span></p></li>
+</ul>
+<h4 id="调和级数">调和级数</h4>
+<h4 id="p-级数">p-级数</h4>
+<ul>
+<li>通项：<span class="math inline">\({1}\over{n^p}\)</span></li>
+<li>当<span class="math inline">\(p\le1\)</span>时发散，<span class="math inline">\(p\gt1\)</span>时收敛</li>
+</ul>
+<h4 id="莱布尼茨级数">莱布尼茨级数</h4>
+<h2 id="审敛法">审敛法</h2>
+<p>审敛法就是为了方便讨论函数的敛散性，收敛函数的和的一系列方法</p>
+<h3 id="正项级数">正项级数</h3>
+<p>每项均非负的级数被称为正项级数，其部分和数列是一个单调增加的数列</p>
+<h4 id="基本定理">基本定理</h4>
+<ul>
+<li>正项级数收敛的充要条件是其部分和数列有界</li>
+</ul>
+<h4 id="比较审敛法">比较审敛法</h4>
+<ul>
+<li>级数的每个通项小于某个收敛级数的对应通项，那么这个收敛收敛；同理。。。</li>
+<li>根据上面的性质，若从某一项开始，有<span class="math inline">\({u_n}\le{k{v_n} }\)</span>，且<span class="math inline">\(\sum^{\infty}_{i=1}{v_i}\)</span>收敛，那么<span class="math inline">\({\sum^{\infty}_{i=1}{u_i} }\)</span>收敛；同理。。。</li>
+<li>进一步利用p-级数，可以特殊化上一个推论</li>
+</ul>
+<blockquote>
+<p>比较判别法的特点是要已知若干级数的敛散性。一般来说，我们可以<strong>选择p-级数或者几何级数作为“标准函数”</strong></p>
+</blockquote>
+<h4 id="比较审敛法的极限形式">比较审敛法的极限形式</h4>
+<ul>
+<li>假设<span class="math inline">\(\lim_{n\rightarrow\infty}{ {u_n}\over{v_n} }=l\)</span>，有
+<ul>
+<li><span class="math inline">\(l=0\)</span>，若<span class="math inline">\(v_n\)</span>收敛，则<span class="math inline">\(u_n\)</span>收敛；若<span class="math inline">\(v_n\)</span>发散，则<span class="math inline">\(u_n\)</span>发散</li>
+<li><span class="math inline">\(0\lt{l}\lt{+\infty}\)</span>，则二者有相同的敛散性</li>
+<li><span class="math inline">\(l=+\infty\)</span>，若<span class="math inline">\(v_n\)</span>发散，则<span class="math inline">\(u_n\)</span>发散</li>
+</ul></li>
+<li>常常会涉及到学极限时接触到的<strong>等价0</strong></li>
+</ul>
+<h4 id="柯西判别法根值审敛法">柯西判别法/根值审敛法</h4>
+<ul>
+<li>设<span class="math inline">\(\lim_{n\rightarrow\infty}{\sqrt[n]{u_n} }=\rho\)</span>，有
+<ul>
+<li><span class="math inline">\(0\le\rho\lt1\)</span>，级数收敛</li>
+<li><span class="math inline">\(\rho=1\)</span>级数可能收敛也可能发散</li>
+<li><span class="math inline">\(1\lt\rho\le+\infty\)</span>，级数发散</li>
+</ul></li>
+<li>对于含<span class="math inline">\((-1)^n\)</span>项的一些级数，可能会使用到<strong>夹逼定理</strong></li>
+</ul>
+<h4 id="达朗贝尔判别法比值审敛法">达朗贝尔判别法/比值审敛法</h4>
+<ul>
+<li>设<span class="math inline">\({\lim_{n\rightarrow\infty}{ {u_{n+1} }\over{u_n} } }=\rho\)</span>，有
+<ul>
+<li><span class="math inline">\(0\le\rho\lt1\)</span>，级数收敛</li>
+<li><span class="math inline">\(\rho=1\)</span>级数可能收敛也可能发散</li>
+<li><span class="math inline">\(1\lt\rho\le+\infty\)</span>，级数发散</li>
+</ul></li>
+</ul>
+<h3 id="交错级数">交错级数</h3>
+<p>正负项<strong>间隔出现</strong>的级数，称为交错级数</p>
+<h4 id="莱布尼茨准则交错级数审敛法">莱布尼茨准则/交错级数审敛法</h4>
+<ul>
+<li>对于任意交错级数，如果满足 <span class="math display">\[
+(1){ {u_{n+1} }\le{u_n} };(2)\lim_{n\rightarrow\infty}{u_n}=0
+\]</span> 那么这个交错级数收敛，级数的和<span class="math inline">\(S\le{|u_1|}\)</span>，余项<span class="math inline">\({|r_n|}\le{u_{n+1} }\)</span></li>
+</ul>
+<h3 id="任意项级数">任意项级数</h3>
+<p>正负项<strong>任意出现</strong>的级数，称为任意项级数</p>
+<p>任意项级数的收敛性可以通过正正项级数判断，交错级数可以看做是特殊的任意项级数</p>
+<p>对于任意项级数<span class="math inline">\(\sum_{i=1}^{\infty}{u_n}\)</span>，如果<span class="math inline">\(\sum_{i=1}^{\infty}{|u_n|}\)</span>收敛，则称这个级数<strong>是绝对收敛</strong>；如果原级数收敛，但其正项级数不收敛，称其为<strong>条件收敛</strong></p>
+<p>不难证明级数的绝对收敛一定有收敛</p>
+<p>一般来说，正项级数的收敛不能导出原级数的收敛，但比值审敛法、根值审敛法可以导出这个结论</p>
+<h4 id="绝对收敛级数">绝对收敛级数</h4>
+<p>对于绝对收敛级数，有两条性质</p>
+<ul>
+<li><p>绝对收敛级数的各项任意交换后所得到的级数也绝对收敛</p></li>
+<li><p>对于两个绝对收敛级数，记他们的和分别为<span class="math inline">\(S\)</span>和<span class="math inline">\(\sigma\)</span>，他们的柯西乘积也绝对收敛，和为<span class="math inline">\(S·\sigma\)</span></p></li>
+</ul>
+<h2 id="反常积分审敛法和tau函数">反常积分审敛法和<span class="math inline">\(\tau\)</span>函数</h2>
+<h3 id="反常积分审敛法">反常积分审敛法</h3>
+<blockquote>
+<p>反常积分的审敛法算是来自上面的审敛法，其证明也是基于比值审敛法</p>
+</blockquote>
+<p>对于反常积分敛散性的判断，我们原本是通过求其原函数，再根据定义判断极限是否存在来进行判断</p>
+<p>利用上面给出的审敛法，可以更方便的判断敛散性</p>
+<ul>
+<li>（反常积分的比较审敛原理）是对前面比较审敛法的推广，内容基本一样</li>
+<li>如果反常积分的函数的绝对值积分收敛，则该积分绝对收敛</li>
+</ul>
+<h4 id="比较审敛法1">比较审敛法1</h4>
+<p>利用函数<span class="math inline">\(g(x)={ {1}\over{x^p} }\)</span>来进行判断</p>
+<ul>
+<li>当存在<span class="math inline">\(M&gt;0,p&gt;1\)</span>使得<span class="math inline">\(f(x)\leq{Mg(x)}\)</span>，反常积分收敛</li>
+<li>存在常数<span class="math inline">\(N\)</span>，使得<span class="math inline">\(f(x)\geq{Ng(x)}\)</span>，反常积分发散</li>
+</ul>
+<p>相应的还有极限审敛法</p>
+<ul>
+<li>如果<span class="math inline">\(p\gt{1}\)</span>，<span class="math inline">\(\lim_{x\rightarrow{\infty} }{x^pf(x)}\)</span>存在，不定积分收敛</li>
+<li>如果<span class="math inline">\(\lim_{x\rightarrow{\infty} }xf(x)=d\gt{0}\)</span>，反常积分发散</li>
+</ul>
+<h4 id="比较审敛法2">比较审敛法2</h4>
+<p>利用函数<span class="math inline">\(g(x)={1\over{(x-a)^q} }\)</span>来进行判断</p>
+<ul>
+<li>当存在<span class="math inline">\(M\gt{0},q\lt{1}\)</span>，有<span class="math inline">\(f(x)\leq{Mg(x)}\)</span>，反常积分收敛</li>
+<li>存在<span class="math inline">\(N\gt{0},q\geq{1}\)</span>，使得<span class="math inline">\(f(x)\geq{Ng(x)}\)</span>，反常积分发散</li>
+</ul>
+<p>同样也有其对应的极限审敛法</p>
+<ul>
+<li>对于<span class="math inline">\(0\lt{1}\lt{1}\)</span>，<span class="math inline">\(\lim_{x\rightarrow{\infty} }{x^pf(x)}\)</span>存在，不定积分收敛</li>
+<li>如果<span class="math inline">\(q\geq{1}\)</span>,<span class="math inline">\(\lim_{x\rightarrow{\infty} }xf(x)=d\gt{0}\)</span>，反常积分发散</li>
+</ul>
+<h3 id="tau-函数"><span class="math inline">\(\tau-\)</span>函数</h3>
+<p><span class="math inline">\(\tau-\)</span>函数是个特殊的函数，具有以下一系列性质和结论</p>
+<ul>
+<li>递推关系: <span class="math inline">\(\Tau(s+1)=s\Tau(s)\)</span></li>
+<li>阶乘推广: <span class="math inline">\(\Tau(n+1)=n!\)</span></li>
+<li>在<span class="math inline">\(x\rightarrow{0^+}\)</span>时，极限为<span class="math inline">\(+\infty\)</span></li>
+<li>余元公式：<span class="math inline">\(\Tau(x)\Tau(1-s)={ {\pi}\over{sin(\pi s)} }\)</span> 代入<span class="math inline">\(s=1\over{2}\)</span>,可以得到<span class="math inline">\(\Tau(1/2)=\sqrt{\pi}\)</span></li>
+<li>变换形式</li>
+</ul>
+<h2 id="幂级数和函数展开">幂级数和函数展开</h2>
+<h3 id="函数项级数和收敛域">函数项级数和收敛域</h3>
+<blockquote>
+<p>常数项级数和函数项级数可以看做是平等的级数分类，函数项级数在给定自变量的取值后退化到常数项级数，二者大多数性质是相似或相同的</p>
+</blockquote>
+<p>在讨论幂函数之前，首先要定义函数项级数</p>
+<p>对于级数<span class="math inline">\(\sum_{i=1}^{\infty}{u_n(x)}\)</span>，他的每一项都是函数<span class="math inline">\(u_n(x)\)</span>，我们称其为函数项级数。区别于常数项级数，他的每一项都是函数。</p>
+<ul>
+<li>当给定<span class="math inline">\(x=x_0\)</span>，如果上面的级数收敛，我们称<span class="math inline">\(x_0\)</span>为函数项级数的收敛点，所有收敛点的集合称为收敛域；相应的，还有发散点和发散域</li>
+<li>同样可以定义函数项级数的和函数和余项</li>
+</ul>
+<h3 id="幂级数及其运算和性质">幂级数及其运算和性质</h3>
+<p>幂级数是最简单的函数项级数</p>
+<ul>
+<li>（阿贝尔定理）如果一个幂级数在点<span class="math inline">\(x_0\)</span>处收敛，那么对于<span class="math inline">\(|x|\lt{x_0}\)</span>都收敛，<span class="math inline">\(|x|{x_0}\)</span>都发散</li>
+<li>进一步，对于任意幂函数我们可以通过平移进行移动，由此可以确定一个非负数<span class="math inline">\(R\)</span>，使得<span class="math inline">\(R\)</span>以内的级数都绝对收敛，<span class="math inline">\(R\)</span>以外都发散，<span class="math inline">\(x=R\)</span>不确定；称$R为收敛半径</li>
+<li>有时级数只含有偶数或级数次幂，这是不能直接使用阿贝尔定理，但可以根据证明阿贝尔定理的方法使用比值审敛法证明</li>
+</ul>
+<h4 id="四则运算">四则运算</h4>
+<p>对于幂级数，满足以下三个运算</p>
+<ul>
+<li>加减法，需要注意其和级数的收敛半径为较小的一个</li>
+<li>乘法，即柯西乘积</li>
+<li>除法，收敛半径不确定</li>
+</ul>
+<p>对和函数逐项求导、逐项积分后，其断点处的敛散性可能改变</p>
+<p>若端点处收敛，那么和函数在端点处单侧可导</p>
+<h3 id="泰勒级数">泰勒级数</h3>
+<p>根据泰勒定理，不难理解泰勒级数及其余项的定义</p>
+<ul>
+<li>函数可以展开成泰勒级数的充分必要条件是余项趋近于0</li>
+</ul>
+<p>同样可以定义麦克劳林级数</p>
+<h3 id="函数展开成幂级数">函数展开成幂级数</h3>
+<blockquote>
+<p>虽然说是幂级数，但都是展开成泰勒、或者麦克劳林级数更为方便</p>
+</blockquote>
+<h4 id="直接展开">直接展开</h4>
+<ul>
+<li>写出函数的泰勒展开形式</li>
+<li>验证收敛条件</li>
+</ul>
+<h4 id="逐项积分求导">逐项积分、求导</h4>
+<ul>
+<li>寻找目标函数的相关函数进行拼凑</li>
+</ul>
+<h4 id="变量代换">变量代换</h4>
+<ul>
+<li>不必多说</li>
+</ul>
+<h3 id="幂级数的应用">幂级数的应用</h3>
+<h4 id="求解近似值">求解近似值</h4>
+<p>首先要定义误差</p>
+<ul>
+<li>截断误差</li>
+<li>舍入误差</li>
+</ul>
+<p>以下有一些可能会经常见到的级数</p>
+<ul>
+<li>用来构造自然对数表的级数</li>
+</ul>
+<p><span class="math display">\[
+ln{ {1+x}\over{1-x} } = {2({x+{ {x^3\over{3} }+{ {x^5\over{5} }+{\dots} } } })}
+\]</span></p>
+<ul>
+<li><p>用来求解三角函数的级数</p></li>
+<li><p>求解非初等函数的积分</p></li>
+</ul>
+<h2 id="傅里叶级数和正余弦级数">傅里叶级数和正余弦级数</h2>
+<blockquote>
+<p>傅立叶级数和泰勒级数的目的是一样的，都是旨在将函数向级数变换进行计算。但是泰勒级数的条件太强，他需要函数n阶可导连续，这对很多函数来讲并不现实。傅里叶级数只需要函数连续，具有有限个第一类间断点或极值点即可</p>
+</blockquote>
+<h3 id="三角函数系及其正交性">三角函数系及其正交性</h3>
+<p>对三角级数进行<span class="math inline">\(\omega t=x\)</span>这个代换后，可以得到傅里叶级数的一般形式</p>
+<ul>
+<li>三角函数系具有互异函数乘积的积分为零，相同函数积分不为零的特征，我们称为正交</li>
+<li>对于同名函数的乘积的积分，除1是<span class="math inline">\(2\pi\)</span>外，都是<span class="math inline">\(\pi\)</span></li>
+</ul>
+<h3 id="函数展开成傅里叶级数">函数展开成傅里叶级数</h3>
+<p>要得到傅里叶级数的系数，只需要进行三个运算分别去求三个系数</p>
+<ol type="1">
+<li>对等式两边在<span class="math inline">\((-\pi,\pi)\)</span>积分，即可得到<span class="math inline">\(a_0\)</span></li>
+<li>使用<span class="math inline">\(cos(x)\)</span>去乘后积分，利用正交性消去多余项即可得到<span class="math inline">\(a_n\)</span></li>
+<li>同理可以求得<span class="math inline">\(b_n\)</span></li>
+</ol>
+<blockquote>
+<p>这一组公式的名称为优菈-傅里叶公式</p>
+</blockquote>
+<p>对于间断点，我们定义他们的值是两侧极限的算数平均值</p>
+<p>由此可见，傅里叶级数对函数的要求相对泰勒级数很弱，大部分函数都可以展开为傅里叶级数</p>
+<p>而且与幂级数不同，傅里叶级数具有全局逼近的性质，幂级数则是在一个点的收敛半径内逼近</p>
+<p>但是傅里叶级数还是有一些约束，首先他展开的定义域是<span class="math inline">\((-\pi,\pi)\)</span>，对于一些函数，我们需要进行延拓拓展他们的定义域；对于另一些函数，我们需要进行伸缩使其周期变为<span class="math inline">\(2\pi\)</span>；对于奇函数、偶函数，他们还可以进一步简化为正弦级数和余弦级数；最后，傅里叶级数可以推广到复数</p>
+<h3 id="奇函数和偶函数的傅里叶级数">奇函数和偶函数的傅里叶级数</h3>
+<ul>
+<li>傅里叶正弦级数：也就是奇函数的展开，只包含系数为<span class="math inline">\(b_n\)</span>的项，</li>
+<li>傅里叶余弦级数：也就是偶函数的展开，包含<span class="math inline">\(a_0\)</span>和<span class="math inline">\(b_n\)</span></li>
+</ul>
+<h3 id="函数的延拓">函数的延拓</h3>
+<p>当函数定义域只有一半，不足以支持傅里叶级数时，我们可以对其进行<strong>延拓</strong></p>
+<ul>
+<li>偶延拓：</li>
+<li>奇延拓</li>
+</ul>
+<blockquote>
+<p>个人感觉延拓提供的只是一个理论基础，对函数展开时的条件进行补足。实际计算时并没有涉及到延拓出的部分函数，因此我们可以略去延拓后的函数直接进行系数的计算，但在计算系数时确实进行了延拓才使得函数可以展开成傅里叶级数</p>
+</blockquote>
+<h3 id="函数的放缩">函数的放缩</h3>
+<p>对于周期不是<span class="math inline">\(2\pi\)</span>的函数，可以进行代换<span class="math inline">\(x={ {\pi}\over{l} }t\)</span>，进行一些推导后可以得到在区间<span class="math inline">\((-l,l)\)</span>上傅里叶级数的展开公式</p>
+<h2 id="小节和体会">小节和体会</h2>
+<p>级数除了解决计算，比如将函数展开到幂级数、傅里叶级数；积分原函数不易求出时展开成级数再计算，似乎没有get到太多用处 ——2022.4.23</p>
+<h1 id="向量代数与空间解析几何">向量代数与空间解析几何</h1>
+<h2 id="向量和空间">向量和空间</h2>
+<h2 id="空间的平面和直线">空间的平面和直线</h2>
+<h2 id="空间的曲面和曲线">空间的曲面和曲线</h2>
+<h1 id="多元函数微分学-1">多元函数微分学</h1>
+<blockquote>
+<p>对多元函数的讨论一方面是对一元函数的延伸推广，但确实要多出很多内容；但是对于多元函数，只需研究二元函数即可对更多元的函数使用相同方法研究</p>
+</blockquote>
+<h2 id="多元函数及其上的极限和连续">多元函数及其上的极限和连续</h2>
+<h3 id="讨论范围的推广">讨论范围的推广</h3>
+<blockquote>
+<p>这里的工作主要是由点、区间推广到点、区域</p>
+</blockquote>
+<ul>
+<li>可以很形象的定义<strong>平面点集</strong></li>
+<li>定义平面上的<strong>邻域</strong><span class="math inline">\(U(P_0,\epsilon)\)</span>和<strong>去心邻域</strong><span class="math inline">\(U({P_0})\)</span>。除了变成圆形，这和一元函数的定义没有理解上的差异</li>
+<li>定义存在一个完全在集合内的点为<strong>内点</strong>，和全部为内点的集合为<strong>开集</strong> &gt; 对于内点的邻域，只要给定一个足够小的<span class="math inline">\(\epsilon\)</span>，一定可以保证其全在集合内，因此我们称其为内点</li>
+<li>对应的，对于邻域内既有集合内的点、也有集合外的点的点为<strong>边界点</strong>，边界点的集合为<strong>边界</strong></li>
+<li>对于给定的任意一个<span class="math inline">\(\delta\)</span>，总存在<span class="math inline">\(U(P_0,\delta)\)</span>内的点在集合<span class="math inline">\(E\)</span>内，那么<span class="math inline">\(P_0\)</span>是集合<span class="math inline">\(E\)</span>的一个<strong>聚点</strong></li>
+<li>如果一个点集的每一点都是集合的内点，且任意两点之间均可以用一条折线连接起来，这个集合被称为<strong>（开）区域</strong>；区域中所有的点，及其边界的并集为<strong>闭区域</strong></li>
+<li>如果一个点集能够被包含在原点的一个邻域内，称它为<strong>有界</strong>的，否则就是<strong>无界</strong>的</li>
+</ul>
+<h3 id="二元函数和多元函数">二元函数和多元函数</h3>
+<h3 id="极限-1">极限</h3>
+<ul>
+<li>对于二元函数，点与点之间的逼近方式很多（一元函数只有左右两种情况）</li>
+<li>往往会使用到不等式进行放缩</li>
+<li>二元/多元函数极限继承了一元极限的运算性质、等价无穷小</li>
+</ul>
+<h3 id="连续性">连续性</h3>
+<ul>
+<li>连续的二元函数在空间中是一张连续曲面</li>
+<li>一般来说，二元函数的间断点可以形成一张曲面</li>
+<li>二元函数连续性继承了一元函数的一系列性质，比如
+<ul>
+<li>连续函数加减乘除运算后仍连续</li>
+<li>连续函数复合后仍连续</li>
+<li>最值定理</li>
+<li>介值定理</li>
+</ul></li>
+<li>常量及两个以上变量基本初等函数，经过有限次四则运算和复合得到的函数被称为多元初等函数</li>
+</ul>
+<h2 id="偏导数全导数和全微分">偏导数、全导数和全微分</h2>
+<h3 id="偏导数-1">偏导数</h3>
+<p>由一个自变量变化，其他自变量固定不变而产生的变化率被称为多元函数的偏导数</p>
+<ul>
+<li><p>如果函数对每个自变量的偏导数都存在，才称这个函数的偏导数存在</p></li>
+<li><p>函数存在偏导数不一定连续</p>
+<blockquote>
+<p>这是因为偏导数只描述了函数在一个方向上的变化率</p>
+</blockquote></li>
+<li><p>对偏导数求导得到的是二阶偏导数，同理定义二阶以上的为高阶偏导数</p></li>
+<li><p>求导过程中，针对不同变量求偏导得到的称为混合偏导数</p></li>
+<li><p>如果一个函数的两个混合偏导数连续，他们他们必定相等</p>
+<blockquote>
+<p>也就是说，对于混合偏导数，先求哪个自变量的导数效果相同</p>
+</blockquote></li>
+</ul>
+<h3 id="全微分-1">全微分</h3>
+<ul>
+<li>定义函数对于增量<span class="math inline">\(\Delta{x},\Delta{y}\)</span>的全增量为<span class="math inline">\(\Delta{z}\)</span></li>
+<li>对全增量进行线性情况下的的化简，我们定义全微分<span class="math inline">\(dS=y\Delta{x}+x\Delta{y}\)</span></li>
+<li>对于一般的二元连续函数，存在<span class="math inline">\(A,B\)</span>有<span class="math inline">\(\Delta{z}=A\Delta{x}+B\Delta{y}+o{(\rho)}\)</span>，全微分<span class="math inline">\(d{f({x_0},y_0)}=d|_{(x_0,y_0)}=A\Delta{x}+B\Delta{y}\)</span>,此时显然有<span class="math inline">\(\Delta{z}=dz+o{(\rho)}\)</span></li>
+<li>存在全微分必定连续</li>
+<li>（可微的必要条件）存在全微分必定存在偏导数</li>
+<li>（可微的充分条件）偏导数存在，且连续，一定可微</li>
+</ul>
+<h3 id="多元复合函数微分">多元复合函数微分</h3>
+<blockquote>
+<p>除链式法则和形式不变性之外，多元复合函数由于复合函数形式的差异，带来了一些讨论</p>
+</blockquote>
+<ul>
+<li>多元复合函数的链式法则</li>
+<li>多元复合函数微分的形式不变性</li>
+</ul>
+<p>由于复合函数的变量可能是一个或多个，有几种可能出现的情况</p>
+<ul>
+<li>中间变量都是关于相同变量的一元函数，对于函数<span class="math inline">\(z=f(u,v)\)</span>，<span class="math inline">\(u=\phi(x),v=\Phi(x)\)</span>，那么复合函数z有</li>
+</ul>
+<p><span class="math display">\[
+{ {dz}\over{dx} }={ {\partial{z}\over{\partial{u} } } }·{ {\mathrm{d}u}\over{\mathrm{d}x} }+{ {\partial{z}\over{\partial{v} } } }·{ {\mathrm{d}v}\over{\mathrm{d}x} }
+\]</span></p>
+<blockquote>
+<p>我们在这里称<span class="math inline">\({ {dz}\over{dx} }\)</span>为z对x的全导数</p>
+</blockquote>
+<ul>
+<li>中间变量只有一个</li>
+</ul>
+<p><span class="math display">\[
+{ {\partial{z} }\over{\partial{x} } }={ {dz}\over{du} }·{ {\partial{u} }\over{\partial{x} } }
+\]</span></p>
+<blockquote>
+<p>到这里可以看粗来全微分记号就是针对多元函数使用的，其实没有必要区分这几种情况，只是书写格式的不同，其道理是一样的</p>
+</blockquote>
+<ul>
+<li>中间变量既有一元也有多元函数</li>
+</ul>
+<h2 id="多元函数的几何意义">多元函数的几何意义</h2>
+<p>对二元函数来讲，由于空间的扩张，切线、法线推广成了切线、法平面和法线、切平面</p>
+<blockquote>
+<p>感觉基本都是计算，有时间cv一下公式，摆</p>
+</blockquote>
+<p>其中，切平面充分反映了在其他自变量增加时，某个自变量的变化的含义</p>
+<h3 id="切线和法平面">切线和法平面</h3>
+<h3 id="法线和切平面">法线和切平面</h3>
+<h2 id="多元函数的极值与最值">多元函数的极值与最值</h2>
+<h3 id="多元函数的极值">多元函数的极值</h3>
+<ul>
+<li>可微函数取极值的必要条件是当函数的各个偏导数均为<span class="math inline">\(0\)</span>。满足条件的点被称为驻点。</li>
+<li>令<span class="math inline">\(A={f^{&#39;&#39;}_{xx} },B={f^{&#39;&#39;}_{xy} },C={f^{&#39;&#39;}_{yy} }\)</span>，如果
+<ol type="1">
+<li><span class="math inline">\(B^2-AC{\lt}0,且A{\gt}0\)</span>，则<span class="math inline">\(f({x_0},{y_0})\)</span>为极小值。</li>
+<li><span class="math inline">\(B^2-AC{\lt}0,且A{\lt}0\)</span>，则<span class="math inline">\(f({x_0},{y_0})\)</span>为极大值。</li>
+<li>若<span class="math inline">\(B^2-AC{\gt}0\)</span>，则<span class="math inline">\(f({x_0},{y_0})\)</span>不是极值。</li>
+<li>若<span class="math inline">\(B^2-AC=0\)</span>，则不确定<span class="math inline">\(f({x_0},{y_0})\)</span>是否为极值。</li>
+</ol></li>
+</ul>
+<h3 id="拉格朗日乘数法">拉格朗日乘数法</h3>
+<ul>
+<li>前面所说的极值都是无条件极值，当有<span class="math inline">\({\phi{(x,y)} }=0\)</span>约束时，<span class="math inline">\(f(x,y)\)</span>的极值被称为约束极值，此时常使用拉格朗日乘数法解决。</li>
+</ul>
+<p>拉格朗日乘数法使用很简单，大概只需要套用以下几步</p>
+<ol type="1">
+<li><p>构造函数<span class="math inline">\(L=L(x,y,{\lambda})=f(x,y)+{\lambda}{\phi(x,y)}\)</span>。问题转化为求<span class="math inline">\(L\)</span>的无约束变量</p></li>
+<li><p>只需保证 <span class="math display">\[
+\begin{array}{l}
+{L^{&#39;}_x}={f^{&#39;}_{x}(x,y)}+{\lambda}{\phi^{&#39;}_{x}(x,y)}=0\\
+{L^{&#39;}_y}={f^{&#39;}_{y}(x,y)}+{\lambda}{\phi^{&#39;}_{y}(x,y)}=0\\
+{L^{&#39;}_{\lambda} }={\phi(x,y)}=0
+\end{array}
+\]</span></p></li>
+<li><p>验证是否为极值点</p></li>
+</ol>
+<h3 id="最值">最值</h3>
+<ul>
+<li>简单来讲，拿所有极值和端点处的函数值比较即可得到最值，这与一元函数是相似的。</li>
+</ul>
+<h2 id="拉普拉斯方程">拉普拉斯方程</h2>
+<p>拉普拉斯方程是指偏微分方程 <span class="math display">\[
+{\frac{\partial^2{u} }{\partial{x^2} } }+{\frac{\partial^2{u} }{\partial{y^2} } }=0
+\]</span></p>
+<h1 id="重积分-1">重积分</h1>
+<h2 id="二重积分的概念和性质">二重积分的概念和性质</h2>
+<h2 id="计算二重积分">计算二重积分</h2>
+<h2 id="计算三重积分">计算三重积分</h2>
+<h3 id="直角坐标系下的累次积分">直角坐标系下的累次积分</h3>
+<h3 id="柱面坐标系下的累次积分">柱面坐标系下的累次积分</h3>
+<p>柱面坐标系下，体积元素 <span class="math display">\[
+dV=rd{\theta}drdz=rdrd{\theta}dz
+\]</span></p>
+<h3 id="球面坐标系下的累次积分">球面坐标系下的累次积分</h3>
+<p>取<span class="math inline">\(\theta\)</span>为与<span class="math inline">\(x\)</span>轴的夹角，<span class="math inline">\(\phi\)</span>为与<span class="math inline">\(z\)</span>轴的夹角，有 <span class="math display">\[
+x=r{sin(\phi)}{cos(\theta)},y=r{sin(\phi)}{sin(\theta)},z=r{cos(\phi)}
+\]</span> 体积元素为 <span class="math display">\[
+dV={rd{\phi} }{\cdot}{r{sin{\phi} }d{\theta} }{\cdot}{dr}={r^2sin{\phi} }drd{\phi}d{\theta}
+\]</span></p>
+<h3 id="重积分的一般变量代换">重积分的一般变量代换</h3>
+<h1 id="曲线曲面积分">曲线/曲面积分</h1>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/">微积分</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E5%B0%8F%E4%B9%A0%E9%A2%98%E5%84%BF/">小习题儿</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/15209/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">开源工具收藏</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/5078/">
+                        <span class="hidden-mobile">C/C++入门学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>

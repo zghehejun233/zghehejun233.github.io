@@ -1,0 +1,849 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="呵呵君">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Go语言的简单知识，以及简单微服务组件的概念和实现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go语言与微服务初步">
+<meta property="og:url" content="http://47.100.74.245/blog/posts/57343/index.html">
+<meta property="og:site_name" content="苏喂">
+<meta property="og:description" content="Go语言的简单知识，以及简单微服务组件的概念和实现">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://47.100.74.245/blog/post_img/QQ20220528-084616@2x-2.png">
+<meta property="article:published_time" content="2022-07-29T23:13:58.531Z">
+<meta property="article:modified_time" content="2022-07-29T23:13:58.531Z">
+<meta property="article:author" content="呵呵君">
+<meta property="article:tag" content="Golang">
+<meta property="article:tag" content="微服务">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://47.100.74.245/blog/post_img/QQ20220528-084616@2x-2.png">
+  
+  
+  <title>Go语言与微服务初步 - 苏喂</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+          
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" />
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"47.100.74.245","root":"/blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"5b545cafb70936459694733c37bcf02c","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>苏喂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/post_img/QQ20220528-084616@2x-2.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Go语言与微服务初步">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-29 23:13" pubdate>
+        2022年7月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Go语言与微服务初步</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>参考资料</br> 《Go语言高并发与微服务实战》；朱荣鑫，黄迪璇，张天；中国铁道出版社</p>
+</blockquote>
+<h2 id="云原生架构简介">云原生架构简介</h2>
+<blockquote>
+<p>云原生是在云的基础上提供了各种能力的一种方式</p>
+</blockquote>
+<h3 id="云计算">云计算</h3>
+<p>云计算可以说是云原生的基础。</p>
+<p>云计算与计算机相伴相生，可以说计算机的多终端设计，特别是后期通过外部网络访问大型机这种方式粗略描绘出了云计算的基本形式。</p>
+<p>但是云计算在2000年前后才真正快速发展起来，这主要是由虚拟化和容器技术的发展所决定。因此，我们可以认为的将云计算分为几个阶段</p>
+<ol type="1">
+<li>虚拟化的出现</li>
+<li>虚拟化在云计算中的应用</li>
+<li>容器化的出现</li>
+</ol>
+<h4 id="虚拟化与云计算">虚拟化与云计算</h4>
+<p>1955-1978年，学界确定了云计算所依赖的所有底层技术</p>
+<ul>
+<li>操作系统，管理物理计算资源</li>
+<li>虚拟化技术，将硬件资源分配给多个用户</li>
+<li>互联网，及逆行远程接入</li>
+</ul>
+<p>不过在这之后一段时间，分布式和小型机发展更为显眼。直到2001年，VMware带来X86虚拟化计划。</p>
+<p>通常认为，2006年的亚马逊AWS代表云计算的到来。</p>
+<p>在此之后，虚拟设备服务商提供计算资源的方式也逐渐出现分化。主要有三种模式</p>
+<ol type="1">
+<li>IaaS（Infrastructure as a Service），基础设施既是服务</li>
+<li>SaaS（Software-as-a-Service），提供开箱即用的软件服务</li>
+<li>PaaS（Platform-as-aService），直接提供软件部署平台</li>
+</ol>
+<p>可以使用一个表格来展示它们之间的差异（1表示提供功能）</p>
+<table>
+<thead>
+<tr class="header">
+<th>资源</th>
+<th>传统IT</th>
+<th>IaaS</th>
+<th>SaaS</th>
+<th>PaaS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>应用程序</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>数据</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>运行</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>中间件</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>操作系统</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>虚拟化</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>服务器</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>存储</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>网络</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>可以看得出来，比如阿里云的ECS服务器属于IaaS服务，使用者可以控制的最底层就是操作系统，其实这与使用一台物理机学习、开发差异并不大；一些Serveless服务大概应该归类为PaaS，提供了一个完整的、说走就走的运行环境</p>
+</blockquote>
+<h4 id="容器化的到来">容器化的到来</h4>
+<p>Docker是PaaS的经典开源产品，它带来了一次云计算的巨大革命，是具有里程碑意义的产品。</p>
+<p>其实Docker是对虚拟化的一种实现，简单地说，虚拟化在硬件级别分离出不同的操作系统，容器化在操作系统层面分理处不同的硬件程序。容器化避免了虚拟出完整的操作系统，而是在操作系统的基础上进行一层容器化的隔离。</p>
+<p>至于如何编排一台设备上的Docker、乃至众多物理机组成的容器集群就需要Kubernates这种容器编排工具。</p>
+<p>如今，PaaS领域完全是Kubernates+Docker的天下。</p>
+<h3 id="云原生">云原生</h3>
+<h4 id="云原生究竟是什么">云原生究竟是什么</h4>
+<blockquote>
+<p>云原生是云计算的下半场。</p>
+</blockquote>
+<p>云原生应当先被视作一种<strong>基础设施</strong>，运行在这些设施上的被称为“<strong>云原生应用</strong>”，符合云原生设计哲学的应用架构才叫做“<strong>云原生应用架构</strong>”。</p>
+<p>互联网应用，特别是移动互联网的高速发展带来业务快速迭代、团队规模不断扩大降低沟通成本和加快交付速度的新要求，因此，微服务和云原生开始流行。</p>
+<p>康威定律是微服务架构的理论基础，将单个服务分解为若干微服务，提高开发效率、迭代速度；云原生通过工具和方法减少更新导致的故障问题，保证服务的高可用。</p>
+<p>根据Pivotal公司的概念，云原生应用架构应当有几个主要特征：符合12因素应用、面向微服务架构、敏捷架构、基于API的协作和康脆弱性。同时，他们提出云原生包含四个要点：DevOps、CI/CD、微服务架构和容器化。</p>
+<p>云原生实际上是一种理念或者说方法论，云原生应用就是为了在云上运行而开发的应用。</p>
+<p>目前，由Pivotal和Google共同建立的云原生计算基金会（Cloud Native Calculating Funcation，CNCF）成为事实上的云原生技术主要推动者</p>
+<figure>
+<img src="https://jimmysong.io/kubernetes-handbook/images/006tNbRwly1fxmx633ymqj31dp0u0kjn.jpg" srcset="/blog/img/loading.gif" lazyload alt="CNCF landscape" /><figcaption aria-hidden="true">CNCF landscape</figcaption>
+</figure>
+<h4 id="云原生的12因素">云原生的12因素</h4>
+<p><a target="_blank" rel="noopener" href="https://12factor.net">参考链接，12因素</a></p>
+<p>方法论和核心思想。这是适用于所有后端程序的思想，主要为构建SaaS应用提出</p>
+<ol type="1">
+<li>使用声明式格式搭建自动化</li>
+<li>降低对操作系统依赖，保持高移植性</li>
+<li>适配云平台部署</li>
+<li>最小化开发和生产之间的分歧，实现持续部署</li>
+<li>在工具架构不发生重大改变的情况下实现扩展</li>
+</ol>
+<p>编码、部署和运维原则。12因素在三个方便提出具体的要求</p>
+<ol type="1">
+<li>编码，Codebase、Build、release、run、Dev/prod parity</li>
+<li>部署，Dependencies、Config、Process、Backing services、Port binding</li>
+<li>运维，Concurrency、Disposability、Logs、Admin process··</li>
+</ol>
+<h3 id="云原生的基础架构">云原生的基础架构</h3>
+<blockquote>
+<p>云原生既包含了实现应用云原生化的方法论，也包含了微服务、服务网格、容器、DevOps和声明式API等落地实践的关键性技术</p>
+</blockquote>
+<ul>
+<li><p>微服务 微服务旨在解决单体应用的复杂度问题。</p></li>
+<li><p>容器 容器旨在解决微服务架构下大量应用部署问题。 容器技术具体涉及到运行时和编排技术两个层面，一个负责实现对具体应用的管理，另一个负责对大量应用进行维护。</p></li>
+<li><p>服务网格 Service Mesh主要实现了对应用的网络、IO操作的分离，进一步使应用专注于自身业务。</p></li>
+<li><p>DevOps DevOps旨在增加开发者和运维者之间的沟通，包含三个部分：开发、测试和运维。 DevOps的一个重要特点是持续性，持续集成、持续测试、持续交付和持续部署，能够有效缩短开发周期、增加部署频率。</p></li>
+</ul>
+<h4 id="关于cicd">关于CI/CD</h4>
+<p>CI/CD的具体内涵曾困扰了笔者许久。简单的说，传统应用开发的流程是比较完整、笨拙的，先完成所有开发然后测试、部署上线，CI/CD鼓励持续集成（开发完一部分就提上单元测试）、持续测试（集成测试结束就进入测试环境内测试）、持续部署（测试通过直接部署上线）。</p>
+<p>其中“持续”两个字主要体现在这样的工作流程会使用CI/CD工具来代替人工管理。举个例子<a href="#refer-anchor-1"><sup>1</sup></a></p>
+<figure>
+<img src="https://pica.zhimg.com/80/c5c8e6f40c7c133e22402c00bb7e1a25_1440w.jpg?source=1940ef5c" srcset="/blog/img/loading.gif" lazyload alt="持续集成" /><figcaption aria-hidden="true">持续集成</figcaption>
+</figure>
+<p>持续集成强调开发人员提交了新代码之后，立刻进行构建、（单元）测试。根据测试结果，我们可以确定新代码和原有代码能否正确地集成在一起。</p>
+<figure>
+<img src="https://pic3.zhimg.com/80/db7198e3c39e4656e18efcb4bd1b20b1_1440w.jpg?source=1940ef5c" srcset="/blog/img/loading.gif" lazyload alt="持续交付" /><figcaption aria-hidden="true">持续交付</figcaption>
+</figure>
+<p>持续交付在持续集成的基础上，将集成后的代码部署到更贴近真实运行环境的「类生产环境」（production-like environments）中。比如，我们完成单元测试后，可以把代码部署到连接数据库的 Staging 环境中更多的测试。如果代码没有问题，可以继续手动部署到生产环境中。</p>
+<figure>
+<img src="https://pica.zhimg.com/80/f96f19e4d567aad5006d841963a86e41_1440w.jpg?source=1940ef5c" srcset="/blog/img/loading.gif" lazyload alt="持续部署" /><figcaption aria-hidden="true">持续部署</figcaption>
+</figure>
+<p>持续部署则是在持续交付的基础上，把部署到生产环境的过程自动化。</p>
+<h2 id="微服务概述">微服务概述</h2>
+<h3 id="常见系统架构">常见系统架构</h3>
+<h4 id="单体架构">单体架构</h4>
+<p>传统Web开发通常将所有功能打包成一个jar或war包运行，缺点在于开发、拓展难度很大，而且不支持多语言技术栈。</p>
+<h4 id="垂直分层架构">垂直分层架构</h4>
+<p>垂直架构将单体应用根据功能模块层级进行划分，各层之间通常使用网络接口通信。</p>
+<p>MVC就是典型的分层模式。</p>
+<h4 id="soa面向服务架构">SOA面向服务架构</h4>
+<p>垂直架构进一步拓展，会出现被多个服务同时依赖的单个服务，而且服务之间的沟通会变的异常繁多和复杂。</p>
+<p>SOA架构做的最重要的一件事就是将功能模块抽象为服务，并保证服务的通用性，这使得一个服务可以同时向多个项目、多个团队乃至多个公司同时提供服务。在具体实现过程中，公司内通常会使用ESB企业服务总线进行沟通，同时提供一个服务管理基础架构（Service Management Infrastructure）进行服务的审核、列表、日志扽功能。</p>
+<p>通常SOA架构被大公司拿来构建稳定、通用的大型公共API服务。</p>
+<h4 id="微服务架构">微服务架构</h4>
+<p>简单来说，微服务架构相比SOA架构更关注单个服务的自洽性。</p>
+<p>对于SOA服务架构来讲，很多应用是要依靠其他应用和一个ESB企业服务总线才能工作，共同构成一个完整的应用；微服务架构则希望这些应用自身就能独立运行。</p>
+<p>因此，微服务架构更加轻量化，着重于分散管理、代码再利用与自动化执行。</p>
+<figure>
+<img src="https://www.dtstack.com/wp-content/uploads/2021/07/111.jpg" srcset="/blog/img/loading.gif" lazyload alt="sda" /><figcaption aria-hidden="true">sda</figcaption>
+</figure>
+<h4 id="云原生架构">云原生架构</h4>
+<h3 id="常见微服务框架">常见微服务框架</h3>
+<h4 id="spring-cloud">Spring Cloud</h4>
+<h4 id="dubbo">Dubbo</h4>
+<h4 id="go-kit与go-micro">Go kit与Go Micro</h4>
+<h3 id="微服务设计六大原则">微服务设计六大原则</h3>
+<ol type="1">
+<li>高内聚低耦合</li>
+<li>高度自治</li>
+<li>以业务为中心</li>
+<li>弹性设计</li>
+<li>日志与监控</li>
+<li>自动化</li>
+</ol>
+<h3 id="领域驱动设计">领域驱动设计</h3>
+<h2 id="参考">参考</h2>
+<div id="refer-anchor-1">
+
+</div>
+<ul>
+<li>[1] <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23444990/answer/89426003">如何理解持续集成、持续交付、持续部署？ - yumminhuang的回答 - 知乎</a></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/%E5%BC%80%E5%8F%91/">开发</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Golang/">Golang</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/posts/43a46ea2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/posts/29820/">
+                        <span class="hidden-mobile">四级备考</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8fmElDB8yTQ6Cpsn0mbNbdxd-gzGzoHsz","appKey":"WIsNNq3yinfKJBndF0qqO31p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-core.min.js" ></script>
+      <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/autoloader/prism-autoloader.min.js" ></script>
+      
+        <script  src="https://cdn.jsdelivr.net/npm/prismjs@1/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+      
+    
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5b545cafb70936459694733c37bcf02c";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?zghehejun233";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="zghehejun233";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/blog/about'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>
