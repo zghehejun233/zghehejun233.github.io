@@ -26,7 +26,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Hexo Generate
-        run: 
+        run: |
           export PATH="$PATH:$RUNNER_TOOL_CACHE/pandoc-2.9.2/bin"
           rm -f .yarnclean
           yarn --frozen-lockfile --ignore-engines --ignore-optional --non-interactive --silent --ignore-scripts --production=false
