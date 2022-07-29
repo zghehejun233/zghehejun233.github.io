@@ -30,8 +30,8 @@ jobs:
           export PATH="$PATH:$RUNNER_TOOL_CACHE/pandoc-2.9.2/bin"
           rm -f .yarnclean
           rm -rf ./public
-          npm run hexo clean
-          npm run hexo generate
+          hexo clean
+          hexo generate
       - name: Build
         run: npm run build
       - name: Deploy
