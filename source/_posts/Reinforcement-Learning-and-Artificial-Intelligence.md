@@ -146,7 +146,7 @@ Gaussian distribution is so widely observed that it’s been called, the normal
 当样本数据 X 是一维数据（Univariate）时，高斯分布遵从下方概率密度函数（Probability Density Function）<sup>2</sup>：
 
 $$
-N(x;\mu,\sigma^2)={\frac{1}{\sigma \sqrt{2\pi} }}e^{ {-\frac{1}{2} }(\frac{x-\mu}{\sigma})^2}
+N(x;\mu,\sigma^2)={\frac{1}{\sigma \sqrt{2\pi} } }e^{ {-\frac{1}{2} }(\frac{x-\mu}{\sigma})^2}
 $$
 
 > A parametric model that well captures the probability distribution of not a single, but many random variables encountered in the real world.
@@ -183,7 +183,7 @@ In this case, we can make $\mu$ (and $\sigma$) a function of $x$, and parameteri
 Gaussian Linear Models (or Linear Gaussian Models) are parametric models that seek to fit the **conditional probabilities** $P[Y=y|X=x]$, where both $X$ and $Y$ are observablerandom variables, with a Gaussian function with linear mean:
 
 $$
-f(y|x;a,b,\sigma)=N(y;ax+b,\sigma)={\frac{1}{\sigma{\sqrt{2\pi} }} }e^{ {-\frac{1}{2} }{(\frac{y-(ax+b)}{\sigma})}^2}
+f(y|x;a,b,\sigma)=N(y;ax+b,\sigma)={\frac{1}{\sigma{\sqrt{2\pi} } } }e^{ {-\frac{1}{2} }{(\frac{y-(ax+b)}{\sigma})}^2}
 $$
 
 With separately learned distribution $P(x)$, the Gaussian Linear function $f(y|x;a,b,\sigma)$can model more complex marginal distribution of $Y$ (than a single Gaussian function can), $P[Y=y]=\sigma_x{P(x)f(y|x;a,b,\sigma)}$.
@@ -195,13 +195,13 @@ Often, we just care about the conditional probability for its own sake (e.g. in 
 对于单高斯模型，我们可以用最大似然法估算参数 $\mathbf{\theta}$的值[^2]
 
 $$
-\prod^{n}_{i=1}{\mathbf{P_{\theta} }}[{Y_i}={y_i}|{X_i}={x_i}]=\prod^{n}_{i=1}f({x_i,y_i;\mathbf{\theta} })
+\prod^{n}_{i=1}{\mathbf{P_{\theta} } }[{Y_i}={y_i}|{X_i}={x_i}]=\prod^{n}_{i=1}f({x_i,y_i;\mathbf{\theta} })
 $$
 
 The MLE principle proposes to choose the parameter vector $\mathbf{\theta}$ that maximizes the function, which is equivalent to minimize the **negative-log-likelihood (NLL) function**:
 
 $$
--\log{\prod^{n}_{i=1}f({x_i,y_i;\mathbf{\theta} })}=-{\sum_i}\log f({x_i,y_i;a,b,\sigma})={\frac{1}{2\sigma^2} }{({\sum_i}(a{x_i}+b-{y_i})^2)}+n\log{\sigma{\sqrt{2\pi} }}
+-\log{\prod^{n}_{i=1}f({x_i,y_i;\mathbf{\theta} })}=-{\sum_i}\log f({x_i,y_i;a,b,\sigma})={\frac{1}{2\sigma^2} }{({\sum_i}(a{x_i}+b-{y_i})^2)}+n\log{\sigma{\sqrt{2\pi} } }
 $$
 
 #### Gaussian Linear Model with Multivariate
@@ -209,7 +209,7 @@ $$
 Multivariate Gaussian Linear Model is a parametric model that seeks to fit the conditional distribution $Y=y|\mathbf{X}=\mathbf{x}$, where $\mathbf{X}$ is an observable **multivariate random variable**, such that
 
 $$
-f(y|\mathbf{x};\mathbf{w},\sigma)=N(y;{\mathbf{w}\cdot\mathbf{x} },\sigma)={\frac{1}{\sigma{\sqrt{2\pi} }} }e^{ {-\frac{1}{2} }{(\frac{y-{\mathbf{w}\cdot\mathbf{x} }}{\sigma})}^2}
+f(y|\mathbf{x};\mathbf{w},\sigma)=N(y;{\mathbf{w}\cdot\mathbf{x} },\sigma)={\frac{1}{\sigma{\sqrt{2\pi} } } }e^{ {-\frac{1}{2} }{(\frac{y-{\mathbf{w}\cdot\mathbf{x} } }{\sigma})}^2}
 $$
 
 #### Gasussian Linear Regression and Mean Squared Error, MSE
@@ -417,7 +417,7 @@ A policy function 𝜋 is a conditional probability distribution. As a probabili
 For a discrete output, define **softmax function** and add it to the output layer
 
 $$
-\sigma:\mathbb{R}^K{\rightarrow}[0,1]^K,{\;}where{\;}\sigma_i(z)={\frac{e^{z_i} }{\sum_{j=1}^K}{e^{z_j} }},{\,} for{\,} i=1,\dotsb,K
+\sigma:\mathbb{R}^K{\rightarrow}[0,1]^K,{\;}where{\;}\sigma_i(z)={\frac{e^{z_i} }{\sum_{j=1}^K}{e^{z_j} } },{\,} for{\,} i=1,\dotsb,K
 $$
 
 > 由于指数的增长速率很大，这个函数可以“柔软”的放大输出之间的差异，并共同成为一个概率分布函数。</br>
