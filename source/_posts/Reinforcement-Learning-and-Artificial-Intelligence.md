@@ -45,7 +45,7 @@ Union Bound:
 
 $$
 \begin{array}{c}
-  P[{A_1}or{A_1}or{\dotsb}{{A_n}}]{\le}\sum_{i=1}^{n}P[A_i]
+  P[{A_1}or{A_1}or{\dotsb}{ {A_n} }]{\le}\sum_{i=1}^{n}P[A_i]
 \end{array}
 $$
 
@@ -98,7 +98,7 @@ Expectation, also called expected value, or mean value, or simply the mean, is t
 
 conditional expectation is conditioned on a random event, not on a random variable.
 
-For a function, $P[f(X)=y]=\sum_{\{x:f(x)=y\}}P[X=x]$, and $E[f(X)]=\sum_{x}P[X=x]{\cdot}f(x)$
+For a function, $P[f(X)=y]=\sum_{\{x:f(x)=y\} }P[X=x]$, and $E[f(X)]=\sum_{x}P[X=x]{\cdot}f(x)$
 
 typically used as **distance unit** to measure how far a particular value of 𝑋 deviates from the mean 𝐄[𝑋]
 
@@ -146,7 +146,7 @@ Gaussian distribution is so widely observed that it’s been called, the normal
 当样本数据 X 是一维数据（Univariate）时，高斯分布遵从下方概率密度函数（Probability Density Function）<sup>2</sup>：
 
 $$
-N(x;\mu,\sigma^2)={\frac{1}{\sigma \sqrt{2\pi}}}e^{{-\frac{1}{2}}(\frac{x-\mu}{\sigma})^2}
+N(x;\mu,\sigma^2)={\frac{1}{\sigma \sqrt{2\pi} }}e^{ {-\frac{1}{2} }(\frac{x-\mu}{\sigma})^2}
 $$
 
 > A parametric model that well captures the probability distribution of not a single, but many random variables encountered in the real world.
@@ -183,7 +183,7 @@ In this case, we can make $\mu$ (and $\sigma$) a function of $x$, and parameteri
 Gaussian Linear Models (or Linear Gaussian Models) are parametric models that seek to fit the **conditional probabilities** $P[Y=y|X=x]$, where both $X$ and $Y$ are observablerandom variables, with a Gaussian function with linear mean:
 
 $$
-f(y|x;a,b,\sigma)=N(y;ax+b,\sigma)={\frac{1}{\sigma{\sqrt{2\pi}}}}e^{{-\frac{1}{2}}{(\frac{y-(ax+b)}{\sigma})}^2}
+f(y|x;a,b,\sigma)=N(y;ax+b,\sigma)={\frac{1}{\sigma{\sqrt{2\pi} }} }e^{ {-\frac{1}{2} }{(\frac{y-(ax+b)}{\sigma})}^2}
 $$
 
 With separately learned distribution $P(x)$, the Gaussian Linear function $f(y|x;a,b,\sigma)$can model more complex marginal distribution of $Y$ (than a single Gaussian function can), $P[Y=y]=\sigma_x{P(x)f(y|x;a,b,\sigma)}$.
@@ -195,13 +195,13 @@ Often, we just care about the conditional probability for its own sake (e.g. in 
 对于单高斯模型，我们可以用最大似然法估算参数 $\mathbf{\theta}$的值[^2]
 
 $$
-\prod^{n}_{i=1}{\mathbf{P_{\theta}}}[{Y_i}={y_i}|{X_i}={x_i}]=\prod^{n}_{i=1}f({x_i,y_i;\mathbf{\theta}})
+\prod^{n}_{i=1}{\mathbf{P_{\theta} }}[{Y_i}={y_i}|{X_i}={x_i}]=\prod^{n}_{i=1}f({x_i,y_i;\mathbf{\theta} })
 $$
 
 The MLE principle proposes to choose the parameter vector $\mathbf{\theta}$ that maximizes the function, which is equivalent to minimize the **negative-log-likelihood (NLL) function**:
 
 $$
--\log{\prod^{n}_{i=1}f({x_i,y_i;\mathbf{\theta}})}=-{\sum_i}\log f({x_i,y_i;a,b,\sigma})={\frac{1}{2\sigma^2}}{({\sum_i}(a{x_i}+b-{y_i})^2)}+n\log{\sigma{\sqrt{2\pi}}}
+-\log{\prod^{n}_{i=1}f({x_i,y_i;\mathbf{\theta} })}=-{\sum_i}\log f({x_i,y_i;a,b,\sigma})={\frac{1}{2\sigma^2} }{({\sum_i}(a{x_i}+b-{y_i})^2)}+n\log{\sigma{\sqrt{2\pi} }}
 $$
 
 #### Gaussian Linear Model with Multivariate
@@ -209,7 +209,7 @@ $$
 Multivariate Gaussian Linear Model is a parametric model that seeks to fit the conditional distribution $Y=y|\mathbf{X}=\mathbf{x}$, where $\mathbf{X}$ is an observable **multivariate random variable**, such that
 
 $$
-f(y|\mathbf{x};\mathbf{w},\sigma)=N(y;{\mathbf{w}\cdot\mathbf{x}},\sigma)={\frac{1}{\sigma{\sqrt{2\pi}}}}e^{{-\frac{1}{2}}{(\frac{y-{\mathbf{w}\cdot\mathbf{x}}}{\sigma})}^2}
+f(y|\mathbf{x};\mathbf{w},\sigma)=N(y;{\mathbf{w}\cdot\mathbf{x} },\sigma)={\frac{1}{\sigma{\sqrt{2\pi} }} }e^{ {-\frac{1}{2} }{(\frac{y-{\mathbf{w}\cdot\mathbf{x} }}{\sigma})}^2}
 $$
 
 #### Gasussian Linear Regression and Mean Squared Error, MSE
@@ -219,7 +219,7 @@ The Gaussian linear function can be alternatively viewed as a parametric model f
 Given observations and the parameter vector as the linear coefficients, can be equivalently chosen based on the **Mean Squared Error (MSE) principle**, without the explicit probabilistic interpretation
 
 $$
-{L_{MSE}}={\frac{1}{n}}\sum_i{(\mathbf{w\cdot x}-{y_i})^2}
+{L_{MSE} }={\frac{1}{n} }\sum_i{(\mathbf{w\cdot x}-{y_i})^2}
 $$
 
 #### Logistic Regression
@@ -229,7 +229,7 @@ $$
 Generalized linear model in the form of
 
 $$
-g(\mathbb{}{x};\mathbb{w})=\phi(\mathbf{w}\cdot \mathbf{x}), {\quad}\phi(s)=\frac{1}{1+e^{-s}}
+g(\mathbb{}{x};\mathbb{w})=\phi(\mathbf{w}\cdot \mathbf{x}), {\quad}\phi(s)=\frac{1}{1+e^{-s} }
 $$
 
 or other function with the similar S-shape curve
@@ -313,7 +313,7 @@ Brain consists of two types of cells: glial cells and neurons.
 **Action potential** in pre-synaptic neuron induces **response current** in post-synaptic neuron.Resoonse current decays over time.
 
 $$
-{I_{response}({\Delta t})}={\frac{w_i}{\tau_s}}e^{-{\Delta t}/{\tau_s}}
+{I_{response}({\Delta t})}={\frac{w_i}{\tau_s} }e^{-{\Delta t}/{\tau_s} }
 $$
 
 > Response currents from all synapses integrate through the dendrite of the post-synaptic neuron, accumulating potential imbalance in the membrane of the cell, until **reaching a threshold** at which point a post-synaptic action potential is released (which resets the membrane potential)
@@ -323,27 +323,27 @@ Firing-rate model is a statistical model of biological neural networks, which as
 The firing rate of a neuron is a **function of time $t$** which gives the **frequency density of action potentials** that the neuron would probabilistically release at each time point $t$.
 
 $$
-{x(t)}=\lim_{{\Delta t}\rightarrow 0}\mathbf{E}[\frac{{spikes{\ }in}[t-{\Delta t},t]}{\Delta t}]
+{x(t)}=\lim_{ {\Delta t}\rightarrow 0}\mathbf{E}[\frac{ {spikes{\ }in}[t-{\Delta t},t]}{\Delta t}]
 $$
 
 Firing-rate $x_i(\cdot)$ of pre-synaptic neuron $i$ induces a response current $I_i(\cdot)$ at post synaptic neuron. Response currents from all synapses integrate into a total synaptic current $I(\cdot)$ which induces the firing-rate $y(\cdot)$ of the post-synaptic neuron.
 
 Step by step,
 
-1. Response current induced by a single action potential: ${I_{response}(\Delta t)}={\frac{w_i}{\tau_s}}e^{-{\Delta t}/{\tau_s}}$
-2. Response current induced by all spikes of synapse $i$: ${I_i(t)}={\int_{-\infty}^{t}}{I_{response}(t-\tau){s_i(\tau)d\tau}}$
+1. Response current induced by a single action potential: ${I_{response}(\Delta t)}={\frac{w_i}{\tau_s} }e^{-{\Delta t}/{\tau_s} }$
+2. Response current induced by all spikes of synapse $i$: ${I_i(t)}={\int_{-\infty}^{t} }{I_{response}(t-\tau){s_i(\tau)d\tau} }$
 3. Total synaptic current induced by all spikes of all synapses: $I(t)=\sum_i{T_i(t)}$
 
 Finally, firing rates $\mathbf{x}$ of all the pre-synaptic neurons collectively induce total synaptic current $I$ at the post-synaptic neuron:
 
 $$
-{\tau_s}{\frac{\mathrm{d}I}{\mathrm{d}t}}=-I\,+\,\mathbf{w}\cdot\mathbf{x}
+{\tau_s}{\frac{\mathrm{d}I}{\mathrm{d}t} }=-I\,+\,\mathbf{w}\cdot\mathbf{x}
 $$
 
 Total synaptic current $I$ determines the firing rate $y$ of the post-synaptic neuron
 
 $$
-{\tau_r}{\frac{\mathrm{d}y}{\mathrm{d}t}}=-y+\phi(I)
+{\tau_r}{\frac{\mathrm{d}y}{\mathrm{d}t} }=-y+\phi(I)
 $$
 
 where $\phi(\cdot)$ is called the **activation function** of the (post-synaptic) neuron.
@@ -363,13 +363,13 @@ The **Hebbian theory** is the best-known model for activity-dependent long-term 
 - Let real number $w$ denote the **strength of an excitatory synapse**, $x(t)$ and $y(t)$ the pre- and post-synaptic firing rates at time $t$,
 
 $$
-{\tau_w}{\frac{\mathrm{d}w}{\mathrm{d}t}}=x(t){\,}y(t)
+{\tau_w}{\frac{\mathrm{d}w}{\mathrm{d}t} }=x(t){\,}y(t)
 $$
 
 - Let **random variable** $X$ and $Y$ be the pre- and post-synaptic firing rates at a random time $\tau$ in a time window $[t-{\Delta t},t]$,
 
 $$
-{\tau_w}{\frac{\mathrm{d}w}{\mathrm{d}t}}=\mathbf{E}[XY]-{\mathbf{E}[X]}{\mathbf{E}[Y]}
+{\tau_w}{\frac{\mathrm{d}w}{\mathrm{d}t} }=\mathbf{E}[XY]-{\mathbf{E}[X]}{\mathbf{E}[Y]}
 $$
 
 ## Artificial Neural Networks, ANN
@@ -386,13 +386,13 @@ Parameterization in AI:
 
 ![image-20220707142039567](https://tva1.sinaimg.cn/large/e6c9d24ely1h3ycb4jbvej20si0jcn08.jpg)
 
-Each hidden-layer and ouput-layer node $i$ repoesents a sub-mode $g(\mathbf{x};\mathbf{w_i},b_i)=\phi({\mathbf{w_i}\cdot{\mathbf{x}}+{b_i}})$. If define $\mathbf{\bar{x}}=(\mathbf{x},1)^T,{\;}\bar{\mathbf{w_i}}=(\mathbf{w_i},{b_i})$
+Each hidden-layer and ouput-layer node $i$ repoesents a sub-mode $g(\mathbf{x};\mathbf{w_i},b_i)=\phi({\mathbf{w_i}\cdot{\mathbf{x} }+{b_i} })$. If define $\mathbf{\bar{x} }=(\mathbf{x},1)^T,{\;}\bar{\mathbf{w_i} }=(\mathbf{w_i},{b_i})$
 
 ### Activitation Functions
 
 - Sigmoid, it can seperate when the **input is too large**:
 $$
-\sigma(x)=\frac{1}{1+e^{-x}}
+\sigma(x)=\frac{1}{1+e^{-x} }
 $$
 
 - tanh: $\tanh(x)$
@@ -405,7 +405,7 @@ $$
 一个MLP模型的需要的参数是非常多的，以一个输入$\mathbb{R}^5$，有两个$\mathbb{R}^7$隐藏层并输出$\mathbb{R}^4$的网络来讲，他需要的参数是
 
 $$
-n=[(N_{input}+1)\cdot{N_{next}}]+[(N_{hidden1}+1)\cdot{N_{next}}]+[(N_{hidden2}+1)\cdot{N_{output}}]=170
+n=[(N_{input}+1)\cdot{N_{next} }]+[(N_{hidden1}+1)\cdot{N_{next} }]+[(N_{hidden2}+1)\cdot{N_{output} }]=170
 $$
 
 A **decision policy** determines the probability that an “intelligent” system would output a particular “action” in a time step conditioned on aparticular “state” of the system.
@@ -417,7 +417,7 @@ A policy function 𝜋 is a conditional probability distribution. As a probabili
 For a discrete output, define **softmax function** and add it to the output layer
 
 $$
-\sigma:\mathbb{R}^K{\rightarrow}[0,1]^K,{\;}where{\;}\sigma_i(z)={\frac{e^{z_i}}{\sum_{j=1}^K}{e^{z_j}}},{\,} for{\,} i=1,\dotsb,K
+\sigma:\mathbb{R}^K{\rightarrow}[0,1]^K,{\;}where{\;}\sigma_i(z)={\frac{e^{z_i} }{\sum_{j=1}^K}{e^{z_j} }},{\,} for{\,} i=1,\dotsb,K
 $$
 
 > 由于指数的增长速率很大，这个函数可以“柔软”的放大输出之间的差异，并共同成为一个概率分布函数。</br>

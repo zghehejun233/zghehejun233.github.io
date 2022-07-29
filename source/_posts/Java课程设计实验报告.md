@@ -1379,12 +1379,12 @@ public class TotalScoreComparator implements Comparator<TotalScoreDTO> {
     align-items: start;
   "
 >
-  <div>姓名： {{ myName }}</div>
-  <div>性别： {{ sex }}</div>
-  <div>年龄： {{ age }}</div>
-  <div>学院专业： {{ overview }}</div>
-  <div>学号： {{ studentNum }}</div>
-  <div>联系方式： {{ contact }}</div>
+  <div>姓名： { { myName } }</div>
+  <div>性别： { { sex } }</div>
+  <div>年龄： { { age } }</div>
+  <div>学院专业： { { overview } }</div>
+  <div>学号： { { studentNum } }</div>
+  <div>联系方式： { { contact } }</div>
 </div>
 ```
 
@@ -1400,7 +1400,7 @@ public class TotalScoreComparator implements Comparator<TotalScoreDTO> {
       align-items: center;
     "
   >
-    <div class="card-header;margin-bottom:36px">{{ myName }}的综合成绩分布</div>
+    <div class="card-header;margin-bottom:36px">{ { myName } }的综合成绩分布</div>
     <Radar
       v-if="studyChartLoaded"
       :chart-options="studyChartOptions"
@@ -1463,7 +1463,7 @@ public class TotalScoreComparator implements Comparator<TotalScoreDTO> {
     v-for="(item, i) in attachList"
     :key="i"
   >
-    <div class="paragraph-header">{{ item.title }}</div>
+    <div class="paragraph-header">{ { item.title } }</div>
     <div v-html="item.content"></div>
   </el-row>
 </div>

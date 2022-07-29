@@ -338,7 +338,7 @@ i山大将判断是否为`debug`模式，若是则直接输出到console，否�
 FutureOr<SentryEvent> beforeSend(SentryEvent event, {dynamic hint}) async {
   event = event.copyWith(
       user: SentryUser(
-          username: UserAPI.curUser?.casId ?? 'none', ipAddress: '{{auto}}'));
+          username: UserAPI.curUser?.casId ?? 'none', ipAddress: '{ {auto} }'));
   return event;
 }
 ```
